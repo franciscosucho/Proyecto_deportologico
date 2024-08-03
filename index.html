@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <title>Hello from Electron rendereraaa!</title>
+  <link rel="stylesheet" href="./css/estilo.css">
+</head>
+
+<body>
+  <main>
+    <form action="">
+      <img src="./resources/mental-strong.png" alt="">
+      <div id="cont_url">
+        
+        <span id="btn_registrar" class="desactivo">Registrarse</span>
+        <span id="btn_iniciar" class="activo">Iniciar sesión</span>
+      </div>
+
+
+      
+      <div class="cont_inputs">
+        <label for="">Nombre</label>
+        <input type="text" placeholder="Escriba su nombre">
+      </div>
+
+      <div class="cont_inputs">
+        <label for="">Contraseña</label>
+        <input type="text" placeholder="Escriba su contraseña">
+      </div>
+      <button id="btn_enviar_sesion">Iniciar sesión </button>
+    </form>
+
+  </main>
+  <script src="./renderer.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+body main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("./resources/file.png");
+  background-size: cover;
+  /* Asegura que la imagen cubra todo el fondo */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+  height: 90%;
+  border: 1px solid black;
+  width: 90%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+}
+body main form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgba(37, 35, 35, 0.425);
+  height: 80%;
+  width: 60%;
+}
+body main form #cont_url {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+body main form #cont_url span {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bolder;
+}
+body main form #cont_url span.activo {
+  border-bottom: 2px solid #64E788;
+}
+body main form #cont_url span.desactivo {
+  border-bottom: none;
+}
+body main form .cont_inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+body main form .cont_inputs label {
+  width: 60%;
+  text-align: start;
+  color: #64E788;
+}
+body main form .cont_inputs input {
+  width: 60%;
+  border-radius: 20px;
+  background-color: white;
+  height: 60px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+body main #btn_enviar_sesion {
+  border-radius: 30px;
+  width: 40%;
+  height: 50px;
+  background-color: #64E788;
+  font-size: 1.1em;
+  font-weight: bolder;
+  border: none;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}/*# sourceMappingURL=estilo.css.map */
