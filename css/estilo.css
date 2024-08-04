@@ -11,22 +11,21 @@ body {
   align-items: center;
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 }
 body main {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url("./resources/file.png");
+  background-image: url("../resources/file.png");
   background-size: cover;
   /* Asegura que la imagen cubra todo el fondo */
   background-repeat: no-repeat;
   /* Evita que la imagen se repita */
-  height: 90%;
-  border: 1px solid black;
-  width: 90%;
-  background-size: cover;
-  background-repeat: no-repeat;
+  height: 100%;
+  background-color: rgb(37, 35, 35);
+  width: 100%;
   /* Evita que la imagen se repita */
 }
 body main form {
@@ -34,10 +33,19 @@ body main form {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
-  background-color: rgba(37, 35, 35, 0.425);
+  gap: 20px;
+  background-color: transparent;
   height: 80%;
   width: 60%;
+}
+body main form .sub_form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 body main form #cont_url {
   width: 100%;
@@ -54,12 +62,13 @@ body main form #cont_url span {
   cursor: pointer;
   font-size: 16px;
   font-weight: bolder;
+  border-bottom: none;
 }
 body main form #cont_url span.activo {
   border-bottom: 2px solid #64E788;
 }
-body main form #cont_url span.desactivo {
-  border-bottom: none;
+body main form .desac {
+  display: none;
 }
 body main form .cont_inputs {
   display: flex;
@@ -94,4 +103,25 @@ body main #btn_enviar_sesion {
   text-align: center;
   color: white;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+body main #btn_enviar_sesion:hover {
+  transform: scale(1.1);
+  background-color: #46a55f;
+}
+body main #cont_registrar {
+  height: 100%;
+  width: 100%;
+}
+body main #cont_registrar .sub_form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+body main #cont_registrar .desac {
+  display: none !important;
 }/*# sourceMappingURL=estilo.css.map */

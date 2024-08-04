@@ -1,9 +1,13 @@
-const { app, BrowserWindow } = require('electron');
 
+//Para arrancar el programa escribir en la terminal "npm run start"
+
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
 function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 1200,
         height: 800,
+        icon: path.join(__dirname, './resources/mental-strong.ico'), // Cambia el camino al icono
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false, // Asegúrate de que esto esté configurado según tus necesidades de seguridad

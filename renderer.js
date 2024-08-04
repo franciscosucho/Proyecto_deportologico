@@ -14,7 +14,7 @@ connection.connect((err) => {
         console.error('Error al conectarse a la base de datos: ' + err.stack);
         return;
     }
- 
+
 });
 
 // // Datos a insertar
@@ -45,28 +45,39 @@ var sql_query;
 
 
 
+
+
+
+// parte de los addlisterner de el form
 const btn_iniciar = document.getElementById("btn_iniciar");
 const btn_registrar = document.getElementById("btn_registrar");
-const btn_enviar_sesion =document.getElementById("btn_enviar_sesion")
+const btn_enviar_sesion = document.getElementById("btn_enviar_sesion");
+const cont_registrar = document.getElementById("cont_registrar");
+const cont_iniciar = document.getElementById("cont_iniciar");
+const datos_personales = document.getElementById("datos_personales");
+const datos_nutricionales = document.getElementById("datos_nutricionales");
+const datos_fisicos = document.getElementById("datos_fisicos");
 btn_iniciar.addEventListener("click", () => {
-    btn_iniciar.classList.add("activo");
-    btn_iniciar.classList.remove("desactivo");
-    btn_registrar.classList.add("desactivo");
-    btn_registrar.classList.remove("activo");
+    btn_registrar.classList.toggle("activo");
+    btn_iniciar.classList.toggle("activo");
+    cont_registrar.classList.toggle("desac");
+    cont_iniciar.classList.toggle("desac");
 })
 btn_registrar.addEventListener("click", () => {
-    btn_registrar.classList.add("activo");
-    btn_registrar.classList.remove("desactivo");
-    btn_iniciar.classList.add("desactivo");
-    btn_iniciar.classList.remove("activo");
+    btn_registrar.classList.toggle("activo");
+    btn_iniciar.classList.toggle("activo");
+    cont_registrar.classList.toggle("desac");
+    cont_iniciar.classList.toggle("desac");
 })
+
 btn_enviar_sesion.addEventListener("click", () => {
-// // Ejecutar la consulta
-sql_query='SELECT  `Nombre_usuario`, `password`  FROM `usuario` WHERE Nombre_usuario=? AND password=?';
-// connection.query(sql, [dni, nombreApellido, fechaNacimiento, email, peso, altura, genero], (error, results) => {
-//     if (error) {
-//         return console.error('Error al insertar datos: ' + error.message);
-//     }
-//     console.log('Datos insertados con éxito, ID: ' + results.insertId);
-// });
+    // // Ejecutar la consulta
+    sql_query = 'SELECT  `Nombre_usuario`, `password`  FROM `usuario` WHERE Nombre_usuario=? AND password=?';
+    // connection.query(sql, [dni, nombreApellido, fechaNacimiento, email, peso, altura, genero], (error, results) => {
+    //     if (error) {
+    //         return console.error('Error al insertar datos: ' + error.message);
+    //     }
+    //     console.log('Datos insertados con éxito, ID: ' + results.insertId);
+    // });
 })
+
