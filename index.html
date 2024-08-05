@@ -12,88 +12,137 @@
 
 <body>
   <main>
-    <form action="" id="form_iniciar">
-      <img src="./resources/mental-strong.png" alt="">
+    <section id="registro">
 
-      <div id="cont_url">
+      <form action="" id="form_iniciar">
+        <img src="./resources/mental-strong.png" alt="">
 
-        <span id="btn_registrar" class="desactivo">Registrarse</span>
-        <span id="btn_iniciar" class="activo">Iniciar sesión</span>
-      </div>
+        <div id="cont_url">
 
+          <span id="btn_registrar" class="desactivo">Registrarse</span>
+          <span id="btn_iniciar" class="activo">Iniciar sesión</span>
 
-      <div id="cont_iniciar" class="sub_form">
-        <div class="cont_inputs">
-          <label for="">Nombre usuario</label>
-          <input type="text" placeholder="Escriba su nombre de usuario">
         </div>
 
-        <div class="cont_inputs">
-          <label for="">Contraseña</label>
-          <input type="text" placeholder="Escriba su contraseña">
-        </div>
-        <button id="btn_enviar_sesion">Seguir </button>
-      </div>
 
-      <div id="cont_registrar" class="desac">
-
-        <div id="datos_personales" class="sub_form ">
-
+        <div id="cont_iniciar" class="sub_form">
           <div class="cont_inputs">
-            <label for="">Nombre usuario</label>
-            <input type="text" placeholder="Escriba su nombre de usuario">
+            <label for="">Nombre de usuario</label>
+            <input id="nombre_ini" type="text" placeholder="Escriba su nombre de usuario">
           </div>
 
           <div class="cont_inputs">
             <label for="">Contraseña</label>
-            <input type="text" placeholder="Escriba su contraseña">
+            <input id="password_ini"  type="text" placeholder="Escriba su Contraseña">
           </div>
-          <button id="btn_enviar_sesion">Seguir </button>
 
+          <button id="btn_enviar_sesion">Ingresar </button>
         </div>
-        <div id="datos_acceso" class="sub_form ">
+        <div id="cont_registrar" class="desac">
+          <span id="texto_regs"></span>
 
-          <div class="cont_inputs">
-            <label for="">Nombre usuario</label>
-            <input type="text" placeholder="Escriba su nombre de usuario">
+          <div id="datos_personales" class="sub_form ">
+            <div class="cont_inputs">
+              <label for="">Nombre completo</label>
+              <input type="text" placeholder="Escriba su nombre  completo">
+            </div>
+            <div class="cont_inputs">
+              <label for="">Dni</label>
+              <input type="number" placeholder="Escriba su Dni">
+            </div>
+            <div class="cont_inputs">
+              <label for="">Nacimiento</label>
+              <input type="date" placeholder="Escriba su fecha de nacimiento">
+            </div>
+            <div class="cont_inputs">
+              <label for="">Genero</label>
+              <select id="opciones">
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+              </select>
+            </div>
+            <div class="cont_inputs">
+              <label for="">Peso (En Kgs)</label>
+              <input type="number" placeholder="Escriba su peso en kgs" min="0" step="1">
+            </div>
+            <div class="cont_inputs">
+              <label for="altura">Altura (En Cms):</label>
+              <input type="number" id="altura" placeholder="Escriba su altura en Cms" min="0">
+            </div>
+            <div class="cont_btn">
+              <button class="btn_enviar_sesion">Siguiente</button>
+              <button class="btn_atras">atrás</button>
+            </div>
+
           </div>
+          <div id="datos_acceso" class="sub_form desac">
+            <div class="cont_inputs">
+              <label for="">Nombre usuario</label>
+              <input type="text" placeholder="Escriba su nombre de usuario">
+            </div>
+            <div class="cont_inputs">
+              <label for="">Email</label>
+              <input type="email" placeholder="Escriba su email">
+            </div>
+            <div class="cont_inputs">
+              <label for="">Contraseña</label>
+              <input type="password" placeholder="Escriba su contraseña">
+            </div>
 
-          <div class="cont_inputs">
-            <label for="">Contraseña</label>
-            <input type="text" placeholder="Escriba su contraseña">
+            <div class="cont_btn">
+              <button class="btn_enviar_sesion">Siguiente</button>
+              <button class="btn_atras">atrás</button>
+            </div>
           </div>
-          <button id="btn_enviar_sesion">Seguir </button>
+          <div id="datos_nutricionales" class="sub_form desac">
+            <div class="cont_inputs">
+              <label for="">Tipo de dieta</label>
+              <select id="dieta">
+                <option value="Omvimora">Omvimora</option>
+                <option value="vegetariana">Vegetaria</option>
+                <option value="vegana">Vegana</option>
+              </select>
+            </div>
+            <div class="cont_inputs">
+              <label for="">Objetivo nutricional</label>
+              <select id="objetivo_nutricional">
+                <option value="perdida de peso">Perdida de peso</option>
+                <option value="mantener peso">Mantener peso</option>
+                <option value="ganar peso">Ganar peso</option>
+              </select>
+            </div>
 
+            <div class="cont_btn">
+              <button class="btn_enviar_sesion">Siguiente</button>
+              <button class="btn_atras">atrás</button>
+            </div>
+          </div>
+          <div id="datos_deportivos" class="sub_form desac">
+            <div class="cont_inputs">
+              <label for="">Deporte</label>
+              <input type="text" placeholder="Eliga su deportivo">
+            </div>
+            <div class="cont_inputs">
+              <label for="">Objetivo deportivo</label>
+              <input type="text" placeholder="Eliga su Objetivo deportivo">
+            </div>
+            <div class="cont_inputs">
+              <label for="">Frecuencia</label>
+              <input type="text" placeholder="Frecuencia con la que realiza el deporte">
+            </div>
+            <div class="cont_inputs">
+              <label for="">Intencidad</label>
+              <input type="text" placeholder="Intencidad con la que realiza el deporte">
+            </div>
+            <div class="cont_btn">
+              <button class="btn_enviar_sesion">Siguiente</button>
+              <button class="btn_atras">atrás</button>
+            </div>
+          </div>
         </div>
-        <div id="datos_nutricionales" class="sub_form desac">
-          <div class="cont_inputs">
-            <label for="">Nombre usuario</label>
-            <input type="text" placeholder="Escriba su nombre de usuario">
-          </div>
-
-          <div class="cont_inputs">
-            <label for="">Contraseña</label>
-            <input type="text" placeholder="Escriba su contraseña">
-          </div>
-          <button id="btn_enviar_sesion">Seguir </button>
-
-        </div>
-        <div id="datos_deportivos" class="sub_form desac">
-
-          <div class="cont_inputs">
-            <label for="">Nombre usuario</label>
-            <input type="text" placeholder="Escriba su nombre de usuario">
-          </div>
-
-          <div class="cont_inputs">
-            <label for="">Contraseña</label>
-            <input type="text" placeholder="Escriba su contraseña">
-          </div>
-          <button id="btn_enviar_sesion">Seguir </button>
-
-
-        </div>
-      </div>
+      </form>
+    </section>
+    <section id="ventana_prin"></section>
   </main>
   <script src="./renderer.js"></script>
 </body>
