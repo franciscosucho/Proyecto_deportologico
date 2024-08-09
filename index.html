@@ -3,146 +3,156 @@
 
 <head>
   <meta charset="UTF-8" />
-  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
   <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-  <title>Hello from Electron rendereraaa!</title>
+  <title>Formulario de Registro</title>
   <link rel="stylesheet" href="./css/estilo.css">
 </head>
 
 <body>
   <main>
     <section id="registro">
-
-      <form action="" id="form_iniciar">
-        <img src="./resources/mental-strong.png" alt="">
+      <form id="form_iniciar">
+        <img src="./resources/mental-strong.png" alt="Logo">
 
         <div id="cont_url">
-
           <span id="btn_registrar" class="desactivo">Registrarse</span>
           <span id="btn_iniciar" class="activo">Iniciar sesión</span>
-
         </div>
-
 
         <div id="cont_iniciar" class="sub_form">
           <div class="cont_inputs">
-            <label for="">Nombre de usuario</label>
+            <label for="nombre_ini">Nombre de usuario</label>
             <input id="nombre_ini" type="text" placeholder="Escriba su nombre de usuario">
           </div>
-
           <div class="cont_inputs">
-            <label for="">Contraseña</label>
-            <input id="password_ini"  type="text" placeholder="Escriba su Contraseña">
+            <label for="password_ini">Contraseña</label>
+            <input id="password_ini" type="password" placeholder="Escriba su Contraseña">
           </div>
-
-          <button id="btn_enviar_sesion">Ingresar </button>
+          <button id="btn_enviar_sesion" type="button">Ingresar</button>
         </div>
+
         <div id="cont_registrar" class="desac">
           <span id="texto_regs"></span>
 
-          <div id="datos_personales" class="sub_form ">
+          <div id="datos_personales" class="sub_form">
             <div class="cont_inputs">
-              <label for="">Nombre completo</label>
-              <input type="text" placeholder="Escriba su nombre  completo">
+              <label for="nombre_completo">Nombre completo</label>
+              <input id="nombre_completo" type="text" placeholder="Escriba su nombre completo">
             </div>
             <div class="cont_inputs">
-              <label for="">Dni</label>
-              <input type="number" placeholder="Escriba su Dni">
+              <label for="dni">DNI</label>
+              <input id="dni" type="number" placeholder="Escriba su DNI">
             </div>
             <div class="cont_inputs">
-              <label for="">Nacimiento</label>
-              <input type="date" placeholder="Escriba su fecha de nacimiento">
+              <label for="nacimiento">Nacimiento</label>
+              <input id="nacimiento" type="date" placeholder="Escriba su fecha de nacimiento">
             </div>
             <div class="cont_inputs">
-              <label for="">Genero</label>
-              <select id="opciones">
+              <label for="opciones_genero">Género</label>
+              <select id="opciones_genero">
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
               </select>
             </div>
             <div class="cont_inputs">
-              <label for="">Peso (En Kgs)</label>
-              <input type="number" placeholder="Escriba su peso en kgs" min="0" step="1">
+              <label for="peso">Peso (En Kgs)</label>
+              <input id="peso" type="number" placeholder="Escriba su peso en kgs" min="0" step="1">
             </div>
             <div class="cont_inputs">
-              <label for="altura">Altura (En Cms):</label>
-              <input type="number" id="altura" placeholder="Escriba su altura en Cms" min="0">
+              <label for="altura">Altura (En Cms)</label>
+              <input id="altura" type="number" placeholder="Escriba su altura en Cms" min="0">
             </div>
             <div class="cont_btn">
-              <button class="btn_enviar_sesion">Siguiente</button>
-              <button class="btn_atras">atrás</button>
+              <button class="btn_enviar_sesion" type="button">Siguiente</button>
+              <button class="btn_atras" type="button">Atrás</button>
             </div>
-
           </div>
+
           <div id="datos_acceso" class="sub_form desac">
             <div class="cont_inputs">
-              <label for="">Nombre usuario</label>
-              <input type="text" placeholder="Escriba su nombre de usuario">
+              <label for="nombre_usuario">Nombre de usuario</label>
+              <input id="nombre_usuario_regis" type="text" placeholder="Escriba su nombre de usuario">
             </div>
             <div class="cont_inputs">
-              <label for="">Email</label>
-              <input type="email" placeholder="Escriba su email">
+              <label for="email_regis">Email</label>
+              <input id="email_regis" type="email" placeholder="Escriba su email">
             </div>
             <div class="cont_inputs">
-              <label for="">Contraseña</label>
-              <input type="password" placeholder="Escriba su contraseña">
+              <label for="password_regis">Contraseña</label>
+              <input id="password_regis" type="password" placeholder="Escriba su contraseña">
             </div>
-
             <div class="cont_btn">
-              <button class="btn_enviar_sesion">Siguiente</button>
-              <button class="btn_atras">atrás</button>
+              <button class="btn_enviar_sesion" type="button">Siguiente</button>
+              <button class="btn_atras" type="button">Atrás</button>
             </div>
           </div>
+
           <div id="datos_nutricionales" class="sub_form desac">
             <div class="cont_inputs">
-              <label for="">Tipo de dieta</label>
+              <label for="dieta">Tipo de dieta</label>
               <select id="dieta">
-                <option value="Omvimora">Omvimora</option>
-                <option value="vegetariana">Vegetaria</option>
-                <option value="vegana">Vegana</option>
+                <option value="Omnívora">Omnívora</option>
+                <option value="Vegetariana">Vegetariana</option>
+                <option value="Vegana">Vegana</option>
               </select>
             </div>
             <div class="cont_inputs">
-              <label for="">Objetivo nutricional</label>
+              <label for="objetivo_nutricional">Objetivo nutricional</label>
               <select id="objetivo_nutricional">
-                <option value="perdida de peso">Perdida de peso</option>
-                <option value="mantener peso">Mantener peso</option>
-                <option value="ganar peso">Ganar peso</option>
+                <option value="Perdida de peso">Pérdida de peso</option>
+                <option value="Mantener peso">Mantener peso</option>
+                <option value="Ganar peso">Ganar peso</option>
               </select>
             </div>
-
             <div class="cont_btn">
-              <button class="btn_enviar_sesion">Siguiente</button>
-              <button class="btn_atras">atrás</button>
+              <button class="btn_enviar_sesion" type="button">Siguiente</button>
+              <button class="btn_atras" type="button">Atrás</button>
             </div>
           </div>
+
           <div id="datos_deportivos" class="sub_form desac">
             <div class="cont_inputs">
-              <label for="">Deporte</label>
-              <input type="text" placeholder="Eliga su deportivo">
+              <label for="tipo_deporte">Tipo de deporte</label>
+              <select id="tipo_deporte">
+                <option value="Resistencia">Resistencia</option>
+                <option value="Cardiovascular">Cardiovascular</option>
+              </select>
             </div>
             <div class="cont_inputs">
-              <label for="">Objetivo deportivo</label>
-              <input type="text" placeholder="Eliga su Objetivo deportivo">
+              <label for="obj_deportivo">Objetivo deportivo</label>
+              <input id="obj_deportivo" type="text" placeholder="Elija su objetivo deportivo">
             </div>
             <div class="cont_inputs">
-              <label for="">Frecuencia</label>
-              <input type="text" placeholder="Frecuencia con la que realiza el deporte">
+              <label for="frecuencia">Frecuencia (Días de entrenamiento/Semana)</label>
+              <select id="frecuencia">
+                <option value="3/7">3/7</option>
+                <option value="4/7">4/7</option>
+                <option value="5/7">5/7</option>
+                <option value="6/7">6/7</option>
+                <option value="7/7">7/7</option>
+              </select>
             </div>
             <div class="cont_inputs">
-              <label for="">Intencidad</label>
-              <input type="text" placeholder="Intencidad con la que realiza el deporte">
+              <label for="intensidad">Intensidad</label>
+              <input id="intensidad" type="text" placeholder="Intensidad con la que realiza el deporte">
             </div>
             <div class="cont_btn">
-              <button class="btn_enviar_sesion">Siguiente</button>
-              <button class="btn_atras">atrás</button>
+              <button id="btn_enviar_registro" type="submit">Registrarme</button>
+              <button class="btn_atras" type="button">Atrás</button>
             </div>
           </div>
         </div>
       </form>
     </section>
-    <section id="ventana_prin"></section>
+
+    <section id="ventana_prin">
+      <div id="user_info">
+        <h2>Información del Usuario</h2>
+        <p id="user-name"></p>
+        <p id="user-email"></p>
+      </div>
+    </section>
   </main>
   <script src="./renderer.js"></script>
 </body>

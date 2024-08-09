@@ -1,35 +1,70 @@
 const mysql = require('mysql2');
-
-// Configuración de la conexión
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'proyecto_deportologico'
-});
-
-// Conectar a la base de datos
-connection.connect((err) => {
-    if (err) {
-        console.error('Error al conectarse a la base de datos: ' + err.stack);
-        return;
-    }
-
-});
-
-
-// // Sentencia SQL para insertar datos
-
-
+const { ipcRenderer } = require('electron');
 // parte de los addlisterner de el form
 const btn_iniciar = document.getElementById("btn_iniciar");
 const btn_registrar = document.getElementById("btn_registrar");
-const btn_enviar_sesion = document.getElementById("btn_enviar_sesion");
+const btn_enviar_registro = document.getElementById("btn_enviar_registro");
 const cont_registrar = document.getElementById("cont_registrar");
 const cont_iniciar = document.getElementById("cont_iniciar");
-const datos_personales = document.getElementById("datos_personales");
-const datos_nutricionales = document.getElementById("datos_nutricionales");
-const datos_fisicos = document.getElementById("datos_fisicos");
+
+// Intento de registro
+btn_registrar.addEventListener("click", () => {
+    btn_registrar.classList.toggle("activo");
+    btn_iniciar.classList.toggle("activo");
+    cont_registrar.classList.toggle("desac");
+    cont_iniciar.classList.toggle("desac");
+});
+document.getElementById('btn_enviar_registro').addEventListener('click', (event) => {
+    event.preventDefault();  // Evita que la página se recargue
+  
+    const dni = document.getElementById('dni').value.trim();
+    const nombre_usuario = document.getElementById('nombre_usuario_regis').value.trim();
+    const password = document.getElementById('password_regis').value.trim();
+    const nombreApellido = document.getElementById('nombre_completo').value.trim();
+    const fechaNacimiento = document.getElementById('nacimiento').value.trim();
+    const email = document.getElementById('email_regis').value.trim();
+    const peso = document.getElementById('peso').value.trim();
+    const altura = document.getElementById('altura').value.trim();
+    const genero = document.getElementById('opciones_genero').value.trim();
+  
+    if (dni && nombre_usuario && password && nombreApellido && fechaNacimiento && email && peso && altura && genero) {
+      const formData = {
+        dni,
+        nombre_usuario,
+        password,
+        nombreApellido,
+        fechaNacimiento,
+        email,
+        peso,
+        altura,
+        genero,
+      };
+  
+      // Enviar datos al proceso principal
+      ipcRenderer.send('submit-registration', formData);
+  
+      // Escuchar la respuesta del proceso principal
+      ipcRenderer.on('registration-response', (event, message) => {
+        alert(message);
+      });
+    } else {
+      alert("Por favor, complete todos los campos.");
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Inicializa el primer formulario como visible
 let formularioActual = 0;
@@ -41,38 +76,6 @@ btn_iniciar.addEventListener("click", () => {
     cont_registrar.classList.toggle("desac");
     cont_iniciar.classList.toggle("desac");
 })
-btn_registrar.addEventListener("click", () => {
-    btn_registrar.classList.toggle("activo");
-    btn_iniciar.classList.toggle("activo");
-    cont_registrar.classList.toggle("desac");
-    cont_iniciar.classList.toggle("desac");
-
-})
-
-btn_enviar_sesion.addEventListener("click", () => {
-    const nombre_ini = document.getElementById('nombre_ini').value;
-    const password_ini = document.getElementById('password_ini').value;
-    event.preventDefault();
-    // // Ejecutar la consulta
-   
-    const query = 'SELECT * FROM usuario WHERE Nombre_usuario = ? AND password = ?';
-    connection.query(query, [nombre_ini, password_ini], (error, results) => {
-        if (error) {
-           console.log("error")
-            return;
-        }
-
-        if (results.length > 0) {
-           
-            alert("JJ")
-            
-        } else {
-          console.log('Nombre de usuario o contraseña incorrectos' );
-        }
-    });
-    
-})
-
 
 const texto_span = [
     "Paso 1: Datos básicos.",
@@ -80,7 +83,7 @@ const texto_span = [
     "Paso 3: Datos nutricionales",
     "Paso 4: Datos deportivos"
 ];
-const cont_registro= document.getElementById("registro");
+const cont_registro = document.getElementById("registro");
 const contenedor = document.getElementById('cont_registrar');
 const subForms = contenedor.getElementsByClassName('sub_form');
 const botones = contenedor.getElementsByClassName('btn_enviar_sesion');
@@ -129,10 +132,10 @@ function btn_siguiente() {
                 //     formData.intensidad = document.querySelector('#datos_deportivos input[placeholder="Intensidad con la que realiza el deporte"]').value;
 
                 //     // Al hacer clic en el último botón "Siguiente", enviar los datos al servidor
-                   
+
                 // }
                 // enviarDatosAlServidor(formData);
-              
+
             }
         });
     });
