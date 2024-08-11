@@ -37,8 +37,8 @@ CREATE TABLE
     `DNI_depor` int NOT NULL,
     `ObjetivosDeportivo` varchar(100) NOT NULL,
     `TipoDeporte` enum ('Resistencia', 'Cardiovascular') NOT NULL,
-    `Frecuencia` enum ('2-3', '3-4', '4-5', '5-6', '6-7') NOT NULL,
-    `Intensidad` enum ('bajo', 'medio', 'alto') NOT NULL,
+    `Frecuencia` enum ('3/7', '4/7', '5/7', '6/7', '7/7') NOT NULL,
+    `Intensidad` enum ('ligera', 'Moderada', 'Intensa') NOT NULL,
     FOREIGN KEY (`DNI_depor`) REFERENCES `usuario` (`DNI`)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 

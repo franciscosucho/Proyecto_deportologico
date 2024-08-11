@@ -23,11 +23,11 @@
         <div id="cont_iniciar" class="sub_form">
           <div class="cont_inputs">
             <label for="nombre_ini">Nombre de usuario</label>
-            <input id="nombre_ini" type="text" placeholder="Escriba su nombre de usuario">
+            <input id="nombre_ini" type="text" placeholder="Escriba su nombre de usuario"  required>
           </div>
           <div class="cont_inputs">
             <label for="password_ini">Contraseña</label>
-            <input id="password_ini" type="password" placeholder="Escriba su Contraseña">
+            <input id="password_ini" type="password" placeholder="Escriba su Contraseña"  required>
           </div>
           <button id="btn_enviar_sesion" type="button">Ingresar</button>
         </div>
@@ -38,34 +38,34 @@
           <div id="datos_personales" class="sub_form">
             <div class="cont_inputs">
               <label for="nombre_regis">Nombre </label>
-              <input id="nombre_regis" type="text" placeholder="Escriba su nombre completo">
+              <input id="nombre_regis" type="text" placeholder="Escriba su nombre completo"  required>
             </div>
             <div class="cont_inputs">
               <label for="apellido_regis">Apellido </label>
-              <input id="apellido_regis" type="text" placeholder="Escriba su nombre completo">
+              <input id="apellido_regis" type="text" placeholder="Escriba su nombre completo"  required>
             </div>
             <div class="cont_inputs">
               <label for="dni">DNI</label>
-              <input id="dni" type="number" placeholder="Escriba su DNI">
+              <input id="dni" type="number" placeholder="Escriba su DNI"  required>
             </div>
             <div class="cont_inputs">
               <label for="nacimiento">Nacimiento</label>
-              <input id="nacimiento" type="date" placeholder="Escriba su fecha de nacimiento">
+              <input id="nacimiento" type="date" placeholder="Escriba su fecha de nacimiento"  required>
             </div>
             <div class="cont_inputs">
               <label for="opciones_genero">Género</label>
-              <select id="opciones_genero">
+              <select id="opciones_genero"  required>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
               </select>
             </div>
             <div class="cont_inputs">
               <label for="peso">Peso (En Kgs)</label>
-              <input id="peso" type="number" placeholder="Escriba su peso en kgs" min="0" step="1">
+              <input id="peso" type="number" placeholder="Escriba su peso en kgs" min="0" step="1"  required>
             </div>
             <div class="cont_inputs">
               <label for="altura">Altura (En Cms)</label>
-              <input id="altura" type="number" placeholder="Escriba su altura en Cms" min="0">
+              <input id="altura" type="number" placeholder="Escriba su altura en Cms" min="0"  required>
             </div>
             <div class="cont_btn">
               <button class="btn_enviar_sesion" type="button">Siguiente</button>
@@ -76,15 +76,15 @@
           <div id="datos_acceso" class="sub_form desac">
             <div class="cont_inputs">
               <label for="nombre_usuario_regis">Nombre de usuario</label>
-              <input id="nombre_usuario_regis" type="text" placeholder="Escriba su nombre de usuario">
+              <input id="nombre_usuario_regis" type="text" placeholder="Escriba su nombre de usuario"  required>
             </div>
             <div class="cont_inputs">
               <label for="email_regis">Email</label>
-              <input id="email_regis" type="email" placeholder="Escriba su email">
+              <input id="email_regis" type="email" placeholder="Escriba su email"  required>
             </div>
             <div class="cont_inputs">
               <label for="password_regis">Contraseña</label>
-              <input id="password_regis" type="password" placeholder="Escriba su contraseña">
+              <input id="password_regis" type="password" placeholder="Escriba su contraseña"  required>
             </div>
             <div class="cont_btn">
               <button class="btn_enviar_sesion" type="button">Siguiente</button>
@@ -95,7 +95,7 @@
           <div id="datos_nutricionales" class="sub_form desac">
             <div class="cont_inputs">
               <label for="dieta">Tipo de dieta</label>
-              <select id="dieta">
+              <select id="dieta"  required>
                 <option value="Omnívora">Omnívora</option>
                 <option value="Vegetariana">Vegetariana</option>
                 <option value="Vegana">Vegana</option>
@@ -103,7 +103,7 @@
             </div>
             <div class="cont_inputs">
               <label for="objetivo_nutricional">Objetivo nutricional</label>
-              <select id="objetivo_nutricional">
+              <select id="objetivo_nutricional"  required>
                 <option value="Perdida de peso">Pérdida de peso</option>
                 <option value="Mantener peso">Mantener peso</option>
                 <option value="Ganar peso">Ganar peso</option>
@@ -118,21 +118,21 @@
           <div id="datos_deportivos" class="sub_form desac">
             <div class="cont_inputs">
               <label for="tipo_deporte">Tipo de deporte</label>
-              <select id="tipo_deporte">
+              <select id="tipo_deporte"  required>
                 <option value="Resistencia">Resistencia</option>
                 <option value="Cardiovascular">Cardiovascular</option>
               </select>
             </div>
             <div class="cont_inputs">
               <label for="obj_deportivo">Objetivo deportivo</label>
-              <select id="obj_deportivo">
+              <select id="obj_deportivo"  required>
                 <option value="Mejorar la resistencia">Mejorar la resistencia</option>
                 <option value="Cardiovascular">Mejorar la potencia</option>
               </select>
             </div>
             <div class="cont_inputs">
               <label for="frecuencia">Frecuencia (Días de entrenamiento/Semana)</label>
-              <select id="frecuencia">
+              <select id="frecuencia"  required>
                 <option value="3/7">3/7</option>
                 <option value="4/7">4/7</option>
                 <option value="5/7">5/7</option>
@@ -142,8 +142,8 @@
             </div>
             <div class="cont_inputs">
               <label for="intensidad">Intensidad</label>
-              <select id="intensidad">
-                <option value="Liegra">Liegra</option>
+              <select id="intensidad"  required>
+                <option value="Ligera">Ligera</option>
                 <option value="Moderada">Moderada</option>
                 <option value="Intensa">Intensa</option>
 

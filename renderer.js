@@ -46,50 +46,25 @@ document.getElementById('btn_enviar_registro').addEventListener('click', (event)
             peso,
             altura,
             genero,
+            //datos de dieta
+            objetivo_nutricional,
+            dieta,
+            //datos deportivos
+            obj_deportivo,
+            tipo_deporte,
+            frecuencia,
+            intensidad
         };
 
 
         // Enviar datos al proceso principal
         ipcRenderer.send('submit-registration', formData);
-
-        const datos_nutricionales = {
-            dni,
-            objetivo_nutricional,
-            dieta
-        };
-        // Enviar datos al proceso principal
-        ipcRenderer.send('submit-datos_nutricionales', datos_nutricionales);
-
-        const datos_deport = {
-            dni,
-            obj_deportivo,
-            tipo_deporte,
-            frecuencia,
-            intensidad
-
-        };
-        // Enviar datos al proceso principal
-        ipcRenderer.send('submit-datos_deport', datos_deport);
-
         document.getElementById("ventana_prin").classList.toggle("desac")
         document.getElementById("registro").classList.toggle("desac")
     } else {
         alert("Por favor, complete todos los campos.");
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Inicializa el primer formulario como visible

@@ -6,12 +6,10 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 body main {
   display: flex;
@@ -42,7 +40,7 @@ body main #registro form {
   flex-direction: column;
   gap: 35px;
   background-color: transparent;
-  height: 80%;
+  height: 100%;
   width: 60%;
 }
 body main #registro form .sub_form {
