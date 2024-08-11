@@ -156,4 +156,12 @@ body main #registro form #cont_registrar .sub_form .cont_btn button {
 }
 body main #registro form #cont_registrar .desac {
   display: none !important;
+}
+body main #ventana_prin {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+body main .desac {
+  display: none;
 }/*# sourceMappingURL=estilo.css.map */

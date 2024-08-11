@@ -37,8 +37,12 @@
 
           <div id="datos_personales" class="sub_form">
             <div class="cont_inputs">
-              <label for="nombre_completo">Nombre completo</label>
-              <input id="nombre_completo" type="text" placeholder="Escriba su nombre completo">
+              <label for="nombre_regis">Nombre </label>
+              <input id="nombre_regis" type="text" placeholder="Escriba su nombre completo">
+            </div>
+            <div class="cont_inputs">
+              <label for="apellido_regis">Apellido </label>
+              <input id="apellido_regis" type="text" placeholder="Escriba su nombre completo">
             </div>
             <div class="cont_inputs">
               <label for="dni">DNI</label>
@@ -71,7 +75,7 @@
 
           <div id="datos_acceso" class="sub_form desac">
             <div class="cont_inputs">
-              <label for="nombre_usuario">Nombre de usuario</label>
+              <label for="nombre_usuario_regis">Nombre de usuario</label>
               <input id="nombre_usuario_regis" type="text" placeholder="Escriba su nombre de usuario">
             </div>
             <div class="cont_inputs">
@@ -121,7 +125,10 @@
             </div>
             <div class="cont_inputs">
               <label for="obj_deportivo">Objetivo deportivo</label>
-              <input id="obj_deportivo" type="text" placeholder="Elija su objetivo deportivo">
+              <select id="obj_deportivo">
+                <option value="Mejorar la resistencia">Mejorar la resistencia</option>
+                <option value="Cardiovascular">Mejorar la potencia</option>
+              </select>
             </div>
             <div class="cont_inputs">
               <label for="frecuencia">Frecuencia (Días de entrenamiento/Semana)</label>
@@ -135,7 +142,12 @@
             </div>
             <div class="cont_inputs">
               <label for="intensidad">Intensidad</label>
-              <input id="intensidad" type="text" placeholder="Intensidad con la que realiza el deporte">
+              <select id="intensidad">
+                <option value="Liegra">Liegra</option>
+                <option value="Moderada">Moderada</option>
+                <option value="Intensa">Intensa</option>
+
+              </select>
             </div>
             <div class="cont_btn">
               <button id="btn_enviar_registro" type="submit">Registrarme</button>
@@ -146,7 +158,7 @@
       </form>
     </section>
 
-    <section id="ventana_prin">
+    <section id="ventana_prin" class="desac">
       <div id="user_info">
         <h2>Información del Usuario</h2>
         <p id="user-name"></p>

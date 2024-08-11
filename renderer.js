@@ -16,41 +16,67 @@ btn_registrar.addEventListener("click", () => {
 });
 document.getElementById('btn_enviar_registro').addEventListener('click', (event) => {
     event.preventDefault();  // Evita que la página se recargue
-  
+    // para llenar la tabla usurario
     const dni = document.getElementById('dni').value.trim();
     const nombre_usuario = document.getElementById('nombre_usuario_regis').value.trim();
     const password = document.getElementById('password_regis').value.trim();
-    const nombreApellido = document.getElementById('nombre_completo').value.trim();
+    const nombre_regis = document.getElementById('nombre_regis').value.trim();
+    const apellido_regis = document.getElementById('apellido_regis').value.trim();
     const fechaNacimiento = document.getElementById('nacimiento').value.trim();
     const email = document.getElementById('email_regis').value.trim();
     const peso = document.getElementById('peso').value.trim();
     const altura = document.getElementById('altura').value.trim();
+    const dieta = document.getElementById('dieta').value.trim();
+    const objetivo_nutricional = document.getElementById('objetivo_nutricional').value.trim();
+    const tipo_deporte = document.getElementById('tipo_deporte').value.trim();
+    const obj_deportivo = document.getElementById('obj_deportivo').value.trim();
+    const frecuencia = document.getElementById('frecuencia').value.trim();
+    const intensidad = document.getElementById('intensidad').value.trim();
     const genero = document.getElementById('opciones_genero').value.trim();
-  
-    if (dni && nombre_usuario && password && nombreApellido && fechaNacimiento && email && peso && altura && genero) {
-      const formData = {
-        dni,
-        nombre_usuario,
-        password,
-        nombreApellido,
-        fechaNacimiento,
-        email,
-        peso,
-        altura,
-        genero,
-      };
-  
-      // Enviar datos al proceso principal
-      ipcRenderer.send('submit-registration', formData);
-  
-      // Escuchar la respuesta del proceso principal
-      ipcRenderer.on('registration-response', (event, message) => {
-        alert(message);
-      });
+
+    if (dni && nombre_usuario && obj_deportivo && dieta && objetivo_nutricional && tipo_deporte && frecuencia && intensidad && password && apellido_regis && nombre_regis && fechaNacimiento && email && peso && altura && genero) {
+        const formData = {
+            dni,
+            nombre_usuario,
+            password,
+            nombre_regis,
+            apellido_regis,
+            fechaNacimiento,
+            email,
+            peso,
+            altura,
+            genero,
+        };
+
+
+        // Enviar datos al proceso principal
+        ipcRenderer.send('submit-registration', formData);
+
+        const datos_nutricionales = {
+            dni,
+            objetivo_nutricional,
+            dieta
+        };
+        // Enviar datos al proceso principal
+        ipcRenderer.send('submit-datos_nutricionales', datos_nutricionales);
+
+        const datos_deport = {
+            dni,
+            obj_deportivo,
+            tipo_deporte,
+            frecuencia,
+            intensidad
+
+        };
+        // Enviar datos al proceso principal
+        ipcRenderer.send('submit-datos_deport', datos_deport);
+
+        document.getElementById("ventana_prin").classList.toggle("desac")
+        document.getElementById("registro").classList.toggle("desac")
     } else {
-      alert("Por favor, complete todos los campos.");
+        alert("Por favor, complete todos los campos.");
     }
-  });
+});
 
 
 
