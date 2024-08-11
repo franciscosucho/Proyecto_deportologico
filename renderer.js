@@ -3,11 +3,10 @@ const { ipcRenderer } = require('electron');
 // parte de los addlisterner de el form
 const btn_iniciar = document.getElementById("btn_iniciar");
 const btn_registrar = document.getElementById("btn_registrar");
-const btn_enviar_registro = document.getElementById("btn_enviar_registro");
 const cont_registrar = document.getElementById("cont_registrar");
 const cont_iniciar = document.getElementById("cont_iniciar");
 
-// Intento de registro
+//  registro
 btn_registrar.addEventListener("click", () => {
     btn_registrar.classList.toggle("activo");
     btn_iniciar.classList.toggle("activo");
@@ -66,6 +65,41 @@ document.getElementById('btn_enviar_registro').addEventListener('click', (event)
     }
 });
 
+
+
+// logeo
+document.getElementById('btn_ini_sesion').addEventListener('click', (event) => {
+    event.preventDefault();  // Evita que la página se recargue
+
+    // datos del logeo
+    const nombre_ini = document.getElementById('nombre_ini').value.trim();
+    const email_ini = document.getElementById('nombre_ini').value.trim();
+    const password_ini = document.getElementById('password_ini').value.trim();
+
+    if (nombre_ini && email_ini && password_ini) {
+        const data_ini = {
+            nombre_ini,
+            email_ini,
+            password_ini,
+        };
+
+        // Enviar datos al proceso principal
+        ipcRenderer.send('submit-ini', data_ini);
+    } else {
+        alert("Por favor, complete todos los campos.");
+    }
+});
+
+// Escuchar la respuesta del proceso principal
+ipcRenderer.on('login-response', (event, response) => {
+    if (response === 'success') {
+        // Si el logeo fue exitoso, cambiar la visibilidad de las ventanas
+        document.getElementById("ventana_prin").classList.toggle("desac");
+        document.getElementById("registro").classList.toggle("desac");
+    } else {
+        alert(response);  // Mostrar un mensaje de error si la autenticación falla
+    }
+});
 
 // Inicializa el primer formulario como visible
 let formularioActual = 0;

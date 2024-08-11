@@ -94,9 +94,19 @@ ipcMain.on('submit-registration', (event, formData) => {
 
 
 });
+ipcMain.on('submit-ini', (event, data_ini) => {
+  const { nombre_ini, email_ini, password_ini } = data_ini;
 
-ipcMain.on(ipcMain.on('submit-registration', (event, formData) => {
-  const { dni, nombre_usuario, password, nombre_regis, apellido_regis, fechaNacimiento, email, peso, altura, genero, objetivo_nutricional, dieta, obj_deportivo, tipo_deporte, frecuencia, intensidad } = formData;
-  var query
-}));
+  var query = 'SELECT Nombre_usuario, Email, password FROM usuario WHERE (Nombre_usuario = ? AND password = ?) OR (Email = ? AND password = ?)';
+  connection.query(query, [nombre_ini, password_ini, email_ini, password_ini], (err, results) => {
+      if (err) {
+          console.error('Error checking data:', err);
+          event.reply('login-response', 'Error al verificar los datos');
+      } else if (results.length > 0) {
+          event.reply('login-response', 'success');
+      } else {
+          event.reply('login-response', 'Error: El Email o el Nombre de usuario no existen, intente de nuevo');
+      }
+  });
+});
 app.whenReady().then(createWindow);
