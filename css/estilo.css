@@ -93,7 +93,8 @@ body main #registro form .cont_inputs label {
   text-align: start;
   color: #64E788;
 }
-body main #registro form .cont_inputs select, body main #registro form .cont_inputs input {
+body main #registro form .cont_inputs select,
+body main #registro form .cont_inputs input {
   width: 60%;
   border-radius: 20px;
   background-color: white;
@@ -216,10 +217,33 @@ body main #ventana_prin #menu_lateral #cont_item .item:hover {
 body main #ventana_prin #cont_main {
   height: 100%;
   width: 75%;
+  padding: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
+}
+body main #ventana_prin #cont_main #nombre_us {
+  font-size: 2em;
+  color: white;
+  font-style: italic;
+}
+body main #ventana_prin #cont_main #cont_user {
+  position: absolute;
+  left: 90%;
+  width: auto;
+  height: auto;
+}
+body main #ventana_prin #cont_main #cont_user img {
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: 50%;
+}
+body main #ventana_prin #cont_main #cont_user img:hover {
+  background-color: rgba(116, 116, 116, 0.2117647059);
 }
 body main .desac {
   display: none !important;

@@ -8,12 +8,14 @@
 
 $color-primario: #64E788; // Azul
 
-.desac{
+.desac {
     display: none !important;
 }
+
 body {
     width: 100vw;
     overflow-x: hidden;
+
     main {
         display: flex;
         justify-content: center;
@@ -32,9 +34,11 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-            &.desac{
+
+            &.desac {
                 display: none !important;
             }
+
             form {
                 display: flex;
                 justify-content: flex-start;
@@ -82,9 +86,11 @@ body {
                 .desac {
                     display: none;
                 }
-                #cont_iniciar{
+
+                #cont_iniciar {
                     height: 100vh;
                 }
+
                 .cont_inputs {
 
                     display: flex;
@@ -93,6 +99,7 @@ body {
                     flex-direction: column;
                     width: 100%;
                     gap: 5px;
+
                     label {
                         width: 60%;
                         text-align: start;
@@ -100,7 +107,8 @@ body {
 
                     }
 
-                    select,input {
+                    select,
+                    input {
                         width: 60%;
                         border-radius: 20px;
                         background-color: white;
@@ -137,17 +145,19 @@ body {
                     height: 100%;
                     width: 100%;
                     padding-bottom: 20px;
-                    #texto_regs{
+
+                    #texto_regs {
                         width: 100%;
                         text-align: center;
                         color: rgb(226, 226, 226);
-                       
+
                         font-size: 1em;
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        margin:10px 0px;
+                        margin: 10px 0px;
                     }
+
                     .sub_form {
                         height: 100vh;
                         width: 100%;
@@ -157,7 +167,7 @@ body {
                         flex-direction: column;
                         gap: 20px;
 
-                        .cont_btn{
+                        .cont_btn {
                             height: 50px;
                             width: 40%;
                             display: flex;
@@ -165,8 +175,8 @@ body {
                             align-items: center;
                             flex-direction: row-reverse;
                             gap: 20px;
-                          
-                            button{
+
+                            button {
                                 height: 100%;
                                 width: 50%;
                             }
@@ -180,12 +190,14 @@ body {
                 }
             }
         }
-        #ventana_prin{
+
+        #ventana_prin {
             width: 100%;
             height: 100vh;
             background-color: #222;
             display: flex;
-            #menu_lateral{
+
+            #menu_lateral {
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
@@ -194,12 +206,14 @@ body {
                 padding-top: 10px;
                 height: 100%;
                 width: 25%;
-                background-color:#121212 ;
-                img{
-                    height:auto;
+                background-color: #121212;
+
+                img {
+                    height: auto;
                     width: auto;
                 }
-                #cont_item{
+
+                #cont_item {
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
@@ -209,38 +223,69 @@ body {
                     width: 80%;
                     background-color: rgba(89, 89, 89, 0.037);
                     list-style: none;
-                    .item{
+
+                    .item {
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        background-color:#58C885 ;
+                        background-color: #58C885;
                         border-radius: 10px;
                         width: 80%;
                         height: 10%;
                         cursor: pointer;
                         transition: all .2s ease-in-out;
-                        span{
+
+                        span {
                             font-weight: bolder;
                             font-size: 1em;
                             color: white;
                         }
-                        &:hover{
-                            background-color:#419663 ;
+
+                        &:hover {
+                            background-color: #419663;
                             transform: scale(1.05);
                         }
                     }
                 }
             }
-            #cont_main{
+
+            #cont_main {
                 height: 100%;
                 width: 75%;
+                padding: 20px;
                 display: flex;
                 justify-content: flex-start;
                 align-items: flex-start;
                 flex-direction: column;
+
+                #nombre_us {
+                    font-size: 2em;
+                    color: white;
+                    font-style: italic;
+                }
+
+                #cont_user {
+                    position: absolute;
+                    left: 90%;
+                    width: auto;
+                    height: auto;
+
+                    img {
+                        height: 50px;
+                        width: 50px;
+                        padding: 10px;
+                        cursor: pointer;
+                        transition: all .2s ease-in-out;
+                        border-radius: 50%;
+                        &:hover {
+                            background-color: #74747436;
+                        }
+                    }
+                }
             }
         }
-        .desac{
+
+        .desac {
             display: none !important;
         }
     }
