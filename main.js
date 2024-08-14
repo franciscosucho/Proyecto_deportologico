@@ -4,9 +4,8 @@ const path = require('path');
 function createWindow() {
   const win = new BrowserWindow({
     width: 1200,
-    height: 1000,
+    height: 800,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,  // Permitir la integración de Node.js
       contextIsolation: false,
     },
@@ -18,6 +17,7 @@ function createWindow() {
   });
   win.loadFile('index.html');
 }
+
 
 // Conexión a la base de datos
 const connection = mysql.createConnection({
@@ -35,11 +35,10 @@ connection.connect((err) => {
   console.log('Connected to the MySQL server.');
 });
 
-// Escucha los datos enviados desde el renderer process
 ipcMain.on('submit-registration', (event, formData) => {
-  const { dni, nombre_usuario, password, nombre_regis, apellido_regis, fechaNacimiento, email, peso, altura, genero, objetivo_nutricional, dieta, obj_deportivo, tipo_deporte, frecuencia, intensidad } = formData;
-  //validacion de los datos
-  var query = 'SELECT DNI, Nombre_usuario, Email FROM usuario WHERE DNI = ? OR Nombre_usuario = ? OR Email = ?';
+  const { dni, nombre_usuario, password, nombre_regis, apellido_regis, email, fechaNacimiento, peso, altura, genero, objetivo_nutricional, dieta, obj_deportivo, tipo_deporte, frecuencia, intensidad } = formData;
+  // Validación de los datos
+  let query = 'SELECT DNI, Nombre_usuario, Email FROM usuario WHERE DNI = ? OR Nombre_usuario = ? OR Email = ?';
   connection.query(query, [dni, nombre_usuario, email], (err, results) => {
     if (err) {
       console.error('Error checking data:', err);
@@ -54,59 +53,75 @@ ipcMain.on('submit-registration', (event, formData) => {
         event.reply('registration-response', 'Error: El Email ya está registrado');
       }
     } else {
-      // Si todos los campos son únicos, mandar los datos
-      //mandar los datos alas tablas correspondientes.
-      query = 'INSERT INTO `usuario`(`DNI`, `Nombre_usuario`, `password`, `Nombre`, `Apellido`, `FechaNacimiento`, `Email`, `Peso`, `Altura`, `Genero`) VALUES (? ,? ,? ,? ,? ,? ,? ,? ,? ,? )';
+
+      query = 'INSERT INTO `usuario`(`DNI`, `Nombre_usuario`, `password`, `Nombre`, `Apellido`, `FechaNacimiento`, `Email`, `Peso`, `Altura`, `Genero`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
       connection.query(query, [dni, nombre_usuario, password, nombre_regis, apellido_regis, fechaNacimiento, email, peso, altura, genero], (err, results) => {
         if (err) {
           console.error('Error inserting data:', err);
-          event.reply('registration-response', 'Error al registrar en la seccion de usuario');
+          event.reply('registration-response', 'Error al registrar en la sección de usuario');
         } else {
-          console.log('Data inserted successfully:', results);
-          event.reply('registration-response', 'Registro exitoso  en la seccion de usuario');
-        }
-      });
+          console.log('Data inserted successfully in usuario:', results);
 
-      query = 'INSERT INTO `nutricionalusuario`(`ID_nut`,`DNI_nut`, `ObjetivoNutricion`, `TipoAlimentacion`) VALUES (?,? ,? ,?)'
-      connection.query(query, ["", dni, objetivo_nutricional, dieta], (err, results) => {
-        if (err) {
-          console.error('Error inserting data:', err);
-          event.reply('registration-response', 'Error al registrar en la seccion de nutricion');
-        } else {
-          console.log('Data inserted successfully:', results);
-          event.reply('registration-response', 'Registro exitoso en la seccion de nutricion');
+          // Ahora insertar en nutricionalusuario
+          query = 'INSERT INTO `nutricionalusuario`(`ID_nut`, `DNI_nut`, `ObjetivoNutricion`, `TipoAlimentacion`) VALUES (?, ?, ?, ?)';
+          connection.query(query, ["", dni, objetivo_nutricional, dieta], (err, results) => {
+            if (err) {
+              console.error('Error inserting data in nutricionalusuario:', err);
+              event.reply('registration-response', 'Error al registrar en la sección de nutrición');
+            } else {
+              console.log('Data inserted successfully in nutricionalusuario:', results);
+
+              // Ahora insertar en deportivousuario
+              query = 'INSERT INTO `deportivousuario`(`ID_depor`, `DNI_depor`, `ObjetivosDeportivo`, `TipoDeporte`, `Frecuencia`, `Intensidad`) VALUES (?, ?, ?, ?, ?, ?)';
+              connection.query(query, ["", dni, obj_deportivo, tipo_deporte, frecuencia, intensidad], (err, results) => {
+                if (err) {
+                  console.error('Error inserting data in deportivousuario:', err);
+                  event.reply('registration-response', 'Error al registrar en la sección de deporte');
+                } else {
+                  console.log('Data inserted successfully in deportivousuario:', results);
+                  event.reply('registration-response', 'Registro exitoso en todas las secciones');
+                }
+              });
+            }
+          });
         }
       });
-      query = 'INSERT INTO `deportivousuario`(`ID_depor`, `DNI_depor`, `ObjetivosDeportivo`, `TipoDeporte`, `Frecuencia`, `Intensidad`) VALUES (?,?,?,?,?,?)'
-      connection.query(query, ["", dni, obj_deportivo, tipo_deporte, frecuencia,
-        intensidad], (err, results) => {
-          if (err) {
-            console.error('Error inserting data:', err);
-            event.reply('registration-response', 'Error al registrar en la seccion de deporte');
-          } else {
-            console.log('Data inserted successfully:', results);
-            event.reply('registration-response', 'Registro exitoso en la seccion de deporte');
-          }
-        });
     }
   });
-
-
-
 });
-ipcMain.on('submit-ini', (event, data_ini) => {
-  const { nombre_ini, email_ini, password_ini } = data_ini;
 
-  var query = 'SELECT Nombre_usuario, Email, password FROM usuario WHERE (Nombre_usuario = ? AND password = ?) OR (Email = ? AND password = ?)';
-  connection.query(query, [nombre_ini, password_ini, email_ini, password_ini], (err, results) => {
-      if (err) {
-          console.error('Error checking data:', err);
-          event.reply('login-response', 'Error al verificar los datos');
-      } else if (results.length > 0) {
+
+
+
+
+const bcrypt = require('bcrypt');
+
+// En el evento de login
+ipcMain.on('submit-ini', (event, data_ini) => {
+  var { nombre_ini, email_ini, password_ini } = data_ini;
+
+  var query = 'SELECT Nombre_usuario, Email, password FROM usuario WHERE Nombre_usuario = ? OR Email = ?';
+  connection.query(query, [nombre_ini, email_ini], (err, results) => {
+    if (err) {
+      console.error('Error checking data:', err);
+      event.reply('login-response', 'Error al verificar los datos');
+    } else if (results.length > 0) {
+      const user = results[0];
+      
+      // Comparar la contraseña sin hashear con la contraseña hasheada en la base de datos
+      bcrypt.compare(password_ini, user.password, (err, result) => {
+        if (err) {
+          console.error('Error comparing passwords:', err);
+          event.reply('login-response', 'Error al verificar la contraseña');
+        } else if (result) {
           event.reply('login-response', 'success');
-      } else {
-          event.reply('login-response', 'Error: El Email o el Nombre de usuario no existen, intente de nuevo');
-      }
+        } else {
+          event.reply('login-response', 'Error: Contraseña incorrecta');
+        }
+      });
+    } else {
+      event.reply('login-response', 'Error: El Email o el Nombre de usuario no existen, intente de nuevo');
+    }
   });
 });
 app.whenReady().then(createWindow);

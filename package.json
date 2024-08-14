@@ -17,6 +17,8 @@
     "standard": "^17.1.0"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "boxicons": "^2.1.4",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.0"
   }

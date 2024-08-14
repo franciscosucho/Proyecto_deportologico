@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
   <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-  <title>Formulario de Registro</title>
+  <title>Mental Strong</title>
   <link rel="stylesheet" href="./css/estilo.css">
 </head>
 
@@ -23,11 +23,12 @@
         <div id="cont_iniciar" class="sub_form">
           <div class="cont_inputs">
             <label for="nombre_ini">Nombre de usuario o Email</label>
-            <input id="nombre_ini" type="text" placeholder="Escriba su nombre de usuario o Email"  required>
+            <input id="nombre_ini" type="text" placeholder="Escriba su nombre de usuario o Email" required
+              maxlength="60">
           </div>
           <div class="cont_inputs">
             <label for="password_ini">Contraseña</label>
-            <input id="password_ini" type="password" placeholder="Escriba su Contraseña"  required>
+            <input id="password_ini" type="password" placeholder="Escriba su Contraseña" required maxlength="60">
           </div>
           <button id="btn_ini_sesion" type="button">Ingresar</button>
         </div>
@@ -38,34 +39,35 @@
           <div id="datos_personales" class="sub_form">
             <div class="cont_inputs">
               <label for="nombre_regis">Nombre </label>
-              <input id="nombre_regis" type="text" placeholder="Escriba su nombre completo"  required>
+              <input id="nombre_regis" type="text" placeholder="Escriba su nombre " required maxlength="40">
             </div>
             <div class="cont_inputs">
               <label for="apellido_regis">Apellido </label>
-              <input id="apellido_regis" type="text" placeholder="Escriba su nombre completo"  required>
+              <input id="apellido_regis" type="text" placeholder="Escriba su nombre apellido" required maxlength="40">
             </div>
             <div class="cont_inputs">
               <label for="dni">DNI</label>
-              <input id="dni" type="number" placeholder="Escriba su DNI"  required>
+              <input id="dni" type="number" placeholder="Escriba su DNI" required maxlength="8">
             </div>
             <div class="cont_inputs">
               <label for="nacimiento">Nacimiento</label>
-              <input id="nacimiento" type="date" placeholder="Escriba su fecha de nacimiento"  required>
+              <input id="nacimiento" type="date" placeholder="Escriba su fecha de nacimiento" required>
             </div>
             <div class="cont_inputs">
               <label for="opciones_genero">Género</label>
-              <select id="opciones_genero"  required>
+              <select id="opciones_genero" required>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
               </select>
             </div>
             <div class="cont_inputs">
               <label for="peso">Peso (En Kgs)</label>
-              <input id="peso" type="number" placeholder="Escriba su peso en kgs" min="0" step="1"  required>
+              <input id="peso" type="number" placeholder="Escriba su peso en kgs" min="0" step="1" required
+                maxlength="6">
             </div>
             <div class="cont_inputs">
               <label for="altura">Altura (En Cms)</label>
-              <input id="altura" type="number" placeholder="Escriba su altura en Cms" min="0"  required>
+              <input id="altura" type="number" placeholder="Escriba su altura en Cms" min="0" required maxlength="6">
             </div>
             <div class="cont_btn">
               <button class="btn_enviar_sesion" type="button">Siguiente</button>
@@ -76,15 +78,16 @@
           <div id="datos_acceso" class="sub_form desac">
             <div class="cont_inputs">
               <label for="nombre_usuario_regis">Nombre de usuario</label>
-              <input id="nombre_usuario_regis" type="text" placeholder="Escriba su nombre de usuario"  required>
+              <input id="nombre_usuario_regis" type="text" placeholder="Escriba su nombre de usuario" required
+                maxlength="60">
             </div>
             <div class="cont_inputs">
               <label for="email_regis">Email</label>
-              <input id="email_regis" type="email" placeholder="Escriba su email"  required>
+              <input id="email_regis" type="email" placeholder="Escriba su email" required maxlength="60">
             </div>
             <div class="cont_inputs">
               <label for="password_regis">Contraseña</label>
-              <input id="password_regis" type="password" placeholder="Escriba su contraseña"  required>
+              <input id="password_regis" type="password" placeholder="Escriba su contraseña" required >
             </div>
             <div class="cont_btn">
               <button class="btn_enviar_sesion" type="button">Siguiente</button>
@@ -95,7 +98,7 @@
           <div id="datos_nutricionales" class="sub_form desac">
             <div class="cont_inputs">
               <label for="dieta">Tipo de dieta</label>
-              <select id="dieta"  required>
+              <select id="dieta" required>
                 <option value="Omnívora">Omnívora</option>
                 <option value="Vegetariana">Vegetariana</option>
                 <option value="Vegana">Vegana</option>
@@ -103,7 +106,7 @@
             </div>
             <div class="cont_inputs">
               <label for="objetivo_nutricional">Objetivo nutricional</label>
-              <select id="objetivo_nutricional"  required>
+              <select id="objetivo_nutricional" required>
                 <option value="Perdida de peso">Pérdida de peso</option>
                 <option value="Mantener peso">Mantener peso</option>
                 <option value="Ganar peso">Ganar peso</option>
@@ -118,21 +121,21 @@
           <div id="datos_deportivos" class="sub_form desac">
             <div class="cont_inputs">
               <label for="tipo_deporte">Tipo de deporte</label>
-              <select id="tipo_deporte"  required>
+              <select id="tipo_deporte" required>
                 <option value="Resistencia">Resistencia</option>
                 <option value="Cardiovascular">Cardiovascular</option>
               </select>
             </div>
             <div class="cont_inputs">
               <label for="obj_deportivo">Objetivo deportivo</label>
-              <select id="obj_deportivo"  required>
+              <select id="obj_deportivo" required>
                 <option value="Mejorar la resistencia">Mejorar la resistencia</option>
                 <option value="Cardiovascular">Mejorar la potencia</option>
               </select>
             </div>
             <div class="cont_inputs">
               <label for="frecuencia">Frecuencia (Días de entrenamiento/Semana)</label>
-              <select id="frecuencia"  required>
+              <select id="frecuencia" required>
                 <option value="3/7">3/7</option>
                 <option value="4/7">4/7</option>
                 <option value="5/7">5/7</option>
@@ -142,7 +145,7 @@
             </div>
             <div class="cont_inputs">
               <label for="intensidad">Intensidad</label>
-              <select id="intensidad"  required>
+              <select id="intensidad" required>
                 <option value="Ligera">Ligera</option>
                 <option value="Moderada">Moderada</option>
                 <option value="Intensa">Intensa</option>
@@ -159,10 +162,31 @@
     </section>
 
     <section id="ventana_prin" class="desac">
-      <div id="user_info">
-        <h2>Información del Usuario</h2>
-        <p id="user-name"></p>
-        <p id="user-email"></p>
+
+      <div id="menu_lateral">
+        <img src="./resources/mental-strong.png" alt="">
+        <ul id="cont_item">
+          <li class="item" id="item_inicio">
+            <span>Inicio</span>
+
+          </li>
+          <li class="item" id="item_nut">
+            <span>Datos nutricionales </span>
+
+          </li>
+          <li class="item" id="item_progreso">
+            <span>Progreso</span>
+          </li>
+          <li class="item" id="item_ase">
+            <span>Asesoramiento</span>
+
+          </li>
+        </ul>
+      </div>
+      <div id="cont_main">
+        <div></div>
+        <h2 id="nombre_us">Bienvenido Fransucho</h2>
+
       </div>
     </section>
   </main>

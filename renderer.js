@@ -5,6 +5,16 @@ const btn_iniciar = document.getElementById("btn_iniciar");
 const btn_registrar = document.getElementById("btn_registrar");
 const cont_registrar = document.getElementById("cont_registrar");
 const cont_iniciar = document.getElementById("cont_iniciar");
+//uso de las depencias para hashear contras
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
+
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
 
 //  registro
 btn_registrar.addEventListener("click", () => {
@@ -13,14 +23,14 @@ btn_registrar.addEventListener("click", () => {
     cont_registrar.classList.toggle("desac");
     cont_iniciar.classList.toggle("desac");
 });
-document.getElementById('btn_enviar_registro').addEventListener('click', (event) => {
+document.getElementById('btn_enviar_registro').addEventListener('click', async (event) => {
     event.preventDefault();  // Evita que la página se recargue
-    // para llenar la tabla usurario
+
     const dni = document.getElementById('dni').value.trim();
     const nombre_usuario = document.getElementById('nombre_usuario_regis').value.trim();
-    const password = document.getElementById('password_regis').value.trim();
-    const nombre_regis = document.getElementById('nombre_regis').value.trim();
-    const apellido_regis = document.getElementById('apellido_regis').value.trim();
+    let password = document.getElementById('password_regis').value.trim();
+    let nombre_regis = document.getElementById('nombre_regis').value.trim();
+    let apellido_regis = document.getElementById('apellido_regis').value.trim();
     const fechaNacimiento = document.getElementById('nacimiento').value.trim();
     const email = document.getElementById('email_regis').value.trim();
     const peso = document.getElementById('peso').value.trim();
@@ -33,54 +43,61 @@ document.getElementById('btn_enviar_registro').addEventListener('click', (event)
     const intensidad = document.getElementById('intensidad').value.trim();
     const genero = document.getElementById('opciones_genero').value.trim();
 
-    if (dni && nombre_usuario && obj_deportivo && dieta && objetivo_nutricional && tipo_deporte && frecuencia && intensidad && password && apellido_regis && nombre_regis && fechaNacimiento && email && peso && altura && genero) {
-        const formData = {
-            dni,
-            nombre_usuario,
-            password,
-            nombre_regis,
-            apellido_regis,
-            fechaNacimiento,
-            email,
-            peso,
-            altura,
-            genero,
-            //datos de dieta
-            objetivo_nutricional,
-            dieta,
-            //datos deportivos
-            obj_deportivo,
-            tipo_deporte,
-            frecuencia,
-            intensidad
-        };
 
 
-        // Enviar datos al proceso principal
-        ipcRenderer.send('submit-registration', formData);
-        document.getElementById("ventana_prin").classList.toggle("desac")
-        document.getElementById("registro").classList.toggle("desac")
-    } else {
-        alert("Por favor, complete todos los campos.");
+    // Uso en el proceso de registro
+    nombre_regis = capitalizeFirstLetter(nombre_regis);
+    apellido_regis = capitalizeFirstLetter(apellido_regis);
+    try {
+        password = await bcrypt.hash(password, saltRounds); // Espera el hash
+
+        if (dni && nombre_usuario && obj_deportivo && dieta && objetivo_nutricional && tipo_deporte && frecuencia && intensidad && password && apellido_regis && nombre_regis && fechaNacimiento && email && peso && altura && genero) {
+            const formData = {
+                dni,
+                nombre_usuario,
+                password,  // Contraseña hasheada
+                nombre_regis,
+                apellido_regis,
+                fechaNacimiento,
+                email,
+                peso,
+                altura,
+                genero,
+                objetivo_nutricional,
+                dieta,
+                obj_deportivo,
+                tipo_deporte,
+                frecuencia,
+                intensidad
+            };
+
+            // Enviar datos al proceso principal
+            ipcRenderer.send('submit-registration', formData);
+            document.getElementById("ventana_prin").classList.toggle("desac");
+            document.getElementById("registro").classList.toggle("desac");
+        } else {
+            alert("Por favor, complete todos los campos.");
+        }
+    } catch (error) {
+        console.error('Error hashing password:', error);
     }
 });
 
-
-
-// logeo
-document.getElementById('btn_ini_sesion').addEventListener('click', (event) => {
+//logeo
+let nombre_ini 
+document.getElementById('btn_ini_sesion').addEventListener('click', async (event) => {
     event.preventDefault();  // Evita que la página se recargue
 
-    // datos del logeo
-    const nombre_ini = document.getElementById('nombre_ini').value.trim();
+    // Datos del logeo
+     nombre_ini = document.getElementById('nombre_ini').value.trim();
     const email_ini = document.getElementById('nombre_ini').value.trim();
-    const password_ini = document.getElementById('password_ini').value.trim();
+    const password_ini = document.getElementById('password_ini').value.trim();  // No hashees la contraseña aquí
 
     if (nombre_ini && email_ini && password_ini) {
         const data_ini = {
             nombre_ini,
             email_ini,
-            password_ini,
+            password_ini,  // Enviar la contraseña sin hashear
         };
 
         // Enviar datos al proceso principal
@@ -96,6 +113,7 @@ ipcRenderer.on('login-response', (event, response) => {
         // Si el logeo fue exitoso, cambiar la visibilidad de las ventanas
         document.getElementById("ventana_prin").classList.toggle("desac");
         document.getElementById("registro").classList.toggle("desac");
+        document.getElementById("nombre_us").textContent = nombre_ini;
     } else {
         alert(response);  // Mostrar un mensaje de error si la autenticación falla
     }
