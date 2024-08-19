@@ -1,5 +1,7 @@
+// comando para instalar en el cole " npm install --save-dev electron "
+
 const mysql = require('mysql2');
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, nativeTheme, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const bcrypt = require('bcrypt');
 
@@ -13,7 +15,7 @@ function createWindowLogin() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      preload: path.join(__dirname, 'preload.js') // Opcional si tienes un archivo preload
+     // preload: path.join(__dirname, 'preload.js') // Opcional si tienes un archivo preload
     },
   });
 
@@ -27,7 +29,7 @@ function createWindowMain() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      preload: path.join(__dirname, 'preload.js') // Opcional si tienes un archivo preload
+      //preload: path.join(__dirname, 'preload.js') // Opcional si tienes un archivo preload
     },
   });
 
@@ -96,11 +98,8 @@ ipcMain.on('submit-registration', (event, formData) => {
                   if (err) {
                     console.error('Error inserting data in deportivousuario:', err);
                     event.reply('registration-response', 'Error al registrar en la sección de deporte');
-                  } else {
-                    // Envía los datos al proceso de renderizado
-                    mainWindow.webContents.send('user-data', formData);
-
-                    // Cerrar la ventana de login y abrir la ventana principal
+                  }
+                  else {
                     if (loginWindow) {
                       loginWindow.close();
                       loginWindow = null;
@@ -139,8 +138,8 @@ ipcMain.on('submit-ini', (event, data_ini) => {
             loginWindow = null;
           }
           createWindowMain();
-          // Envía los datos al proceso de renderizado
-          mainWindow.webContents.send('user-data_ini', data_ini);
+          // Abre las herramientas de desarrollo
+          mainWindow.webContents.openDevTools();
         } else {
           event.reply('login-response', 'Error: Contraseña incorrecta');
         }
