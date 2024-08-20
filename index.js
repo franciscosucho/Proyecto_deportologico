@@ -16,7 +16,11 @@ app.get('/', (req, res) => {
     res.render('formulario', { titulo: 'ewjk3340984323412' })
 })
 
-app.post
+app.post('/enviar', (req, res) => {
+    const { nombre } = req.body
+
+    console.log(nombre)
+})
 
 // Encender servidor
 app.listen(3000, () => {
