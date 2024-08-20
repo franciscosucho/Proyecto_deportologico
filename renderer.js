@@ -12,9 +12,9 @@ ipcRenderer.on('user-data_ini', (event, data_ini) => {
 */ 
 function callApi() {
     const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
-    const url = `https://api.spoonacular.com/recipes/complexSearch`; //esto siempre en comillas simpres
+    const url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=1&include-tags=vegetariano,dessert&exclude-tags=quinoa
+`; //esto siempre en comillas simpres
     //'https://api.spoonacular.com/recipes/complexSearch' probando a ver si nos vincula con la api.
-
 
 
     fetch(url)

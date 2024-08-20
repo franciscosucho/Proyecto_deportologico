@@ -1,158 +1,160 @@
-
-
 body{
-    background: #1C1E26;
-    height: 100vh;
-    display: flex;
-    font-family: Arial, Helvetica, sans-serif;
-}
+  background: #1C1E26;
+  height: 100vh;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  }
   .container_calendar{
-    width: 400px;
-    height: 550px; 
-    margin: 5% auto;
-    
+  width: 400px;
+  height: 550px;
+  margin: 5% auto;
+  
   }
   .header_calendar{
-    width: 100%;
-    height: 45%;
-    background: linear-gradient(#7F99F5, #506CF5);
-    border-radius: 15px 15px 0px 0px;
-    display: flex;
-    flex-direction: column;
-    h1{
-      margin: 30px 30px 0px 30px;
-      padding: 0px;
-      font-family: Arial;
-      color: white;
-      font-size: 100px;
-    }
-    h5{
-      margin: 0px 30px;
-      padding: 0px;
-      font-family: Arial;
-      color: white;
-      font-size: 40px;
+  width: 100%;
+  height: 45%;
+  background: #64E788;
+  border-radius: 15px 15px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  h1{
+  margin: 30px 30px 0px 30px;
+  padding: 0px;
+  font-family: Arial;
+  color: white;
+  font-size: 100px;
+  }
+  h5{
+  margin: 0px 30px;
+  padding: 0px;
+  font-family: Arial;
+  color: white;
+  font-size: 40px;
   
-   }
+  }
   }
   .body_calendar{
-    width: 100%;
-    height: 55%;
-    background: white;
-    border-radius: 0px 0px 15px 15px;
+  width: 100%;
+  height: 55%;
+  background-color: rgb(37, 35, 35);
+  border-radius: 0px 0px 15px 15px;
   }
   .container_details{
-    width: 100%;
-    height: 30px;
-    background: #000000; 
-    position: relative;
-    top: -13px;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  height: 30px;
+  background: #000000;
+  position: relative;
+  top: -13px;
+  display: flex;
+  justify-content: space-between;
   
-    .detail_1, .detail_2{
-      width: 70px;
-      height: 100%; 
-      display: flex;
-      justify-content: center;
-      .detail{
-        margin: 0px 2px;
-        width: 10px;
-        height: 100%;
-         
-        .circle{
-          width: 10px;
-          height: 10px;
-          background: #1C1E26;
-          position: relative;
-          top: calc(30px - 10px);
-          border-radius: 50%;
-          .column{
-            width: 80%;
-            height: 30px;
-            background: #ececec;
-            margin: 0px auto;
-            position: relative;
-            top: -22px;
-            border-radius: 5px;
-          }
-        }
-      }
-      }
+  .detail_1, .detail_2{
+  width: 70px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  .detail{
+  margin: 0px 2px;
+  width: 10px;
+  height: 100%;
+  
+  .circle{
+  width: 10px;
+  height: 10px;
+  background: #1C1E26;
+  position: relative;
+  top: calc(30px - 10px);
+  border-radius: 50%;
+  
+  .column{
+  width: 80%;
+  height: 30px;
+  background: #ececec;
+  margin: 0px auto;
+  position: relative;
+  top: -22px;
+  border-radius: 5px;
+  }
+  }
+  }
+  }
   }
   .container_change_month{
-    width: 100%;
-    height: 25px;
-    display: flex;
-    justify-content: space-evenly;
-    opacity: 0.7;
-    div{
-      height: 20px;
-      margin: auto;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-    button{
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      font-size: 20px;
-      margin: auto 5px;
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
+  width: 100%;
+  height: 25px;
+  display: flex;
+  justify-content: space-evenly;
+  opacity: 0.7;
+  div{
+  color: white;
+  height: 20px;
+  margin: auto;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  button{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  margin: auto 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  }
   }
   .container_weedays{
-    width: 90%;
-    height: 40px;
-    display: flex;
-    margin: 0px auto;
-    span{
-      color: #506CF5;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      height: 100%;
-      line-height: 2.5;
-    }
+  width: 90%;
+  height: 40px;
+  display: flex;
+  margin: 0px auto;
+  span{
+  color: #64E788;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 100%;
+  line-height: 2.5;
+  }
   }
   .week_days_item{
-    display: flex;
-    margin: auto;
-    width: calc(100% / 7);
-    justify-content: center;
-    cursor: pointer;
+  display: flex;
+  margin: auto;
+  width: calc(100% / 7);
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  
   }
   .week_days_item:hover{
-    color: #506CF5;
+  color: #64E788;
   }
   .prev_days{
-    opacity: 0.5;
+  opacity: 0.2;
   }
   .container_days{
-    width: 90%;
-    height: auto;
-    background: #64E788; 
-    display: flex;
-    flex-flow: row wrap;
-    margin: 0px auto;
-    span{
-      color: rgb(78, 78, 78);
-      /* background: #000; */
-      height: 20px;
-      margin: 5px 0px;
-      padding: 0px;
-      font-family: Arial;
-      
-    }
-    .today{
-      display: flex;
-    }
-    .today:after{
-      content: "";
-      width: 19px;
-      height: 19px;
-      background: #506CF5;
-      position: absolute;
-      border-radius: 50%;
-      border: 5px solid #506CF5;
-      opacity: 0.6;
-      margin: -5px 0px 0px 1px;
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0px auto;
+  span{
+  color: white;
+  /* background: #000; */
+  height: 20px;
+  margin: 5px 0px;
+  padding: 0px;
+  font-family: Arial;
+  
+  }
+  .today{
+  display: flex;
+  }
+  .today:after{
+  content: "";
+  width: 19px;
+  height: 19px;
+  background: #64E788;
+  position: absolute;
+  border-radius: 50%;
+  border: 5px solid #64E788;
+  opacity: 0.2;
+  margin: -6px -1px 0px 0px;
   }
   }

@@ -14,7 +14,7 @@ body {
 .header_calendar {
   width: 100%;
   height: 45%;
-  background: linear-gradient(#7F99F5, #506CF5);
+  background: #64E788;
   border-radius: 15px 15px 0px 0px;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ body {
 .body_calendar {
   width: 100%;
   height: 55%;
-  background: white;
+  background-color: rgb(37, 35, 35);
   border-radius: 0px 0px 15px 15px;
 }
 
@@ -87,6 +87,7 @@ body {
   opacity: 0.7;
 }
 .container_change_month div {
+  color: white;
   height: 20px;
   margin: auto;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -98,6 +99,7 @@ body {
   border: none;
   background: none;
   cursor: pointer;
+  color: white;
 }
 
 .container_weedays {
@@ -107,7 +109,7 @@ body {
   margin: 0px auto;
 }
 .container_weedays span {
-  color: #506CF5;
+  color: #64E788;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   height: 100%;
   line-height: 2.5;
@@ -119,26 +121,26 @@ body {
   width: 14.2857142857%;
   justify-content: center;
   cursor: pointer;
+  color: white;
 }
 
 .week_days_item:hover {
-  color: #506CF5;
+  color: #64E788;
 }
 
 .prev_days {
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .container_days {
   width: 90%;
   height: auto;
-  background: #64E788;
   display: flex;
   flex-flow: row wrap;
   margin: 0px auto;
 }
 .container_days span {
-  color: rgb(78, 78, 78);
+  color: white;
   /* background: #000; */
   height: 20px;
   margin: 5px 0px;
@@ -152,10 +154,10 @@ body {
   content: "";
   width: 19px;
   height: 19px;
-  background: #506CF5;
+  background: #64E788;
   position: absolute;
   border-radius: 50%;
-  border: 5px solid #506CF5;
-  opacity: 0.6;
-  margin: -5px 0px 0px 1px;
+  border: 5px solid #64E788;
+  opacity: 0.2;
+  margin: -6px -1px 0px 0px;
 }/*# sourceMappingURL=estilo2.css.map */
