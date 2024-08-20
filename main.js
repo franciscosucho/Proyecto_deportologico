@@ -1,5 +1,5 @@
 // comando para instalar en el cole " npm install --save-dev electron "
-
+// 
 const mysql = require('mysql2');
 const { app, nativeTheme, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
@@ -27,8 +27,9 @@ function createWindowMain() {
     width: 1200,
     height: 800,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
+      nodeIntegration: false, // Mejor seguridad
+      contextIsolation: true,
+      enableRemoteModule: false,
       //preload: path.join(__dirname, 'preload.js') // Opcional si tienes un archivo preload
     },
   });

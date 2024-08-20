@@ -16,7 +16,6 @@ function callApi() {
 `; //esto siempre en comillas simpres
     //'https://api.spoonacular.com/recipes/complexSearch' probando a ver si nos vincula con la api.
 
-
     fetch(url)
         .then(data => {
             return data.json();

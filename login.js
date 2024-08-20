@@ -166,32 +166,7 @@ function btn_siguiente() {
             } else if (formularioActual === subForms.length - 1) {
                 formularioActual++;
                 cont_registro.classList.add("desac");
-                // //Recolectar datos de cada formulario
-                // if (index === 0) {
-                //     formData.nombreCompleto = document.querySelector('#datos_personales input[type="text"]').value;
-                //     formData.dni = document.querySelector('#datos_personales input[type="number"]').value;
-                //     formData.fechaNacimiento = document.querySelector('#datos_personales input[type="date"]').value;
-                //     formData.genero = document.querySelector('#datos_personales select#opciones').value;
-                //     formData.peso = document.querySelector('#datos_personales input[placeholder="Escriba su peso en kgs"]').value;
-                //     formData.altura = document.querySelector('#datos_personales input#altura').value;
-                // } else if (index === 1) {
-                //     formData.nombreUsuario = document.querySelector('#datos_acceso input[type="text"]').value;
-                //     formData.email = document.querySelector('#datos_acceso input[type="email"]').value;
-                //     formData.password = document.querySelector('#datos_acceso input[type="password"]').value;
-                // } else if (index === 2) {
-                //     formData.tipoDieta = document.querySelector('#datos_nutricionales select#dieta').value;
-                //     formData.objetivoNutricional = document.querySelector('#datos_nutricionales select#objetivo_nutricional').value;
-                // } else if (index === 3) {
-                //     formData.deporte = document.querySelector('#datos_deportivos input[placeholder="Eliga su deportivo"]').value;
-                //     formData.objetivoDeportivo = document.querySelector('#datos_deportivos input[placeholder="Eliga su Objetivo deportivo"]').value;
-                //     formData.frecuencia = document.querySelector('#datos_deportivos input[placeholder="Frecuencia con la que realiza el deporte"]').value;
-                //     formData.intensidad = document.querySelector('#datos_deportivos input[placeholder="Intensidad con la que realiza el deporte"]').value;
-
-                //     // Al hacer clic en el último botón "Siguiente", enviar los datos al servidor
-
-                // }
-                // enviarDatosAlServidor(formData);
-
+        
             }
         });
     });
