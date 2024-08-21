@@ -1,21 +1,31 @@
 
-const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
+function recetas_number(number) {
 
-function fecth_recetas(id) {
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
-    fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-            createpokemon(data, id)
-        });
+    for (let i = 1; i <= number; i++) {
+        fecth_recetas(i);
+    }
 }
 
 
 
-function create_recetas(pokemon, id) {
+function fecth_recetas(id) {
+    const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
+    const url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=1&include-tags=vegetariano,dessert&exclude-tags=quinoa
+`; 
+    fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            create_recetas(data, id)
+        });
+}
+
+const cont_recetas_main= document.getElementById("cont_recetas_main")
+
+function create_recetas(receta, id) {
 
     const card = document.createElement('div');
-    card.classList.add('pokemon-block');
+    card.classList.add('cont_receta');
     card.classList.add('id' + id);
 
     const spriteContainer = document.createElement('div');
@@ -23,19 +33,20 @@ function create_recetas(pokemon, id) {
 
     const sprite = document.createElement('img');
     sprite.classList.add("sprite");
-    sprite.src = pokemon.sprites.other.home.front_default;
+    sprite.src = receta.recipes[0].image;
 
     spriteContainer.appendChild(sprite);
 
-    const num = document.createElement('p')
-    num.textContent = `#${pokemon.id.toString().padStart(3, 0)}`; //padstart agreaga ceros al principio del num
 
-    const name = document.createElement('p');
-    name.classList.add('name');
-    name.textContent = pokemon.name;
+
+    const name = document.createElement('h4');
+    name.classList.add('name_receta');
+    name.textContent = receta.recipes[0].title;
 
     card.appendChild(spriteContainer);
-    card.appendChild(num);
     card.appendChild(name);
-    pokemonContainer.appendChild(card);
+    cont_recetas_main.appendChild(card);
 }
+
+
+recetas_number(2);

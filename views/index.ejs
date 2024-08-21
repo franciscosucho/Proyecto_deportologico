@@ -3,38 +3,19 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
   <title>Mental Strong</title>
   <link rel="stylesheet" href="css/estilo.css">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self' https://api.spoonacular.com">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
   <main>
-    
+
     <section id="ventana_prin">
 
       <div id="menu_lateral">
-        <img src="./resources/mental-strong.png" alt="">
-        <ul id="cont_item">
-          <li class="item" id="item_inicio">
-            <span>Inicio</span>
-
-          </li>
-          <li class="item" id="item_nut">
-            <span>Datos nutricionales </span>
-
-          </li>
-          <li class="item" id="item_progreso">
-            <span>Progreso</span>
-          </li>
-          <li class="item" id="item_ase">
-            <span>Asesoramiento</span>
-
-          </li>
-        </ul>
+        <%-include('menu.ejs')%>
       </div>
       <div id="cont_main">
         <div id="cont_user">
@@ -43,12 +24,11 @@
 
         </div>
 
-        <h2 id="nombre_us">Bienvenido 
+        <h2 id="nombre_us">Bienvenido
           <%-user_name%>
         </h2>
 
 
-        
         <div id="cont_secciones">
           <div id="sec_prin">
             <div class="" id="calendario">
@@ -57,7 +37,7 @@
             <div class="" id="habit_tracker"></div>
           </div>
           <div id="sec_secu">
-            <div class="" id="recetas"></div>
+
             <div class="" id="racha"></div>
             <div class="" id="motivacion"></div>
           </div>
@@ -67,6 +47,8 @@
   </main>
   <script src="estilos_regis.js"></script>
   <script src="js/calendario.js"></script>
+  <!--  <script src="js/recetas.js"></script> -->
+
 </body>
 
 </html>

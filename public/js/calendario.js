@@ -83,3 +83,5 @@ $("#next_month").click(function () {
 $("#last_month").click(function () {
     getPrevMonth();
 })
+//parte del actividades del usuario
+fetch()
