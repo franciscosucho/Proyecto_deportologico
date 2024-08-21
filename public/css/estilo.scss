@@ -21,43 +21,26 @@ body {
         align-items: center;
         flex-direction: column;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         background-color: rgb(37, 35, 35);
 
         #registro {
-            height: 100%;
+            height: auto !important;
+            padding-top: 10%;
             width: 100%;
             background-image: url("../resources/file.png");
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
+            
             justify-content: center;
             align-items: center;
-
+            flex-direction: column;
             &.desac {
                 display: none !important;
             }
 
-            form {
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                flex-direction: column;
-                gap: 35px;
-                background-color: transparent;
-                height: 100%;
-                width: 60%;
-
-                .sub_form {
-                    height: 100%;
-                    width: 100%;
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    flex-direction: column;
-                    gap: 20px;
-                }
-
+            #cont_selec {
                 #cont_url {
                     width: 100%;
                     height: 5%;
@@ -81,13 +64,36 @@ body {
 
                     }
                 }
+            }
+
+            form {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex-direction: column;
+                gap: 35px;
+                background-color: transparent;
+                height: 100%;
+                width: 60%;
+
+                .sub_form {
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    flex-direction: column;
+                    gap: 20px;
+                }
+
+
 
                 .desac {
                     display: none;
                 }
 
-                #cont_iniciar {
-                    height: 100vh;
+                &#cont_iniciar {
+                    height: 100vh !important;
                 }
 
                 .cont_inputs {
@@ -140,9 +146,8 @@ body {
                     }
                 }
 
-                #cont_registrar {
-                    height: 100%;
-                    width: 100%;
+                &#cont_registrar {
+                    height:auto;
                     padding-bottom: 20px;
 
                     #texto_regs {
@@ -276,6 +281,7 @@ body {
                         cursor: pointer;
                         transition: all .2s ease-in-out;
                         border-radius: 50%;
+
                         &:hover {
                             background-color: #74747436;
                         }

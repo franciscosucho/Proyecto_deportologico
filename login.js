@@ -87,12 +87,12 @@ document.getElementById('btn_enviar_registro').addEventListener('click', async (
 });
 
 //logeo
-let nombre_ini 
+let nombre_ini
 document.getElementById('btn_ini_sesion').addEventListener('click', async (event) => {
     event.preventDefault();  // Evita que la página se recargue
 
     // Datos del logeo
-     nombre_ini = document.getElementById('nombre_ini').value.trim();
+    nombre_ini = document.getElementById('nombre_ini').value.trim();
     const email_ini = document.getElementById('nombre_ini').value.trim();
     const password_ini = document.getElementById('password_ini').value.trim();  // No hashees la contraseña aquí
 
@@ -166,7 +166,7 @@ function btn_siguiente() {
             } else if (formularioActual === subForms.length - 1) {
                 formularioActual++;
                 cont_registro.classList.add("desac");
-        
+
             }
         });
     });

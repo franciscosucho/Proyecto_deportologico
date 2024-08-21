@@ -15,7 +15,7 @@ function createWindowLogin() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-     // preload: path.join(__dirname, 'preload.js') // Opcional si tienes un archivo preload
+      // preload: path.join(__dirname, 'preload.js') // Opcional si tienes un archivo preload
     },
   });
 
@@ -125,7 +125,8 @@ ipcMain.on('submit-ini', (event, data_ini) => {
     if (err) {
       console.error('Error checking data:', err);
       event.reply('login-response', 'Error al verificar los datos');
-    } else if (results.length > 0) {
+    }
+    else if (results.length > 0) {
       const user = results[0];
 
       bcrypt.compare(password_ini, user.password, (err, result) => {

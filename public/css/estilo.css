@@ -19,11 +19,12 @@ body main {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgb(37, 35, 35);
 }
 body main #registro {
-  height: 100%;
+  height: auto !important;
+  padding-top: 10%;
   width: 100%;
   background-image: url("../resources/file.png");
   background-repeat: no-repeat;
@@ -31,9 +32,30 @@ body main #registro {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 body main #registro.desac {
   display: none !important;
+}
+body main #registro #cont_selec #cont_url {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+body main #registro #cont_selec #cont_url span {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bolder;
+  border-bottom: none;
+}
+body main #registro #cont_selec #cont_url span.activo {
+  border-bottom: 2px solid #64E788;
 }
 body main #registro form {
   display: flex;
@@ -54,31 +76,11 @@ body main #registro form .sub_form {
   flex-direction: column;
   gap: 20px;
 }
-body main #registro form #cont_url {
-  width: 100%;
-  height: 5%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-body main #registro form #cont_url span {
-  background-color: transparent;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bolder;
-  border-bottom: none;
-}
-body main #registro form #cont_url span.activo {
-  border-bottom: 2px solid #64E788;
-}
 body main #registro form .desac {
   display: none;
 }
-body main #registro form #cont_iniciar {
-  height: 100vh;
+body main #registro form#cont_iniciar {
+  height: 100vh !important;
 }
 body main #registro form .cont_inputs {
   display: flex;
@@ -122,12 +124,11 @@ body main #registro form button:hover {
   transform: scale(1.1);
   background-color: #46a55f;
 }
-body main #registro form #cont_registrar {
-  height: 100%;
-  width: 100%;
+body main #registro form#cont_registrar {
+  height: auto;
   padding-bottom: 20px;
 }
-body main #registro form #cont_registrar #texto_regs {
+body main #registro form#cont_registrar #texto_regs {
   width: 100%;
   text-align: center;
   color: rgb(226, 226, 226);
@@ -137,7 +138,7 @@ body main #registro form #cont_registrar #texto_regs {
   align-items: center;
   margin: 10px 0px;
 }
-body main #registro form #cont_registrar .sub_form {
+body main #registro form#cont_registrar .sub_form {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -146,7 +147,7 @@ body main #registro form #cont_registrar .sub_form {
   flex-direction: column;
   gap: 20px;
 }
-body main #registro form #cont_registrar .sub_form .cont_btn {
+body main #registro form#cont_registrar .sub_form .cont_btn {
   height: 50px;
   width: 40%;
   display: flex;
@@ -155,11 +156,11 @@ body main #registro form #cont_registrar .sub_form .cont_btn {
   flex-direction: row-reverse;
   gap: 20px;
 }
-body main #registro form #cont_registrar .sub_form .cont_btn button {
+body main #registro form#cont_registrar .sub_form .cont_btn button {
   height: 100%;
   width: 50%;
 }
-body main #registro form #cont_registrar .desac {
+body main #registro form#cont_registrar .desac {
   display: none !important;
 }
 body main #ventana_prin {
