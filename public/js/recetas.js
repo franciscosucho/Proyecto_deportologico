@@ -1,3 +1,6 @@
+
+const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
+
 function fecth_recetas(id) {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
     fetch(url)
