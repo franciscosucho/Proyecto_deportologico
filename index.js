@@ -3,6 +3,7 @@ const path = require('node:path')
 const mysql = require('mysql2');
 const { View } = require('electron');
 const app = express()
+const session= require('express-session')
 
 
 
@@ -15,15 +16,24 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
-
+//
+app.use(session({
+    secret: 'keyboard cat', // CAMBIAR Y GUARDAR EN OTRO LADO MAS TARDE
+    resave: true,
+    saveUninitialized: true,
+}))
 
 
 app.get('/', (req, res) => {
     res.render('login', { titulo: 'ewjk3340984323412' })
 
 })
+
 app.get('/index', (req, res) => {
-    res.render('index', {})
+    var user_name=req.session.user_name
+    var user_id=req.session.user_id
+    var user_pass=req.session.user_pass
+    res.render('index', {user_name,user_id,user_pass})
 
 })
 
@@ -96,7 +106,12 @@ app.post('/enviar', (req, res) => {
                             return res.render('login.ejs', { error: 'Error al registrar los datos deportivos' });
                         }
 
-                        // Redirigir a la página de inicio
+                       
+                        // variabables de sesion
+                        req.session.user_name=nombre_usuario_regis;
+                        req.session.user_id=dni;
+                        req.session.user_pass=password_regis;
+                         // Redirigir a la página de inicio
                         return res.redirect('/index');
                     });
                 });
@@ -110,7 +125,7 @@ app.get('/iniciar', (req, res) => {
     const { nombre_ini, password_ini } = req.query;
 
     const query_ini = `
-        SELECT Nombre_usuario, Email, password 
+        SELECT DNI,Nombre_usuario, Email, password 
         FROM usuario 
         WHERE (Nombre_usuario = ? OR Email = ?) 
         AND password = ?`;
@@ -123,7 +138,14 @@ app.get('/iniciar', (req, res) => {
         }
         
         if (results.length > 0) {
+
+            // variabables de sesion
+            req.session.user_name=results[0].Nombre_usuario;
+            req.session.user_id=results[0].DNI;
+            req.session.user_pass=results[0].password;
+             // Redirigir a la página de inicio
             return res.redirect('/index');
+
         } else {
             return res.render('login.ejs', {
                 error: 'El Email o el Nombre de usuario no existen, o la contraseña es incorrecta'
