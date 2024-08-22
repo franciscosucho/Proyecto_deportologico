@@ -19,8 +19,8 @@
       </div>
       <div id="cont_main">
         <div id="cont_user">
-          <img id="user_config" src="./resources/config.png" alt="config">
-          <img id="user_img" src="./resources/avatar.png" alt="avatar">
+          <i class="fa-solid fa-gear"></i>
+          <i class="fa-solid fa-user"></i>
 
         </div>
 
@@ -37,9 +37,19 @@
             <div class="" id="habit_tracker"></div>
           </div>
           <div id="sec_secu">
-
-            <div class="" id="racha"></div>
-            <div class="" id="motivacion"></div>
+            <div class="btn_sec" id="cont_recetas" >
+              <button id="btn_recetas">Recetas</button>
+                <section id="cont_recetas_active" class="desac">
+                  <%-include('recetas.ejs')%>
+                </section>
+              
+            </div>
+            <div class="btn_sec" id="cont_racha">
+              <button id="racha"></button>
+            </div>
+            <div class="btn_sec"id="cont_motivacion" >
+              <button id="motivacion">Frases motivacionales</button>
+            </div>
           </div>
         </div>
       </div>
@@ -47,7 +57,7 @@
   </main>
   <script src="estilos_regis.js"></script>
   <script src="js/calendario.js"></script>
-  <!--  <script src="js/recetas.js"></script> -->
+  <script src="js/recetas.js"></script> 
 
 </body>
 

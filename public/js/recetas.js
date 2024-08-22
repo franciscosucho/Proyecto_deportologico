@@ -1,4 +1,8 @@
+const btn_recetas=document.getElementById("btn_recetas");
 
+btn_recetas.addEventListener("click",()=>{
+
+})
 function recetas_number(number) {
 
     for (let i = 1; i <= number; i++) {
@@ -49,4 +53,4 @@ function create_recetas(receta, id) {
 }
 
 
-recetas_number(2);
+//recetas_number(2);

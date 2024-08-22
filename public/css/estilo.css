@@ -1,3 +1,6 @@
+@import url("estilo2.css");
+
+
 * {
   margin: 0px;
   padding: 0px;
@@ -222,7 +225,7 @@ body main #ventana_prin #menu_lateral #cont_item .item:hover {
 }
 body main #ventana_prin #cont_main {
   height: 100%;
-  width: 75%;
+  width: 85%;
   padding: 20px;
   display: flex;
   justify-content: flex-start;
@@ -240,178 +243,60 @@ body main #ventana_prin #cont_main #cont_user {
   width: auto;
   height: auto;
 }
-body main #ventana_prin #cont_main #cont_user img {
-  height: 50px;
-  width: 50px;
+body main #ventana_prin #cont_main #cont_user i {
+  font-size: 1.4em;
   padding: 10px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   border-radius: 50%;
+  color: white;
 }
-body main #ventana_prin #cont_main #cont_user img:hover {
+body main #ventana_prin #cont_main #cont_user i:hover {
   background-color: rgba(116, 116, 116, 0.2117647059);
+}
+body main #ventana_prin #cont_main #cont_secciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+body main #ventana_prin #cont_main #cont_secciones #sec_secu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec {
+  height: 20vh;
+  width: 20vw;
+  border-radius: 30px;
+  background-color: rgba(236, 236, 236, 0.1176470588);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec button {
+  height: 90%;
+  width: 90%;
+  opacity: 65%;
+  border-radius: 30px;
+  font-size: 2em;
+  font-weight: bolder;
+  color: white;
+  z-index: 100;
+  border: none;
+  cursor: pointer;
+}
+body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_recetas #btn_recetas {
+  background-image: url("https://media.istockphoto.com/id/1457433817/es/foto/grupo-de-alimentos-saludables-para-la-dieta-flexitariana.jpg?s=612x612&w=0&k=20&c=2w5l2DEJWFGxSnmJxX_RCE40RriE7WtSoKKpuxw5luE=");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_recetas #cont_recetas_active {
+  width: 85vw;
+  height: auto;
+  background-color: #121212;
 }
 body main .desac {
   display: none !important;
-}
-
-.container_calendar {
-  width: 400px;
-  height: 550px;
-  margin: 5% auto;
-}
-
-.header_calendar {
-  width: 100%;
-  height: 45%;
-  background: #64E788;
-  border-radius: 15px 15px 0px 0px;
-  display: flex;
-  flex-direction: column;
-}
-.header_calendar h1 {
-  margin: 30px 30px 0px 30px;
-  padding: 0px;
-  font-family: Arial;
-  color: white;
-  font-size: 100px;
-}
-.header_calendar h5 {
-  margin: 0px 30px;
-  padding: 0px;
-  font-family: Arial;
-  color: white;
-  font-size: 40px;
-}
-
-.body_calendar {
-  width: 100%;
-  height: 55%;
-  background-color: rgb(37, 35, 35);
-  border-radius: 0px 0px 15px 15px;
-}
-
-.container_details {
-  width: 100%;
-  height: 30px;
-  background: #000000;
-  position: relative;
-  top: -13px;
-  display: flex;
-  justify-content: space-between;
-}
-.container_details .detail_1,
-.container_details .detail_2 {
-  width: 70px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-}
-.container_details .detail_1 .detail,
-.container_details .detail_2 .detail {
-  margin: 0px 2px;
-  width: 10px;
-  height: 100%;
-}
-.container_details .detail_1 .detail .circle,
-.container_details .detail_2 .detail .circle {
-  width: 10px;
-  height: 10px;
-  background: #1C1E26;
-  position: relative;
-  top: 20px;
-  border-radius: 50%;
-}
-.container_details .detail_1 .detail .circle .column,
-.container_details .detail_2 .detail .circle .column {
-  width: 80%;
-  height: 30px;
-  background: #ececec;
-  margin: 0px auto;
-  position: relative;
-  top: -22px;
-  border-radius: 5px;
-}
-
-.container_change_month {
-  width: 100%;
-  height: 25px;
-  display: flex;
-  justify-content: space-evenly;
-  opacity: 0.7;
-}
-.container_change_month div {
-  color: white;
-  height: 20px;
-  margin: auto;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-.container_change_month button {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 20px;
-  margin: auto 5px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: white;
-}
-
-.container_weedays {
-  width: 90%;
-  height: 40px;
-  display: flex;
-  margin: 0px auto;
-}
-.container_weedays span {
-  color: #64E788;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  height: 100%;
-  line-height: 2.5;
-}
-
-.week_days_item {
-  display: flex;
-  margin: auto;
-  width: 14.2857142857%;
-  justify-content: center;
-  cursor: pointer;
-  color: white;
-}
-
-.week_days_item:hover {
-  color: #64E788;
-}
-
-.prev_days {
-  opacity: 0.2;
-}
-
-.container_days {
-  width: 90%;
-  height: auto;
-  display: flex;
-  flex-flow: row wrap;
-  margin: 0px auto;
-}
-.container_days span {
-  color: white;
-  /* background: #000; */
-  height: 20px;
-  margin: 5px 0px;
-  padding: 0px;
-  font-family: Arial;
-}
-.container_days .today {
-  display: flex;
-}
-.container_days .today:after {
-  content: "";
-  width: 19px;
-  height: 19px;
-  background: #64E788;
-  position: absolute;
-  border-radius: 50%;
-  border: 5px solid #64E788;
-  opacity: 0.2;
-  margin: -6px -1px 0px 0px;
 }/*# sourceMappingURL=estilo.css.map */

@@ -3,7 +3,7 @@ const path = require('node:path')
 const mysql = require('mysql2');
 const { View } = require('electron');
 const app = express()
-const session= require('express-session')
+const session = require('express-session')
 
 
 
@@ -30,12 +30,53 @@ app.get('/', (req, res) => {
 })
 
 app.get('/index', (req, res) => {
-    var user_name=req.session.user_name
-    var user_id=req.session.user_id
-    var user_pass=req.session.user_pass
-    res.render('index', {user_name,user_id,user_pass})
+    var user_name = req.session.user_name
+    var user_id = req.session.user_id
+    var user_pass = req.session.user_pass
+    res.render('index', { user_name, user_id, user_pass })
 
 })
+
+app.get('/recetas', (req, res) => {
+
+    var user_name = req.session.user_name
+    var user_id = req.session.user_id
+    var user_pass = req.session.user_pass
+    //
+    var user_name = req.session.user_name
+    var user_id = req.session.user_id
+    var user_pass = req.session.user_pass
+    //
+    var user_name =   req.session.user_altura
+    var user_id = req.session.user_id
+    var user_pass = req.session.user_pass
+    //    var user_name = req.session.user_name
+    var user_id = req.session.user_id
+    var user_pass = req.session.user_pass
+
+    req.session.user_nac = nacimiento;
+    req.session.user_genero = opciones_genero;
+    req.session.user_peso = peso;
+    //
+    req.session.user_altura = altura;
+    req.session.user_email = email_regis;
+    req.session.user_dieta = dieta;
+    //
+    req.session.user_obj_nut = objetivo_nutricional;
+    req.session.user_deporte = tipo_deporte;
+    req.session.user_obj_dep = obj_deportivo;
+    req.session.user_frecuencia = frecuencia;
+    req.session.user_intensidad = intensidad;
+
+
+
+
+    res.render('recetas', { user_name, user_id, user_pass })
+
+})
+
+
+
 
 
 // Conexión a la base de datos
@@ -55,7 +96,7 @@ app.post('/enviar', (req, res) => {
     } = req.body;
 
     const query_ant = 'SELECT DNI, Nombre_usuario, Email FROM usuario WHERE DNI = ? OR Nombre_usuario = ? OR Email = ?';
-    
+
     connection.query(query_ant, [dni, nombre_usuario_regis, email_regis], (err, results) => {
         if (err) {
             console.error('Error al verificar los datos:', err);
@@ -106,12 +147,26 @@ app.post('/enviar', (req, res) => {
                             return res.render('login.ejs', { error: 'Error al registrar los datos deportivos' });
                         }
 
-                       
+
                         // variabables de sesion
-                        req.session.user_name=nombre_usuario_regis;
-                        req.session.user_id=dni;
-                        req.session.user_pass=password_regis;
-                         // Redirigir a la página de inicio
+                        req.session.user_name = nombre_usuario_regis;
+                        req.session.user_id = dni;
+                        req.session.user_pass = password_regis;
+                        //
+                        req.session.user_nac = nacimiento;
+                        req.session.user_genero = opciones_genero;
+                        req.session.user_peso = peso;
+                        //
+                        req.session.user_altura = altura;
+                        req.session.user_email = email_regis;
+                        req.session.user_dieta = dieta;
+                        //
+                        req.session.user_obj_nut = objetivo_nutricional;
+                        req.session.user_deporte = tipo_deporte;
+                        req.session.user_obj_dep = obj_deportivo;
+                        req.session.user_frecuencia = frecuencia;
+                        req.session.user_intensidad = intensidad;
+                        // Redirigir a la página de inicio
                         return res.redirect('/index');
                     });
                 });
@@ -136,14 +191,14 @@ app.get('/iniciar', (req, res) => {
                 error: 'Error al verificar los datos'
             });
         }
-        
+
         if (results.length > 0) {
 
             // variabables de sesion
-            req.session.user_name=results[0].Nombre_usuario;
-            req.session.user_id=results[0].DNI;
-            req.session.user_pass=results[0].password;
-             // Redirigir a la página de inicio
+            req.session.user_name = results[0].Nombre_usuario;
+            req.session.user_id = results[0].DNI;
+            req.session.user_pass = results[0].password;
+            // Redirigir a la página de inicio
             return res.redirect('/index');
 
         } else {
