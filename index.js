@@ -23,17 +23,35 @@ app.use(session({
     saveUninitialized: true,
 }))
 
-
 app.get('/', (req, res) => {
-    res.render('login', { titulo: 'ewjk3340984323412' })
-
+    if(req.session.user_id!=undefined){
+        res.redirect('/index')
+        
+        //req.destroy() para borrar las cookies.
+    }
+    else{
+        res.render('login', { })
+    }
 })
+
+
 
 app.get('/index', (req, res) => {
     var user_name = req.session.user_name
     var user_id = req.session.user_id
     var user_pass = req.session.user_pass
-    res.render('index', { user_name, user_id, user_pass })
+    var user_nac = req.session.user_nac
+    var user_genero = req.session.user_genero
+    var user_peso = req.session.user_peso
+    var user_altura = req.session.user_altura
+    var user_email = req.session.user_email
+    var user_dieta = req.session.user_dieta
+    var user_obj_nut = req.session.user_obj_nut
+    var user_deporte = req.session.user_deporte
+    var user_obj_dep = req.session.user_obj_dep
+    var user_frecuencia = req.session.user_frecuencia
+    var user_intensidad = req.session.user_intensidad
+    res.render('index', { user_name, user_id, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 
 })
 
@@ -42,41 +60,22 @@ app.get('/recetas', (req, res) => {
     var user_name = req.session.user_name
     var user_id = req.session.user_id
     var user_pass = req.session.user_pass
-    //
-    var user_name = req.session.user_name
-    var user_id = req.session.user_id
-    var user_pass = req.session.user_pass
-    //
-    var user_name =   req.session.user_altura
-    var user_id = req.session.user_id
-    var user_pass = req.session.user_pass
-    //    var user_name = req.session.user_name
-    var user_id = req.session.user_id
-    var user_pass = req.session.user_pass
-
-    req.session.user_nac = nacimiento;
-    req.session.user_genero = opciones_genero;
-    req.session.user_peso = peso;
-    //
-    req.session.user_altura = altura;
-    req.session.user_email = email_regis;
-    req.session.user_dieta = dieta;
-    //
-    req.session.user_obj_nut = objetivo_nutricional;
-    req.session.user_deporte = tipo_deporte;
-    req.session.user_obj_dep = obj_deportivo;
-    req.session.user_frecuencia = frecuencia;
-    req.session.user_intensidad = intensidad;
+    var user_nac = req.session.user_nac
+    var user_genero = req.session.user_genero
+    var user_peso = req.session.user_peso
+    var user_altura = req.session.user_altura
+    var user_email = req.session.user_email
+    var user_dieta = req.session.user_dieta
+    var user_obj_nut = req.session.user_obj_nut
+    var user_deporte = req.session.user_deporte
+    var user_obj_dep = req.session.user_obj_dep
+    var user_frecuencia = req.session.user_frecuencia
+    var user_intensidad = req.session.user_intensidad
 
 
-
-
-    res.render('recetas', { user_name, user_id, user_pass })
+    res.render('recetas', { user_name, user_id, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 
 })
-
-
-
 
 
 // Conexión a la base de datos
@@ -179,9 +178,7 @@ app.post('/enviar', (req, res) => {
 app.get('/iniciar', (req, res) => {
     const { nombre_ini, password_ini } = req.query;
 
-    const query_ini = `
-        SELECT DNI,Nombre_usuario, Email, password 
-        FROM usuario 
+    const query_ini = `SELECT * FROM usuario 
         WHERE (Nombre_usuario = ? OR Email = ?) 
         AND password = ?`;
 
@@ -193,11 +190,48 @@ app.get('/iniciar', (req, res) => {
         }
 
         if (results.length > 0) {
-
-            // variabables de sesion
+            const dni = results[0].DNI;
+            // variabables de sesion user
             req.session.user_name = results[0].Nombre_usuario;
             req.session.user_id = results[0].DNI;
             req.session.user_pass = results[0].password;
+            req.session.user_nac = results[0].FechaNacimiento;
+            req.session.user_email = results[0].Email;
+            req.session.user_peso = results[0].peso;
+            req.session.user_altura = results[0].altura;
+            req.session.user_genero = results[0].Genero;
+
+            const query_nutri = `
+            SELECT * FROM nutricionalusuario WHERE DNI_nut = ?`;
+            connection.query(query_nutri, [dni], (err, results) => {
+                if (err) {
+                    return res.render('login.ejs', {
+                        error: 'Error al verificar los datos'
+                    });
+                }
+                if (results.length > 0) {
+                    // variabables de sesion nutri
+                    req.session.user_dieta = results[0].TipoAlimentacion;
+                    req.session.user_obj_nut = results[0].ObjetivoNutricion;
+                }
+            })
+
+            const query_dep = `
+            SELECT * FROM deportivousuario WHERE DNI_depor = ?`;
+            connection.query(query_dep, [dni], (err, results) => {
+                if (err) {
+                    return res.render('login.ejs', {
+                        error: 'Error al verificar los datos'
+                    });
+                }
+                if (results.length > 0) {
+                    // variabables de sesion deporte
+                    req.session.user_obj_dep = results[0].ObjetivosDeportivo;
+                    req.session.user_deporte = results[0].TipoDeporte;
+                    req.session.user_frecuencia = results[0].Frecuencia;
+                    req.session.user_intensidad = results[0].Intensidad;
+                }
+            })
             // Redirigir a la página de inicio
             return res.redirect('/index');
 

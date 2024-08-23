@@ -1,6 +1,5 @@
 @import url("estilo2.css");
-
-
+@import url("estilo_recetas.css");
 * {
   margin: 0px;
   padding: 0px;
@@ -22,7 +21,7 @@ body main {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: auto;
   background-color: rgb(37, 35, 35);
 }
 body main #registro {
@@ -168,7 +167,8 @@ body main #registro form#cont_registrar .desac {
 }
 body main #ventana_prin {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto !important;
   background-color: #222;
   display: flex;
 }
@@ -179,7 +179,7 @@ body main #ventana_prin #menu_lateral {
   flex-direction: column;
   gap: 30px;
   padding-top: 10px;
-  height: 100%;
+  height: 100vh;
   width: 15%;
   background-color: #121212;
 }
@@ -255,47 +255,53 @@ body main #ventana_prin #cont_main #cont_user i:hover {
   background-color: rgba(116, 116, 116, 0.2117647059);
 }
 body main #ventana_prin #cont_main #cont_secciones {
+  margin-top: 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 100%;
+}
+body main #ventana_prin #cont_main #cont_secciones #sec_prin {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  width: auto;
 }
 body main #ventana_prin #cont_main #cont_secciones #sec_secu {
   display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
   gap: 20px;
   padding: 10px;
+  width: 30%;
+  height: 100%;
 }
 body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec {
+  position: relative;
   height: 20vh;
   width: 20vw;
-  border-radius: 30px;
-  background-color: rgba(236, 236, 236, 0.1176470588);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec button {
-  height: 90%;
-  width: 90%;
-  opacity: 65%;
+  text-decoration: none;
   border-radius: 30px;
   font-size: 2em;
   font-weight: bolder;
   color: white;
-  z-index: 100;
-  border: none;
-  cursor: pointer;
 }
-body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_recetas #btn_recetas {
-  background-image: url("https://media.istockphoto.com/id/1457433817/es/foto/grupo-de-alimentos-saludables-para-la-dieta-flexitariana.jpg?s=612x612&w=0&k=20&c=2w5l2DEJWFGxSnmJxX_RCE40RriE7WtSoKKpuxw5luE=");
-  background-repeat: no-repeat;
-  background-size: cover;
+body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_recetas #cont_recetas_active {
-  width: 85vw;
-  height: auto;
-  background-color: #121212;
+body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: brightness(50%);
+  border-radius: 30px;
 }
 body main .desac {
   display: none !important;

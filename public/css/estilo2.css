@@ -1,4 +1,3 @@
-
 html, body {
   margin: 0;
   padding: 0;
@@ -45,7 +44,6 @@ html, body {
 .container_calendar .container_details {
   width: 100%;
   height: auto;
-  background: #000;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -163,7 +161,7 @@ html, body {
   width: 20px;
   height: 20px;
   background: #64E788;
-  position: absol ute;
+  position: absolute;
   border-radius: 50%;
   opacity: 0.6;
   border: 5px solid #64E788;
@@ -200,4 +198,4 @@ html, body {
   .container_calendar .container_days span {
     flex-basis: calc(14.2857142857% - 5px);
   }
-}
+}/*# sourceMappingURL=estilo2.css.map */

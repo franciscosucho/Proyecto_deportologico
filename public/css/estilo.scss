@@ -1,3 +1,6 @@
+@import url('estilo2.css');
+@import url('estilo_recetas.css');
+
 * {
     margin: 0px;
     padding: 0px;
@@ -21,7 +24,7 @@ body {
         align-items: center;
         flex-direction: column;
         width: 100%;
-        height: 100vh;
+        height: auto;
         background-color: rgb(37, 35, 35);
 
         #registro {
@@ -198,9 +201,11 @@ body {
 
         #ventana_prin {
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
+            height: auto !important;
             background-color: #222;
             display: flex;
+
 
             #menu_lateral {
                 display: flex;
@@ -209,7 +214,7 @@ body {
                 flex-direction: column;
                 gap: 30px;
                 padding-top: 10px;
-                height: 100%;
+                height: 100vh;
                 width: 15%;
                 background-color: #121212;
 
@@ -297,56 +302,56 @@ body {
                 }
 
                 #cont_secciones {
+                    margin-top: 5%;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-
                     width: 100%;
+                    height: 100%;
+
+                    #sec_prin {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        height: 100%;
+                        width: auto;
+                    }
 
                     #sec_secu {
                         display: flex;
+                        justify-content: flex-start;
+                        align-items: flex-start;
                         flex-direction: column;
                         gap: 20px;
                         padding: 10px;
+                        width: 30%;
+                        height: 100%;
 
                         .btn_sec {
+                            position: relative;
                             height: 20vh;
                             width: 20vw;
+                            text-decoration: none;
                             border-radius: 30px;
-                            background-color: #ececec1e;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
+                            font-size: 2em;
+                            font-weight: bolder;
+                            color: white;
 
-                            button {
-                                height: 90%;
-                                width: 90%;
-                                opacity: 65%;
+                            span {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+
+                            img {
+                                height: 100%;
+                                width: 100%;
+                                object-fit: cover;
+                                filter: brightness(50%);
                                 border-radius: 30px;
-                                font-size: 2em;
-                                font-weight: bolder;
-                                color: white;
-                                z-index: 100;
-                                border: none;
-                                cursor: pointer;
-
-
                             }
-                            &#cont_recetas{
 
-                                #btn_recetas {
-
-                                    background-image: url("https://media.istockphoto.com/id/1457433817/es/foto/grupo-de-alimentos-saludables-para-la-dieta-flexitariana.jpg?s=612x612&w=0&k=20&c=2w5l2DEJWFGxSnmJxX_RCE40RriE7WtSoKKpuxw5luE=");
-                                    background-repeat: no-repeat;
-                                    background-size: cover;
-    
-                                }
-                                #cont_recetas_active{
-                                    width: 85vw;
-                                    height: auto;
-                                    background-color: #121212;
-                                }
-                            }
                         }
                     }
                 }

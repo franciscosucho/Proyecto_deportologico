@@ -1,0 +1,58 @@
+main {
+    height: auto !important;
+
+    ventana_prin {
+        height: auto !important;
+    }
+}
+
+#main_recetas {
+    width: 100%;
+    height: auto;
+
+    #cont_recetas_main {
+        margin-top: 10%;
+        margin-left: 5%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* Dos columnas de igual tamaño */
+        grid-auto-rows: 40vh;
+        gap: 20px;
+        /* Espacio entre los elementos */
+        width: 70%;
+        height: auto;
+
+
+        .cont_receta {
+            width: 40vh;
+            height: auto;
+            background-color: #173D30;
+
+            .dieta {
+                padding: 20px;
+                width: 100%;
+                background-color: #D6B754;
+                display: block;
+                height: 20%;
+            }
+
+            img {
+                height: 60%;
+                width: 100%;
+            }
+
+            .name_receta {
+                color: white;
+                font-weight: bolder;
+                font-size: 1.2em;
+
+            }
+
+            .cont_tiempo {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
+        }
+    }
+}

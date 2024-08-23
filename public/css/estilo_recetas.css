@@ -1,0 +1,50 @@
+@charset "UTF-8";
+main {
+  height: auto !important;
+}
+main ventana_prin {
+  height: auto !important;
+}
+
+#main_recetas {
+  width: 100%;
+  height: auto;
+}
+#main_recetas #cont_recetas_main {
+  margin-top: 10%;
+  margin-left: 5%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Dos columnas de igual tamaño */
+  grid-auto-rows: 40vh;
+  gap: 20px;
+  /* Espacio entre los elementos */
+  width: 70%;
+  height: auto;
+}
+#main_recetas #cont_recetas_main .cont_receta {
+  width: 40vh;
+  height: auto;
+  background-color: #173D30;
+}
+#main_recetas #cont_recetas_main .cont_receta .dieta {
+  padding: 20px;
+  width: 100%;
+  background-color: #D6B754;
+  display: block;
+  height: 20%;
+}
+#main_recetas #cont_recetas_main .cont_receta img {
+  height: 60%;
+  width: 100%;
+}
+#main_recetas #cont_recetas_main .cont_receta .name_receta {
+  color: white;
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+#main_recetas #cont_recetas_main .cont_receta .cont_tiempo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}/*# sourceMappingURL=estilo_recetas.css.map */

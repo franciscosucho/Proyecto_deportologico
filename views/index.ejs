@@ -14,9 +14,9 @@
 
     <section id="ventana_prin">
 
-      <div id="menu_lateral">
+      <aside id="menu_lateral">
         <%-include('menu.ejs')%>
-      </div>
+      </aside>
       <div id="cont_main">
         <div id="cont_user">
           <i class="fa-solid fa-gear"></i>
@@ -37,27 +37,20 @@
             <div class="" id="habit_tracker"></div>
           </div>
           <div id="sec_secu">
-            <div class="btn_sec" id="cont_recetas" >
-              <button id="btn_recetas">Recetas</button>
-                <section id="cont_recetas_active" class="desac">
-                  <%-include('recetas.ejs')%>
-                </section>
-              
-            </div>
-            <div class="btn_sec" id="cont_racha">
-              <button id="racha"></button>
-            </div>
-            <div class="btn_sec"id="cont_motivacion" >
-              <button id="motivacion">Frases motivacionales</button>
-            </div>
+            <a class="btn_sec" href="/recetas" id="btn_recetas">
+
+              <img
+                src="https://media.istockphoto.com/id/1457433817/es/foto/grupo-de-alimentos-saludables-para-la-dieta-flexitariana.jpg?s=612x612&w=0&k=20&c=2w5l2DEJWFGxSnmJxX_RCE40RriE7WtSoKKpuxw5luE="
+                alt="">
+                <span>Recetas</span>
+              </a>
+
           </div>
         </div>
       </div>
     </section>
   </main>
-  <script src="estilos_regis.js"></script>
   <script src="js/calendario.js"></script>
-  <script src="js/recetas.js"></script> 
 
 </body>
 
