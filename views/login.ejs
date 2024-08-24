@@ -115,8 +115,26 @@
             <label for="dieta">Tipo de dieta</label>
             <select id="dieta" name="dieta" required>
               <option value="Omnívora">Omnívora</option>
-              <option value="Vegetariana">Vegetariana</option>
-              <option value="Vegana">Vegana</option>
+              <option value="Vegetarian">Vegetariana</option>
+              <option value="Ovo-Vegetariano">Ovo-Vegetariano</option>
+              <option value="Vegan">Vegana</option>
+              <option value="Pescetarian">pescetariano</option>
+              <option value="Gluten Free">Sin gluten</option>
+            </select>
+          </div>
+          <div class="cont_inputs">
+            <label for="intolerancia">intolerancia</label>
+            <select id="intolerancia" name="intolerancia" required>
+              <option value="Ninguna">Ninguna</option>
+              <option value="Dairy">Lácteos</option>
+              <option value="Egg">Huevo</option>
+              <option value="Gluten">Gluten</option>
+              <option value="Grain">Grano</option>
+              <option value="Peanut">Maní</option>
+              <option value="Seafood">Mariscos</option>
+              <option value="Soy">Soja</option>
+              <option value="Sulfite">sulfito</option>
+              <option value="Wheat">Trigo</option>
             </select>
           </div>
           <div class="cont_inputs">
@@ -163,7 +181,7 @@
             <select id="intensidad" name="intensidad" required>
               <option value="Ligera">Ligera</option>
               <option value="Moderada">Moderada</option>
-              <option value="Intensa">Intensa</option>
+              <option value="Alta">Alta</option>
 
             </select>
           </div>
@@ -172,12 +190,12 @@
             <button class="btn_atras" type="button">Atrás</button>
           </div>
         </div>
-     <!-- Mostrar error si existe -->
-     <% if (typeof error !=='undefined' ) { %>
-      <span id="error_ini">
-        <%= error %>
-      </span>
-      <% } %>
+        <!-- Mostrar error si existe -->
+        <% if (typeof error !=='undefined' ) { %>
+          <span id="error_ini">
+            <%= error %>
+          </span>
+          <% } %>
       </form>
 
 

@@ -24,21 +24,41 @@ app.use(session({
 }))
 
 app.get('/', (req, res) => {
-    if(req.session.user_id!=undefined){
+    if (req.session.user_dni != undefined) {
         res.redirect('/index')
-        
+
         //req.destroy() para borrar las cookies.
     }
-    else{
-        res.render('login', { })
+    else {
+        res.render('login', {})
     }
 })
 
 
+app.post('/calendario/chequear/:valor/:id_act', (req, res) => {
+    var { valor, id_act } = req.params
+    const UPDATE_act = 'UPDATE actividad_dia SET MarcadorCumplido =? WHERE  ID_act=?'
+    if (valor == "true") {
+        valor = 1;
+    }
+    if (valor == "false") {
+        valor = 0;
+    }
+    connection.query(UPDATE_act, [valor, id_act], (err, results) => {
+        if (err) {
+            console.error('Error al verificar los datos:', err);
+            return res.render('login.ejs', { error: 'Error al verificar los datos' });
+
+        }
+        console.log(valor, id_act)
+
+    })
+})
+
 
 app.get('/index', (req, res) => {
     var user_name = req.session.user_name
-    var user_id = req.session.user_id
+    var user_dni = req.session.user_dni
     var user_pass = req.session.user_pass
     var user_nac = req.session.user_nac
     var user_genero = req.session.user_genero
@@ -51,14 +71,28 @@ app.get('/index', (req, res) => {
     var user_obj_dep = req.session.user_obj_dep
     var user_frecuencia = req.session.user_frecuencia
     var user_intensidad = req.session.user_intensidad
-    res.render('index', { user_name, user_id, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+
+
+    const query_act_dia = 'SELECT * FROM `actividad_dia` WHERE Dni_act=?'
+    connection.query(query_act_dia, [user_dni], (err, results) => {
+        if (err) {
+            console.error('Error al verificar los datos:', err);
+            return res.render('login.ejs', { error: 'Error al verificar los datos' });
+
+        }
+        console.log(results)
+        res.render('index', { results, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    })
+
+
+
 
 })
 
 app.get('/recetas', (req, res) => {
 
     var user_name = req.session.user_name
-    var user_id = req.session.user_id
+    var user_dni = req.session.user_dni
     var user_pass = req.session.user_pass
     var user_nac = req.session.user_nac
     var user_genero = req.session.user_genero
@@ -71,9 +105,7 @@ app.get('/recetas', (req, res) => {
     var user_obj_dep = req.session.user_obj_dep
     var user_frecuencia = req.session.user_frecuencia
     var user_intensidad = req.session.user_intensidad
-
-
-    res.render('recetas', { user_name, user_id, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    res.render('recetas', { user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 
 })
 
@@ -91,7 +123,7 @@ app.post('/enviar', (req, res) => {
     const {
         nombre_regis, apellido_regis, dni, nacimiento, opciones_genero, peso, altura,
         nombre_usuario_regis, email_regis, password_regis, dieta, objetivo_nutricional,
-        tipo_deporte, obj_deportivo, frecuencia, intensidad
+        tipo_deporte, obj_deportivo, frecuencia, intensidad, intolerancia
     } = req.body;
 
     const query_ant = 'SELECT DNI, Nombre_usuario, Email FROM usuario WHERE DNI = ? OR Nombre_usuario = ? OR Email = ?';
@@ -126,10 +158,10 @@ app.post('/enviar', (req, res) => {
 
                 // Inserción en la tabla `nutricionalusuario`
                 const query_nutri = `
-                    INSERT INTO nutricionalusuario (DNI_nut, ObjetivoNutricion, TipoAlimentacion)
-                    VALUES (?, ?, ?)
+                    INSERT INTO nutricionalusuario (DNI_nut,intolerancia,ObjetivoNutricion, TipoAlimentacion)
+                    VALUES (?, ?, ?, ?)
                 `;
-                connection.query(query_nutri, [dni, objetivo_nutricional, dieta], (err) => {
+                connection.query(query_nutri, [dni, intolerancia, objetivo_nutricional, dieta], (err) => {
                     if (err) {
                         console.error('Error al insertar en nutricionalusuario:', err);
                         return res.render('login.ejs', { error: 'Error al registrar los datos nutricionales' });
@@ -149,7 +181,7 @@ app.post('/enviar', (req, res) => {
 
                         // variabables de sesion
                         req.session.user_name = nombre_usuario_regis;
-                        req.session.user_id = dni;
+                        req.session.user_dni = dni;
                         req.session.user_pass = password_regis;
                         //
                         req.session.user_nac = nacimiento;
@@ -193,7 +225,7 @@ app.get('/iniciar', (req, res) => {
             const dni = results[0].DNI;
             // variabables de sesion user
             req.session.user_name = results[0].Nombre_usuario;
-            req.session.user_id = results[0].DNI;
+            req.session.user_dni = results[0].DNI;
             req.session.user_pass = results[0].password;
             req.session.user_nac = results[0].FechaNacimiento;
             req.session.user_email = results[0].Email;

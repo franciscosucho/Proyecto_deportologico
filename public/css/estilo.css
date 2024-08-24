@@ -167,27 +167,32 @@ body main #registro form#cont_registrar .desac {
 }
 body main #ventana_prin {
   width: 100%;
-  min-height: 100vh;
+  min-height: 120vh;
   height: auto !important;
   background-color: #222;
   display: flex;
 }
 body main #ventana_prin #menu_lateral {
+  height: auto;
+  width: 15%;
+}
+body main #ventana_prin #menu_lateral #cont_fixed {
+  padding-top: 20px;
+  height: 100%;
+  width: 15%;
   display: flex;
+  gap: 10px;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  flex-direction: column;
-  gap: 30px;
-  padding-top: 10px;
-  height: 100vh;
-  width: 15%;
   background-color: #121212;
+  position: fixed;
 }
-body main #ventana_prin #menu_lateral img {
+body main #ventana_prin #menu_lateral #cont_fixed img {
   height: auto;
   width: auto;
 }
-body main #ventana_prin #menu_lateral #cont_item {
+body main #ventana_prin #menu_lateral #cont_fixed #cont_item {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -197,7 +202,7 @@ body main #ventana_prin #menu_lateral #cont_item {
   width: 80%;
   list-style: none;
 }
-body main #ventana_prin #menu_lateral #cont_item .item {
+body main #ventana_prin #menu_lateral #cont_fixed #cont_item .item {
   display: flex;
   justify-content: flex-start;
   padding-left: 20px;
@@ -210,16 +215,16 @@ body main #ventana_prin #menu_lateral #cont_item .item {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
-body main #ventana_prin #menu_lateral #cont_item .item span {
+body main #ventana_prin #menu_lateral #cont_fixed #cont_item .item span {
   font-weight: bolder;
   font-size: 1em;
   color: white;
 }
-body main #ventana_prin #menu_lateral #cont_item .item i {
+body main #ventana_prin #menu_lateral #cont_fixed #cont_item .item i {
   color: white;
   font-size: 1.2em;
 }
-body main #ventana_prin #menu_lateral #cont_item .item:hover {
+body main #ventana_prin #menu_lateral #cont_fixed #cont_item .item:hover {
   background-color: #419663;
   transform: scale(1.05);
 }

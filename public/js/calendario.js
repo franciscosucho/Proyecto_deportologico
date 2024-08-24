@@ -4,6 +4,7 @@ var monthName = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
 var now = new Date();
 var today = now.getDate(); // Día actual para resaltar
 var month = now.getMonth();
+moth_us = 0;
 var currentMonth = month;
 var year = now.getFullYear();
 var selectedDay = today; // Día seleccionado por el usuario (inicialmente es el día actual)
@@ -111,3 +112,21 @@ $("#next_month").click(function () {
 $("#last_month").click(function () {
     getPrevMonth();
 });
+
+
+
+const item_act = document.querySelectorAll(".item_act");
+item_act.forEach(item => {
+    item.addEventListener("click", (e) => {
+        var estado = e.target.checked
+        var id = e.target.getAttribute('data-id')
+        if(estado=="true"){
+            e.classlist.add('ralla');
+
+        }
+        else{
+            e.classlist.remove('ralla');
+        }
+        fetch(`http://localhost:3000/calendario/chequear/${estado}/${id}`, { method: 'post' })
+    });
+})

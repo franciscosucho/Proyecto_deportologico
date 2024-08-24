@@ -199,3 +199,42 @@ html, body {
     flex-basis: calc(14.2857142857% - 5px);
   }
 }/*# sourceMappingURL=estilo2.css.map */
+#habit_tracker{
+  height: auto;
+  width: 50vh;
+  list-style: none;
+  padding: 20px;
+  background-color: #1C1E26;
+  border-radius: 30px;
+  gap: 20px ;
+  display: flex;
+  flex-direction: column;
+
+
+}
+#habit_tracker h3{
+  color: rgb(218, 218, 218);
+}
+#habit_tracker #item_list{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+}
+#habit_tracker #item_list .item{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center ;
+  color: rgb(206, 206, 206);
+  gap: 10px;
+  
+}
+#habit_tracker #item_list .item input{
+
+  color: black;
+}
+.item .ralla{
+  text-decoration: line-through;
+  color: black;
+}

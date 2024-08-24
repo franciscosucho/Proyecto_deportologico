@@ -1,5 +1,4 @@
-
-<div class="container_calendar">
+<article class="container_calendar">
     <div class="header_calendar">
         <h1 id="text_day">00</h1>
         <h5 id="text_month">Null</h5>
@@ -26,4 +25,24 @@
             <span class="week_days_item item_day"></span>
         </div>
     </div>
+</article>
+<div class="" id="habit_tracker">
+    <h3>Tu actividad de hoy:</h3>
+    <ul id="item_list">
+        <% results.forEach(actividad => { %>
+            <li class="item">
+                <% if(actividad.MarcadorCumplido=="1"){%>
+                        <input type="checkbox" name="check" data-id="<%- actividad.ID_act %>" class="item_act" checked>
+                    <%} 
+                    else {%>
+                        <input type="checkbox" name="check" data-id="<%- actividad.ID_act %>" class="item_act" >
+                    <%}%>
+             
+                <span class="text_item"><%- actividad.Objetivos %></span>
+            </li>
+        <% }) %>
+    
+    </ul>
+
 </div>
+<a href="">Agregar nueva Actividad</a>
