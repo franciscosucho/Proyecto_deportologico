@@ -1,22 +1,18 @@
-main {
-    height: auto !important;
-
-    ventana_prin {
-        height: auto !important;
-    }
-}
-
 #main_recetas {
     width: 100%;
     height: auto;
 
+    padding-left: 5%;
+    padding-top: 5%;
+
     #cont_recetas_main {
-        margin-top: 10%;
-        margin-left: 5%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        /* Dos columnas de igual tamaño */
-        grid-auto-rows: 40vh;
+        margin-top: 2%;
+        padding-bottom: 2%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+
         gap: 20px;
         /* Espacio entre los elementos */
         width: 70%;
@@ -24,35 +20,75 @@ main {
 
 
         .cont_receta {
-            width: 40vh;
-            height: auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 70%;
+
+            height: 40vh;
+
             background-color: #173D30;
 
-            .dieta {
-                padding: 20px;
-                width: 100%;
-                background-color: #D6B754;
-                display: block;
-                height: 20%;
-            }
-
             img {
-                height: 60%;
-                width: 100%;
+                height: 100%;
+                width: auto;
+                max-width: 50%;
             }
 
-            .name_receta {
-                color: white;
-                font-weight: bolder;
-                font-size: 1.2em;
-
-            }
-
-            .cont_tiempo {
+            .text {
                 display: flex;
-                justify-content: flex-start;
-                align-items: center;
+                flex-direction: column;
+                gap: 10px;
+                padding: 20px;
+                width: 50%;
+
+                .name_receta {
+                    width: 50%;
+                    color: white;
+                    font-weight: bolder;
+                    font-size: 1.5em;
+
+                }
+
+                .dieta {
+                    width: 50%;
+                    color: rgb(170, 170, 170);
+
+                }
+
+                .cont_tiempo {
+                    color: #D6B754;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                .info {
+                    width: 100%;
+                    height: 20vh;
+                    overflow-y: scroll;
+                }
+
+                .btn_receta {
+                    display: flex;
+                    justify-content: flex-start;
+                    gap: 5px;
+                    align-items: center;
+                    color: white;
+                    background-color: #D6B754;
+                    width: 50%;
+                    height: 20%;
+                    text-decoration: none;
+                    border-radius: 2px;
+                    padding: 5px;
+
+                }
+
+
+
             }
+
         }
     }
 }

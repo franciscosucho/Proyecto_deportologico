@@ -6,6 +6,16 @@ const app = express()
 const session = require('express-session')
 
 
+const isLogged = (req, res, next) => {
+    if (req.session.user_name == '' || typeof req.session.user_name == 'undefined') {
+        res.redirect('/')
+    } else {
+        next()
+    }
+}
+
+
+
 
 
 // Configuracion
@@ -36,6 +46,7 @@ app.get('/', (req, res) => {
 
 
 app.post('/calendario/chequear/:valor/:id_act', (req, res) => {
+
     var { valor, id_act } = req.params
     const UPDATE_act = 'UPDATE actividad_dia SET MarcadorCumplido =? WHERE  ID_act=?'
     if (valor == "true") {
@@ -50,13 +61,13 @@ app.post('/calendario/chequear/:valor/:id_act', (req, res) => {
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
 
         }
-        console.log(valor, id_act)
 
     })
 })
 
 
-app.get('/index', (req, res) => {
+app.post('/calendario/update/:fechaFormateada', (req, res) => {
+    var { fechaFormateada } = req.params
     var user_name = req.session.user_name
     var user_dni = req.session.user_dni
     var user_pass = req.session.user_pass
@@ -72,20 +83,62 @@ app.get('/index', (req, res) => {
     var user_frecuencia = req.session.user_frecuencia
     var user_intensidad = req.session.user_intensidad
 
-
-    const query_act_dia = 'SELECT * FROM `actividad_dia` WHERE Dni_act=?'
-    connection.query(query_act_dia, [user_dni], (err, results) => {
+    const query_act_dia = 'SELECT * FROM `actividad_dia` WHERE Dni_act=? AND Fecha=?'
+    connection.query(query_act_dia, [user_dni, fechaFormateada], (err, results) => {
         if (err) {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
 
         }
-        console.log(results)
+
         res.render('index', { results, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
     })
+})
+
+app.post('/nueva_actividad', (req, res) => {
+    const {
+        info_act,fecha_act
+    } = req.body;
+
+    const query_ant = 'SELECT DNI, Nombre_usuario, Email FROM usuario WHERE DNI = ? OR Nombre_usuario = ? OR Email = ?';
+})
+
+
+app.get('/index', isLogged, (req, res) => {
+    var user_name = req.session.user_name
+    var user_dni = req.session.user_dni
+    var user_pass = req.session.user_pass
+    var user_nac = req.session.user_nac
+    var user_genero = req.session.user_genero
+    var user_peso = req.session.user_peso
+    var user_altura = req.session.user_altura
+    var user_email = req.session.user_email
+    var user_dieta = req.session.user_dieta
+    var user_obj_nut = req.session.user_obj_nut
+    var user_deporte = req.session.user_deporte
+    var user_obj_dep = req.session.user_obj_dep
+    var user_frecuencia = req.session.user_frecuencia
+    var user_intensidad = req.session.user_intensidad
+
+    var now = new Date();
+    var year = now.getFullYear(); // Obtiene el año (YYYY)
+    var month = String(now.getMonth() + 1).padStart(2, '0'); // Obtiene el mes (MM) y agrega un 0 si es necesario
+    var today = String(now.getDate()).padStart(2, '0'); // Obtiene el día (DD) y agrega un 0 si es necesario
+
+    const fechaFormateada = `${year}-${month}-${today}`;
 
 
 
+    const query_act_dia = 'SELECT * FROM `actividad_dia` WHERE Dni_act=? AND Fecha=? '
+    connection.query(query_act_dia, [user_dni, fechaFormateada], (err, results) => {
+        if (err) {
+            console.error('Error al verificar los datos:', err);
+            return res.render('login.ejs', { error: 'Error al verificar los datos' });
+
+        }
+
+        res.render('index', { results, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    })
 
 })
 

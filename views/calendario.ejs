@@ -29,20 +29,29 @@
 <div class="" id="habit_tracker">
     <h3>Tu actividad de hoy:</h3>
     <ul id="item_list">
-        <% results.forEach(actividad => { %>
+        <% results.forEach(actividad=> { %>
             <li class="item">
-                <% if(actividad.MarcadorCumplido=="1"){%>
-                        <input type="checkbox" name="check" data-id="<%- actividad.ID_act %>" class="item_act" checked>
-                    <%} 
-                    else {%>
-                        <input type="checkbox" name="check" data-id="<%- actividad.ID_act %>" class="item_act" >
-                    <%}%>
-             
-                <span class="text_item"><%- actividad.Objetivos %></span>
+                <% if(actividad.MarcadorCumplido=="1" ){%>
+                    <input type="checkbox" name="check" data-id="<%- actividad.ID_act %>" class="item_act" checked>
+                    <span class="text_item tachado"><%- actividad.Objetivos %></span>
+                    <%} else {%>
+                        <input type="checkbox" name="check" data-id="<%- actividad.ID_act %>" class="item_act">
+                        <span class="text_item "><%- actividad.Objetivos %></span>
+                        <%}%>
+
             </li>
-        <% }) %>
-    
+            <% }) %>
+                <div id="agregar">
+                   
+                    <form method="post" action="/nueva_actividad" id="cont_agregar">
+                        <i class="fa-light fa-plus"></i>
+                        <input id="info_act" name="info_act" type="text"
+                            placeholder="Escriba el nuevo evento que quiere realizar:" required maxlength="100">
+                        <input id="fecha_act" name="fecha_act" type="date"  required>
+                        <button  type="submit">Enviar</button>
+                    </form>
+                </div>
     </ul>
 
+
 </div>
-<a href="">Agregar nueva Actividad</a>

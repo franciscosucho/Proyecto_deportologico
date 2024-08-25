@@ -27,14 +27,13 @@ function create_recetas(receta, id) {
     card.classList.add('cont_receta');
     card.classList.add('id' + id);
 
-    const spriteContainer = document.createElement('div');
-    spriteContainer.classList.add('img-container');
+   
 
     const sprite = document.createElement('img');
     sprite.classList.add("sprite");
     sprite.src = receta.recipes[0].image;
 
-    spriteContainer.appendChild(sprite);
+   
 
 
     //tiempo receta
@@ -68,11 +67,11 @@ function create_recetas(receta, id) {
 
     //Mandar las etiquetas
     card.appendChild(dieta_receta);
-    card.appendChild(spriteContainer);
+    card.appendChild(sprite);
     card.appendChild(name);
     card.appendChild(cont_tiempo);
     cont_recetas_main.appendChild(card);
 }
 
 
-recetas_number(5);
+// recetas_number(2);

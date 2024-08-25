@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,6 +10,7 @@ html, body {
   max-width: 400px;
   margin: 5% auto;
 }
+
 .container_calendar .header_calendar {
   width: 100%;
   height: auto;
@@ -19,6 +21,7 @@ html, body {
   align-items: flex-start;
   padding: 20px;
 }
+
 .container_calendar .header_calendar h1 {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -27,6 +30,7 @@ html, body {
   text-align: left;
   width: 100%;
 }
+
 .container_calendar .header_calendar h5 {
   margin: 10px 0 0;
   font-family: Arial, sans-serif;
@@ -35,12 +39,14 @@ html, body {
   text-align: left;
   width: 100%;
 }
+
 .container_calendar .body_calendar {
   width: 100%;
   height: auto;
   background-color: rgb(37, 35, 35);
   border-radius: 0 0 15px 15px;
 }
+
 .container_calendar .container_details {
   width: 100%;
   height: auto;
@@ -49,32 +55,42 @@ html, body {
   justify-content: space-between;
   padding: 5px 0;
 }
-.container_calendar .container_details .detail_1, .container_calendar .container_details .detail_2 {
+
+.container_calendar .container_details .detail_1,
+.container_calendar .container_details .detail_2 {
   flex: 1;
   display: flex;
   justify-content: center;
 }
-.container_calendar .container_details .detail_1 .detail, .container_calendar .container_details .detail_2 .detail {
+
+.container_calendar .container_details .detail_1 .detail,
+.container_calendar .container_details .detail_2 .detail {
   margin: 0 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.container_calendar .container_details .detail_1 .detail .circle, .container_calendar .container_details .detail_2 .detail .circle {
+
+.container_calendar .container_details .detail_1 .detail .circle,
+.container_calendar .container_details .detail_2 .detail .circle {
   width: 10px;
   height: 10px;
   background: #1C1E26;
   border-radius: 50%;
 }
-.container_calendar .container_details .detail_1 .detail .column, .container_calendar .container_details .detail_2 .detail .column {
+
+.container_calendar .container_details .detail_1 .detail .column,
+.container_calendar .container_details .detail_2 .detail .column {
   width: 80%;
   height: 30px;
   background: #ececec;
   border-radius: 5px;
 }
+
 .container_calendar .selected {
   position: relative;
 }
+
 .container_calendar .selected:after {
   content: "";
   width: 20px;
@@ -88,6 +104,7 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .container_calendar .container_change_month {
   width: 100%;
   height: auto;
@@ -96,10 +113,12 @@ html, body {
   opacity: 0.7;
   margin: 5px 0;
 }
+
 .container_calendar .container_change_month div {
   color: white;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+
 .container_calendar .container_change_month button {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 1.2em;
@@ -109,9 +128,11 @@ html, body {
   color: white;
   transition: all 0.2s ease-in-out;
 }
+
 .container_calendar .container_change_month button:hover {
   color: rgba(100, 231, 135, 0.7882352941);
 }
+
 .container_calendar .container_weedays {
   width: 100%;
   height: auto;
@@ -120,20 +141,24 @@ html, body {
   justify-content: space-around;
   margin: 0 auto;
 }
+
 .container_calendar .container_weedays span {
   color: rgba(100, 231, 135, 0.7882352941);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
 }
+
 .container_calendar .week_days_item {
   width: 14.2857142857%;
   text-align: center;
   cursor: pointer;
   color: white;
 }
+
 .container_calendar .week_days_item:hover {
   color: rgba(100, 231, 135, 0.7882352941);
 }
+
 .container_calendar .container_days {
   width: 100%;
   display: flex;
@@ -141,6 +166,7 @@ html, body {
   justify-content: flex-start;
   margin: 0 auto;
 }
+
 .container_calendar .container_days span {
   color: white;
   height: 20px;
@@ -150,12 +176,16 @@ html, body {
   flex-basis: 14.2857142857%;
   text-align: center;
 }
-.container_calendar .container_days .prev_days, .container_calendar .container_days .next_days {
+
+.container_calendar .container_days .prev_days,
+.container_calendar .container_days .next_days {
   opacity: 0.2;
 }
+
 .container_calendar .container_days .today {
   position: relative;
 }
+
 .container_calendar .container_days .today:after {
   content: "";
   width: 20px;
@@ -169,72 +199,131 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 @media (max-width: 768px) {
   .container_calendar .header_calendar {
     padding: 10px;
   }
+
   .container_calendar .header_calendar h1 {
     font-size: 2.5em;
   }
+
   .container_calendar .header_calendar h5 {
     font-size: 1.5em;
   }
+
   .container_calendar .week_days_item,
   .container_calendar .container_days span {
     flex-basis: calc(14.2857142857% - 10px);
   }
 }
+
 @media (max-width: 480px) {
   .container_calendar .header_calendar {
     padding: 5px;
   }
+
   .container_calendar .header_calendar h1 {
     font-size: 2em;
   }
+
   .container_calendar .header_calendar h5 {
     font-size: 1.2em;
   }
+
   .container_calendar .week_days_item,
   .container_calendar .container_days span {
     flex-basis: calc(14.2857142857% - 5px);
   }
-}/*# sourceMappingURL=estilo2.css.map */
-#habit_tracker{
+}
+
+/*# sourceMappingURL=estilo2.css.map */
+#habit_tracker {
   height: auto;
   width: 50vh;
   list-style: none;
   padding: 20px;
   background-color: #1C1E26;
   border-radius: 30px;
-  gap: 20px ;
+  gap: 20px;
   display: flex;
   flex-direction: column;
 
 
 }
-#habit_tracker h3{
+
+#habit_tracker h3 {
   color: rgb(218, 218, 218);
 }
-#habit_tracker #item_list{
+
+#habit_tracker #item_list {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
   gap: 20px;
 }
-#habit_tracker #item_list .item{
+
+#habit_tracker #item_list .item {
   display: flex;
   justify-content: flex-start;
-  align-items: center ;
+  align-items: center;
   color: rgb(206, 206, 206);
   gap: 10px;
-  
-}
-#habit_tracker #item_list .item input{
 
-  color: black;
 }
-.item .ralla{
+
+#habit_tracker #item_list .item input {
+  accent-color: rgba(100, 231, 135, 0.7882352941);
+  /* Cambia el color del checkbox */
+
+}
+
+.item .tachado {
   text-decoration: line-through;
-  color: black;
+}
+
+#agregar {
+  width: 100%;
+
+}
+
+#cont_agregar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+#cont_agregar input {
+  color: white;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.651);
+}
+
+#cont_agregar #fecha_act {
+  width: auto ;
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+  color: #adadb1;
+}
+#cont_agregar i{
+  color: white;
+  font-size: 1.3em;
+}
+#cont_agregar button {
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid rgba(138, 136, 136, 0.404);
+  cursor: pointer;
+  background-color: transparent;
+  font-weight: 100;
+  color: white;
+
 }
