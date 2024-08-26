@@ -2,11 +2,18 @@
   width: 100%;
   height: auto;
   padding-left: 5%;
-  padding-top: 5%;
-}
-#main_recetas #cont_recetas_main {
-  margin-top: 2%;
+  padding-top: 3%;
   padding-bottom: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+#main_recetas .cont_rec {
+  display: flex;
+  height: auto;
+  width: 100%;
+}
+#main_recetas .cont_rec #cont_recetas_main {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -16,7 +23,7 @@
   width: 70%;
   height: auto;
 }
-#main_recetas #cont_recetas_main .cont_receta {
+#main_recetas .cont_rec #cont_recetas_main .cont_receta {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -24,41 +31,41 @@
   height: 40vh;
   background-color: #173D30;
 }
-#main_recetas #cont_recetas_main .cont_receta img {
+#main_recetas .cont_rec #cont_recetas_main .cont_receta img {
   height: 100%;
   width: auto;
   max-width: 50%;
 }
-#main_recetas #cont_recetas_main .cont_receta .text {
+#main_recetas .cont_rec #cont_recetas_main .cont_receta .text {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 20px;
   width: 50%;
 }
-#main_recetas #cont_recetas_main .cont_receta .text .name_receta {
+#main_recetas .cont_rec #cont_recetas_main .cont_receta .text .name_receta {
   width: 50%;
   color: white;
   font-weight: bolder;
   font-size: 1.5em;
 }
-#main_recetas #cont_recetas_main .cont_receta .text .dieta {
+#main_recetas .cont_rec #cont_recetas_main .cont_receta .text .dieta {
   width: 50%;
   color: rgb(170, 170, 170);
 }
-#main_recetas #cont_recetas_main .cont_receta .text .cont_tiempo {
+#main_recetas .cont_rec #cont_recetas_main .cont_receta .text .cont_tiempo {
   color: #D6B754;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 5px;
 }
-#main_recetas #cont_recetas_main .cont_receta .text .info {
+#main_recetas .cont_rec #cont_recetas_main .cont_receta .text .info {
   width: 100%;
   height: 20vh;
   overflow-y: scroll;
 }
-#main_recetas #cont_recetas_main .cont_receta .text .btn_receta {
+#main_recetas .cont_rec #cont_recetas_main .cont_receta .text .btn_receta {
   display: flex;
   justify-content: flex-start;
   gap: 5px;
@@ -70,4 +77,46 @@
   text-decoration: none;
   border-radius: 2px;
   padding: 5px;
+}
+#main_recetas .cont_rec #filtros {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#main_recetas .cont_rec #filtros h4 {
+  color: #2c8364;
+  font-size: 2em;
+}
+#main_recetas .cont_rec #filtros .cont_fitro {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+#main_recetas .cont_rec #filtros .cont_fitro label {
+  color: rgb(73, 73, 73);
+}
+#main_recetas .cont_rec #filtros .cont_fitro select, #main_recetas .cont_rec #filtros .cont_fitro input {
+  padding: 10px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 1px solid rgb(73, 73, 73);
+}
+#main_recetas .cont_rec #filtros .cont_button {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+#main_recetas .cont_rec #filtros .cont_button button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+#main_recetas .cont_rec #filtros .cont_button button#limpiar {
+  color: rgb(116, 116, 116);
+}
+#main_recetas .cont_rec #filtros .cont_button button#aplicar {
+  color: #2c8364;
 }/*# sourceMappingURL=estilo_recetas.css.map */
