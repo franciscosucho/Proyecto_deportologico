@@ -19,7 +19,7 @@ function createWindowMain() {
     },
   });
 
-  mainWindow.loadURL('localhost:3000');
+  mainWindow.loadURL('http://localhost:3000/index');
 }
 
 // Conexión a la base de datos

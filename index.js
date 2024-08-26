@@ -62,6 +62,7 @@ app.post('/calendario/chequear/:valor/:id_act', (req, res) => {
 
         }
 
+
     })
 })
 
@@ -96,11 +97,20 @@ app.post('/calendario/update/:fechaFormateada', (req, res) => {
 })
 
 app.post('/nueva_actividad', (req, res) => {
+    var user_dni = req.session.user_dni
     const {
-        info_act,fecha_act
+        info_act, fecha_act
     } = req.body;
 
-    const query_ant = 'SELECT DNI, Nombre_usuario, Email FROM usuario WHERE DNI = ? OR Nombre_usuario = ? OR Email = ?';
+    const query_agregar_act = 'INSERT INTO actividad_dia( Dni_act, Fecha, Objetivos, MarcadorCumplido) VALUES (?,?,?,?)';
+    connection.query(query_agregar_act, [user_dni, fecha_act, info_act, 0], (err, results) => {
+        if (err) {
+            console.error('Error al verificar los datos:', err);
+            return res.render('login.ejs', { error: 'Error al verificar los datos' });
+
+        }
+
+    })
 })
 
 
@@ -161,6 +171,20 @@ app.get('/recetas', (req, res) => {
     res.render('recetas', { user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 
 })
+
+app.get('/asesoramiento', (req, res) => {
+    const query_ase = 'SELECT * FROM `profesional` WHERE 1';
+
+    connection.query(query_ase, [], (err, results) => {
+        if (err) {
+            console.error('Error al verificar los datos:', err);
+            return res.render('login.ejs', { error: 'Error al verificar los datos' });
+        }
+        console.log(results)
+        res.render('asesoramiento', {results})
+    })
+})
+
 
 
 // Conexión a la base de datos

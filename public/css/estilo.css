@@ -202,7 +202,12 @@ body main #ventana_prin #menu_lateral #cont_fixed #cont_item {
   width: 80%;
   list-style: none;
 }
-body main #ventana_prin #menu_lateral #cont_fixed #cont_item .item {
+body main #ventana_prin #menu_lateral #cont_fixed #cont_item a {
+  width: 100%;
+  height: 10%;
+  text-decoration: none;
+}
+body main #ventana_prin #menu_lateral #cont_fixed #cont_item a .item {
   display: flex;
   justify-content: flex-start;
   padding-left: 20px;
@@ -211,20 +216,20 @@ body main #ventana_prin #menu_lateral #cont_fixed #cont_item .item {
   background-color: #58C885;
   border-radius: 10px;
   width: 100%;
-  height: 10%;
+  height: 100%;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
-body main #ventana_prin #menu_lateral #cont_fixed #cont_item .item span {
+body main #ventana_prin #menu_lateral #cont_fixed #cont_item a .item span {
   font-weight: bolder;
   font-size: 1em;
   color: white;
 }
-body main #ventana_prin #menu_lateral #cont_fixed #cont_item .item i {
+body main #ventana_prin #menu_lateral #cont_fixed #cont_item a .item i {
   color: white;
   font-size: 1.2em;
 }
-body main #ventana_prin #menu_lateral #cont_fixed #cont_item .item:hover {
+body main #ventana_prin #menu_lateral #cont_fixed #cont_item a .item:hover {
   background-color: #419663;
   transform: scale(1.05);
 }
@@ -244,7 +249,7 @@ body main #ventana_prin #cont_main #nombre_us {
 }
 body main #ventana_prin #cont_main #cont_user {
   position: absolute;
-  left: 90%;
+  left: 95%;
   width: auto;
   height: auto;
 }

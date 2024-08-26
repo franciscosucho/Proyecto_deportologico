@@ -77,10 +77,10 @@ function initCalender() {
         console.log(fechaFormateada)
         fetch(`http://localhost:3000/calendario/update/${fechaFormateada}`, { method: 'POST' })
             .then(() => {
-               
+                window.location.reload(true); // Recargar la página después de la solicitud POST
             })
             .catch(err => console.error('Error:', err));
-
+            
     });
 
 }
