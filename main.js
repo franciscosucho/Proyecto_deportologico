@@ -7,10 +7,13 @@ const bcrypt = require('bcrypt');
 
 let mainWindow;
 
+require('./index.js')
+
 function createWindowMain() {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    fullscreen: true,
     webPreferences: {
       nodeIntegration: false, // Mejor seguridad
       contextIsolation: true,
@@ -19,7 +22,7 @@ function createWindowMain() {
     },
   });
 
-  mainWindow.loadURL('http://localhost:3000/index');
+  mainWindow.loadURL('http://localhost:3000');
 }
 
 // Conexión a la base de datos

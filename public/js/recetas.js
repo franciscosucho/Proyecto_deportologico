@@ -1,15 +1,50 @@
+const cont_recetas_main = document.getElementById("cont_recetas_main")
+const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
+var url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=1&include-tags=vegetariano,dessert&exclude-tags=quinoa
+`;
+var selectElement = document.getElementById('region');
+var tiempo_receta = document.getElementById("tiempo_receta");
+var proteina_min = document.getElementById("proteina_min");
+var calorias_max = document.getElementById("calorias_max");
+var Comida = document.getElementById("Comida_inp");
+var aplicar = document.getElementById("aplicar");
+var limpiar = document.getElementById("limpiar");
 
-function recetas_number(number) {
+aplicar.addEventListener("click", () => {
+    cont_recetas_main.innerHTML = "";
+    selectElement_val = selectElement.value;
+    Comida_val = Comida.value
+    tiempo_receta_val = tiempo_receta.value
+    proteina_min_val = proteina_min.value
+    calorias_max_val = calorias_max.value
+
+    const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
+    url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=1&include-tags=vegetariano,dessert&query=${Comida_val}
+    &cuisine=${selectElement_val}&maxReadyTime=${tiempo_receta_val}&minProtein=${proteina_min_val}&maxCalories=${calorias_max_val}//`;
+    fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+        });
+})
+
+
+limpiar.addEventListener("click", () => {
+    Comida.value = ""
+    proteina_min.value = ""
+    calorias_max.value = ""
+})
+// codigo para traer las recetas desde la BD
+function recetas_number(number, url) {
 
     for (let i = 1; i <= number; i++) {
-        fecth_recetas(i);
+        fecth_recetas(i, url);
     }
 }
 
-function fecth_recetas(id) {
-    const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
-    const url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=1&include-tags=vegetariano,dessert&exclude-tags=quinoa
-`;
+function fecth_recetas(id, url) {
+
+
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
@@ -19,7 +54,7 @@ function fecth_recetas(id) {
 }
 
 
-const cont_recetas_main = document.getElementById("cont_recetas_main")
+
 
 function create_recetas(receta, id) {
 
@@ -27,13 +62,13 @@ function create_recetas(receta, id) {
     card.classList.add('cont_receta');
     card.classList.add('id' + id);
 
-   
+
 
     const sprite = document.createElement('img');
     sprite.classList.add("sprite");
     sprite.src = receta.recipes[0].image;
 
-   
+
 
 
     //tiempo receta
@@ -74,4 +109,4 @@ function create_recetas(receta, id) {
 }
 
 
-// recetas_number(2);
+// recetas_number(2,url);

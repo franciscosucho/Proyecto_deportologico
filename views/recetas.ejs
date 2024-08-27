@@ -128,32 +128,65 @@
                     <article id="filtros">
                         <h4>Busqueda avanzada</h4>
                         <div class="cont_fitro">
-                            <label for="region">Region de la receta</label>
+                            <label for="Comida">Nombre de receta</label>
+                            <input type="text" id="Comida_inp" name="Comida" placeholder="Escriba el nombre de la receta">
+                        </div>
+                        <div class="cont_fitro">
+                            <label for="region">Región de la receta</label>
                             <select id="region" name="region" required>
-
+                                <option value="African">Africana</option>
+                                <option value="Asian">Asiática</option>
+                                <option value="American">Americana</option>
+                                <option value="British">Británica</option>
+                                <option value="Cajun">Cajún</option>
+                                <option value="Caribbean">Caribeña</option>
+                                <option value="Chinese">China</option>
+                                <option value="Eastern European">Europea del Este</option>
+                                <option value="European">Europea</option>
+                                <option value="French">Francesa</option>
+                                <option value="German">Alemana</option>
+                                <option value="Greek">Griega</option>
+                                <option value="Indian">India</option>
+                                <option value="Irish">Irlandesa</option>
+                                <option value="Italian">Italiana</option>
+                                <option value="Japanese">Japonesa</option>
+                                <option value="Jewish">Judía</option>
+                                <option value="Korean">Coreana</option>
+                                <option value="Latin American">Latinoamericana</option>
+                                <option value="Mediterranean">Mediterránea</option>
+                                <option value="Mexican">Mexicana</option>
+                                <option value="Middle Eastern">Medio Oriental</option>
+                                <option value="Nordic">Nórdica</option>
+                                <option value="Southern">Sureña</option>
+                                <option value="Spanish">Española</option>
+                                <option value="Thai">Tailandesa</option>
+                                <option value="Vietnamese">Vietnamita</option>
                             </select>
+
                         </div>
                         <div class="cont_fitro">
                             <label for="tiempo_receta">Tiempo de receta</label>
                             <select id="tiempo_receta" name="tiempo_receta" required>
-                                <option value="3/7">3/7</option>
-                                <option value="4/7">4/7</option>
-                                <option value="5/7">5/7</option>
-                                <option value="6/7">6/7</option>
-                                <option value="7/7">7/7</option>
+                                <option value="20">20 min</option>
+                                <option value="40">40 min</option>
+                                <option value="60">60 min</option>
+                                <option value="80">80 min</option>
+                                <option value="100">100 min</option>
                             </select>
                         </div>
                         <div class="cont_fitro">
                             <label for="proteina_min">Proteina mínima</label>
-                            <input type="number" name="proteina_min">
+                            <input type="number" id="proteina_min" name="proteina_min"
+                                placeholder="Escriba la Proteina mínima de la receta">
                         </div>
                         <div class="cont_fitro">
                             <label for="calorias_max">Calorias máximas</label>
-                            <input type="number" name="calorias_max">
+                            <input type="number" id="calorias_max" name="calorias_max"
+                                placeholder="Escriba las Calorias máximas de la receta">
                         </div>
                         <div class="cont_button">
                             <button id="limpiar">Limpiar</button>
-                            <button type="submit" id="aplicar">Aplicar</button>
+                            <button id="aplicar">Aplicar</button>
                         </div>
 
                     </article>

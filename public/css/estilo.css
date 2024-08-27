@@ -32,12 +32,16 @@ body main #registro {
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  padding: 40px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 body main #registro.desac {
   display: none !important;
+}
+body main #registro #cont_selec {
+  margin-bottom: 20px;
 }
 body main #registro #cont_selec #cont_url {
   width: 100%;
@@ -108,10 +112,12 @@ body main #registro form .cont_inputs input {
   outline: none;
   box-shadow: none;
   font-size: 1.1em;
+  color: #121212 !important;
 }
 body main #registro form button {
   border-radius: 30px;
-  width: 40%;
+  width: auto;
+  min-width: 50%;
   height: 50px;
   background-color: #64E788;
   font-size: 1.1em;
@@ -150,8 +156,8 @@ body main #registro form#cont_registrar .sub_form {
   gap: 20px;
 }
 body main #registro form#cont_registrar .sub_form .cont_btn {
-  height: 50px;
-  width: 40%;
+  height: 80px;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,8 +228,9 @@ body main #ventana_prin #menu_lateral #cont_fixed #cont_item a .item {
 }
 body main #ventana_prin #menu_lateral #cont_fixed #cont_item a .item span {
   font-weight: bolder;
-  font-size: 1em;
+  font-size: 0.9em;
   color: white;
+  height: auto;
 }
 body main #ventana_prin #menu_lateral #cont_fixed #cont_item a .item i {
   color: white;

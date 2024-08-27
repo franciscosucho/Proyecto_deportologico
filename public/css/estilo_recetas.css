@@ -8,6 +8,11 @@
   flex-direction: column;
   gap: 40px;
 }
+#main_recetas h2 {
+  font-size: 2em;
+  color: white;
+  font-style: italic;
+}
 #main_recetas .cont_rec {
   display: flex;
   height: auto;
@@ -28,7 +33,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 70%;
-  height: 40vh;
+  height: auto;
   background-color: #173D30;
 }
 #main_recetas .cont_rec #cont_recetas_main .cont_receta img {
@@ -95,9 +100,11 @@
 #main_recetas .cont_rec #filtros .cont_fitro label {
   color: rgb(73, 73, 73);
 }
-#main_recetas .cont_rec #filtros .cont_fitro select, #main_recetas .cont_rec #filtros .cont_fitro input {
+#main_recetas .cont_rec #filtros .cont_fitro select,
+#main_recetas .cont_rec #filtros .cont_fitro input {
   padding: 10px;
   height: 50px;
+  color: white;
   background-color: transparent;
   border-radius: 3px;
   border: 1px solid rgb(73, 73, 73);

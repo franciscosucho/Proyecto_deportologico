@@ -359,3 +359,4 @@ app.listen(3000, () => {
     console.log('Servidor encendido')
 })
 
+module.exports = app

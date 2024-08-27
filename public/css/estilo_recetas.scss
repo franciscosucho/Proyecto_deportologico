@@ -1,3 +1,5 @@
+$color-principal-receta: #3498db;
+
 #main_recetas {
     width: 100%;
     height: auto;
@@ -10,11 +12,19 @@
     flex-direction: column;
     gap: 40px;
 
+    h2 {
+
+        font-size: 2em;
+        color: white;
+        font-style: italic;
+    }
+
     .cont_rec {
         display: flex;
-        
+
         height: auto;
         width: 100%;
+
         #cont_recetas_main {
 
             display: flex;
@@ -25,45 +35,43 @@
             /* Espacio entre los elementos */
             width: 70%;
             height: auto;
-    
-    
+
+
             .cont_receta {
                 display: flex;
                 justify-content: flex-start;
                 align-items: flex-start;
                 width: 70%;
-    
-                height: 40vh;
-    
+                height: auto;
                 background-color: #173D30;
-    
+
                 img {
                     height: 100%;
                     width: auto;
                     max-width: 50%;
                 }
-    
+
                 .text {
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
                     padding: 20px;
                     width: 50%;
-    
+
                     .name_receta {
                         width: 50%;
                         color: white;
                         font-weight: bolder;
                         font-size: 1.5em;
-    
+
                     }
-    
+
                     .dieta {
                         width: 50%;
                         color: rgb(170, 170, 170);
-    
+
                     }
-    
+
                     .cont_tiempo {
                         color: #D6B754;
                         display: flex;
@@ -71,13 +79,13 @@
                         align-items: center;
                         gap: 5px;
                     }
-    
+
                     .info {
                         width: 100%;
                         height: 20vh;
                         overflow-y: scroll;
                     }
-    
+
                     .btn_receta {
                         display: flex;
                         justify-content: flex-start;
@@ -90,55 +98,66 @@
                         text-decoration: none;
                         border-radius: 2px;
                         padding: 5px;
-    
+
                     }
-    
-    
-    
+
+
+
                 }
-    
+
             }
         }
-        #filtros{
+
+        #filtros {
             display: flex;
             flex-direction: column;
-            gap: 20px   ;
-            h4{
-                color: #2c8364;;
+            gap: 20px;
+
+            h4 {
+                color: #2c8364;
+                ;
                 font-size: 2em;
 
             }
-            .cont_fitro{
+
+            .cont_fitro {
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
-                label{
+
+                label {
                     color: rgb(73, 73, 73);
                 }
-                select,input{
+
+                select,
+                input {
                     padding: 10px;
                     height: 50px;
+                    color: white;
                     background-color: transparent;
                     border-radius: 3px;
-                    border: 1px solid  rgb(73, 73, 73);
+                    border: 1px solid rgb(73, 73, 73);
                 }
-                
+
             }
-            .cont_button{
+
+            .cont_button {
                 display: flex;
                 width: 100%;
-                gap: 10px   ;
+                gap: 10px;
                 align-items: center;
                 justify-content: flex-end;
-                
-                button{
+
+                button {
                     cursor: pointer;
                     border: none;
                     background-color: transparent;
-                    &#limpiar{
+
+                    &#limpiar {
                         color: rgb(116, 116, 116);
                     }
-                    &#aplicar{
+
+                    &#aplicar {
                         color: #2c8364;
                     }
                 }
@@ -148,5 +167,5 @@
 
 
 
-   
+
 }
