@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body main #subtitulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6%;
+  display: flex;
+  color: white;
+  font-size: 22px;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  background-color: red;
+}
+body main .cont_profesional {
+  margin-top: 6%;
+  display: grid;
+  grid-template-columns: repeat(3, 25%);
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+body main .cont_profesional .card {
+  padding: 15px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  height: auto;
+}
+body main .cont_profesional .card img {
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+}/*# sourceMappingURL=estilo_asesoriamento.css.map */

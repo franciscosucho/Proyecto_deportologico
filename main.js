@@ -1,5 +1,6 @@
-// comando para instalar en el cole " npm install --save-dev electron "
-// 
+// comando para instalar en el cole " npm install --save-dev electron"
+// comando para instalar todas las dependencias "npm i"
+// "node --watch index.js"
 const mysql = require('mysql2');
 const { app, nativeTheme, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
