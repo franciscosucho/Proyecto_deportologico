@@ -28,12 +28,12 @@ aplicar.addEventListener("click", () => {
         });
 })
 
-
 limpiar.addEventListener("click", () => {
     Comida.value = ""
     proteina_min.value = ""
     calorias_max.value = ""
 })
+
 // codigo para traer las recetas desde la BD
 function recetas_number(number, url) {
 
@@ -58,9 +58,12 @@ function fecth_recetas(id, url) {
 
 function create_recetas(receta, id) {
 
-    const card = document.createElement('div');
-    card.classList.add('cont_receta');
-    card.classList.add('id' + id);
+
+
+    const cont_receta = document.createElement('div');
+    const id_receta = receta.recipes[0].id
+    cont_receta.setAttribute('data-id', id_receta);
+    cont_receta.classList.add('cont_receta');
 
 
 
@@ -69,6 +72,9 @@ function create_recetas(receta, id) {
     sprite.src = receta.recipes[0].image;
 
 
+
+    const text = document.createElement('div');
+    text.classList.add('text');
 
 
     //tiempo receta
@@ -84,6 +90,10 @@ function create_recetas(receta, id) {
     let centenas = Math.floor(tiempo / 100);
     let decenas = Math.floor((tiempo % 100) / 10);
     tiempo_receta.textContent = centenas + "h " + decenas + "0min"
+
+
+
+
     cont_tiempo.appendChild(icon_tiempo)
     cont_tiempo.appendChild(tiempo_receta)
 
@@ -100,13 +110,29 @@ function create_recetas(receta, id) {
     name.textContent = receta.recipes[0].title;
 
 
+    const info = document.createElement('div')
+    info.classList.add('info');
+    info.innerHTML = receta.recipes[0].summary
+    const link = document.createElement('a')
+    link.classList.add('btn_receta');
+    const ver_receta = document.createElement('span')
+    ver_receta.textContent = "Ver receta"
     //Mandar las etiquetas
-    card.appendChild(dieta_receta);
-    card.appendChild(sprite);
-    card.appendChild(name);
-    card.appendChild(cont_tiempo);
-    cont_recetas_main.appendChild(card);
+    const icon_arrow = document.createElement('i')
+    icon_arrow.classList.add('fa-solid', 'fa-arrow-right')
+    link.href = '/receta_focus/' + id_receta;
+    link.appendChild(ver_receta)
+    link.appendChild(icon_arrow)
+
+    text.appendChild(name);
+    text.appendChild(dieta_receta);
+    text.appendChild(cont_tiempo);
+    text.appendChild(info)
+    text.appendChild(link)
+    cont_receta.appendChild(sprite);
+    cont_receta.appendChild(text);
+    cont_recetas_main.appendChild(cont_receta);
 }
 
 
-// recetas_number(2,url);
+recetas_number(1,url);

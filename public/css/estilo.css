@@ -156,7 +156,7 @@ body main #registro form#cont_registrar .sub_form {
   gap: 20px;
 }
 body main #registro form#cont_registrar .sub_form .cont_btn {
-  height: 80px;
+  height: 60px;
   width: 50%;
   display: flex;
   justify-content: center;

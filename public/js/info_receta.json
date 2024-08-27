@@ -1,0 +1,677 @@
+{
+    "vegetarian": false,
+    "vegan": false,
+    "glutenFree": false,
+    "dairyFree": false,
+    "veryHealthy": false,
+    "cheap": false,
+    "veryPopular": false,
+    "sustainable": false,
+    "lowFodmap": false,
+    "weightWatcherSmartPoints": 18,
+    "gaps": "no",
+    "preparationMinutes": null,
+    "cookingMinutes": null,
+    "aggregateLikes": 10,
+    "healthScore": 1,
+    "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+    "license": "CC BY 3.0",
+    "sourceName": "Foodista",
+    "pricePerServing": 138.65,
+    "extendedIngredients": [
+        {
+            "id": 18369,
+            "aisle": "Baking",
+            "image": "white-powder.jpg",
+            "consistency": "SOLID",
+            "name": "baking powder",
+            "nameClean": "baking powder",
+            "original": "1/2 teaspoon baking powder",
+            "originalName": "baking powder",
+            "amount": 0.5,
+            "unit": "teaspoon",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 0.5,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                },
+                "metric": {
+                    "amount": 0.5,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                }
+            }
+        },
+        {
+            "id": 18372,
+            "aisle": "Baking",
+            "image": "white-powder.jpg",
+            "consistency": "SOLID",
+            "name": "baking soda",
+            "nameClean": "baking soda",
+            "original": "1/2 teaspoon baking soda",
+            "originalName": "baking soda",
+            "amount": 0.5,
+            "unit": "teaspoon",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 0.5,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                },
+                "metric": {
+                    "amount": 0.5,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                }
+            }
+        },
+        {
+            "id": 10019071,
+            "aisle": "Baking",
+            "image": "chocolate-chips.jpg",
+            "consistency": "SOLID",
+            "name": "bittersweet chocolate chips",
+            "nameClean": "dark chocolate chips",
+            "original": "1/2 cup bittersweet chocolate chips, melted",
+            "originalName": "bittersweet chocolate chips, melted",
+            "amount": 0.5,
+            "unit": "cup",
+            "meta": [
+                "melted"
+            ],
+            "measures": {
+                "us": {
+                    "amount": 0.5,
+                    "unitShort": "cups",
+                    "unitLong": "cups"
+                },
+                "metric": {
+                    "amount": 90.0,
+                    "unitShort": "ml",
+                    "unitLong": "milliliters"
+                }
+            }
+        },
+        {
+            "id": 10019071,
+            "aisle": "Baking",
+            "image": "chocolate-chips.jpg",
+            "consistency": "SOLID",
+            "name": "bittersweet chocolate chips",
+            "nameClean": "dark chocolate chips",
+            "original": "3/4 cup bittersweet chocolate chips",
+            "originalName": "bittersweet chocolate chips",
+            "amount": 0.75,
+            "unit": "cup",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 0.75,
+                    "unitShort": "cups",
+                    "unitLong": "cups"
+                },
+                "metric": {
+                    "amount": 135.0,
+                    "unitShort": "ml",
+                    "unitLong": "milliliters"
+                }
+            }
+        },
+        {
+            "id": 1230,
+            "aisle": "Milk, Eggs, Other Dairy",
+            "image": "buttermilk.jpg",
+            "consistency": "SOLID",
+            "name": "buttermilk",
+            "nameClean": "buttermilk",
+            "original": "1/2 cup buttermilk",
+            "originalName": "buttermilk",
+            "amount": 0.5,
+            "unit": "cup",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 0.5,
+                    "unitShort": "cups",
+                    "unitLong": "cups"
+                },
+                "metric": {
+                    "amount": 120.0,
+                    "unitShort": "ml",
+                    "unitLong": "milliliters"
+                }
+            }
+        },
+        {
+            "id": 10020129,
+            "aisle": "Baking",
+            "image": "flour.png",
+            "consistency": "SOLID",
+            "name": "cake flour",
+            "nameClean": "cake flour",
+            "original": "1 cup Cake Flour (100g)",
+            "originalName": "cup Cake Flour",
+            "amount": 100.0,
+            "unit": "g",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 3.527,
+                    "unitShort": "oz",
+                    "unitLong": "ounces"
+                },
+                "metric": {
+                    "amount": 100.0,
+                    "unitShort": "g",
+                    "unitLong": "grams"
+                }
+            }
+        },
+        {
+            "id": 19904,
+            "aisle": "Sweet Snacks",
+            "image": "dark-chocolate-pieces.jpg",
+            "consistency": "SOLID",
+            "name": "chocolate cocoa powder",
+            "nameClean": "dark chocolate",
+            "original": "Dark Chocolate Cocoa Powder, to dust",
+            "originalName": "Dark Chocolate Cocoa Powder, to dust",
+            "amount": 12.0,
+            "unit": "servings",
+            "meta": [
+                "dark"
+            ],
+            "measures": {
+                "us": {
+                    "amount": 12.0,
+                    "unitShort": "servings",
+                    "unitLong": "servings"
+                },
+                "metric": {
+                    "amount": 12.0,
+                    "unitShort": "servings",
+                    "unitLong": "servings"
+                }
+            }
+        },
+        {
+            "id": 19165,
+            "aisle": "Baking",
+            "image": "cocoa-powder.png",
+            "consistency": "SOLID",
+            "name": "natural cocoa powder",
+            "nameClean": "cacao powder",
+            "original": "1/2 cup natural unsweetened cocoa powder (60g)",
+            "originalName": "1/2 cup natural unsweetened cocoa powder",
+            "amount": 60.0,
+            "unit": "g",
+            "meta": [
+                "unsweetened"
+            ],
+            "measures": {
+                "us": {
+                    "amount": 2.116,
+                    "unitShort": "oz",
+                    "unitLong": "ounces"
+                },
+                "metric": {
+                    "amount": 60.0,
+                    "unitShort": "g",
+                    "unitLong": "grams"
+                }
+            }
+        },
+        {
+            "id": 13111111,
+            "aisle": "Baking",
+            "image": "extract.png",
+            "consistency": "LIQUID",
+            "name": "coffee extract",
+            "nameClean": "coffee extract",
+            "original": "4 teaspoons Coffee Extract",
+            "originalName": "Coffee Extract",
+            "amount": 4.0,
+            "unit": "teaspoons",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 4.0,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                },
+                "metric": {
+                    "amount": 4.0,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                }
+            }
+        },
+        {
+            "id": 1123,
+            "aisle": "Milk, Eggs, Other Dairy",
+            "image": "egg.png",
+            "consistency": "SOLID",
+            "name": "egg",
+            "nameClean": "egg",
+            "original": "1 egg",
+            "originalName": "egg",
+            "amount": 1.0,
+            "unit": "",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 1.0,
+                    "unitShort": "",
+                    "unitLong": ""
+                },
+                "metric": {
+                    "amount": 1.0,
+                    "unitShort": "",
+                    "unitLong": ""
+                }
+            }
+        },
+        {
+            "id": 93645,
+            "aisle": "Baking",
+            "image": "nonpareils.jpg",
+            "consistency": "SOLID",
+            "name": "halloween sprinkles",
+            "nameClean": "sprinkles",
+            "original": "Halloween Sprinkles",
+            "originalName": "Halloween Sprinkles",
+            "amount": 12.0,
+            "unit": "servings",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 12.0,
+                    "unitShort": "servings",
+                    "unitLong": "servings"
+                },
+                "metric": {
+                    "amount": 12.0,
+                    "unitShort": "servings",
+                    "unitLong": "servings"
+                }
+            }
+        },
+        {
+            "id": 1053,
+            "aisle": "Milk, Eggs, Other Dairy",
+            "image": "fluid-cream.jpg",
+            "consistency": "LIQUID",
+            "name": "heavy cream",
+            "nameClean": "cream",
+            "original": "1/2 cup heavy cream",
+            "originalName": "heavy cream",
+            "amount": 0.5,
+            "unit": "cup",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 0.5,
+                    "unitShort": "cups",
+                    "unitLong": "cups"
+                },
+                "metric": {
+                    "amount": 119.0,
+                    "unitShort": "ml",
+                    "unitLong": "milliliters"
+                }
+            }
+        },
+        {
+            "id": 93820,
+            "aisle": "Cheese",
+            "image": "white-cream-fluffy.jpg",
+            "consistency": "SOLID",
+            "name": "mascarpone cheese",
+            "nameClean": "mascarpone",
+            "original": "1 8oz container mascarpone cheese",
+            "originalName": "mascarpone cheese",
+            "amount": 8.0,
+            "unit": "oz",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 8.0,
+                    "unitShort": "oz",
+                    "unitLong": "ounces"
+                },
+                "metric": {
+                    "amount": 226.796,
+                    "unitShort": "g",
+                    "unitLong": "grams"
+                }
+            }
+        },
+        {
+            "id": 4582,
+            "aisle": "Oil, Vinegar, Salad Dressing",
+            "image": "vegetable-oil.jpg",
+            "consistency": "LIQUID",
+            "name": "oil",
+            "nameClean": "cooking oil",
+            "original": "1/2 cup oil",
+            "originalName": "oil",
+            "amount": 0.5,
+            "unit": "cup",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 0.5,
+                    "unitShort": "cups",
+                    "unitLong": "cups"
+                },
+                "metric": {
+                    "amount": 112.0,
+                    "unitShort": "ml",
+                    "unitLong": "milliliters"
+                }
+            }
+        },
+        {
+            "id": 2047,
+            "aisle": "Spices and Seasonings",
+            "image": "salt.jpg",
+            "consistency": "SOLID",
+            "name": "salt",
+            "nameClean": "table salt",
+            "original": "1/4 teaspoon salt",
+            "originalName": "salt",
+            "amount": 0.25,
+            "unit": "teaspoon",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 0.25,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                },
+                "metric": {
+                    "amount": 0.25,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                }
+            }
+        },
+        {
+            "id": 19335,
+            "aisle": "Baking",
+            "image": "sugar-in-bowl.png",
+            "consistency": "SOLID",
+            "name": "sugar",
+            "nameClean": "sugar",
+            "original": "2/3 cup sugar (add another 1/3 cup if you like it sweet)",
+            "originalName": "sugar (add another 1/3 cup if you like it sweet)",
+            "amount": 0.6666667,
+            "unit": "cup",
+            "meta": [
+                "sweet",
+                "(add another)"
+            ],
+            "measures": {
+                "us": {
+                    "amount": 0.6666667,
+                    "unitShort": "cups",
+                    "unitLong": "cups"
+                },
+                "metric": {
+                    "amount": 133.333,
+                    "unitShort": "g",
+                    "unitLong": "grams"
+                }
+            }
+        },
+        {
+            "id": 2050,
+            "aisle": "Baking",
+            "image": "vanilla-extract.jpg",
+            "consistency": "LIQUID",
+            "name": "vanilla extract",
+            "nameClean": "vanilla extract",
+            "original": "1 teaspoon vanilla extract",
+            "originalName": "vanilla extract",
+            "amount": 1.0,
+            "unit": "teaspoon",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 1.0,
+                    "unitShort": "tsp",
+                    "unitLong": "teaspoon"
+                },
+                "metric": {
+                    "amount": 1.0,
+                    "unitShort": "tsp",
+                    "unitLong": "teaspoon"
+                }
+            }
+        }
+    ],
+    "id": 646138,
+    "title": "Halloween Mocha Cupcakes",
+    "readyInMinutes": 45,
+    "servings": 12,
+    "sourceUrl": "http://www.foodista.com/recipe/LBCYX5KF/halloween-mocha-cupcakes",
+    "image": "https://img.spoonacular.com/recipes/646138-556x370.jpg",
+    "imageType": "jpg",
+    "summary": "If you want to add more <b>American</b> recipes to your collection, Halloween Mocha Cupcakes might be a recipe you should try. One serving contains <b>382 calories</b>, <b>6g of protein</b>, and <b>22g of fat</b>. This recipe serves 12 and costs $1.39 per serving. It will be a hit at your <b>Halloween</b> event. A mixture of baking powder, sugar, bittersweet chocolate chips, and a handful of other ingredients are all it takes to make this recipe so tasty. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. A couple people made this recipe, and 10 would say it hit the spot. It is brought to you by Foodista. It works well as a dessert. Overall, this recipe earns a <b>rather bad spoonacular score of 24%</b>. Users who liked this recipe also liked <a href=\"https://spoonacular.com/recipes/halloween-cupcakes-1087715\">Halloween cupcakes</a>, <a href=\"https://spoonacular.com/recipes/halloween-cupcakes-63459\">Halloween Cupcakes</a>, and <a href=\"https://spoonacular.com/recipes/halloween-cupcakes-277474\">Halloween Cupcakes</a>.",
+    "cuisines": [
+        "American"
+    ],
+    "dishTypes": [
+        "dessert"
+    ],
+    "diets": [],
+    "occasions": [
+        "halloween"
+    ],
+    "instructions": "<ol><li>Step 1: Prepare the frosting by melting the chocolate in a double broiler. When the chocolate has melted, add heavy cream and coffee extract. Mix well and chill in the refrigerator until needed. Dont combine the mascarpone cheese, yet.</li><li>Step 2: Preheat oven to 350 degrees F and line the cupcake pan with Halloween baking cups. In a large bowl, combine the the cake flour, cocoa powder, baking powder, baking soda, and salt.</li><li>Step 3: In another large mixing bowl, mix together the oil, sugar, egg, and vanilla and coffee extract and mix well. Then add the buttermilk and mix well again.</li><li>Step 4: Now stir in the flour mixture and mix until well combined.</li><li>Step 5: Pour the batter into a ziploc or piping bag and pipe into the cupcake pan. Bake for 20 to 25 minutes or until an inserted toothpick comes out clean (I baked mine for about 24 minutes).</li><li>Step 6: Let the cupcakes cool in the pan for about 5 to 10 minutes and then transfer them to a rack to cool completely.</li><li>Step 7: While cupcakes are cooling, make the chocolate decorations. Melt the chocolate and use a ziploc or piping bag to pipe out your design onto some parchment paper. Sprinkle the halloween sprinkles before the chocolate hardens. Chill in freezer until needed.</li><li>Step 8: Finish the frosting. Using an electric mixer, beat the mascarpone cheese until light and fluffy. Add the cooled chocolate cream mixture from earlier and beat until combined.</li><li>Step 9: Roughly spread the frosting on the cooled cupcakes. Dust with cocoa powder and decorate with sprinkles and chocolate.</li></ol>",
+    "analyzedInstructions": [
+        {
+            "name": "",
+            "steps": [
+                {
+                    "number": 1,
+                    "step": "Prepare the frosting by melting the chocolate in a double broiler. When the chocolate has melted, add heavy cream and coffee extract.",
+                    "ingredients": [
+                        {
+                            "id": 13111111,
+                            "name": "coffee extract",
+                            "localizedName": "coffee extract",
+                            "image": "extract.png"
+                        },
+                        {
+                            "id": 1053,
+                            "name": "heavy cream",
+                            "localizedName": "heavy cream",
+                            "image": "fluid-cream.jpg"
+                        },
+                        {
+                            "id": 19081,
+                            "name": "chocolate",
+                            "localizedName": "chocolate",
+                            "image": "https://spoonacular.com/cdn/ingredients_100x100/milk-chocolate.jpg"
+                        },
+                        {
+                            "id": 19230,
+                            "name": "frosting",
+                            "localizedName": "frosting",
+                            "image": "vanilla-frosting.png"
+                        }
+                    ],
+                    "equipment": [
+                        {
+                            "id": 405914,
+                            "name": "broiler",
+                            "localizedName": "broiler",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Mix well and chill in the refrigerator until needed. Dont combine the mascarpone cheese, yet.Step 2 Preheat oven to 350 degrees F and line the cupcake pan with Halloween baking cups. In a large bowl, combine the the cake flour, cocoa powder, baking powder, baking soda, and salt.Step 3 In another large mixing bowl, mix together the oil, sugar, egg, and vanilla and coffee extract and mix well. Then add the buttermilk and mix well again.Step 4 Now stir in the flour mixture and mix until well combined.Step 5",
+            "steps": [
+                {
+                    "number": 1,
+                    "step": "Pour the batter into a ziploc or piping bag and pipe into the cupcake pan.",
+                    "ingredients": [
+                        {
+                            "id": 18139,
+                            "name": "cupcakes",
+                            "localizedName": "cupcakes",
+                            "image": "plain-cupcake.jpg"
+                        }
+                    ],
+                    "equipment": [
+                        {
+                            "id": 404671,
+                            "name": "muffin tray",
+                            "localizedName": "muffin tray",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-tray.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Bake for 20 to 25 minutes or until an inserted toothpick comes out clean (I baked mine for about 24 minutes).Step 6",
+            "steps": [
+                {
+                    "number": 1,
+                    "step": "Let the cupcakes cool in the pan for about 5 to 10 minutes and then transfer them to a rack to cool completely.Step 7: While cupcakes are cooling, make the chocolate decorations. Melt the chocolate and use a ziploc or piping bag to pipe out your design onto some parchment paper.",
+                    "ingredients": [
+                        {
+                            "id": 19081,
+                            "name": "chocolate",
+                            "localizedName": "chocolate",
+                            "image": "https://spoonacular.com/cdn/ingredients_100x100/milk-chocolate.jpg"
+                        },
+                        {
+                            "id": 18139,
+                            "name": "cupcakes",
+                            "localizedName": "cupcakes",
+                            "image": "plain-cupcake.jpg"
+                        }
+                    ],
+                    "equipment": [
+                        {
+                            "id": 404770,
+                            "name": "baking paper",
+                            "localizedName": "baking paper",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/baking-paper.jpg"
+                        },
+                        {
+                            "id": 404645,
+                            "name": "frying pan",
+                            "localizedName": "frying pan",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+                        }
+                    ],
+                    "length": {
+                        "number": 5,
+                        "unit": "minutes"
+                    }
+                },
+                {
+                    "number": 2,
+                    "step": "Sprinkle the halloween sprinkles before the chocolate hardens. Chill in freezer until needed.Step 8: Finish the frosting. Using an electric mixer, beat the mascarpone cheese until light and fluffy.",
+                    "ingredients": [
+                        {
+                            "id": 93645,
+                            "name": "halloween sprinkles",
+                            "localizedName": "halloween sprinkles",
+                            "image": "halloween-sprinkles.png"
+                        },
+                        {
+                            "id": 93820,
+                            "name": "mascarpone",
+                            "localizedName": "mascarpone",
+                            "image": "white-cream-fluffy.jpg"
+                        },
+                        {
+                            "id": 19081,
+                            "name": "chocolate",
+                            "localizedName": "chocolate",
+                            "image": "https://spoonacular.com/cdn/ingredients_100x100/milk-chocolate.jpg"
+                        },
+                        {
+                            "id": 19230,
+                            "name": "frosting",
+                            "localizedName": "frosting",
+                            "image": "vanilla-frosting.png"
+                        }
+                    ],
+                    "equipment": [
+                        {
+                            "id": 404628,
+                            "name": "hand mixer",
+                            "localizedName": "hand mixer",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/hand-mixer.png"
+                        }
+                    ]
+                },
+                {
+                    "number": 3,
+                    "step": "Add the cooled chocolate cream mixture from earlier and beat until combined.Step 9: Roughly spread the frosting on the cooled cupcakes. Dust with cocoa powder and decorate with sprinkles and chocolate.",
+                    "ingredients": [
+                        {
+                            "id": 19165,
+                            "name": "cocoa powder",
+                            "localizedName": "cocoa powder",
+                            "image": "cocoa-powder.png"
+                        },
+                        {
+                            "id": 19081,
+                            "name": "chocolate",
+                            "localizedName": "chocolate",
+                            "image": "https://spoonacular.com/cdn/ingredients_100x100/milk-chocolate.jpg"
+                        },
+                        {
+                            "id": 93645,
+                            "name": "sprinkles",
+                            "localizedName": "sprinkles",
+                            "image": "colorful-sprinkles.jpg"
+                        },
+                        {
+                            "id": 18139,
+                            "name": "cupcakes",
+                            "localizedName": "cupcakes",
+                            "image": "plain-cupcake.jpg"
+                        },
+                        {
+                            "id": 19230,
+                            "name": "frosting",
+                            "localizedName": "frosting",
+                            "image": "vanilla-frosting.png"
+                        },
+                        {
+                            "id": 0,
+                            "name": "spread",
+                            "localizedName": "spread",
+                            "image": ""
+                        },
+                        {
+                            "id": 1053,
+                            "name": "cream",
+                            "localizedName": "cream",
+                            "image": "fluid-cream.jpg"
+                        }
+                    ],
+                    "equipment": []
+                }
+            ]
+        }
+    ],
+    "originalId": null,
+    "spoonacularScore": 30.03677749633789,
+    "spoonacularSourceUrl": "https://spoonacular.com/halloween-mocha-cupcakes-646138"
+}

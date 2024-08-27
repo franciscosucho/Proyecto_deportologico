@@ -26,7 +26,8 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
-//
+app.use('/receta_focus', express.static(path.join(__dirname, 'public')))
+
 app.use(session({
     secret: 'keyboard cat', // CAMBIAR Y GUARDAR EN OTRO LADO MAS TARDE
     resave: true,
@@ -152,6 +153,11 @@ app.get('/index', isLogged, (req, res) => {
 
 })
 
+
+
+
+
+
 app.get('/recetas', (req, res) => {
 
     var user_name = req.session.user_name
@@ -172,6 +178,38 @@ app.get('/recetas', (req, res) => {
 
 })
 
+app.get('/receta_focus/:id_receta', (req, res) => {
+
+    var user_name = req.session.user_name
+    var user_dni = req.session.user_dni
+    var user_pass = req.session.user_pass
+    var user_nac = req.session.user_nac
+    var user_genero = req.session.user_genero
+    var user_peso = req.session.user_peso
+    var user_altura = req.session.user_altura
+    var user_email = req.session.user_email
+    var user_dieta = req.session.user_dieta
+    var user_obj_nut = req.session.user_obj_nut
+    var user_deporte = req.session.user_deporte
+    var user_obj_dep = req.session.user_obj_dep
+    var user_frecuencia = req.session.user_frecuencia
+    var user_intensidad = req.session.user_intensidad
+    var id_receta = req.params.id_receta
+    var data=require('./public/js/info_receta.json')
+    // const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
+
+    // var url = `https://api.spoonacular.com/recipes/${id_receta}/information?apiKey=${apiId}`;
+    // fetch(url)
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         res.render('receta_focus', { data})
+
+    //     });
+    res.render('receta_focus', { data})
+})
+
+
+
 app.get('/asesoramiento', (req, res) => {
     const query_ase = 'SELECT * FROM `profesional` WHERE 1';
 
@@ -181,7 +219,7 @@ app.get('/asesoramiento', (req, res) => {
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
         }
         console.log(results)
-        res.render('asesoramiento', {results})
+        res.render('asesoramiento', { results })
     })
 })
 

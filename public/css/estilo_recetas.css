@@ -29,12 +29,15 @@
   height: auto;
 }
 #main_recetas .cont_rec #cont_recetas_main .cont_receta {
+  padding: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   width: 70%;
   height: auto;
-  background-color: #173D30;
+  background-color: #00704A;
+  border-radius: 3px;
+  box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
 }
 #main_recetas .cont_rec #cont_recetas_main .cont_receta img {
   height: 100%;
@@ -68,6 +71,7 @@
 #main_recetas .cont_rec #cont_recetas_main .cont_receta .text .info {
   width: 100%;
   height: 20vh;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 #main_recetas .cont_rec #cont_recetas_main .cont_receta .text .btn_receta {
@@ -87,6 +91,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 40%;
 }
 #main_recetas .cont_rec #filtros h4 {
   color: #2c8364;
@@ -98,10 +103,11 @@
   gap: 5px;
 }
 #main_recetas .cont_rec #filtros .cont_fitro label {
-  color: rgb(73, 73, 73);
+  color: rgb(133, 133, 133);
 }
 #main_recetas .cont_rec #filtros .cont_fitro select,
 #main_recetas .cont_rec #filtros .cont_fitro input {
+  width: 80%;
   padding: 10px;
   height: 50px;
   color: white;
@@ -109,9 +115,12 @@
   border-radius: 3px;
   border: 1px solid rgb(73, 73, 73);
 }
+#main_recetas .cont_rec #filtros .cont_fitro select:focus {
+  background-color: rgb(41, 41, 41);
+}
 #main_recetas .cont_rec #filtros .cont_button {
   display: flex;
-  width: 100%;
+  width: 80%;
   gap: 10px;
   align-items: center;
   justify-content: flex-end;
