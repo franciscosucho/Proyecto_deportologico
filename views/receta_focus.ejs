@@ -17,27 +17,82 @@
             <aside id="menu_lateral">
                 <%-include('menu.ejs')%>
             </aside>
-            <section id="main_recetas">
-                <h2> <strong><%-data.title %> </strong></h2>
-                <section class="cont_rec">
-                    <article id="cont_recetas_main">
-                        <img src="<%=data.image %>" alt="Descripción de la imagen">
-                        <ul class="ingredientes">
-                            <% var i=0; %>
-                                <% while(i < data.extendedIngredients.length) { %>
-                                    <li>
-                                        <%= data.extendedIngredients[i].original %>
-                                    </li>
-                                    <% i +=1; %>
-                                        <% } %>
-                        </ul>
-                    </article>
+            <section id="main_recetas_focus">
 
+                <section id="cont_recetas_main">
+                    <h2> <strong><%-data.title %> </strong></h2>
+
+                    <img src="<%=data.image %>" alt="Descripción de la imagen">
+                    <div class="text">
+                        <%- data.summary %>
+                    </div>
+
+                    <ul class="ingredientes seccion" >
+                        <h4>Ingredientes necesarios</h4>
+                        <% var i=0; %>
+                            <% while(i < data.extendedIngredients.length) { %>
+                                <li>
+                                    <%= data.extendedIngredients[i].original %>
+                                </li>
+                                <% i +=1; %>
+                                    <% } %>
+                    </ul>
+                    <div class="seccion">
+                        <h4>Instrucciones de la receta</h4>
+                        <%- data.instructions %>
+                    </div>
+                    <div class="cont_ver_mas">
+                        <span class="arrow"></span>
+                        <button class="ver_mas">Ver los pasos detallados</button>
+                        <span class="arrow"></span>
+                    </div>
+                    <div class="seccion" id="int_detalladas">
+                        <h4>Instrucciones detalladas</h4>
+                    
+                        <% data.analyzedInstructions.forEach((instruction, index) => { %>
+                            <h3 class="instruction-title">Paso <%= index + 1 %>: <%= instruction.name || `Instrucción ${index + 1}` %></h3>
+                    
+                            <% instruction.steps.forEach((step) => { %>
+                                <div class="step">
+                                    <p class="step-description"><strong>Paso <%= step.number %>:</strong> <%= step.step %></p>
+                    
+                                    <% if (step.ingredients && step.ingredients.length > 0) { %>
+                                        <p class="ingredients-title"><strong>Ingredientes:</strong></p>
+                                        <ul class="ingredients-list">
+                                            <% step.ingredients.forEach((ingredient) => { %>
+                                                <li class="ingredient-item"><%= ingredient.name %></li>
+                                            <% }); %>
+                                        </ul>
+                                    <% } %>
+                    
+                                    <% if (step.equipment && step.equipment.length > 0) { %>
+                                        <p class="equipment-title"><strong>Equipos:</strong></p>
+                                        <ul class="equipment-list">
+                                            <% step.equipment.forEach((equipment) => { %>
+                                                <li class="equipment-item"><%= equipment.name %></li>
+                                            <% }); %>
+                                        </ul>
+                                    <% } %>
+                                </div>
+                            <% }); %>
+                        <% }); %>
+                    </div>
+                    
+                    
+                    
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var botonVerMas = document.querySelector('.ver_mas');
+                            var int_detalladas = document.getElementById('int_detalladas');
+                            botonVerMas.addEventListener('click', function() {
+                                int_detalladas.classList.toggle('active')
+                            });
+                        });
+                    </script>
                 </section>
             </section>
         </section>
     </main>
-    <script src="js/receta_focus.js"></script>
 </body>
 
 </html>

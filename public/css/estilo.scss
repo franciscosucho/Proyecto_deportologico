@@ -206,7 +206,7 @@ body {
 
         #ventana_prin {
             width: 100%;
-            min-height: 120vh;
+            min-height: 100vh;
             height: auto !important;
             background-color: #222;
             display: flex;
@@ -295,7 +295,7 @@ body {
                 align-items: flex-start;
                 flex-direction: column;
 
-                #nombre_us {
+                #h2 {
                     font-size: 2em;
                     color: white;
                     font-style: italic;

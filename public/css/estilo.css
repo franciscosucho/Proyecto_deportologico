@@ -173,7 +173,7 @@ body main #registro form#cont_registrar .desac {
 }
 body main #ventana_prin {
   width: 100%;
-  min-height: 120vh;
+  min-height: 100vh;
   height: auto !important;
   background-color: #222;
   display: flex;
@@ -249,7 +249,7 @@ body main #ventana_prin #cont_main {
   align-items: flex-start;
   flex-direction: column;
 }
-body main #ventana_prin #cont_main #nombre_us {
+body main #ventana_prin #cont_main #h2 {
   font-size: 2em;
   color: white;
   font-style: italic;

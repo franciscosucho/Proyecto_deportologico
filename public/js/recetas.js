@@ -1,7 +1,6 @@
 const cont_recetas_main = document.getElementById("cont_recetas_main")
 const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
-var url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=1&include-tags=vegetariano,dessert&exclude-tags=quinoa
-`;
+var url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=4&diet=Vegetarian`;
 var selectElement = document.getElementById('region');
 var tiempo_receta = document.getElementById("tiempo_receta");
 var proteina_min = document.getElementById("proteina_min");
@@ -19,7 +18,7 @@ aplicar.addEventListener("click", () => {
     calorias_max_val = calorias_max.value
 
     const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
-    url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=1&include-tags=vegetariano,dessert&query=${Comida_val}
+    url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=5&include-tags=vegetariano,dessert&query=${Comida_val}
     &cuisine=${selectElement_val}&maxReadyTime=${tiempo_receta_val}&minProtein=${proteina_min_val}&maxCalories=${calorias_max_val}//`;
     fetch(url)
         .then((res) => res.json())

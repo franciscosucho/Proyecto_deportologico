@@ -179,3 +179,157 @@ $color-principal-receta: #00704A;
 
 
 }
+
+#main_recetas_focus {
+    width: 85%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2%;
+    gap: 20px;
+    padding-bottom: 2%;
+
+    #cont_recetas_main {
+        width: 40vw;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        .seccion{
+            transition: all .2s ease-in-out;
+            &:hover{
+                h4{   font-style: italic;}
+            }
+        }
+        li {
+            transition: all .2s ease;
+            color: #555;
+
+            &:hover {
+                color: #afafaf;
+                padding: 5px;
+                text-decoration: underline;
+            }
+        }
+
+        h2 {
+            font-size: 2em;
+            color: white;
+            font-style: italic;
+            text-decoration: underline;
+        }
+
+        .text {
+            color: rgb(219, 219, 219);
+            width: 30vw;
+
+            a {
+                color: #174426; // Gris oscuro
+                text-decoration: none;
+            }
+        }
+
+        .seccion {
+            display: flex;
+            flex-direction: column;
+
+            width: 100%;
+            padding-left: 15%;
+            gap: 4px;
+
+            h4 {
+                font-size: 2em;
+                color: white;
+                margin-bottom: 10px;
+            }
+
+            &#int_detalladas {
+                display: none;
+
+                &.active {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .instruction-title {
+                    font-size: 1.25em;
+                    color: #b4b4b4; // Gris medio
+                    margin-top: 20px;
+                    margin-bottom: 10px;
+                }
+
+                .step {
+                    padding-left: 15px;
+                    margin-bottom: 20px;
+                    border-left: 4px solid #ccc; // Gris claro
+
+                    .step-description {
+                        font-size: 1em;
+                        color: #265346; // Gris oscuro
+                        margin-bottom: 10px;
+                    }
+
+                    .ingredients-title,
+                    .equipment-title {
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                        color: #555; // Gris medio oscuro
+                    }
+
+                    .ingredients-list,
+                    .equipment-list {
+                        list-style-type: square;
+                        margin-left: 20px;
+
+                        .ingredient-item,
+                        .equipment-item {
+                            font-size: 0.95em;
+                            color: #666; // Gris medio
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
+
+
+
+        }
+
+        .cont_ver_mas {
+            padding-left: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+
+            .arrow {
+                width: 40%;
+                height: 2px;
+                background-color: rgba(82, 82, 82, 0.411);
+            }
+
+            .ver_mas {
+                background-color: transparent;
+                color: white;
+                border-radius: 20px;
+                width: 40%;
+                height: auto;
+                font-size: 1.1em;
+                padding: 7px;
+                cursor: pointer;
+                border: 2px solid rgba(82, 82, 82, 0.411);
+                transition: all .2s ease-in-out;
+
+                &:hover {
+                    background-color: rgba(128, 128, 128, 0.103);
+                    width: 70%;
+                }
+            }
+        }
+    }
+
+
+}
