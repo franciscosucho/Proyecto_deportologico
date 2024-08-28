@@ -1,10 +1,7 @@
-<<<<<<< Updated upstream
-=======
 @import url('./estilo2.css');
 @import url('./estilo_recetas.css');
 @import url('./estilo_asesoriamento.css');
 
->>>>>>> Stashed changes
 * {
     margin: 0px;
     padding: 0px;
@@ -67,7 +64,7 @@ body {
                         border-bottom: none;
 
                         &.activo {
-                            border-bottom: 2px solid $color-primario ;
+                            border-bottom: 2px solid $color-primario;
                         }
 
                     }
@@ -114,7 +111,7 @@ body {
                     gap: 5px;
 
                     label {
-                        width: 60%;
+                        width: 50%;
                         text-align: start;
                         color: $color-primario;
 
@@ -233,7 +230,7 @@ body {
                     gap: 40px;
                     height: 70%;
                     width: 82%;
-                    
+
                     list-style: none;
 
                     .item {
@@ -241,7 +238,7 @@ body {
                         justify-content: flex-start;
                         padding-left: 20px;
                         align-items: center;
-                        gap: 10px   ;
+                        gap: 10px;
                         background-color: #58C885;
                         border-radius: 10px;
                         width: 100%;
@@ -254,10 +251,12 @@ body {
                             font-size: 1em;
                             color: white;
                         }
-                        i{
+
+                        i {
                             color: white;
                             font-size: 1.2em;
                         }
+
                         &:hover {
                             background-color: #419663;
                             transform: scale(1.05);
@@ -322,7 +321,8 @@ $header-font-size-small: 2em;
 $container-max-width: 400px;
 $circle-size: 20px;
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -332,6 +332,7 @@ html, body {
     width: 90%;
     max-width: $container-max-width;
     margin: 5% auto;
+
     .header_calendar {
         width: 100%;
         height: auto;
@@ -341,7 +342,7 @@ html, body {
         flex-direction: column;
         align-items: flex-start;
         padding: 20px;
-        
+
         h1 {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -377,7 +378,8 @@ html, body {
         justify-content: space-between;
         padding: 5px 0;
 
-        .detail_1, .detail_2 {
+        .detail_1,
+        .detail_2 {
             flex: 1;
             display: flex;
             justify-content: center;
@@ -407,7 +409,7 @@ html, body {
 
     .selected {
         position: relative;
-    
+
         &:after {
             content: "";
             width: $circle-size;
@@ -422,6 +424,7 @@ html, body {
             transform: translate(-50%, -50%);
         }
     }
+
     .container_change_month {
         width: 100%;
         height: auto;
@@ -443,6 +446,7 @@ html, body {
             cursor: pointer;
             color: $text-color;
             transition: all 0.2s ease-in-out;
+
             &:hover {
                 color: $primary-color;
             }
@@ -488,11 +492,12 @@ html, body {
             margin: 5px 0;
             font-family: Arial, sans-serif;
             position: relative;
-            flex-basis: calc(100% / 7); 
-            text-align: center; 
+            flex-basis: calc(100% / 7);
+            text-align: center;
         }
 
-        .prev_days, .next_days {
+        .prev_days,
+        .next_days {
             opacity: 0.2; // Opcional: Atenúa los días de otros meses
         }
 
@@ -519,9 +524,10 @@ html, body {
     @media (max-width: 768px) {
         $header-font-size-large: 2.5em;
         $header-font-size-small: 1.5em;
-        
+
         .header_calendar {
             padding: 10px;
+
             h1 {
                 font-size: $header-font-size-large;
             }
@@ -540,11 +546,14 @@ html, body {
     @media (max-width: 480px) {
         $header-font-size-large: 2em;
         $header-font-size-small: 1.2em;
+
         .header_calendar {
             padding: 5px;
+
             h1 {
                 font-size: $header-font-size-large;
             }
+
             h5 {
                 font-size: $header-font-size-small;
             }
