@@ -157,18 +157,11 @@ app.get('/index', isLogged, (req, res) => {
         if (err) {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
-
         }
         resultado_racha = results
-
     })
-
     res.render('index', { resultado_racha, resultado_act, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 })
-
-
-
-
 
 
 app.get('/recetas', (req, res) => {

@@ -30,7 +30,7 @@ body main .contenedor_profesional {
   align-content: stretch;
 }
 body main .contenedor_profesional .card {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: red;
   color: white;
   border-radius: 20px;
   display: flex;
