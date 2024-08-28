@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body main #subtitulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6%;
+  display: flex;
+  color: white;
+  font-size: 25px;
+  width: 100%;
+  text-align: center;
+}
+body main #nombre_us {
+  color: white;
+  font-size: 50px;
+  padding-left: 30px;
+}
+body main .contenedor_profesional {
+  margin-top: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  align-content: stretch;
+}
+body main .contenedor_profesional .card {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+  width: 30%;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+}
+body main .contenedor_profesional .card img {
+  width: 50%;
+  height: auto;
+  border-radius: 50%;
+  background-color: white;
+  margin-bottom: 15px;
+}
+body main .contenedor_profesional .card .nombre_profesional,
+body main .contenedor_profesional .card .profesion {
+  margin: 15px 0 0;
+  width: 100%;
+}
+body main .contenedor_profesional .card .profesion {
+  color: #64e788;
+  font-weight: 500;
+  font-size: 18px;
+}
+body main .contenedor_profesional .card .contactar {
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+body main .contenedor_profesional .card .contactar:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.842);
+}/*# sourceMappingURL=estilo_asesoramiento.css.map */

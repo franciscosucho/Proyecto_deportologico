@@ -4,12 +4,12 @@
     <link rel="stylesheet" href="css/estilo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="shortcut icon" href="/resources/mental-strong.ico" type="image/x-icon">
 </head>
-
 <body>
     <main>
-
         <section id="ventana_prin">
+
 
             <aside id="menu_lateral">
                 <%-include('menu.ejs')%>
@@ -18,25 +18,32 @@
                 <div id="cont_user">
                     <i class="fa-solid fa-gear"></i>
                     <i class="fa-solid fa-user"></i>
-
                 </div>
-
                 <h2 id="nombre_us">Asesoramiento</h2>
-                <% results.forEach(profesional=> { %>
-                    <div class="cont_profesional">
-                      
-                        <span class="text_item "><%- profesional.Nombre %></span>
-
-
+                <h3 id="subtitulo">Lista de expertos Disponibles</h3>
+                    <div class="contenedor_profesional">
+                        <div class="card">
+                            <img src="/resources/entrenador3.png" alt="">
+                            <h3 class="nombre_profesional">Mariano Fernandez</h3>
+                            <p class="profesion">Deportologo</p>
+                            <button class="contactar">Contactar</button>
+                        </div>
+                        <div class="card">
+                            <img src="/resources/entrenador2.png" alt="">
+                            <h3 class="nombre_profesional">Sebastian Cordera</h3>
+                            <p class="profesion">Entrenador Profesional</p>
+                            <button class="contactar">Contactar</button>
+                        </div>
+                        <div class="card">
+                            <img src="/resources/entrenador.png" alt="">
+                            <h3 class="nombre_profesional">Mariano Gimenez</h3>
+                            <p class="profesion">Nutricionista Deportivo</p>
+                            <button class="contactar">Contactar</button>
+                        </div>
                     </div>
-                    <% }) %>
-
 
             </div>
         </section>
     </main>
-
-
 </body>
-
 </html>
