@@ -138,8 +138,8 @@ app.get('/index', isLogged, (req, res) => {
 
     const fechaFormateada = `${year}-${month}-${today}`;
 
-
-
+    var resultado_act
+    var resultado_racha
     const query_act_dia = 'SELECT * FROM `actividad_dia` WHERE Dni_act=? AND Fecha=? '
     connection.query(query_act_dia, [user_dni, fechaFormateada], (err, results) => {
         if (err) {
@@ -147,10 +147,23 @@ app.get('/index', isLogged, (req, res) => {
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
 
         }
+        resultado_act = results
 
-        res.render('index', { results, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+
+
+    })
+    const query_racha = 'SELECT * FROM racha WHERE Dni_racha=? '
+    connection.query(query_racha, [user_dni], (err, results) => {
+        if (err) {
+            console.error('Error al verificar los datos:', err);
+            return res.render('login.ejs', { error: 'Error al verificar los datos' });
+
+        }
+        resultado_racha = results
+
     })
 
+    res.render('index', { resultado_racha, resultado_act, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 })
 
 
@@ -195,14 +208,14 @@ app.get('/receta_focus/:id_receta', (req, res) => {
     var user_frecuencia = req.session.user_frecuencia
     var user_intensidad = req.session.user_intensidad
     var id_receta = req.params.id_receta
-    var data=require('./public/js/info_receta.json')
+    var data = require('./public/js/info_receta.json')
     const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
 
     var url = `https://api.spoonacular.com/recipes/${id_receta}/information?apiKey=${apiId}`;
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
-            res.render('receta_focus', { data})
+            res.render('receta_focus', { data })
 
         });
     // res.render('receta_focus', { data})
@@ -234,7 +247,21 @@ const connection = mysql.createConnection({
 });
 
 
+const hoy = new Date();
+const año = hoy.getFullYear();
+const mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Se suma 1 porque los meses comienzan desde 0
+const día = String(hoy.getDate()).padStart(2, '0');
+const fechaActual = `${año}-${mes}-${día}`;
+const ayer = new Date();
+ayer.setDate(hoy.getDate() - 1);
+const dia_anterior = `${año}-${mes}-${día}`;
+
+
+
+// logica de logeo
 app.post('/enviar', (req, res) => {
+
+
     const {
         nombre_regis, apellido_regis, dni, nacimiento, opciones_genero, peso, altura,
         nombre_usuario_regis, email_regis, password_regis, dieta, objetivo_nutricional,
@@ -292,34 +319,44 @@ app.post('/enviar', (req, res) => {
                             console.error('Error al insertar en deportivousuario:', err);
                             return res.render('login.ejs', { error: 'Error al registrar los datos deportivos' });
                         }
+                        const query_racha = 'INSERT INTO racha ( `Dni_racha`, `FechaComienzo`, `Fecha_ultimo_Ingreso`) VALUES (?,?,?)';
+                        connection.query(query_racha, [dni, fechaActual, fechaActual], (err) => {
+                            if (err) {
+                                console.error('Error al insertar en deportivousuario:', err);
+                                return res.render('login.ejs', { error: 'Error al registrar los datos deportivos' });
+                            }
+                            // variabables de sesion
+                            req.session.user_name = nombre_usuario_regis;
+                            req.session.user_dni = dni;
+                            req.session.user_pass = password_regis;
+                            //
+                            req.session.user_nac = nacimiento;
+                            req.session.user_genero = opciones_genero;
+                            req.session.user_peso = peso;
+                            //
+                            req.session.user_altura = altura;
+                            req.session.user_email = email_regis;
+                            req.session.user_dieta = dieta;
+                            //
+                            req.session.user_obj_nut = objetivo_nutricional;
+                            req.session.user_deporte = tipo_deporte;
+                            req.session.user_obj_dep = obj_deportivo;
+                            req.session.user_frecuencia = frecuencia;
+                            req.session.user_intensidad = intensidad;
+                            req.session.user_fecha_comienzo = fechaActual;
+                            // Redirigir a la página de inicio
+                            return res.redirect('/index');
 
+                        })
 
-                        // variabables de sesion
-                        req.session.user_name = nombre_usuario_regis;
-                        req.session.user_dni = dni;
-                        req.session.user_pass = password_regis;
-                        //
-                        req.session.user_nac = nacimiento;
-                        req.session.user_genero = opciones_genero;
-                        req.session.user_peso = peso;
-                        //
-                        req.session.user_altura = altura;
-                        req.session.user_email = email_regis;
-                        req.session.user_dieta = dieta;
-                        //
-                        req.session.user_obj_nut = objetivo_nutricional;
-                        req.session.user_deporte = tipo_deporte;
-                        req.session.user_obj_dep = obj_deportivo;
-                        req.session.user_frecuencia = frecuencia;
-                        req.session.user_intensidad = intensidad;
-                        // Redirigir a la página de inicio
-                        return res.redirect('/index');
                     });
                 });
             });
         }
     });
 });
+
+
 
 // cuando se inicia sesion se verifica los datos
 app.get('/iniciar', (req, res) => {
@@ -379,6 +416,40 @@ app.get('/iniciar', (req, res) => {
                     req.session.user_intensidad = results[0].Intensidad;
                 }
             })
+
+            const query_racha = 'SELECT * FROM racha WHERE Dni_racha=?';
+            connection.query(query_racha, [dni], (err, results) => {
+                if (err) {
+                    return res.render('login.ejs', {
+                        error: 'Error al verificar los datos'
+                    });
+                }
+               
+                if (results.Fecha_ultimo_Ingreso == dia_anterior) {
+                    const upd_racha = 'UPDATE racha SET `Fecha_ultimo_Ingreso=? WHERE Dni_racha=?';
+                    connection.query(upd_racha, [fechaActual, dni], (err, results) => {
+                        if (err) {
+                            return res.render('login.ejs', {
+                                error: 'Error al verificar los datos'
+                            });
+                        }
+                        if (results.length > 0) {
+                            // variabables de sesion deporte
+                            req.session.user_obj_dep = results[0].ObjetivosDeportivo;
+                            req.session.user_deporte = results[0].TipoDeporte;
+                            req.session.user_frecuencia = results[0].Frecuencia;
+                            req.session.user_intensidad = results[0].Intensidad;
+                        }
+                    })
+                }else{
+                    
+                }
+            })
+
+
+
+
+
             // Redirigir a la página de inicio
             return res.redirect('/index');
 

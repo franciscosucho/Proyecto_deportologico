@@ -1,5 +1,8 @@
-$color-principal-receta: #00704A;
-
+$color-principal-receta: #224439;
+$color_a: #174426;
+$color_text_primario:#ffff;
+$color_text_li:#666;
+$color_h4:rgb(209, 209, 209);
 #main_recetas {
     width: 100%;
     height: auto;
@@ -42,7 +45,7 @@ $color-principal-receta: #00704A;
                 display: flex;
                 justify-content: flex-start;
                 align-items: flex-start;
-                width: 70%;
+                width: 80%;
                 height: auto;
                 background-color: $color-principal-receta;
                 border-radius: 3px;
@@ -53,7 +56,7 @@ $color-principal-receta: #00704A;
                 img {
                     height: 100%;
                     width: auto;
-                    max-width: 50%;
+                    max-width: 60%;
                 }
 
                 .text {
@@ -64,7 +67,7 @@ $color-principal-receta: #00704A;
                     width: 50%;
 
                     .name_receta {
-                        width: 50%;
+                        width: auto;
                         color: white;
                         font-weight: bolder;
                         font-size: 1.5em;
@@ -90,6 +93,11 @@ $color-principal-receta: #00704A;
                         height: 20vh;
                         overflow-x: hidden;
                         overflow-y: scroll;
+                        color: white;
+
+                        a {
+                            color: $color_a;
+                        }
                     }
 
                     .btn_receta {
@@ -118,7 +126,7 @@ $color-principal-receta: #00704A;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            width: 40%;
+            width: 20%;
 
             h4 {
                 color: #2c8364;
@@ -197,15 +205,20 @@ $color-principal-receta: #00704A;
         align-items: center;
         flex-direction: column;
         gap: 20px;
-        .seccion{
+
+        .seccion {
             transition: all .2s ease-in-out;
-            &:hover{
-                h4{   font-style: italic;}
+
+            &:hover {
+                h4 {
+                    font-style: italic;
+                }
             }
         }
+
         li {
             transition: all .2s ease;
-            color: #555;
+            color: $color_text_li;
 
             &:hover {
                 color: #afafaf;
@@ -226,7 +239,7 @@ $color-principal-receta: #00704A;
             width: 30vw;
 
             a {
-                color: #174426; // Gris oscuro
+                color: $color_a;
                 text-decoration: none;
             }
         }
@@ -238,7 +251,7 @@ $color-principal-receta: #00704A;
             width: 100%;
             padding-left: 15%;
             gap: 4px;
-
+            color: $color_h4;
             h4 {
                 font-size: 2em;
                 color: white;
