@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-08-2024 a las 01:38:07
+-- Tiempo de generación: 29-08-2024 a las 02:02:12
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.0.18
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -114,6 +114,15 @@ CREATE TABLE `profesional` (
   `Numero` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `profesional`
+--
+
+INSERT INTO `profesional` (`ID`, `DNI`, `Nombre`, `Apellido`, `Profesion`, `Descripcion`, `Email`, `Numero`) VALUES
+(1, 32897040, 'Miguel', 'Ortiz', 'Deportologo', 'El Mejor deportologo de Vicente Lopez, tiene un consultorio en Villa Adelina.', 'miguelortiz@gmail.com', '1125123959'),
+(2, 34876567, 'Fernando', 'Sucre', 'Nutricionista Deportivo', 'El mejor nutricionista deportivo de Mexico, actualmente esta trabajando en Argentina.', 'fernandosucre@gmail.com', '1125124858'),
+(3, 32902345, 'Juan', 'Gomez', 'Entrenador Profesional', 'El mejor entrenador profesional de Chile, Esta trabajando en Argentina ya que tiene un consultoria ubicado en Martinez, Buenos Aires.', 'juangomez@gmail.com', '11651276854');
+
 -- --------------------------------------------------------
 
 --
@@ -141,9 +150,6 @@ CREATE TABLE `racha` (
   `Fecha_ultimo_Ingreso` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `racha`
---
 -- --------------------------------------------------------
 
 --
@@ -259,7 +265,7 @@ ALTER TABLE `nutricionalusuario`
 -- AUTO_INCREMENT de la tabla `profesional`
 --
 ALTER TABLE `profesional`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `progreso`

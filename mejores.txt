@@ -1,5 +1,8 @@
-Hacer que funcione el boton de registrarse
+Trabajo a seguir:
 
-API que necesitamos:
-                     para las recetas o llamarlas de la base de datos
-                     Calendario que se actualize solo. link idea: https://github.com/RTzm4d48/Calendario/tree/master/views
+                Terminar seccion Asesoramiento
+                Terminar Racha (Inicio)
+                Empezar seccion nutricon y progreso
+                
+Ideas:
+        Login para los entrenadores
