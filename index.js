@@ -5,6 +5,14 @@ const { View } = require('electron');
 const app = express()
 const session = require('express-session')
 
+// Conexión a la base de datos
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'proyecto_deportologico',
+});
+
 
 const isLogged = (req, res, next) => {
     if (req.session.user_name == '' || typeof req.session.user_name == 'undefined') {
@@ -152,7 +160,7 @@ app.get('/index', isLogged, (req, res) => {
 
 })
 
-app.get('/recetas', (req, res) => {
+app.get('/racha', (req, res) => {
     var user_dni = req.session.user_dni
     const query_racha = 'SELECT * FROM racha WHERE Dni_racha=? '
     connection.query(query_racha, [user_dni], (err, results) => {
@@ -236,13 +244,7 @@ app.get('/asesoramiento', (req, res) => {
 
 
 
-// Conexión a la base de datos
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'proyecto_deportologico',
-});
+
 
 
 // Obtener la fecha actual
