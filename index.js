@@ -148,20 +148,23 @@ app.get('/index', isLogged, (req, res) => {
         res.render('index', { results, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 
     })
-    // const query_racha = 'SELECT * FROM racha WHERE Dni_racha=? '
-    // connection.query(query_racha, [user_dni], (err, results) => {
-    //     if (err) {
-    //         console.error('Error al verificar los datos:', err);
-    //         return res.render('login.ejs', { error: 'Error al verificar los datos' });
-
-    //     }
-    //     resultado_racha = results
-
-    // })
 
 
 })
 
+app.get('/recetas', (req, res) => {
+    var user_dni = req.session.user_dni
+    const query_racha = 'SELECT * FROM racha WHERE Dni_racha=? '
+    connection.query(query_racha, [user_dni], (err, results) => {
+        if (err) {
+            console.error('Error al verificar los datos:', err);
+            return res.render('login.ejs', { error: 'Error al verificar los datos' });
+
+        }
+        resultado_racha = results
+
+    })
+})
 
 app.get('/recetas', (req, res) => {
 
@@ -239,14 +242,22 @@ const connection = mysql.createConnection({
 });
 
 
+// Obtener la fecha actual
 const hoy = new Date();
-const año = hoy.getFullYear();
-const mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Se suma 1 porque los meses comienzan desde 0
-const día = String(hoy.getDate()).padStart(2, '0');
-const fechaActual = `${año}-${mes}-${día}`;
-const ayer = new Date();
+const añoActual = hoy.getFullYear();
+const mesActual = String(hoy.getMonth() + 1).padStart(2, '0'); // Se suma 1 porque los meses comienzan desde 0
+const díaActual = String(hoy.getDate()).padStart(2, '0');
+const fechaActual = `${añoActual}-${mesActual}-${díaActual}`;
+
+// Obtener la fecha del día anterior
+const ayer = new Date(hoy);
 ayer.setDate(hoy.getDate() - 1);
-const dia_anterior = `${año}-${mes}-${día}`;
+const añoAyer = ayer.getFullYear();
+const mesAyer = String(ayer.getMonth() + 1).padStart(2, '0');
+const díaAyer = String(ayer.getDate()).padStart(2, '0');
+const fechaAyer = `${añoAyer}-${mesAyer}-${díaAyer}`;
+
+
 
 
 
@@ -417,7 +428,7 @@ app.get('/iniciar', (req, res) => {
                     });
                 }
 
-                if (results.Fecha_ultimo_Ingreso == dia_anterior) {
+                if (results.Fecha_ultimo_Ingreso == fechaAyer) {
                     const upd_racha = 'UPDATE racha SET `Fecha_ultimo_Ingreso=? WHERE Dni_racha=?';
                     connection.query(upd_racha, [fechaActual, dni], (err, results) => {
                         if (err) {
@@ -425,22 +436,19 @@ app.get('/iniciar', (req, res) => {
                                 error: 'Error al verificar los datos'
                             });
                         }
-                        if (results.length > 0) {
-                            // variabables de sesion deporte
-                            req.session.user_obj_dep = results[0].ObjetivosDeportivo;
-                            req.session.user_deporte = results[0].TipoDeporte;
-                            req.session.user_frecuencia = results[0].Frecuencia;
-                            req.session.user_intensidad = results[0].Intensidad;
-                        }
                     })
                 } else {
-
+                    const upd_racha_e = 'UPDATE racha SET  Fecha_ultimo_Ingreso=?,FechaComienzo=? WHERE Dni_racha=?';
+                    connection.query(upd_racha_e, [fechaActual,fechaActual, dni], (err, results) => {
+                        if (err) {
+                            return res.render('login.ejs', {
+                                error: 'Error al verificar los datos'
+                            });
+                        }
+                    })
+                    
                 }
             })
-
-
-
-
 
             // Redirigir a la página de inicio
             return res.redirect('/index');

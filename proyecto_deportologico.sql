@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-08-2024 a las 18:25:29
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 29-08-2024 a las 02:02:12
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,14 +27,14 @@ CREATE TABLE `actividad_dia` (
   `Fecha` date NOT NULL,
   `Objetivos` text NOT NULL,
   `MarcadorCumplido` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `actividad_dia`
 --
 
 INSERT INTO `actividad_dia` (`ID_act`, `Dni_act`, `Fecha`, `Objetivos`, `MarcadorCumplido`) VALUES
-(1, 47098781, '2024-08-15', 'ir al gimnasio', 1),
+(1, 47098781, '2024-08-28', 'ir al gimnasio', 1),
 (2, 47098781, '2024-08-25', 'caminar 1000metros', 0),
 (3, 47098781, '0000-00-00', '2024-12-20', 0),
 (4, 47098781, '0000-00-00', '2024-12-20', 0),
@@ -55,7 +55,7 @@ CREATE TABLE `deportivousuario` (
   `TipoDeporte` enum('Resistencia','Cardiovascular') NOT NULL,
   `Frecuencia` enum('3/7','4/7','5/7','6/7','7/7') NOT NULL,
   `Intensidad` enum('Ligera','Moderada','Alta') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `deportivousuario`
@@ -74,7 +74,7 @@ CREATE TABLE `motivacion` (
   `ID` int(11) NOT NULL,
   `FraseMotivacional` text NOT NULL,
   `Autor` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -88,7 +88,7 @@ CREATE TABLE `nutricionalusuario` (
   `intolerancia` enum('Ninguna','Dairy','Egg','Gluten','Grain','Peanut','Seafood','Soy','Sulfite','Wheat') NOT NULL,
   `ObjetivoNutricion` enum('Pérdida de peso','Mantener peso','Ganar peso') NOT NULL,
   `TipoAlimentacion` enum('Omnívora','Vegetarian','Ovo-Vegetariano','Vegan','Pescetarian','Gluten Free') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `nutricionalusuario`
@@ -112,7 +112,16 @@ CREATE TABLE `profesional` (
   `Descripcion` text NOT NULL,
   `Email` varchar(100) NOT NULL,
   `Numero` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `profesional`
+--
+
+INSERT INTO `profesional` (`ID`, `DNI`, `Nombre`, `Apellido`, `Profesion`, `Descripcion`, `Email`, `Numero`) VALUES
+(1, 32897040, 'Miguel', 'Ortiz', 'Deportologo', 'El Mejor deportologo de Vicente Lopez, tiene un consultorio en Villa Adelina.', 'miguelortiz@gmail.com', '1125123959'),
+(2, 34876567, 'Fernando', 'Sucre', 'Nutricionista Deportivo', 'El mejor nutricionista deportivo de Mexico, actualmente esta trabajando en Argentina.', 'fernandosucre@gmail.com', '1125124858'),
+(3, 32902345, 'Juan', 'Gomez', 'Entrenador Profesional', 'El mejor entrenador profesional de Chile, Esta trabajando en Argentina ya que tiene un consultoria ubicado en Martinez, Buenos Aires.', 'juangomez@gmail.com', '11651276854');
 
 -- --------------------------------------------------------
 
@@ -126,7 +135,7 @@ CREATE TABLE `progreso` (
   `Fecha` date NOT NULL,
   `TipoRegistro` enum('Ejercicios','Peso') NOT NULL,
   `Valor` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -137,9 +146,9 @@ CREATE TABLE `progreso` (
 CREATE TABLE `racha` (
   `ID_racha` int(11) NOT NULL,
   `Dni_racha` int(11) NOT NULL,
-  `FechaComienzo` date NOT NULL,
+  `dias` date NOT NULL,
   `Fecha_ultimo_Ingreso` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -158,14 +167,14 @@ CREATE TABLE `usuario` (
   `Peso` decimal(5,2) NOT NULL,
   `Altura` decimal(6,2) NOT NULL,
   `Genero` char(1) NOT NULL CHECK (`Genero` in ('M','F'))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`DNI`, `Nombre_usuario`, `password`, `Nombre`, `Apellido`, `FechaNacimiento`, `Email`, `Peso`, `Altura`, `Genero`) VALUES
-(47098781, 'fransucho', '1975', 'Francisco', 'Suchomela', '2005-12-20', 'franciscosuchomela@gmail.com', 65.00, 175.00, 'M');
+(47098781, 'fransucho', '1975', 'Francisco', 'Suchomela', '2005-12-20', 'franciscosuchomela@gmail.com', '65.00', '175.00', 'M');
 
 --
 -- Índices para tablas volcadas
@@ -256,7 +265,7 @@ ALTER TABLE `nutricionalusuario`
 -- AUTO_INCREMENT de la tabla `profesional`
 --
 ALTER TABLE `profesional`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `progreso`
@@ -268,7 +277,7 @@ ALTER TABLE `progreso`
 -- AUTO_INCREMENT de la tabla `racha`
 --
 ALTER TABLE `racha`
-  MODIFY `ID_racha` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_racha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
