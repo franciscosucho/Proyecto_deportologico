@@ -73,14 +73,14 @@ function initCalender() {
         }
         //
 
-        fechaFormateada= `${year}-${month}-${selectedDay}`;
+        fechaFormateada = `${year}-${month}-${selectedDay}`;
         console.log(fechaFormateada)
         fetch(`http://localhost:3000/calendario/update/${fechaFormateada}`, { method: 'POST' })
             .then(() => {
                 window.location.reload(true); // Recargar la página después de la solicitud POST
             })
             .catch(err => console.error('Error:', err));
-            
+
     });
 
 }
@@ -142,10 +142,15 @@ item_act.forEach(item => {
 
         fetch(`http://localhost:3000/calendario/chequear/${estado}/${id}`, { method: 'POST' })
             .then(() => {
-                window.location.reload(true); // Recargar la página después de la solicitud POST
+                
             })
             .catch(err => console.error('Error:', err));
+        location.reload(true);
     });
 });
 
+const btn_enviar_act = document.getElementById("btn_enviar_act")
+btn_enviar_act.addEventListener('click', () => {
+    location.reload(true);
+})
 

@@ -1,29 +1,41 @@
 const cont_recetas_main = document.getElementById("cont_recetas_main")
+
+
+
+
+//variables de api
+//------------------------------------------------------------------------
+const data_us = document.getElementById('data_us')
+var userIntolerancia = data_us.getAttribute("data-into");
+var userDieta = data_us.getAttribute("data-dieta");
 const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
-var url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=4&diet=Vegetarian`;
+var url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=4&diet=${userDieta}&intolerances=${userIntolerancia}`;
 var selectElement = document.getElementById('region');
 var tiempo_receta = document.getElementById("tiempo_receta");
 var proteina_min = document.getElementById("proteina_min");
 var calorias_max = document.getElementById("calorias_max");
 var Comida = document.getElementById("Comida_inp");
+
 var aplicar = document.getElementById("aplicar");
 var limpiar = document.getElementById("limpiar");
+//-------------------------------------------------------------------------
 
 aplicar.addEventListener("click", () => {
     cont_recetas_main.innerHTML = "";
-    selectElement_val = selectElement.value;
-    Comida_val = Comida.value
-    tiempo_receta_val = tiempo_receta.value
-    proteina_min_val = proteina_min.value
-    calorias_max_val = calorias_max.value
+    let selectElement_val = selectElement.value;
+    let Comida_val = Comida.value;
+    let tiempo_receta_val = tiempo_receta.value;
+    let proteina_min_val = proteina_min.value;
+    let calorias_max_val = calorias_max.value;
 
     const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
-    url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=5&include-tags=vegetariano,dessert&query=${Comida_val}
-    &cuisine=${selectElement_val}&maxReadyTime=${tiempo_receta_val}&minProtein=${proteina_min_val}&maxCalories=${calorias_max_val}//`;
+    url = `https://api.spoonacular.com/recipes/random?apiKey=${apiId}&number=4&diet=${userDieta}&intolerances=${userIntolerancia}&dessert&query=${Comida_val}
+    &cuisine=${selectElement_val}&maxReadyTime=${tiempo_receta_val}&minProtein=${proteina_min_val}&maxCalories=${calorias_max_val}`;
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data)
+
+            create_recetas(data)
         });
 })
 
@@ -51,7 +63,7 @@ function fetch_recetas(url) {
 
 
 function create_recetas(receta) {
-    var i=0;
+    var i = 0;
     while (i < receta.recipes.length) {
 
         const cont_receta = document.createElement('div');
@@ -75,9 +87,8 @@ function create_recetas(receta) {
         const cont_tiempo = document.createElement('div');
         cont_tiempo.classList.add("cont_tiempo")
         const icon_tiempo = document.createElement("i");
-
         // Agregar múltiples clases al elemento
-        icon_tiempo.classList.add("fa-light", "fa-clock", "clock");
+        icon_tiempo.classList.add("fa-regular", "fa-clock");
         const tiempo = receta.recipes[i].readyInMinutes
         const tiempo_receta = document.createElement('p');
         tiempo_receta.classList.add("tiempo_receta");

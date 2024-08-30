@@ -4,14 +4,16 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-#calendario{
+
+#calendario {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   align-items: flex-start;
   padding-left: 30px;
-  gap: 60px ;
+  gap: 60px;
 }
+
 .container_calendar {
   width: 90%;
   max-width: 400px;
@@ -158,13 +160,11 @@ body {
 .container_calendar .week_days_item {
   width: 14.2857142857%;
   text-align: center;
-  cursor: pointer;
+
   color: white;
 }
 
-.container_calendar .week_days_item:hover {
-  color: rgba(100, 231, 135, 0.7882352941);
-}
+
 
 .container_calendar .container_days {
   width: 100%;
@@ -312,7 +312,7 @@ body {
 }
 
 #cont_agregar #fecha_act {
-  width: auto ;
+  width: auto;
   outline: none;
 }
 
@@ -321,10 +321,12 @@ input:focus {
   box-shadow: none;
   color: #adadb1;
 }
-#cont_agregar i{
+
+#cont_agregar i {
   color: white;
   font-size: 1.3em;
 }
+
 #cont_agregar button {
   border-radius: 5px;
   padding: 5px;

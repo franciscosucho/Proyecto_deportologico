@@ -16,6 +16,11 @@ body {
   width: 100vw;
   overflow-x: hidden;
 }
+body #error_ini {
+  color: rgb(185, 20, 20);
+  font-size: 1;
+  font-weight: bold;
+}
 body main {
   display: flex;
   justify-content: center;
@@ -173,11 +178,63 @@ body main #registro form#cont_registrar .desac {
   display: none !important;
 }
 body main #ventana_prin {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   height: auto !important;
   background-color: #222;
+  position: absolute;
+  top: 0;
+  z-index: -2;
+  height: auto !important;
+  background-color: #121212;
   display: flex;
+  background-image: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(50, 50, 100, 0.5), rgba(0, 0, 0, 0));
+}
+body main #ventana_prin .main_sec {
+  width: 85vw;
+  height: auto;
+  padding-left: 3%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+body main #ventana_prin .main_sec#main_frases {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+body main #ventana_prin .main_sec#main_frases #cont_frases_sub {
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
+}
+body main #ventana_prin .main_sec#main_frases #cont_frases_sub .cont_frase {
+  height: auto;
+  width: 40vh;
+  padding: 30px;
+  background-color: #2b2b2b;
+  border-radius: 30px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  box-shadow: 10px 10px 12px -4px rgb(8, 8, 8);
+}
+body main #ventana_prin .main_sec#main_frases #cont_frases_sub .cont_frase .author {
+  color: rgb(214, 214, 214);
+  font-style: italic;
+}
+body main #ventana_prin .main_sec#main_frases #cont_frases_sub .cont_frase .text {
+  color: rgb(204, 204, 204);
+}
+body main #ventana_prin .text_prin {
+  padding-left: 2%;
+  font-size: 2em;
+  color: white;
+  font-style: italic;
 }
 body main #ventana_prin #menu_lateral {
   height: auto;
@@ -193,6 +250,7 @@ body main #ventana_prin #menu_lateral #cont_fixed {
   justify-content: flex-start;
   align-items: center;
   background-color: #121212;
+  border-right: 1px solid rgba(134, 134, 134, 0.233);
   position: fixed;
 }
 body main #ventana_prin #menu_lateral #cont_fixed img {
@@ -242,22 +300,14 @@ body main #ventana_prin #menu_lateral #cont_fixed #cont_item a .item:hover {
   transform: scale(1.05);
 }
 body main #ventana_prin #cont_main {
-  height: 100%;
-  width: 85%;
-  padding: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
 }
-body main #ventana_prin #cont_main #h2 {
-  font-size: 2em;
-  color: white;
-  font-style: italic;
-}
 body main #ventana_prin #cont_main #cont_user {
   position: absolute;
-  left: 95%;
+  left: 90%;
   width: auto;
   height: auto;
 }
@@ -299,15 +349,40 @@ body main #ventana_prin #cont_main #cont_secciones #sec_secu {
 }
 body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   height: 20vh;
   width: 20vw;
   text-decoration: none;
   border-radius: 30px;
   font-size: 2em;
   font-weight: bolder;
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+  transition: transform 0.4s ease-in-out;
   color: white;
 }
+body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_racha {
+  background-color: transparent;
+  border: 1px solid rgba(128, 128, 128, 0.432);
+}
+body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_racha .text_racha {
+  font-size: 2.4em;
+  top: 35%;
+}
+body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_racha .text {
+  color: rgb(146, 146, 146);
+  font-size: 0.7em;
+  top: 60%;
+}
 body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec span {
+  width: 100%;
+  text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;

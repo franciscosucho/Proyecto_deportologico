@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
 
+<head>
     <meta charset="UTF-8" />
     <title>Mental Strong</title>
     <link rel="stylesheet" href="css/estilo.css">
@@ -18,22 +18,12 @@
             <aside id="menu_lateral">
                 <%-include('menu.ejs')%>
             </aside>
-            <div id="cont_main" class="cont_main">
-                <div id="cont_user">
-                    <i class="fa-solid fa-gear"></i>
-                    <i class="fa-solid fa-user"></i>
-
-                </div>
-
-                <h2 id="nombre_us">Datos nutricionales</h2>
-
-
-
-            </div>
-        </section>
+            <section id="main_frases" class="main_sec ">
+                <h2 class="text_prin">Frases para comenzar mejor tu día</h2>
+                <div id="cont_frases_sub"></div>
+            </section>
     </main>
-
-
+    <script src="js/frases.js"></script>
 </body>
 
 </html>

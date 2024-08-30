@@ -118,8 +118,9 @@ app.post('/nueva_actividad', (req, res) => {
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
 
         }
-
+        console.log("se envio")
     })
+    res.redirect('/index');
 })
 
 
@@ -138,7 +139,7 @@ app.get('/index', isLogged, (req, res) => {
     var user_obj_dep = req.session.user_obj_dep
     var user_frecuencia = req.session.user_frecuencia
     var user_intensidad = req.session.user_intensidad
-
+    var user_racha = req.session.user_racha
     var now = new Date();
     var year = now.getFullYear(); // Obtiene el año (YYYY)
     var month = String(now.getMonth() + 1).padStart(2, '0'); // Obtiene el mes (MM) y agrega un 0 si es necesario
@@ -153,28 +154,12 @@ app.get('/index', isLogged, (req, res) => {
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
 
         }
-        res.render('index', { results, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+        res.render('index', { results, user_racha, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 
     })
 
 
 })
-
-app.get('/racha', (req, res) => {
-    var user_dni = req.session.user_dni
-    const query_racha = 'SELECT * FROM racha WHERE Dni_racha=? '
-    connection.query(query_racha, [user_dni], (err, results) => {
-        if (err) {
-            console.error('Error al verificar los datos:', err);
-            return res.render('login.ejs', { error: 'Error al verificar los datos' });
-
-        }
-        resultado_racha = results
-
-    })
-})
-
-
 
 
 app.get('/recetas', (req, res) => {
@@ -192,27 +177,15 @@ app.get('/recetas', (req, res) => {
     var user_deporte = req.session.user_deporte
     var user_obj_dep = req.session.user_obj_dep
     var user_frecuencia = req.session.user_frecuencia
+    var user_intolerancia = req.session.user_intolerancia
     var user_intensidad = req.session.user_intensidad
-    res.render('recetas', { user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    res.render('recetas', { user_name, user_intolerancia, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 
 })
 
 app.get('/receta_focus/:id_receta', (req, res) => {
 
-    var user_name = req.session.user_name
-    var user_dni = req.session.user_dni
-    var user_pass = req.session.user_pass
-    var user_nac = req.session.user_nac
-    var user_genero = req.session.user_genero
-    var user_peso = req.session.user_peso
-    var user_altura = req.session.user_altura
-    var user_email = req.session.user_email
-    var user_dieta = req.session.user_dieta
-    var user_obj_nut = req.session.user_obj_nut
-    var user_deporte = req.session.user_deporte
-    var user_obj_dep = req.session.user_obj_dep
-    var user_frecuencia = req.session.user_frecuencia
-    var user_intensidad = req.session.user_intensidad
+
     var id_receta = req.params.id_receta
     var data = require('./public/js/info_receta.json')
     const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
@@ -237,9 +210,16 @@ app.get('/asesoramiento', (req, res) => {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
         }
-        console.log(results)
+
         res.render('asesoramiento', { results })
     })
+})
+
+
+
+app.get('/frases', (req, res) => {
+
+    res.render('frases', {})
 })
 
 
@@ -247,7 +227,7 @@ app.get('/asesoramiento', (req, res) => {
 
 
 
-// Obtener la fecha actual
+// // Obtén la fecha actual
 const hoy = new Date();
 const añoActual = hoy.getFullYear();
 const mesActual = String(hoy.getMonth() + 1).padStart(2, '0'); // Se suma 1 porque los meses comienzan desde 0
@@ -265,18 +245,18 @@ const fechaAyer = `${añoAyer}-${mesAyer}-${díaAyer}`;
 
 
 
-
-// logica de logeo
 app.post('/enviar', (req, res) => {
-
-
-    const {
+    let {
         nombre_regis, apellido_regis, dni, nacimiento, opciones_genero, peso, altura,
         nombre_usuario_regis, email_regis, password_regis, dieta, objetivo_nutricional,
         tipo_deporte, obj_deportivo, frecuencia, intensidad, intolerancia
     } = req.body;
 
-    const query_ant = 'SELECT DNI, Nombre_usuario, Email FROM usuario WHERE DNI = ? OR Nombre_usuario = ? OR Email = ?';
+    const query_ant = `
+        SELECT DNI, Nombre_usuario, Email 
+        FROM usuario 
+        WHERE DNI = ? OR Nombre_usuario = ? OR Email = ?
+    `;
 
     connection.query(query_ant, [dni, nombre_usuario_regis, email_regis], (err, results) => {
         if (err) {
@@ -299,7 +279,8 @@ app.post('/enviar', (req, res) => {
                 INSERT INTO usuario (DNI, Nombre_usuario, password, Nombre, Apellido, FechaNacimiento, Email, Peso, Altura, Genero)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             `;
-
+            nombre_regis=capitalizarPrimeraLetra(nombre_regis);
+            apellido_regis=capitalizarPrimeraLetra(apellido_regis);
             connection.query(query_usuario, [dni, nombre_usuario_regis, password_regis, nombre_regis, apellido_regis, nacimiento, email_regis, peso, altura, opciones_genero], (err) => {
                 if (err) {
                     console.error('Error al insertar en usuario:', err);
@@ -308,7 +289,7 @@ app.post('/enviar', (req, res) => {
 
                 // Inserción en la tabla `nutricionalusuario`
                 const query_nutri = `
-                    INSERT INTO nutricionalusuario (DNI_nut,intolerancia,ObjetivoNutricion, TipoAlimentacion)
+                    INSERT INTO nutricionalusuario (DNI_nut, intolerancia, ObjetivoNutricion, TipoAlimentacion)
                     VALUES (?, ?, ?, ?)
                 `;
                 connection.query(query_nutri, [dni, intolerancia, objetivo_nutricional, dieta], (err) => {
@@ -327,36 +308,39 @@ app.post('/enviar', (req, res) => {
                             console.error('Error al insertar en deportivousuario:', err);
                             return res.render('login.ejs', { error: 'Error al registrar los datos deportivos' });
                         }
-                        const query_racha = 'INSERT INTO racha ( `Dni_racha`, `FechaComienzo`, `Fecha_ultimo_Ingreso`) VALUES (?,?,?)';
-                        connection.query(query_racha, [dni, fechaActual, fechaActual], (err) => {
+
+                        // Inserción en la tabla `racha`
+                        const fechaActual = obtenerFechaActual()
+                        console.log(fechaActual)
+                        //INSERT INTO racha (Dni_racha,dias,Fecha_ultimo_Ingreso) VALUES (?,?,?,?)
+                        const query_racha = `
+                            INSERT INTO racha (Dni_racha, dias ,  Fecha_ultimo_Ingreso) VALUES (?, ?, ?)`;
+                        connection.query(query_racha, [dni, 1, fechaActual], (err) => {
                             if (err) {
-                                console.error('Error al insertar en deportivousuario:', err);
-                                return res.render('login.ejs', { error: 'Error al registrar los datos deportivos' });
+                                console.error('Error al insertar en racha:', err);
+                                return res.render('login.ejs', { error: 'Error al registrar la racha' });
                             }
-                            // variabables de sesion
+
+                            // Variables de sesión
                             req.session.user_name = nombre_usuario_regis;
                             req.session.user_dni = dni;
                             req.session.user_pass = password_regis;
-                            //
                             req.session.user_nac = nacimiento;
                             req.session.user_genero = opciones_genero;
                             req.session.user_peso = peso;
-                            //
                             req.session.user_altura = altura;
                             req.session.user_email = email_regis;
                             req.session.user_dieta = dieta;
-                            //
+                            req.session.user_intolerancia = intolerancia
                             req.session.user_obj_nut = objetivo_nutricional;
                             req.session.user_deporte = tipo_deporte;
                             req.session.user_obj_dep = obj_deportivo;
                             req.session.user_frecuencia = frecuencia;
                             req.session.user_intensidad = intensidad;
                             req.session.user_fecha_comienzo = fechaActual;
-                            // Redirigir a la página de inicio
+
                             return res.redirect('/index');
-
-                        })
-
+                        });
                     });
                 });
             });
@@ -366,14 +350,11 @@ app.post('/enviar', (req, res) => {
 
 
 
-// cuando se inicia sesion se verifica los datos
+
 app.get('/iniciar', (req, res) => {
     const { nombre_ini, password_ini } = req.query;
 
-    const query_ini = `SELECT * FROM usuario 
-        WHERE (Nombre_usuario = ? OR Email = ?) 
-        AND password = ?`;
-
+    const query_ini = 'SELECT * FROM usuario WHERE(Nombre_usuario = ? OR Email = ?) AND password = ? ';
     connection.query(query_ini, [nombre_ini, nombre_ini, password_ini], (err, results) => {
         if (err) {
             return res.render('login.ejs', {
@@ -383,7 +364,7 @@ app.get('/iniciar', (req, res) => {
 
         if (results.length > 0) {
             const dni = results[0].DNI;
-            // variabables de sesion user
+            // Variables de sesión del usuario
             req.session.user_name = results[0].Nombre_usuario;
             req.session.user_dni = results[0].DNI;
             req.session.user_pass = results[0].password;
@@ -402,65 +383,66 @@ app.get('/iniciar', (req, res) => {
                     });
                 }
                 if (results.length > 0) {
-                    // variabables de sesion nutri
                     req.session.user_dieta = results[0].TipoAlimentacion;
                     req.session.user_obj_nut = results[0].ObjetivoNutricion;
                 }
-            })
+            });
 
-            const query_dep = `
+            const query_deport = `
             SELECT * FROM deportivousuario WHERE DNI_depor = ?`;
-            connection.query(query_dep, [dni], (err, results) => {
+            connection.query(query_deport, [dni], (err, results) => {
                 if (err) {
                     return res.render('login.ejs', {
                         error: 'Error al verificar los datos'
                     });
                 }
                 if (results.length > 0) {
-                    // variabables de sesion deporte
-                    req.session.user_obj_dep = results[0].ObjetivosDeportivo;
                     req.session.user_deporte = results[0].TipoDeporte;
+                    req.session.user_obj_dep = results[0].ObjetivosDeportivo;
                     req.session.user_frecuencia = results[0].Frecuencia;
                     req.session.user_intensidad = results[0].Intensidad;
                 }
-            })
+            });
 
-            const query_racha = 'SELECT * FROM racha WHERE Dni_racha=?';
+            // Verificar y actualizar racha
+            const query_racha = `
+            SELECT * FROM racha WHERE Dni_racha = ?`;
             connection.query(query_racha, [dni], (err, results) => {
                 if (err) {
                     return res.render('login.ejs', {
-                        error: 'Error al verificar los datos'
+                        error: 'Error al verificar la racha'
                     });
                 }
+                if (results.length > 0) {
+                    let racha = results[0].Racha_actual;
+                    let fechaUltimoIngreso = results[0].Fecha_ultimo_Ingreso;
 
-                if (results.Fecha_ultimo_Ingreso == fechaAyer) {
-                    const upd_racha = 'UPDATE racha SET `Fecha_ultimo_Ingreso=? WHERE Dni_racha=?';
-                    connection.query(upd_racha, [fechaActual, dni], (err, results) => {
+                    if (fechaUltimoIngreso === fechaAyer) {
+                        // Incrementa la racha
+                        racha++;
+                    }
+                    else if (fechaUltimoIngreso !== fechaActual) {
+                        // Si el usuario no ingresó ayer, se reinicia la racha
+                        racha = 1;
+                    }
+                    req.session.user_racha = racha
+                    // Actualiza la fecha del último ingreso y la racha
+                    const query_actualizar_racha = `
+                    UPDATE racha SET Fecha_ultimo_Ingreso = ?, dias = ? WHERE Dni_racha = ?`;
+                    connection.query(query_actualizar_racha, [fechaActual, racha, dni], (err) => {
                         if (err) {
                             return res.render('login.ejs', {
-                                error: 'Error al verificar los datos'
+                                error: 'Error al actualizar la racha'
                             });
                         }
-                    })
-                } else {
-                    const upd_racha_e = 'UPDATE racha SET  Fecha_ultimo_Ingreso=?,FechaComienzo=? WHERE Dni_racha=?';
-                    connection.query(upd_racha_e, [fechaActual,fechaActual, dni], (err, results) => {
-                        if (err) {
-                            return res.render('login.ejs', {
-                                error: 'Error al verificar los datos'
-                            });
-                        }
-                    })
-                    
+                        // Redirigir a la página de inicio
+                        return res.redirect('/index');
+                    });
                 }
-            })
-
-            // Redirigir a la página de inicio
-            return res.redirect('/index');
-
+            });
         } else {
             return res.render('login.ejs', {
-                error: 'El Email o el Nombre de usuario no existen, o la contraseña es incorrecta'
+                error: 'Usuario o contraseña incorrectos'
             });
         }
     });
@@ -474,3 +456,18 @@ app.listen(3000, () => {
 })
 
 module.exports = app
+
+
+
+function obtenerFechaActual() {
+    const fecha = new Date();
+    const año = fecha.getFullYear();
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 (enero) a 11 (diciembre)
+    const día = String(fecha.getDate()).padStart(2, '0');
+
+    return `${año}-${mes}-${día}`;
+}
+function capitalizarPrimeraLetra(texto) {
+    if (!texto) return ''; 
+    return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+}

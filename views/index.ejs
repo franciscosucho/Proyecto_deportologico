@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/estilo.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="shortcut icon" href="../public/resources/mental-strong.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -17,14 +18,16 @@
       <aside id="menu_lateral">
         <%-include('menu.ejs')%>
       </aside>
-      <div id="cont_main">
+      <section id="cont_main" class="main_sec">
         <div id="cont_user">
           <i class="fa-solid fa-gear"></i>
           <i class="fa-solid fa-user"></i>
 
         </div>
 
-        <h2 id="nombre_us">Bienvenido
+
+
+        <h2 id="nombre_us" class="text_prin">Bienvenido
           <%-user_name%>
         </h2>
 
@@ -44,19 +47,19 @@
                 alt="">
               <span>Recetas</span>
             </a>
-            <div class="btn_sec" id="btn_recetas">
-              <%-include('racha.ejs')%>
-            </div>
-            <a class="btn_sec">
+            <div class="btn_sec" id="cont_racha">
 
-              <img
-                src="https://media.istockphoto.com/id/1457433817/es/foto/grupo-de-alimentos-saludables-para-la-dieta-flexitariana.jpg?s=612x612&w=0&k=20&c=2w5l2DEJWFGxSnmJxX_RCE40RriE7WtSoKKpuxw5luE="
-                alt="">
+              <span class="text_racha"><%-user_racha%></span>
+              <span class="text">dias de racha</span>
+            </div>
+            <a class="btn_sec" href="/frases">
+              <img src="  https://images.unsplash.com/photo-1446034295857-c39f8844fad4?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D" alt="">
               <span>Frases motivacionales</span>
             </a>
           </div>
         </div>
-      </div>
+
+      </section>
     </section>
   </main>
   <script src="js/calendario.js"></script>
