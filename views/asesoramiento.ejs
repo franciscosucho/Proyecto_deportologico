@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8" />
     <title>Mental Strong</title>
@@ -13,44 +14,50 @@
     <main>
         <section id="ventana_prin">
             <aside id="menu_lateral">
-                <%-include('menu.ejs')%>
+                <%- include('menu.ejs') %>
             </aside>
-            <div id="cont_main" class="cont_main">
-                <div id="cont_user">
-                    <i class="fa-solid fa-gear"></i>
-                    <i class="fa-solid fa-user"></i>
-                </div>
+            <section id="main_recetas">
                 <h2 id="nombre_us">Asesoramiento</h2>
                 <h3 id="subtitulo">Lista de Expertos Disponibles</h3>
                 <div class="contenedor_profesional">
-                    <div class="card">
-                        <img src="/resources/entrenador3.png" alt="">
-                        <h3 class="nombre_profesional">Mariano Fernandez</h3>
-                        <p class="profesion">Deportólogo</p>
-                        <button class="contactar">Contactar</button>
-                        <button class="more-info" data-prof-id="1">Más Información</button>
-                    </div>
-                    <div class="card">
-                        <img src="/resources/entrenador2.png" alt="">
-                        <h3 class="nombre_profesional">Sebastián Cordera</h3>
-                        <p class="profesion">Entrenador Profesional</p>
-                        <button class="contactar">Contactar</button>
-                        <button class="more-info" data-prof-id="2">Más Información</button>
-                    </div>
-                    <div class="card">
-                        <img src="/resources/entrenador.png" alt="">
-                        <h3 class="nombre_profesional">Mariano Gimenez</h3>
-                        <p class="profesion">Nutricionista deportivo</p>
-                        <button class="contactar">Contactar</button>
-                        <button class="more-info" data-prof-id="3">Más Información</button>
-                    </div>
+                    <% results.forEach(profesional=> { %>
+                        <div class="card">
+                            <img src="/resources/entrenador3.png" alt="">
+                            <h3 class="nombre_profesional"><%- profesional.Nombre %> <%- profesional.Apellido %></h3>
+                            <p class="profesion"><%- profesional.Profesion %></p>
+                            <div class="botones">
+                                <button class="more-info" data-prof-id="<%- profesional.ID%>">Más Información</button>
+                            </div>
+                            <div class="desac info-extra" id="info-<%- profesional.ID%>">
+                                <p><b>Email: </b><%- profesional.Email %>.</p>
+                                <p><b>Numero: </b><%- profesional.Numero %>.</p>
+                                <p><b>Descripción: </b><%- profesional.Descripcion %>.</p> 
+                            </div>
+                        </div>
+                        <% }) %>
                 </div>
-            </div>
+            </section>
         </section>
-        <div id="modal-info" class="modal">
-
-        </div>
     </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Selecciona todos los botones "Más Información"
+            const moreInfoButtons = document.querySelectorAll(".more-info");
+
+            moreInfoButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    // Obtiene el ID del profesional del atributo data-prof-id del botón
+                    const profId = button.getAttribute("data-prof-id");
+                    // Selecciona el contenedor de información asociado con el ID
+                    const infoDiv = document.getElementById(`info-${profId}`);
+                    // Alterna la visibilidad del contenedor de información
+                    if (infoDiv) {
+                        infoDiv.classList.toggle("desac");
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

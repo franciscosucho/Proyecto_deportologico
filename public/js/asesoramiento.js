@@ -1,37 +1,32 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const modal = document.getElementById('modal-info');
-    const modalNombre = document.getElementById('modal-nombre');
-    const modalEdad = document.getElementById('modal-edad');
-    const modalProfesion = document.getElementById('modal-profesion');
-    const modalDescripcion = document.getElementById('modal-descripcion');
-    const closeBtn = document.querySelector('.modal .close');
+$(document).ready(function() {
+    const modal = $('#modal-info');
+    const closeBtn = $('.close');
 
-    document.querySelectorAll('.more-info').forEach(button => {
-        button.addEventListener('click', function () {
-            const nombre = this.getAttribute('data-nombre');
-            const edad = this.getAttribute('data-edad');
-            const profesion = this.getAttribute('data-profesion');
-            const descripcion = this.getAttribute('data-descripcion');
+    $('.more-info').on('click', function() {
+        const profId = $(this).data('prof-id');
+        // Aquí deberías hacer una petición al servidor para obtener los detalles del profesional
+        // Por ahora, vamos a simular la información
+        // Por ejemplo:
+        const professionalDetails = {
+            1: { name: '', description: 'Experto en asesoramiento de salud mental.' },
+            // Añade más detalles según sea necesario
+        };
 
-            modalNombre.textContent = nombre;
-            modalEdad.textContent = edad;
-            modalProfesion.textContent = profesion;
-            modalDescripcion.textContent = descripcion;
+        // Establece la información en el modal
+        $('#modal-title').text(professionalDetails[profId].name);
+        $('#modal-description').text(professionalDetails[profId].description);
 
-            modal.style.display = 'flex';
-            modal.classList.add('show');
-        });
+        // Muestra el modal
+        modal.fadeIn();
     });
 
-    closeBtn.addEventListener('click', function () {
-        modal.style.display = 'none';
-        modal.classList.remove('show');
+    closeBtn.on('click', function() {
+        modal.fadeOut();
     });
 
-    window.addEventListener('click', function (event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-            modal.classList.remove('show');
+    $(window).on('click', function(event) {
+        if ($(event.target).is(modal)) {
+            modal.fadeOut();
         }
     });
 });
