@@ -1,0 +1,71 @@
+.card {
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    width: 280px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: bold;
+      padding-bottom: 10px;
+    }
+  
+    .range-bar {
+      position: relative;
+      height: 8px;
+      background: linear-gradient(to right, #f39c12, #2ecc71, #f1c40f, #1abc9c);
+      border-radius: 5px;
+      margin: 15px 0 10px;
+      overflow: hidden;
+  
+      .range-text {
+        position: absolute;
+        font-size: 12px;
+        margin-top: 5px;
+  
+        &.left {
+          left: 0;
+        }
+  
+        &:nth-child(2) {
+          left: 25%;
+          transform: translateX(-50%);
+        }
+  
+        &:nth-child(3) {
+          left: 75%;
+          transform: translateX(-50%);
+        }
+  
+        &.right {
+          right: 0;
+        }
+      }
+  
+      .indicator {
+        position: absolute;
+        top: -6px;
+        left: 35%; // Ajustar de acuerdo al valor del IMC
+        width: 10px;
+        height: 20px;
+        background-color: white;
+        border-radius: 50%;
+        border: 2px solid #2ecc71;
+      }
+    }
+  
+    .imc-value {
+      font-size: 32px;
+      color: #2ecc71;
+      margin: 10px 0;
+    }
+  
+    .suggestion {
+      font-size: 14px;
+      color: #bdc3c7;
+    }
+  }

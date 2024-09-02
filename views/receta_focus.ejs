@@ -28,7 +28,7 @@
                         <%- data.summary %>
                     </div>
 
-                    <ul class="ingredientes seccion" >
+                    <ul class="ingredientes seccion">
                         <h4>Ingredientes necesarios</h4>
                         <% var i=0; %>
                             <% while(i < data.extendedIngredients.length) { %>
@@ -49,43 +49,49 @@
                     </div>
                     <div class="seccion" id="int_detalladas">
                         <h4>Instrucciones detalladas</h4>
-                    
-                        <% data.analyzedInstructions.forEach((instruction, index) => { %>
-                            <h3 class="instruction-title">Paso <%= index + 1 %>: <%= instruction.name || `Instrucción ${index + 1}` %></h3>
-                    
-                            <% instruction.steps.forEach((step) => { %>
+
+                        <% data.analyzedInstructions.forEach((instruction, index)=> { %>
+                            <h3 class="instruction-title">Paso <%= index + 1 %>: <%= instruction.name || `Instrucción
+                                        ${index + 1}` %>
+                            </h3>
+
+                            <% instruction.steps.forEach((step)=> { %>
                                 <div class="step">
-                                    <p class="step-description"><strong>Paso <%= step.number %>:</strong> <%= step.step %></p>
-                    
-                                    <% if (step.ingredients && step.ingredients.length > 0) { %>
+                                    <p class="step-description"><strong>Paso <%= step.number %>:</strong>
+                                        <%= step.step %>
+                                    </p>
+
+                                    <% if (step.ingredients && step.ingredients.length> 0) { %>
                                         <p class="ingredients-title"><strong>Ingredientes:</strong></p>
                                         <ul class="ingredients-list">
-                                            <% step.ingredients.forEach((ingredient) => { %>
-                                                <li class="ingredient-item"><%= ingredient.name %></li>
-                                            <% }); %>
+                                            <% step.ingredients.forEach((ingredient)=> { %>
+                                                <li class="ingredient-item">
+                                                    <%= ingredient.name %>
+                                                </li>
+                                                <% }); %>
                                         </ul>
-                                    <% } %>
-                    
-                                    <% if (step.equipment && step.equipment.length > 0) { %>
-                                        <p class="equipment-title"><strong>Equipos:</strong></p>
-                                        <ul class="equipment-list">
-                                            <% step.equipment.forEach((equipment) => { %>
-                                                <li class="equipment-item"><%= equipment.name %></li>
-                                            <% }); %>
-                                        </ul>
-                                    <% } %>
+                                        <% } %>
+
+                                            <% if (step.equipment && step.equipment.length> 0) { %>
+                                                <p class="equipment-title"><strong>Equipos:</strong></p>
+                                                <ul class="equipment-list">
+                                                    <% step.equipment.forEach((equipment)=> { %>
+                                                        <li class="equipment-item">
+                                                            <%= equipment.name %>
+                                                        </li>
+                                                        <% }); %>
+                                                </ul>
+                                                <% } %>
                                 </div>
-                            <% }); %>
-                        <% }); %>
+                                <% }); %>
+                                    <% }); %>
                     </div>
-                    
-                    
-                    
+
                     <script>
-                        document.addEventListener('DOMContentLoaded', function() {
+                        document.addEventListener('DOMContentLoaded', function () {
                             var botonVerMas = document.querySelector('.ver_mas');
                             var int_detalladas = document.getElementById('int_detalladas');
-                            botonVerMas.addEventListener('click', function() {
+                            botonVerMas.addEventListener('click', function () {
                                 int_detalladas.classList.toggle('active')
                             });
                         });

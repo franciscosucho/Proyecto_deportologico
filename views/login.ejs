@@ -23,7 +23,6 @@
       </div>
 
       <form method="get" action="/iniciar" id="cont_iniciar" class="sub_form">
-
         <div class="cont_inputs">
           <label for="nombre_ini">Nombre de usuario o Email</label>
           <input id="nombre_ini" name="nombre_ini" type="text" placeholder="Escriba su nombre de usuario o Email"
@@ -40,22 +39,21 @@
           <span id="error_ini">
             <%= error %>
           </span>
-          <% } %>
+        <% } %>
       </form>
 
       <form method="post" action="/enviar" id="cont_registrar" class="desac">
-
         <span id="texto_regs"></span>
 
         <div id="datos_personales" class="sub_form">
           <div class="cont_inputs">
-            <label for="nombre_regis">Nombre </label>
-            <input id="nombre_regis" name="nombre_regis" type="text" placeholder="Escriba su nombre " required
+            <label for="nombre_regis">Nombre</label>
+            <input id="nombre_regis" name="nombre_regis" type="text" placeholder="Escriba su nombre" required
               maxlength="40">
           </div>
           <div class="cont_inputs">
-            <label for="apellido_regis">Apellido </label>
-            <input id="apellido_regis" name="apellido_regis" type="text" placeholder="Escriba su nombre apellido"
+            <label for="apellido_regis">Apellido</label>
+            <input id="apellido_regis" name="apellido_regis" type="text" placeholder="Escriba su apellido"
               required maxlength="40">
           </div>
           <div class="cont_inputs">
@@ -116,26 +114,26 @@
             <label for="dieta">Tipo de dieta</label>
             <select id="dieta" name="dieta" required>
               <option value=" ">Omnívora</option>
-              <option value="Vegetarian">Vegetariana</option>
+              <option value="Vegetariana">Vegetariana</option>
               <option value="Ovo-Vegetariano">Ovo-Vegetariano</option>
-              <option value="Vegan">Vegana</option>
-              <option value="Pescetarian">pescetariano</option>
-              <option value="Gluten Free">Sin gluten</option>
+              <option value="Vegana">Vegana</option>
+              <option value="Pescetariana">Pescetariana</option>
+              <option value="Sin gluten">Sin gluten</option>
             </select>
           </div>
           <div class="cont_inputs">
-            <label for="intolerancia">intolerancia</label>
+            <label for="intolerancia">Intolerancia</label>
             <select id="intolerancia" name="intolerancia" required>
               <option value="Ninguna">Ninguna</option>
-              <option value="Dairy">Lácteos</option>
-              <option value="Egg">Huevo</option>
+              <option value="Lácteos">Lácteos</option>
+              <option value="Huevo">Huevo</option>
               <option value="Gluten">Gluten</option>
-              <option value="Grain">Grano</option>
-              <option value="Peanut">Maní</option>
-              <option value="Seafood">Mariscos</option>
-              <option value="Soy">Soja</option>
-              <option value="Sulfite">Sulfito</option>
-              <option value="Wheat">Trigo</option>
+              <option value="Grano">Grano</option>
+              <option value="Maní">Maní</option>
+              <option value="Mariscos">Mariscos</option>
+              <option value="Soja">Soja</option>
+              <option value="Sulfito">Sulfito</option>
+              <option value="Trigo">Trigo</option>
             </select>
           </div>
           <div class="cont_inputs">
@@ -164,12 +162,13 @@
             <label for="obj_deportivo">Objetivo deportivo</label>
             <select id="obj_deportivo" name="obj_deportivo" required>
               <option value="Mejorar la resistencia">Mejorar la resistencia</option>
-              <option value="Cardiovascular">Mejorar la potencia</option>
+              <option value="Mejorar la potencia">Mejorar la potencia</option>
             </select>
           </div>
           <div class="cont_inputs">
             <label for="frecuencia">Frecuencia (Días de entrenamiento/Semana)</label>
             <select id="frecuencia" name="frecuencia" required>
+              <option value="2/7">2/7</option>
               <option value="3/7">3/7</option>
               <option value="4/7">4/7</option>
               <option value="5/7">5/7</option>
@@ -180,26 +179,17 @@
           <div class="cont_inputs">
             <label for="intensidad">Intensidad</label>
             <select id="intensidad" name="intensidad" required>
-              <option value="Ligera">Ligera</option>
-              <option value="Moderada">Moderada</option>
+              <option value="Baja">Baja</option>
+              <option value="Media">Media</option>
               <option value="Alta">Alta</option>
-
             </select>
           </div>
           <div class="cont_btn">
-            <button id="btn_enviar_registro" type="submit">Registrarme</button>
+            <button id="btn_registrar_sesion" type="submit">Registrarse</button>
             <button class="btn_atras" type="button">Atrás</button>
           </div>
         </div>
-        <!-- Mostrar error si existe -->
-        <% if (typeof error !=='undefined' ) { %>
-          <span id="error_ini">
-            <%= error %>
-          </span>
-          <% } %>
       </form>
-
-
     </section>
   </main>
   <script src="js/estilos_regis.js"></script>

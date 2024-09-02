@@ -12,9 +12,7 @@
 
 <body>
   <main>
-
     <section id="ventana_prin">
-
       <aside id="menu_lateral">
         <%-include('menu.ejs')%>
       </aside>
@@ -22,48 +20,39 @@
         <div id="cont_user">
           <i class="fa-solid fa-gear"></i>
           <i class="fa-solid fa-user"></i>
-
         </div>
-
-
-
         <h2 id="nombre_us" class="text_prin">Bienvenido
           <%-user_name%>
         </h2>
-
-
         <div id="cont_secciones">
           <div id="sec_prin">
-            <div class="" id="calendario">
+            <div id="calendario">
               <%-include('calendario.ejs')%>
             </div>
-
           </div>
           <div id="sec_secu">
             <a class="btn_sec" href="/recetas" id="btn_recetas">
-
               <img
                 src="https://media.istockphoto.com/id/1457433817/es/foto/grupo-de-alimentos-saludables-para-la-dieta-flexitariana.jpg?s=612x612&w=0&k=20&c=2w5l2DEJWFGxSnmJxX_RCE40RriE7WtSoKKpuxw5luE="
                 alt="">
               <span>Recetas</span>
             </a>
             <div class="btn_sec" id="cont_racha">
-
               <span class="text_racha"><%-user_racha%></span>
-              <span class="text">dias de racha</span>
+              <span class="text">días de racha</span>
             </div>
             <a class="btn_sec" href="/frases">
-              <img src="  https://images.unsplash.com/photo-1446034295857-c39f8844fad4?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D" alt="">
+              <img
+                src="https://images.unsplash.com/photo-1446034295857-c39f8844fad4?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D"
+                alt="">
               <span>Frases motivacionales</span>
             </a>
           </div>
         </div>
-
       </section>
     </section>
   </main>
   <script src="js/calendario.js"></script>
-
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
 
+<head>
     <meta charset="UTF-8" />
     <title>Mental Strong</title>
     <link rel="stylesheet" href="css/estilo.css">
@@ -11,29 +11,38 @@
 </head>
 
 <body>
-    <main>
 
+    <main>
         <section id="ventana_prin">
 
             <aside id="menu_lateral">
                 <%-include('menu.ejs')%>
             </aside>
-            <div id="cont_main" class="cont_main">
-                <div id="cont_user">
-                    <i class="fa-solid fa-gear"></i>
-                    <i class="fa-solid fa-user"></i>
+            <section id="main_recetas">
+                <h2 class="text_prin">Bienvenido a tus <strong>nutricionales</strong></h2>
+                <div id="data_nut" class="card" data-peso="<%-user_peso%>" data-genero="<%-user_genero%>" data-nac="<%-user_nac%>"
+                    data-altura="<%-user_altura%>">
+                    <h2>TU IMC</h2>
+                    <div class="range-bar">
+                        <span class="range-text left">Bajo peso</span>
+                        <span class="range-text">Saludable</span>
+                        <span class="range-text">Sobrepeso</span>
+                        <span class="range-text right">Obesidad</span>
+                        <div class="indicator"></div>
+                    </div>
+                    <div class="imc-value">
 
+                    </div>
+                    <div class="suggestion">
+                        Su rango de peso saludable sugerido es de 62 a 83 kg.
+                    </div>
                 </div>
 
-                <h2 id="nombre_us">Datos nutricionales</h2>
 
-
-
-            </div>
+            </section>
         </section>
     </main>
-
-
+    <script src="js/nut.js"></script>
 </body>
 
 </html>

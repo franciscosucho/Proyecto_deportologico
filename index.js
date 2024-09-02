@@ -124,6 +124,29 @@ app.post('/nueva_actividad', (req, res) => {
 })
 
 
+
+app.get('/nutricion', (req, res) => {
+
+    var user_name = req.session.user_name
+    var user_dni = req.session.user_dni
+    var user_pass = req.session.user_pass
+    var user_nac = req.session.user_nac
+    var user_genero = req.session.user_genero
+    var user_peso = req.session.user_peso
+    var user_altura = req.session.user_altura
+    var user_email = req.session.user_email
+    var user_dieta = req.session.user_dieta
+    var user_obj_nut = req.session.user_obj_nut
+    var user_deporte = req.session.user_deporte
+    var user_obj_dep = req.session.user_obj_dep
+    var user_frecuencia = req.session.user_frecuencia
+    var user_intolerancia = req.session.user_intolerancia
+    var user_intensidad = req.session.user_intensidad
+
+    res.render('nutricion', { user_name, user_intolerancia, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+
+})
+
 app.get('/index', isLogged, (req, res) => {
     var user_name = req.session.user_name
     var user_dni = req.session.user_dni
@@ -160,6 +183,9 @@ app.get('/index', isLogged, (req, res) => {
 
 
 })
+
+
+
 
 
 app.get('/recetas', (req, res) => {
@@ -243,8 +269,6 @@ const díaAyer = String(ayer.getDate()).padStart(2, '0');
 const fechaAyer = `${añoAyer}-${mesAyer}-${díaAyer}`;
 
 
-
-
 app.post('/enviar', (req, res) => {
     let {
         nombre_regis, apellido_regis, dni, nacimiento, opciones_genero, peso, altura,
@@ -279,8 +303,8 @@ app.post('/enviar', (req, res) => {
                 INSERT INTO usuario (DNI, Nombre_usuario, password, Nombre, Apellido, FechaNacimiento, Email, Peso, Altura, Genero)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             `;
-            nombre_regis=capitalizarPrimeraLetra(nombre_regis);
-            apellido_regis=capitalizarPrimeraLetra(apellido_regis);
+            nombre_regis = capitalizarPrimeraLetra(nombre_regis);
+            apellido_regis = capitalizarPrimeraLetra(apellido_regis);
             connection.query(query_usuario, [dni, nombre_usuario_regis, password_regis, nombre_regis, apellido_regis, nacimiento, email_regis, peso, altura, opciones_genero], (err) => {
                 if (err) {
                     console.error('Error al insertar en usuario:', err);
@@ -311,7 +335,7 @@ app.post('/enviar', (req, res) => {
 
                         // Inserción en la tabla `racha`
                         const fechaActual = obtenerFechaActual()
-                        console.log(fechaActual)
+
                         //INSERT INTO racha (Dni_racha,dias,Fecha_ultimo_Ingreso) VALUES (?,?,?,?)
                         const query_racha = `
                             INSERT INTO racha (Dni_racha, dias ,  Fecha_ultimo_Ingreso) VALUES (?, ?, ?)`;
@@ -370,8 +394,8 @@ app.get('/iniciar', (req, res) => {
             req.session.user_pass = results[0].password;
             req.session.user_nac = results[0].FechaNacimiento;
             req.session.user_email = results[0].Email;
-            req.session.user_peso = results[0].peso;
-            req.session.user_altura = results[0].altura;
+            req.session.user_peso = results[0].Peso;
+            req.session.user_altura = results[0].Altura;
             req.session.user_genero = results[0].Genero;
 
             const query_nutri = `
@@ -414,17 +438,26 @@ app.get('/iniciar', (req, res) => {
                     });
                 }
                 if (results.length > 0) {
-                    let racha = results[0].Racha_actual;
-                    let fechaUltimoIngreso = results[0].Fecha_ultimo_Ingreso;
+                    let racha = results[0].dias;
+                    let fechaUltimoIngreso = results[0].Fecha_ultimo_Ingreso; // Asumiendo que esta es una fecha en formato ISO
+                    let fecha = new Date(fechaUltimoIngreso);
 
+                    let anio = fecha.getFullYear();
+                    let mes = ("0" + (fecha.getMonth() + 1)).slice(-2); // Sumamos 1 porque getMonth() devuelve un índice 0-11
+                    let dia = ("0" + fecha.getDate()).slice(-2);
+
+                    let fechaFormateada = `${anio}-${mes}-${dia}`;
+                    fechaUltimoIngreso = fechaFormateada;
+
+                    // Asegúrate de que fechaAyer y fechaActual estén también en formato YYYY-MM-DD
                     if (fechaUltimoIngreso === fechaAyer) {
                         // Incrementa la racha
                         racha++;
-                    }
-                    else if (fechaUltimoIngreso !== fechaActual) {
+                    } else if (fechaUltimoIngreso < fechaAyer) {
                         // Si el usuario no ingresó ayer, se reinicia la racha
                         racha = 1;
                     }
+
                     req.session.user_racha = racha
                     // Actualiza la fecha del último ingreso y la racha
                     const query_actualizar_racha = `
@@ -468,6 +501,6 @@ function obtenerFechaActual() {
     return `${año}-${mes}-${día}`;
 }
 function capitalizarPrimeraLetra(texto) {
-    if (!texto) return ''; 
+    if (!texto) return '';
     return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 }
