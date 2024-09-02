@@ -39,15 +39,18 @@
                         <span class="text_item "><%- actividad.Objetivos %></span>
                         <%}%>
 
-            </li>
+            </li> 
             <% }) %>
-                <div id="agregar">      
+                <div id="agregar">
                     <form method="post" action="/nueva_actividad" id="cont_agregar">
-                        <i class="fa-light fa-plus"></i>
-                        <input id="info_act" name="info_act" type="text"
-                            placeholder="Escriba el nuevo evento que quiere realizar:" required maxlength="100">
-                        <input id="fecha_act" name="fecha_act" type="date"  required>
-                        <button  id="btn_enviar_act" type="submit">Enviar</button>
+                        <div id="cont_inp">
+                            <i class="fa-light fa-plus"></i>
+                            <input id="info_act" name="info_act" type="text"
+                                placeholder="Escriba el nuevo evento que quiere realizar:" required maxlength="100">
+                        </div>
+
+                        <input id="fecha_act" name="fecha_act" type="date" required>
+                        <button id="btn_enviar_act" type="submit">Enviar</button>
                     </form>
                 </div>
     </ul>

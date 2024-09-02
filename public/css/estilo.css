@@ -352,7 +352,7 @@ body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
   height: 20vh;
   width: 20vw;
   text-decoration: none;
@@ -379,7 +379,7 @@ body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_racha
 body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_racha .text {
   color: rgb(146, 146, 146);
   font-size: 0.7em;
-  top: 60%;
+  top: 70%;
 }
 body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec span {
   width: 100%;

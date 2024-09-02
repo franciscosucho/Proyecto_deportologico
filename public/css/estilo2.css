@@ -257,8 +257,7 @@ body {
   gap: 20px;
   display: flex;
   flex-direction: column;
-
-
+  
 }
 
 #habit_tracker h3 {
@@ -266,6 +265,8 @@ body {
 }
 
 #habit_tracker #item_list {
+  width: 100%;
+  height: auto;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -293,27 +294,39 @@ body {
 }
 
 #agregar {
-  width: 100%;
-
+ 
+  display: flex;
+  flex-direction: column;
+  height: auto;
 }
 
 #cont_agregar {
   display: flex;
+  width: 100%;
   justify-content: flex-start;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 20px;
 }
 
 #cont_agregar input {
+  width: 100%;
   color: white;
   border: none;
   background-color: transparent;
   border-bottom: 1px solid rgba(128, 128, 128, 0.651);
 }
-
+#cont_agregar #cont_inp {
+  display: flex;
+  gap: 10px;
+  color: white;
+  border: none;
+  background-color: transparent;
+}
 #cont_agregar #fecha_act {
   width: auto;
   outline: none;
+  width: 100%;
 }
 
 input:focus {
@@ -336,4 +349,7 @@ input:focus {
   font-weight: 100;
   color: white;
 
+}
+#item_list{
+    
 }
