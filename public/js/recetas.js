@@ -2,7 +2,7 @@ const cont_recetas_main = document.getElementById("cont_recetas_main")
 
 
 
-
+ 
 //variables de api
 //------------------------------------------------------------------------
 const data_us = document.getElementById('data_us')

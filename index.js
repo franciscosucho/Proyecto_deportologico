@@ -235,7 +235,7 @@ app.get('/asesoramiento', (req, res) => {
         if (err) {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
-        }
+        } 
 
         res.render('asesoramiento', { results })
     })
