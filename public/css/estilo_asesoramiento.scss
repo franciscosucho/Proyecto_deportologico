@@ -3,9 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-.desac{
+
+.desac {
     display: none;
 }
+
 body {
     main {
         #subtitulo {
@@ -21,7 +23,7 @@ body {
 
         #nombre_us {
             margin-top: 2%;
-            color: white;   
+            color: white;
             font-size: 40px;
         }
 
@@ -32,8 +34,9 @@ body {
             width: 100%;
             height: auto;
             margin-top: 2%;
+
             .card {
-                
+
                 background-color: rgba(0, 0, 0, 0.363);
                 color: white;
                 border-radius: 20px;
@@ -47,12 +50,12 @@ body {
                 padding: 20px;
                 text-align: center;
 
-                
+
                 img {
                     width: 50%;
                     height: auto;
                     border-radius: 50%;
-                    
+
                 }
 
                 .nombre_profesional,
@@ -67,34 +70,37 @@ body {
                     font-size: 18px;
                 }
 
-                .botones{
-                 margin-top: 2%;
-                display: flex;
-                 gap: 20px;   
+                .botones {
+                    margin-top: 2%;
+                    display: flex;
+                    gap: 20px;
 
-                
-                .more-info {
-                    background-color: white;
-                    color: black;
-                    border: none;
-                    border-radius: 10px;
-                    margin-top: 5%;
-                    padding: 5px;
-                    transition: transform 0.3s ease-out, background-color 0.3s ease-out;
-                    font-size: 1rem;
-                    font-weight: 600;
-                    cursor: pointer;
-                    width: 140px;
-                    height: 40px;
-                    &:hover {
-                        transform: scale(1.1);
-                        background-color: rgba(255, 255, 255, 0.842);
+
+                    .more-info {
+                        background-color: white;
+                        color: black;
+                        border: none;
+                        border-radius: 10px;
+                        margin-top: 5%;
+                        padding: 5px;
+                        transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        width: 140px;
+                        height: 40px;
+
+                        &:hover {
+                            transform: scale(1.1);
+                            background-color: rgba(255, 255, 255, 0.842);
+                        }
                     }
                 }
             }
-            }
-    }   }
-    .info-extra{
+        }
+    }
+
+    .info-extra {
         margin-top: 5px;
         font-size: 1.2rem;
         gap: 20px;
@@ -107,6 +113,5 @@ body {
         text-align: left;
         padding: 20px;
     }
-    
-}
 
+}

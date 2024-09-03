@@ -3,6 +3,7 @@ $color_a: #5eca82;
 $color_text_primario:#ffff;
 $color_text_li:#666;
 $color_h4:rgb(209, 209, 209);
+
 #main_recetas {
     width: 100%;
     height: auto;
@@ -49,7 +50,7 @@ $color_h4:rgb(209, 209, 209);
                 height: auto;
                 border-radius: 10px;
                 background-color: $color-principal-receta;
-               
+
                 -webkit-box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
                 -moz-box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
                 box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
@@ -253,6 +254,7 @@ $color_h4:rgb(209, 209, 209);
             padding-left: 15%;
             gap: 4px;
             color: $color_h4;
+
             h4 {
                 font-size: 2em;
                 color: white;
