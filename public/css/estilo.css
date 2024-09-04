@@ -260,7 +260,7 @@ body main #ventana_prin #menu_lateral #cont_fixed img {
 }
 body main #ventana_prin #menu_lateral #cont_fixed #cont_item {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 40px;

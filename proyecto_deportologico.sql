@@ -2,23 +2,23 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 02-09-2024 a las 17:51:14
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Sep 04, 2024 at 03:48 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
--- Base de datos: `proyecto_deportologico`
+-- Database: `proyecto_deportologico`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `actividad_dia`
+-- Table structure for table `actividad_dia`
 --
 
 CREATE TABLE `actividad_dia` (
@@ -30,7 +30,7 @@ CREATE TABLE `actividad_dia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `actividad_dia`
+-- Dumping data for table `actividad_dia`
 --
 
 INSERT INTO `actividad_dia` (`ID_act`, `Dni_act`, `Fecha`, `Objetivos`, `MarcadorCumplido`) VALUES
@@ -61,7 +61,7 @@ INSERT INTO `actividad_dia` (`ID_act`, `Dni_act`, `Fecha`, `Objetivos`, `Marcado
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `deportivousuario`
+-- Table structure for table `deportivousuario`
 --
 
 CREATE TABLE `deportivousuario` (
@@ -74,7 +74,7 @@ CREATE TABLE `deportivousuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `deportivousuario`
+-- Dumping data for table `deportivousuario`
 --
 
 INSERT INTO `deportivousuario` (`ID_depor`, `DNI_depor`, `ObjetivosDeportivo`, `TipoDeporte`, `Frecuencia`, `Intensidad`) VALUES
@@ -90,12 +90,13 @@ INSERT INTO `deportivousuario` (`ID_depor`, `DNI_depor`, `ObjetivosDeportivo`, `
 (26, 43098782, 'Mejorar la resistencia', 'Resistencia', '4/7', 'Moderada'),
 (27, 42098782, 'Mejorar la resistencia', 'Resistencia', '3/7', 'Moderada'),
 (28, 4309876, 'Mejorar la resistencia', 'Resistencia', '3/7', 'Moderada'),
-(29, 223098784, 'Mejorar la resistencia', 'Resistencia', '', '');
+(29, 223098784, 'Mejorar la resistencia', 'Resistencia', '', ''),
+(30, 47805040, 'Mejorar la potencia', 'Cardiovascular', '4/7', 'Alta');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `motivacion`
+-- Table structure for table `motivacion`
 --
 
 CREATE TABLE `motivacion` (
@@ -107,7 +108,7 @@ CREATE TABLE `motivacion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `nutricionalusuario`
+-- Table structure for table `nutricionalusuario`
 --
 
 CREATE TABLE `nutricionalusuario` (
@@ -119,7 +120,7 @@ CREATE TABLE `nutricionalusuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `nutricionalusuario`
+-- Dumping data for table `nutricionalusuario`
 --
 
 INSERT INTO `nutricionalusuario` (`ID_nut`, `DNI_nut`, `intolerancia`, `ObjetivoNutricion`, `TipoAlimentacion`) VALUES
@@ -136,12 +137,13 @@ INSERT INTO `nutricionalusuario` (`ID_nut`, `DNI_nut`, `intolerancia`, `Objetivo
 (28, 42098782, 'Egg', 'Mantener peso', 'Ovo-Vegetariano'),
 (29, 4309876, 'Egg', 'Mantener peso', 'Ovo-Vegetariano'),
 (30, 2490863, '', 'Pérdida de peso', ''),
-(31, 223098784, '', 'Mantener peso', '');
+(31, 223098784, '', 'Mantener peso', ''),
+(32, 47805040, 'Ninguna', 'Ganar peso', '');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `profesional`
+-- Table structure for table `profesional`
 --
 
 CREATE TABLE `profesional` (
@@ -156,7 +158,7 @@ CREATE TABLE `profesional` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `profesional`
+-- Dumping data for table `profesional`
 --
 
 INSERT INTO `profesional` (`ID`, `DNI`, `Nombre`, `Apellido`, `Profesion`, `Descripcion`, `Email`, `Numero`) VALUES
@@ -167,7 +169,7 @@ INSERT INTO `profesional` (`ID`, `DNI`, `Nombre`, `Apellido`, `Profesion`, `Desc
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `progreso`
+-- Table structure for table `progreso`
 --
 
 CREATE TABLE `progreso` (
@@ -181,7 +183,7 @@ CREATE TABLE `progreso` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `racha`
+-- Table structure for table `racha`
 --
 
 CREATE TABLE `racha` (
@@ -192,18 +194,19 @@ CREATE TABLE `racha` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `racha`
+-- Dumping data for table `racha`
 --
 
 INSERT INTO `racha` (`ID_racha`, `Dni_racha`, `dias`, `Fecha_ultimo_Ingreso`) VALUES
 (3, 47098781, 5, '2024-09-02'),
 (4, 4309876, 1, '2024-08-30'),
-(5, 223098784, 1, '2024-09-02');
+(5, 223098784, 1, '2024-09-02'),
+(6, 47805040, 1, '2024-09-03');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -220,7 +223,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`DNI`, `Nombre_usuario`, `password`, `Nombre`, `Apellido`, `FechaNacimiento`, `Email`, `Peso`, `Altura`, `Genero`) VALUES
@@ -236,142 +239,143 @@ INSERT INTO `usuario` (`DNI`, `Nombre_usuario`, `password`, `Nombre`, `Apellido`
 (45098780, 'lopezfrutos', '4321', 'santiago', 'frutos', '1987-08-20', 'lopezfrutos@gmail.com', 76.00, 186.00, 'M'),
 (47098765, 'damianbetu', '333', 'damian', 'betular', '2003-08-30', 'damianbetu@gmail.com', 79.00, 183.00, 'M'),
 (47098781, 'fransucho', '1975', 'Francisco', 'Suchomela', '2005-12-20', 'franciscosuchomela@gmail.com', 65.00, 175.00, 'M'),
+(47805040, 'cris', 'cris10', 'Cristobal', 'Maier', '2007-03-20', 'cristobalmaier1@gmail.com', 64.00, 175.00, 'M'),
 (223098784, 'equi', 'ss', 'Ezequiel', 'Fernandez', '2001-03-20', 'equi@gmail.com', 87.00, 187.00, 'M'),
 (2147483647, 'beto_alonso', '1234', 'beto', 'alonso', '2002-02-12', 'beto@gmail.com', 70.00, 170.00, 'M');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `actividad_dia`
+-- Indexes for table `actividad_dia`
 --
 ALTER TABLE `actividad_dia`
   ADD PRIMARY KEY (`ID_act`),
   ADD KEY `Dni_act` (`Dni_act`);
 
 --
--- Indices de la tabla `deportivousuario`
+-- Indexes for table `deportivousuario`
 --
 ALTER TABLE `deportivousuario`
   ADD PRIMARY KEY (`ID_depor`),
   ADD KEY `DNI_depor` (`DNI_depor`);
 
 --
--- Indices de la tabla `motivacion`
+-- Indexes for table `motivacion`
 --
 ALTER TABLE `motivacion`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indices de la tabla `nutricionalusuario`
+-- Indexes for table `nutricionalusuario`
 --
 ALTER TABLE `nutricionalusuario`
   ADD PRIMARY KEY (`ID_nut`),
   ADD KEY `DNI_nut` (`DNI_nut`);
 
 --
--- Indices de la tabla `profesional`
+-- Indexes for table `profesional`
 --
 ALTER TABLE `profesional`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indices de la tabla `progreso`
+-- Indexes for table `progreso`
 --
 ALTER TABLE `progreso`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `DNI_prog` (`DNI_prog`);
 
 --
--- Indices de la tabla `racha`
+-- Indexes for table `racha`
 --
 ALTER TABLE `racha`
   ADD PRIMARY KEY (`ID_racha`),
   ADD KEY `Dni_racha` (`Dni_racha`);
 
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`DNI`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `actividad_dia`
+-- AUTO_INCREMENT for table `actividad_dia`
 --
 ALTER TABLE `actividad_dia`
   MODIFY `ID_act` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT de la tabla `deportivousuario`
+-- AUTO_INCREMENT for table `deportivousuario`
 --
 ALTER TABLE `deportivousuario`
-  MODIFY `ID_depor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `ID_depor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT de la tabla `motivacion`
+-- AUTO_INCREMENT for table `motivacion`
 --
 ALTER TABLE `motivacion`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `nutricionalusuario`
+-- AUTO_INCREMENT for table `nutricionalusuario`
 --
 ALTER TABLE `nutricionalusuario`
-  MODIFY `ID_nut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `ID_nut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT de la tabla `profesional`
+-- AUTO_INCREMENT for table `profesional`
 --
 ALTER TABLE `profesional`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `progreso`
+-- AUTO_INCREMENT for table `progreso`
 --
 ALTER TABLE `progreso`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `racha`
+-- AUTO_INCREMENT for table `racha`
 --
 ALTER TABLE `racha`
-  MODIFY `ID_racha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_racha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `actividad_dia`
+-- Constraints for table `actividad_dia`
 --
 ALTER TABLE `actividad_dia`
   ADD CONSTRAINT `actividad_dia_ibfk_1` FOREIGN KEY (`Dni_act`) REFERENCES `usuario` (`DNI`);
 
 --
--- Filtros para la tabla `deportivousuario`
+-- Constraints for table `deportivousuario`
 --
 ALTER TABLE `deportivousuario`
   ADD CONSTRAINT `deportivousuario_ibfk_1` FOREIGN KEY (`DNI_depor`) REFERENCES `usuario` (`DNI`);
 
 --
--- Filtros para la tabla `nutricionalusuario`
+-- Constraints for table `nutricionalusuario`
 --
 ALTER TABLE `nutricionalusuario`
   ADD CONSTRAINT `nutricionalusuario_ibfk_1` FOREIGN KEY (`DNI_nut`) REFERENCES `usuario` (`DNI`);
 
 --
--- Filtros para la tabla `progreso`
+-- Constraints for table `progreso`
 --
 ALTER TABLE `progreso`
   ADD CONSTRAINT `progreso_ibfk_1` FOREIGN KEY (`DNI_prog`) REFERENCES `usuario` (`DNI`);
 
 --
--- Filtros para la tabla `racha`
+-- Constraints for table `racha`
 --
 ALTER TABLE `racha`
   ADD CONSTRAINT `racha_ibfk_1` FOREIGN KEY (`Dni_racha`) REFERENCES `usuario` (`DNI`);
