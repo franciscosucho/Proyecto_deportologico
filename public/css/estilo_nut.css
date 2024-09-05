@@ -1,19 +1,26 @@
-.card {
+#cont_sub {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 20vw;
+  height: auto;
+}
+#cont_sub .card {
   background-color: #1e1e1e;
   border-radius: 15px;
   padding: 20px;
   color: white;
   text-align: center;
-  width: 280px;
+  width: 100%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
-.card h2 {
+#cont_sub .card h2 {
   margin: 0;
   font-size: 20px;
   font-weight: bold;
   padding-bottom: 10px;
 }
-.card .range-bar {
+#cont_sub .card .range-bar {
   position: relative;
   height: 8px;
   background: linear-gradient(to right, #f39c12, #2ecc71, #f1c40f, #1abc9c);
@@ -21,26 +28,26 @@
   margin: 15px 0 10px;
   overflow: hidden;
 }
-.card .range-bar .range-text {
+#cont_sub .card .range-bar .range-text {
   position: absolute;
   font-size: 12px;
   margin-top: 5px;
 }
-.card .range-bar .range-text.left {
+#cont_sub .card .range-bar .range-text.left {
   left: 0;
 }
-.card .range-bar .range-text:nth-child(2) {
+#cont_sub .card .range-bar .range-text:nth-child(2) {
   left: 25%;
   transform: translateX(-50%);
 }
-.card .range-bar .range-text:nth-child(3) {
+#cont_sub .card .range-bar .range-text:nth-child(3) {
   left: 75%;
   transform: translateX(-50%);
 }
-.card .range-bar .range-text.right {
+#cont_sub .card .range-bar .range-text.right {
   right: 0;
 }
-.card .range-bar .indicator {
+#cont_sub .card .range-bar .indicator {
   position: absolute;
   top: -6px;
   left: 35%;
@@ -50,12 +57,30 @@
   border-radius: 50%;
   border: 2px solid #2ecc71;
 }
-.card .imc-value {
+#cont_sub .card .imc-value {
   font-size: 32px;
   color: #2ecc71;
   margin: 10px 0;
 }
-.card .suggestion {
+#cont_sub .card .suggestion {
   font-size: 14px;
   color: #bdc3c7;
+}
+#cont_sub .card #data_nut #categoria {
+  margin-bottom: 10px;
+}
+#cont_sub .card#cont_rec {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+#cont_sub .card#cont_rec #valor_rec {
+  font-size: 1.6em;
+  color: #2ecc71;
+}
+#cont_sub .card#cont_rec #categoria_cal_dom {
+  color: rgb(156, 156, 156);
+  font-size: 1em;
 }/*# sourceMappingURL=estilo_nut.css.map */

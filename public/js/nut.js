@@ -1,3 +1,4 @@
+
 // datos del html
 const dataNutri = document.getElementById('data_nut');
 var peso = parseFloat(dataNutri.getAttribute("data-peso"));
@@ -6,8 +7,13 @@ var fecha_nac = parseInt(dataNutri.getAttribute("data-nac"));
 const edad = calcularEdad(fecha_nac);
 const altura = parseFloat(dataNutri.getAttribute("data-altura"));
 const objetivoNutricional = dataNutri.getAttribute("data-obj-nut");
-
-
+const frecuencia = dataNutri.getAttribute("data-frecuencia");
+const intensidad = dataNutri.getAttribute("data-intensidad");
+const obj_nut = dataNutri.getAttribute("data-obj-nut");
+var suggestion = document.getElementById("suggestion");
+const cont_rec = document.getElementById("cont_rec");
+const valor_rec = document.getElementById("valor_rec");
+const categoria_cal_dom = document.getElementById("categoria_cal_dom")
 
 function calcularIMC(peso, altura) {
     // Convertir la altura a metros,si está en centímetros
@@ -71,22 +77,35 @@ let categoria = interpretarIMC(imc, edad, genero);
 
 // Mostrar resultados en el DOM
 const imcValueElement = document.querySelector('.imc-value');
-const suggestionElement = document.querySelector('.suggestion');
+const categoria_dom = document.getElementById("categoria")
+
 if (imcValueElement) {
     imcValueElement.textContent = imc;
-    alert(categoria)
+    let alturaEnMetros = altura / 100;
+    var text_suggestion = promedio_peso(alturaEnMetros)
+    suggestion.textContent = text_suggestion;
+    categoria_dom.textContent = categoria
     // Puedes cambiar el color según la categoría
     if (categoria === "Bajo peso") {
         imcValueElement.style.color = "#ffc107"; // Amarillo
+        categoria_dom.style.color = "#ffc107"; // Amarillo
     } else if (categoria === "Peso normal") {
-        
         imcValueElement.style.color = "#28a745"; // Verde
+        categoria_dom.style.color = "#28a745"; // Verde
     } else if (categoria === "Sobrepeso") {
         imcValueElement.style.color = "#17a2b8"; // Azul
+        categoria_dom.style.color = "#17a2b8"; // Azul
     } else {
         imcValueElement.style.color = "#dc3545"; // Rojo
+        categoria_dom.style.color = "#dc3545"; // Rojo
     }
 }
+
+promedio_peso(altura)
+
+
+
+
 
 posicionarIndicador(imc);
 function calcularEdad(fechaNacimiento) {
@@ -106,4 +125,55 @@ function calcularEdad(fechaNacimiento) {
     }
 
     return edad;
+}
+
+function promedio_peso(alturaEnMetros) {
+    imc_menor = 18.5 * (alturaEnMetros * alturaEnMetros)
+    imc_mayor = 24.9 * (alturaEnMetros * alturaEnMetros)
+    return `Su rango de peso saludable mediante su altura va desde ${imc_menor.toFixed(1)} Kg hasta ${imc_mayor.toFixed(1)} Kg`
+}
+var TMB;
+var categoria_cal
+var calorias_consumir;
+categoria_cal = calculo_TMB(peso, altura, edad, genero)
+valor_rec.textContent = calorias_consumir;
+categoria_cal_dom.textContent = categoria_cal;
+function calculo_TMB(peso, altura, edad, genero) {
+    let categoria;
+    if (genero === "M") {
+        TMB = (10 * peso) + (6.25 * altura) - (5 * edad) + 5
+    }
+    else if (genero === "F") {
+        TMB = (10 * peso) + (6.25 * altura) - (5 * edad) - 161
+    }
+
+    if (frecuencia == "3/7") {
+        calorias_consumir = TMB * 1.375
+    }
+    else if (frecuencia == "4/7") {
+        calorias_consumir = TMB * 1.55
+    }
+    else if (frecuencia == "5/7") {
+        calorias_consumir = TMB * 1.55
+    }
+    else if (frecuencia == "6/7") {
+        calorias_consumir = TMB * 1.725
+    }
+    else if (frecuencia == "7/7") {
+        calorias_consumir = TMB * 1.725
+    }
+    else if (frecuencia == "7/7" && intensidad == "Alta") {
+        calorias_consumir = TMB * 1.9
+    }
+
+    if (obj_nut == "Pérdida de peso") {
+        categoria = "Déficit calórico";
+        calorias_consumir -= 400;
+    }
+    else if (obj_nut == "Ganar peso") {
+        categoria = "Superávit calórico";
+        calorias_consumir += 300;
+    }
+    calorias_consumir = calorias_consumir.toFixed(1);
+    return categoria;
 }

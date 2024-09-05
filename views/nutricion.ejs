@@ -20,25 +20,35 @@
             </aside>
             <section id="main_recetas">
                 <h2 class="text_prin">Bienvenido a tus <strong>nutricionales</strong></h2>
-                <div id="data_nut" class="card" data-peso="<%-user_peso%>" data-genero="<%-user_genero%>" data-nac="<%-user_nac%>"
-                    data-altura="<%-user_altura%>" data-obj-nut="<%-user_obj_nut%>">
-                    <h2>TU IMC</h2>
-                    <div class="range-bar">
-                        <span class="range-text left">Bajo peso</span>
-                        <span class="range-text">Saludable</span>
-                        <span class="range-text">Sobrepeso</span>
-                        <span class="range-text right">Obesidad</span>
-                        <div class="indicator"></div>
-                    </div>
-                    <div class="imc-value">
-                        
-                    </div>
-                    <div class="suggestion">
-                        Su rango de peso saludable sugerido es de 62 a 83 kg.
-                    </div>
-                </div>
+                <section id="cont_sub">
+                    <div id="data_nut" class="card" data-peso="<%-user_peso%>" data-genero="<%-user_genero%>"
+                        data-nac="<%-user_nac%>" data-obj-nut="<%-user_obj_nut%>" data-altura="<%-user_altura%>"
+                        data-obj-nut="<%-user_obj_nut%>" data-frecuencia="<%-user_frecuencia%>"
+                        data-intensidad="<%-user_intensidad%>">
+                        <h2>TU IMC </h2>
+                        <i class="fa-solid fa-question"></i>
+                        <div class="range-bar">
 
- 
+                            <div class="indicator"></div>
+                        </div>
+
+                        <div class="imc-value">
+
+                        </div>
+                        <h3 id="categoria"></h3>
+                        <div class="suggestion" id="suggestion">
+                        </div>
+                    </div>
+                    <div id="cont_rec" class="card">
+                        <i class="fa-solid fa-question"></i>
+                        <h3>Requerimientos caloricos diarios</h3>
+                        <h4 id="valor_rec"></h4>
+                        <h6 id="categoria_cal_dom"></h6>
+                    </div>
+                </section>
+
+
+
             </section>
         </section>
     </main>
