@@ -13,7 +13,25 @@ const obj_nut = dataNutri.getAttribute("data-obj-nut");
 var suggestion = document.getElementById("suggestion");
 const cont_rec = document.getElementById("cont_rec");
 const valor_rec = document.getElementById("valor_rec");
-const categoria_cal_dom = document.getElementById("categoria_cal_dom")
+const categoria_cal_dom = document.getElementById("categoria_cal_dom");
+
+const info = document.querySelectorAll(".info");
+const question = document.querySelectorAll(".question");
+
+question.forEach((qst, index) => {
+    qst.addEventListener("click", () => {
+        // Alternar la clase 'desac' en el contenedor info correspondiente
+        info[index].classList.toggle("desac");
+    });
+});
+
+
+
+
+
+
+
+
 
 function calcularIMC(peso, altura) {
     // Convertir la altura a metros,si está en centímetros

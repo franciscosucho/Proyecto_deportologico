@@ -14,6 +14,31 @@
   width: 100%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
+#cont_sub .card .info {
+  color: gainsboro;
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid gainsboro;
+  width: 100%;
+}
+#cont_sub .card .cont_tit {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+#cont_sub .card .cont_tit h2 {
+  margin-left: 25%;
+  text-align: center;
+  width: 50%;
+}
+#cont_sub .card .cont_tit .question {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+#cont_sub .card .cont_tit .question:hover {
+  color: gray;
+}
 #cont_sub .card h2 {
   margin: 0;
   font-size: 20px;
