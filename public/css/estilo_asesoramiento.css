@@ -29,7 +29,7 @@ body main .contenedor_profesional {
   justify-content: center;
   width: 100%;
   height: auto;
-  margin-top: 2%;
+  align-items: flex-start;
 }
 body main .contenedor_profesional .card {
   background-color: rgba(0, 0, 0, 0.363);

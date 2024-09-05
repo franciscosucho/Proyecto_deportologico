@@ -15,20 +15,20 @@ body {
 }
 
 .container_calendar {
-  width: 90%;
+  width: 100%;
   max-width: 400px;
-
 }
 
 .container_calendar .header_calendar {
   width: 100%;
   height: auto;
   background: rgba(100, 231, 135, 0.7882352941);
-  border-radius: 10px 10px 0 0;
+  border-radius: 15px 15px 0 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
+  
 }
 
 .container_calendar .header_calendar h1 {
@@ -117,10 +117,11 @@ body {
 .container_calendar .container_change_month {
   width: 100%;
   height: auto;
+  padding: 5px;
   display: flex;
   justify-content: space-evenly;
   opacity: 0.7;
-  margin: 5px 0;
+  
 }
 
 .container_calendar .container_change_month div {
@@ -248,21 +249,21 @@ body {
 /*# sourceMappingURL=estilo2.css.map */
 #habit_tracker {
   height: auto;
-  width: 50vh;
+  width: 62vh;
   list-style: none;
-
   padding: 30px;
-  background-color: #1C1E26;
-  border-radius: 30px;
+  background-color: rgb(37, 35, 35);
+  border-radius: 15px;
   gap: 20px;
   display: flex;
   flex-direction: column;
-  
 }
 
 #habit_tracker h3 {
   color: rgb(218, 218, 218);
+  font-size: 1.37rem;
 }
+
 
 #habit_tracker #item_list {
   width: 100%;
@@ -323,6 +324,18 @@ body {
   border: none;
   background-color: transparent;
 }
+#agregar #btn_enviar_act{
+  background-color: #64E788;
+  color:  rgb(37, 35, 35);
+  width: 70px;
+}
+#agregar #btn_enviar_act:hover{
+  background-color: #3ab95c;
+  transition: 0.3s ease-out;
+  transform: scale(1.1);
+}
+ 
+
 #cont_agregar #fecha_act {
   width: auto;
   outline: none;
