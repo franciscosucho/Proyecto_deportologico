@@ -343,7 +343,7 @@ body main #ventana_prin #cont_main #cont_secciones #sec_secu {
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
   padding: 10px;
   width: 30%;
   height: 100%;
@@ -369,8 +369,15 @@ body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec:hover {
   opacity: 1;
 }
 body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_racha {
+  transition: 0.3s;
   background-color: transparent;
   border: 1px solid rgba(128, 128, 128, 0.432);
+}
+body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_racha:hover {
+  transition: 0.3s ease-out;
+  transform: scale(1.05);
+  background-color: rgba(70, 165, 95, 0.3490196078);
+  border: #419663 2px solid;
 }
 body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec#cont_racha .text_racha {
   font-size: 2.4em;

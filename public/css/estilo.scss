@@ -409,7 +409,8 @@ body {
                         justify-content: flex-start;
                         align-items: flex-start;
                         flex-direction: column;
-                        gap: 20px;
+                        
+                        gap: 40px;
                         padding: 10px;
                         width: 30%;
                         height: 100%;
@@ -435,9 +436,16 @@ body {
                             }
 
                             &#cont_racha {
+                                transition: 0.3s;
                                 background-color: transparent;
                                 border: 1px solid rgba(128, 128, 128, 0.432);
 
+                                &:hover{
+                                    transition: 0.3s ease-out;
+                                    transform: scale(1.05);
+                                    background-color:#46a55f59;
+                                    border: #419663 2px solid;
+                                }
                                 .text_racha {
                                     font-size: 2.4em;
                                     top: 35%;
@@ -467,6 +475,7 @@ body {
                                 object-fit: cover;
                                 filter: brightness(50%);
                                 border-radius: 30px;
+                                
                             }
 
                         }

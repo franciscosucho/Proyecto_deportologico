@@ -22,7 +22,8 @@
                 <div class="contenedor_profesional">
                     <% results.forEach(profesional=> { %>
                         <div class="card">
-                            <img src="/resources/entrenador3.png" alt="">
+                            <img src="/resources/img_entrenadores/<%- profesional.url %>">
+
                             <h3 class="nombre_profesional"><%- profesional.Nombre %> <%- profesional.Apellido %></h3>
                             <p class="profesion"><%- profesional.Profesion %></p>
                             <div class="botones">
@@ -31,7 +32,7 @@
                             <div class="desac info-extra" id="info-<%- profesional.ID%>">
                                 <p><b>Email: </b><%- profesional.Email %>.</p>
                                 <p><b>Numero: </b><%- profesional.Numero %>.</p>
-                                <p><b>Descripción: </b><%- profesional.Descripcion %>.</p> 
+                                <p><b>Descripción: </b><%- profesional.Descripcion %>.</p>
                             </div>
                         </div>
                         <% }) %>
@@ -41,22 +42,28 @@
     </main>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Selecciona todos los botones "Más Información"
             const moreInfoButtons = document.querySelectorAll(".more-info");
 
             moreInfoButtons.forEach(button => {
                 button.addEventListener("click", () => {
-                    // Obtiene el ID del profesional del atributo data-prof-id del botón
                     const profId = button.getAttribute("data-prof-id");
-                    // Selecciona el contenedor de información asociado con el ID
                     const infoDiv = document.getElementById(`info-${profId}`);
-                    // Alterna la visibilidad del contenedor de información
+
+                    // Oculta toda la información extra visible
+                    document.querySelectorAll(".info-extra").forEach(div => {
+                        if (div !== infoDiv) {
+                            div.classList.add("desac");     
+                        }
+                    });
+
+                    // Alterna la visibilidad del contenedor de información seleccionado
                     if (infoDiv) {
                         infoDiv.classList.toggle("desac");
                     }
                 });
             });
         });
+
     </script>
 </body>
 

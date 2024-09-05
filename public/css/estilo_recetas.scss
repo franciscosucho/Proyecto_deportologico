@@ -1,16 +1,14 @@
 $color-principal-receta: #224439;
 $color_a: #5eca82;
-$color_text_primario:#ffff;
-$color_text_li:#666;
-$color_h4:rgb(209, 209, 209);
+$color_text_primario: #ffff;
+$color_text_li: #666;
+$color_h4: rgb(209, 209, 209);
 
 #main_recetas {
     width: 100%;
     height: auto;
-
     padding-left: 5%;
     padding-top: 3%;
-
     padding-bottom: 2%;
     display: flex;
     flex-direction: column;
@@ -46,7 +44,7 @@ $color_h4:rgb(209, 209, 209);
                 display: flex;
                 justify-content: flex-start;
                 align-items: flex-start;
-                width: 80%;
+                width: 90%;
                 height: auto;
                 border-radius: 10px;
                 background-color: $color-principal-receta;
@@ -59,6 +57,9 @@ $color_h4:rgb(209, 209, 209);
                     height: 100%;
                     width: auto;
                     max-width: 60%;
+                    border-radius: 10px;
+                    box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
+    
                 }
 
                 .text {
@@ -133,7 +134,6 @@ $color_h4:rgb(209, 209, 209);
             h4 {
                 color: #2c8364;
                 font-size: 2em;
-
             }
 
             .cont_fitro {
@@ -175,10 +175,20 @@ $color_h4:rgb(209, 209, 209);
 
                     &#limpiar {
                         color: rgb(116, 116, 116);
+
+                        &:hover {
+                            color: rgb(170, 170, 170);
+
+                        }
                     }
 
                     &#aplicar {
                         color: #2c8364;
+
+                        &:hover {
+                            color: #3fbd91;
+
+                        }
                     }
                 }
             }
@@ -199,6 +209,7 @@ $color_h4:rgb(209, 209, 209);
     padding-top: 2%;
     gap: 20px;
     padding-bottom: 2%;
+
 
     #cont_recetas_main {
         width: 40vw;
