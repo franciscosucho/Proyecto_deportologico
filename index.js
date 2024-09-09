@@ -232,7 +232,7 @@ app.get('/asesoramiento', (req, res) => {
         if (err) {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
-        } 
+        }
 
         res.render('asesoramiento', { results })
     })
@@ -360,7 +360,7 @@ app.post('/enviar', (req, res) => {
                             req.session.user_intensidad = intensidad;
                             req.session.user_fecha_comienzo = fechaActual;
 
-                            return res.redirect('/index');
+                            res.redirect('/index');
                         });
                     });
                 });

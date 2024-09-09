@@ -156,7 +156,7 @@ var TMB;
 var categoria_cal
 var calorias_consumir;
 categoria_cal = calculo_TMB(peso, altura, edad, genero)
-valor_rec.textContent = calorias_consumir;
+valor_rec.textContent = calorias_consumir+" g";
 categoria_cal_dom.textContent = categoria_cal;
 function calculo_TMB(peso, altura, edad, genero) {
     let categoria;
@@ -194,10 +194,14 @@ function calculo_TMB(peso, altura, edad, genero) {
         categoria = "Superávit calórico";
         calorias_consumir += 300;
     }
+    else{
+        categoria = "Mantener Peso ";
+    }
     calorias_consumir = calorias_consumir.toFixed(1);
     return categoria;
 }
-
+// hacer el grafico de torta
+//---------------------------------------------------------------------------------------------------------------------------------------
 const getDataColors = opacity => {
     const colors = ['#32a852', '#2a9d8f', '#264653', '#f4f4f4', '#ffffff', '#5c5c5c', '#ffc300', '#003566']
     return colors.map(color => opacity ? `${color + opacity}` : color)
