@@ -16,7 +16,7 @@ body {
 
 .container_calendar {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .container_calendar .header_calendar {
@@ -51,7 +51,7 @@ body {
 
 .container_calendar .body_calendar {
   width: 100%;
-  height: auto;
+  height: 220px;
   background-color: rgb(37, 35, 35);
   border-radius: 0 0 15px 15px;
 }
@@ -125,6 +125,7 @@ body {
 }
 
 .container_calendar .container_change_month div {
+  margin-top: 2px;
   color: white;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
@@ -161,7 +162,7 @@ body {
 .container_calendar .week_days_item {
   width: 14.2857142857%;
   text-align: center;
-
+  padding: 2px;
   color: white;
 }
 
@@ -173,16 +174,19 @@ body {
   flex-wrap: wrap;
   justify-content: flex-start;
   margin: 0 auto;
+  
 }
 
 .container_calendar .container_days span {
   color: white;
   height: 20px;
   margin: 5px 0;
+  
   font-family: Arial, sans-serif;
   position: relative;
   flex-basis: 14.2857142857%;
   text-align: center;
+  
 }
 
 .container_calendar .container_days .prev_days,
@@ -249,7 +253,7 @@ body {
 /*# sourceMappingURL=estilo2.css.map */
 #habit_tracker {
   height: auto;
-  width: 62vh;
+  width: 100%;
   list-style: none;
   padding: 30px;
   background-color: rgb(37, 35, 35);
