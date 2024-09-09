@@ -1,4 +1,6 @@
 
+
+
 // datos del html
 const dataNutri = document.getElementById('data_nut');
 var peso = parseFloat(dataNutri.getAttribute("data-peso"));
@@ -195,3 +197,102 @@ function calculo_TMB(peso, altura, edad, genero) {
     calorias_consumir = calorias_consumir.toFixed(1);
     return categoria;
 }
+
+const getDataColors = opacity => {
+    const colors = ['#32a852', '#2a9d8f', '#264653', '#f4f4f4', '#ffffff', '#5c5c5c', '#ffc300', '#003566']
+    return colors.map(color => opacity ? `${color + opacity}` : color)
+}
+const printChart = (calorias, obj_nut) => {
+    const resultado = distribucion_macros(calorias, obj_nut);
+    renderModelChart(resultado);
+}
+const renderModelChart = (macros) => {
+    const totalGramos = macros.grasas + macros.proteinas + macros.carbohidratos;
+    
+    const data = {
+        labels: ['Grasas', 'Proteínas', 'Carbohidratos'],
+        datasets: [{
+            data: [
+                parseFloat(macros.grasas.toFixed(1)),       // Grasas
+                parseFloat(macros.proteinas.toFixed(1)),    // Proteínas
+                parseFloat(macros.carbohidratos.toFixed(1)) // Carbohidratos
+            ],
+            borderColor: getDataColors(0),
+            backgroundColor: getDataColors(20)
+        }]
+    };
+
+    const options = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: (tooltipItem) => {
+                        const value = tooltipItem.raw;
+                        return value + ' g'; // Agrega el signo de gramos 'g'
+                    }
+                }
+            },
+            datalabels: {
+                formatter: (value) => {
+                    const porcentaje = (value / totalGramos * 100).toFixed(1);
+                    return porcentaje + '% ';
+                },
+                color: '#fff',
+                font: {
+                    weight: 'bold'
+                }
+            }
+        }
+    };
+
+    new Chart('modelsChart', {
+        type: 'doughnut',
+        data: data,
+        options: options,
+        plugins: [ChartDataLabels] 
+    });
+}
+
+// Función que calcula la distribución de macronutrientes
+function distribucion_macros(calorias, obj_nut) {
+    let macros = {
+        carbohidratos: 0,
+        proteinas: 0,
+        grasas: 0
+    };
+
+    // Distribuciones por objetivo nutricional
+    switch (obj_nut) {
+        case "Mantener peso":
+            macros.carbohidratos = 0.55; 
+            macros.proteinas = 0.20;    
+            macros.grasas = 0.25;      
+            break;
+
+        case "Pérdida de peso":
+            macros.carbohidratos = 0.40; 
+            macros.proteinas = 0.35;    
+            macros.grasas = 0.25;  
+            break;
+
+        case "Ganar peso":
+            macros.carbohidratos = 0.50;
+            macros.proteinas = 0.25;     
+            macros.grasas = 0.25;     
+            break;
+    }
+
+    // Cálculo de gramos de macronutrientes basado en calorías
+    let gramos_carbohidratos = (calorias * macros.carbohidratos) / 4;
+    let gramos_proteinas = (calorias * macros.proteinas) / 4;
+    let gramos_grasas = (calorias * macros.grasas) / 9;
+
+    return {
+        carbohidratos: gramos_carbohidratos,
+        proteinas: gramos_proteinas,
+        grasas: gramos_grasas
+    };
+}
+
+// renderizar el gráfico con los datos calculados
+printChart(calorias_consumir, obj_nut);

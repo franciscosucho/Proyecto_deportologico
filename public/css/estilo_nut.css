@@ -1,3 +1,11 @@
+#main_recetas #cont_nut {
+  background-color: transparent;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+}
+
 #cont_sub {
   display: flex;
   flex-direction: column;
@@ -83,13 +91,15 @@
   border: 2px solid #2ecc71;
 }
 #cont_sub .card .imc-value {
-  font-size: 32px;
+  font-size: 2.3em;
+  font-weight: bolder;
   color: #2ecc71;
   margin: 10px 0;
 }
 #cont_sub .card .suggestion {
   font-size: 14px;
   color: #bdc3c7;
+  margin: 10px 0;
 }
 #cont_sub .card #data_nut #categoria {
   margin-bottom: 10px;
@@ -108,4 +118,57 @@
 #cont_sub .card#cont_rec #categoria_cal_dom {
   color: rgb(156, 156, 156);
   font-size: 1em;
+}
+
+#cont_main {
+  display: flex;
+  width: 60%;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 2%;
+}
+#cont_main #macros {
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  width: 25vw;
+}
+#cont_main #macros #modelsChart {
+  margin-top: 10px;
+  background-color: rgba(44, 44, 44, 0.2117647059);
+}
+#cont_main #macros h4 {
+  color: gray;
+}
+#cont_main #macros .cont_tit {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+#cont_main #macros .cont_tit h2 {
+  margin-left: 25%;
+  text-align: center;
+  width: 50%;
+}
+#cont_main #macros .cont_tit .question {
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+#cont_main #macros .cont_tit .question:hover {
+  color: gray;
+}
+#cont_main #macros .info {
+  color: gainsboro;
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid gainsboro;
+  width: 100%;
 }/*# sourceMappingURL=estilo_nut.css.map */

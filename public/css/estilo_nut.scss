@@ -1,26 +1,42 @@
+#main_recetas {
+  #cont_nut {
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+
+
+  }
+
+}
+
 #cont_sub {
   display: flex;
   flex-direction: column;
   gap: 40px;
   width: 20vw;
   height: auto;
-
+ 
   .card {
     background-color: #1e1e1e;
-    
+
     border-radius: 15px;
     padding: 20px;
     color: white;
     text-align: center;
     width: 100%;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    .info{
+
+    .info {
       color: gainsboro;
       margin-top: 10px;
       padding: 10px;
-      border-top: 1px solid gainsboro;;
+      border-top: 1px solid gainsboro;
+      ;
       width: 100%;
     }
+
     .cont_tit {
       display: flex;
       width: 100%;
@@ -32,11 +48,12 @@
         text-align: center;
         width: 50%;
       }
-      
+
       .question {
         cursor: pointer;
         transition: all .2s ease-in-out;
-        &:hover{
+
+        &:hover {
           color: gray;
         }
       }
@@ -94,7 +111,8 @@
     }
 
     .imc-value {
-      font-size: 32px;
+      font-size: 2.3em;
+      font-weight: bolder;
       color: #2ecc71;
       margin: 10px 0;
     }
@@ -102,6 +120,7 @@
     .suggestion {
       font-size: 14px;
       color: #bdc3c7;
+      margin: 10px 0;
     }
 
     #data_nut {
@@ -132,4 +151,61 @@
 
 
 
+}
+
+#cont_main {
+  display: flex;
+  width: 60%;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 2%;
+  #macros {
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center ;
+    gap: 10px;
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    width: 25vw;
+    #modelsChart {
+      margin-top: 10px;
+      background-color: #2c2c2c36;
+    }
+    h4{
+      color: gray;
+    }
+    .cont_tit {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      h2 {
+        margin-left: 25%;
+        text-align: center;
+        width: 50%;
+      }
+
+      .question {
+        margin-top: 10px;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+          color: gray;
+        }
+      }
+    }
+    .info {
+      color: gainsboro;
+      margin-top: 10px;
+      padding: 10px;
+      border-top: 1px solid gainsboro;
+      ;
+      width: 100%;
+    }
+  }
 }

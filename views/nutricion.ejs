@@ -20,53 +20,76 @@
             </aside>
             <section id="main_recetas">
                 <h2 class="text_prin">Bienvenido a tus <strong>nutricionales</strong></h2>
-                <section id="cont_sub">
-                    <div id="data_nut" class="card" data-peso="<%-user_peso%>" data-genero="<%-user_genero%>"
-                        data-nac="<%-user_nac%>" data-obj-nut="<%-user_obj_nut%>" data-altura="<%-user_altura%>"
-                        data-obj-nut="<%-user_obj_nut%>" data-frecuencia="<%-user_frecuencia%>"
-                        data-intensidad="<%-user_intensidad%>">
-                        <div class="cont_tit">
-                            <h2>TU IMC </h2>
-                            <i class="fa-solid fa-question question"></i>
-                        </div>
+                <section id="cont_nut">
+                    <section id="cont_main">
+                        <figure id="macros">
+                            <div class="cont_tit">
+                                <h2>Distribución de macronutrientes</h2>
+                                <i class="fa-solid fa-question question"></i>
+                            </div>
+                         
+                            <h4>Objetivo nutricional:<%-user_obj_nut%></h4>
+                           
+                            <canvas id="modelsChart"></canvas>
+                            <div class="desac info">
+                                <p>
+                                    La <b>distribución de macronutrientes</b> se refiere al equilibrio entre <b>carbohidratos</b>, <b>proteínas</b> y <b>grasas</b> en la dieta, los cuales son esenciales para el funcionamiento del cuerpo.Se deden ajustar estos nutrientes según los objetivos, como mantener, perder o ganar peso, puede mejorar tanto el rendimiento físico como la salud en general.
+                                </p>
+                            </div>
+                        </figure>
+                    </section>
+                    <section id="cont_sub">
+                        <div id="data_nut" class="card" data-peso="<%-user_peso%>" data-genero="<%-user_genero%>"
+                            data-nac="<%-user_nac%>" data-obj-nut="<%-user_obj_nut%>" data-altura="<%-user_altura%>"
+                            data-obj-nut="<%-user_obj_nut%>" data-frecuencia="<%-user_frecuencia%>"
+                            data-intensidad="<%-user_intensidad%>" data-obj_deportivo="<%-user_obj_dep%>">
+                            <div class="cont_tit">
+                                <h2>TU IMC </h2>
+                                <i class="fa-solid fa-question question"></i>
+                            </div>
 
-                        <div class="range-bar">
+                            <div class="range-bar">
 
-                            <div class="indicator"></div>
-                        </div>
+                                <div class="indicator"></div>
+                            </div>
 
-                        <div class="imc-value">
+                            <div class="imc-value">
 
+                            </div>
+                            <h3 id="categoria"></h3>
+                            <div class="suggestion" id="suggestion">
+                            </div>
+                            <div class="desac info">
+                                El Índice de Masa Corporal (IMC) es una medida utilizada para determinar si una persona
+                                tiene un peso saludable en relación con su altura. Se calcula dividiendo el peso (kg)
+                                por el
+                                cuadrado de la altura (m²) y ayuda a identificar si una persona tiene bajo peso, peso
+                                normal, sobrepeso u obesidad.
+                            </div>
                         </div>
-                        <h3 id="categoria"></h3>
-                        <div class="suggestion" id="suggestion">
+                        <div id="cont_rec" class="card">
+                            <div class="cont_tit">
+                                <h2>Requerimientos caloricos diarios</h2>
+                                <i class="fa-solid fa-question question"></i>
+                            </div>
+                            <h4 id="valor_rec"></h4>
+                            <h6 id="categoria_cal_dom"></h6>
+                            <div class="desac info">
+                                El requerimiento calórico diario es la cantidad de energía que tu cuerpo necesita para
+                                mantener sus funciones básicas y tu nivel de actividad diaria.
+                            </div>
                         </div>
-                        <div class="desac info">
-                            El Índice de Masa Corporal (IMC) es una medida utilizada para determinar si una persona
-                            tiene un peso saludable en relación con su altura. Se calcula dividiendo el peso (kg) por el
-                            cuadrado de la altura (m²) y ayuda a identificar si una persona tiene bajo peso, peso
-                            normal, sobrepeso u obesidad.
-                        </div>
-                    </div>
-                    <div id="cont_rec" class="card">
-                        <div class="cont_tit">
-                            <h2>Requerimientos caloricos diarios</h2>
-                            <i class="fa-solid fa-question question"></i>
-                        </div>
-                        <h4 id="valor_rec"></h4>
-                        <h6 id="categoria_cal_dom"></h6>
-                        <div class="desac info">
-                            El requerimiento calórico diario es la cantidad de energía que tu cuerpo necesita para
-                            mantener sus funciones básicas y tu nivel de actividad diaria.
-                        </div>
-                    </div>
+                    </section>
+
                 </section>
-
 
 
             </section>
         </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
     <script src="js/nut.js"></script>
 </body>
 
