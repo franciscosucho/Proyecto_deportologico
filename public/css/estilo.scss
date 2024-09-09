@@ -4,6 +4,29 @@
 @import url('estilo_nut.css');
 $color_sombra:rgb(8, 8, 8);
 
+/* Estilo para la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 6px; /* Ancho de la barra */
+  }
+  
+  /* Estilo para el fondo de la barra de desplazamiento */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f100; /* Color de fondo */
+  }
+  
+  /* Estilo para el "thumb" (parte que se mueve) */
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Color del thumb */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+  
+  /* Estilo para el "thumb" al pasar el mouse */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color del thumb al pasar el mouse */
+  }
+
+
+
 * {
     margin: 0px;
     padding: 0px;

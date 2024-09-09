@@ -22,17 +22,17 @@
                 <div class="contenedor_profesional">
                     <% results.forEach(profesional=> { %>
                         <div class="card">
-                            <img src="/resources/img_entrenadores/<%- profesional.url %>">
+                            <img src="/resources/img_entrenadores/<%-profesional.url%>">
 
                             <h3 class="nombre_profesional"><%- profesional.Nombre %> <%- profesional.Apellido %></h3>
                             <p class="profesion"><%- profesional.Profesion %></p>
                             <div class="botones">
                                 <button class="more-info" data-prof-id="<%- profesional.ID%>">Más Información</button>
-                            </div>
+                             </div>
                             <div class="desac info-extra" id="info-<%- profesional.ID%>">
-                                <p><b>Email: </b><%- profesional.Email %>.</p>
-                                <p><b>Numero: </b><%- profesional.Numero %>.</p>
-                                <p><b>Descripción: </b><%- profesional.Descripcion %>.</p>
+                                <p><b>Email: </b><%- profesional.Email %></p>
+                                <p><b>Numero: </b><%- profesional.Numero %></p>
+                                <p><b>Descripción: </b><%- profesional.Descripcion %></p>
                             </div>
                         </div>
                         <% }) %>

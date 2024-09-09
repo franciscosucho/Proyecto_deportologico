@@ -156,7 +156,7 @@ var TMB;
 var categoria_cal
 var calorias_consumir;
 categoria_cal = calculo_TMB(peso, altura, edad, genero)
-valor_rec.textContent = calorias_consumir+" g";
+valor_rec.textContent = calorias_consumir + " g";
 categoria_cal_dom.textContent = categoria_cal;
 function calculo_TMB(peso, altura, edad, genero) {
     let categoria;
@@ -194,7 +194,7 @@ function calculo_TMB(peso, altura, edad, genero) {
         categoria = "Superávit calórico";
         calorias_consumir += 300;
     }
-    else{
+    else {
         categoria = "Mantener Peso ";
     }
     calorias_consumir = calorias_consumir.toFixed(1);
@@ -212,7 +212,7 @@ const printChart = (calorias, obj_nut) => {
 }
 const renderModelChart = (macros) => {
     const totalGramos = macros.grasas + macros.proteinas + macros.carbohidratos;
-    
+
     const data = {
         labels: ['Grasas', 'Proteínas', 'Carbohidratos'],
         datasets: [{
@@ -253,7 +253,7 @@ const renderModelChart = (macros) => {
         type: 'doughnut',
         data: data,
         options: options,
-        plugins: [ChartDataLabels] 
+        plugins: [ChartDataLabels]
     });
 }
 
@@ -268,21 +268,21 @@ function distribucion_macros(calorias, obj_nut) {
     // Distribuciones por objetivo nutricional
     switch (obj_nut) {
         case "Mantener peso":
-            macros.carbohidratos = 0.55; 
-            macros.proteinas = 0.20;    
-            macros.grasas = 0.25;      
+            macros.carbohidratos = 0.55;
+            macros.proteinas = 0.20;
+            macros.grasas = 0.25;
             break;
 
         case "Pérdida de peso":
-            macros.carbohidratos = 0.40; 
-            macros.proteinas = 0.35;    
-            macros.grasas = 0.25;  
+            macros.carbohidratos = 0.40;
+            macros.proteinas = 0.35;
+            macros.grasas = 0.25;
             break;
 
         case "Ganar peso":
             macros.carbohidratos = 0.50;
-            macros.proteinas = 0.25;     
-            macros.grasas = 0.25;     
+            macros.proteinas = 0.25;
+            macros.grasas = 0.25;
             break;
     }
 

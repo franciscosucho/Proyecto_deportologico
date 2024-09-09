@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  width: 20vw;
+  width: 30vw;
   height: auto;
 }
 #cont_sub .card {
@@ -137,7 +137,7 @@
   border-radius: 15px;
   padding: 20px;
   color: white;
-  width: 25vw;
+  width: 30vw;
 }
 #cont_main #macros #modelsChart {
   margin-top: 10px;
@@ -145,6 +145,9 @@
 }
 #cont_main #macros h4 {
   color: gray;
+  margin-left: 10%;
+  text-align: start;
+  width: 90%;
 }
 #cont_main #macros .cont_tit {
   display: flex;
@@ -153,9 +156,9 @@
   align-items: flex-start;
 }
 #cont_main #macros .cont_tit h2 {
-  margin-left: 25%;
-  text-align: center;
-  width: 50%;
+  margin-left: 10%;
+  text-align: start;
+  width: auto;
 }
 #cont_main #macros .cont_tit .question {
   margin-top: 10px;
