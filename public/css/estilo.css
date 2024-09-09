@@ -364,9 +364,10 @@ body main #ventana_prin #cont_main #cont_secciones #sec_secu {
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
+  margin-bottom: 1.8%;
   gap: 40px;
   padding: 10px;
-  width: 30%;
+  width: 36%;
   height: 100%;
 }
 body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec {
@@ -375,7 +376,7 @@ body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec {
   flex-direction: column;
   gap: 40px;
   height: 20vh;
-  width: 20vw;
+  width: 22vw;
   text-decoration: none;
   border-radius: 30px;
   font-size: 2em;

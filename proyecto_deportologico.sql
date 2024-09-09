@@ -176,14 +176,29 @@ INSERT INTO `profesional` (`ID`, `DNI`, `Nombre`, `Apellido`, `Profesion`, `Desc
 CREATE TABLE `progreso` (
   `ID` int(11) NOT NULL,
   `DNI_prog` int(11) NOT NULL,
+  `TipoRegistro` enum('Tiempo','Distancia','Peso') NOT NULL,
+  `Nombre` varchar(60) NOT NULL
+  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+
+-- Estructura de tabla para la tabla `progreso_focus`
+--
+
+CREATE TABLE `progreso_focus` (
+  `ID` int(11) NOT NULL,
+  `DNI_prog` int(11) NOT NULL,
   `Fecha` date NOT NULL,
-  `TipoRegistro` enum('Ejercicios','Peso') NOT NULL,
   `Valor` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
+
 -- Estructura de tabla para la tabla `racha`
 --
 
