@@ -19,19 +19,96 @@
                 <%-include('menu.ejs')%>
             </aside>
             <section id="main_recetas">
-                <h2 class="text_prin">Bienvenido a tus <strong>datos</strong></h2>
+
+                <div id="cont_info_prin">
+                    <img src="./resources/chad.jfif">
+                    <h3 class="nombre_us"><%-user_name%></h3>
+                </div>
                 <section class="cont_rec" id="cont_us">
+
                     <div id="cont_main">
-                        <img src="/resources/img_entrenadores/mazza.png>">
-                        <h3><%-user_name%></h3>
+                        <div class="cont_datos">
+                            <h4>Detalles de usuario</h4>
+                            <div class="datos_user">
+                                <h3>Dirección de correo</h3>
+                                <p><%-user_email%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Nombre</h3>
+                                <p><%-user_nombre_regis%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Apellido</h3>
+                                <p><%-user_apellido_regis%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Documento Nacional de Identidad</h3>
+                                <p><%-user_dni%></p>
+                            </div>
+                        </div>
+
+                        <div class="cont_datos">
+                            <h4>Detalles de nutricion</h4>
+                            <div class="datos_user">
+                                <h3>Tipo de dieta</h3>
+                                <p><%-user_dieta%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Objetivo nutricional</h3>
+                                <p><%-user_obj_nut%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Apellido</h3>
+                                <p><%-user_intolerancia%></p>
+                            </div>
+                        </div>
+
+                        <div class="cont_datos">
+                            <h4>Detalles de deporte</h4>
+                            <div class="datos_user">
+                                <h3>Tipo de deporte</h3>
+                                <p><%-user_deporte%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Objetivo deportivo</h3>
+                                <p><%-user_obj_dep%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Frecuencia de la actividad</h3>
+                                <p><%-user_frecuencia%> ( Frecuencia / Dias de la semana )</p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Intensidad de la actividad</h3>
+                                <p><%-user_intensidad%> </p>
+                            </div>
+                        </div>
                     </div>
 
-
+                    <div id="cont_sec_datos">
+                        <div class="cont_datos">
+                            <h4>Detalles de usuario</h4>
+                            <div class="datos_user">
+                                <h3>Dirección de correo</h3>
+                                <p><%-user_email%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Nombre</h3>
+                                <p><%-user_nombre_regis%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Apellido</h3>
+                                <p><%-user_apellido_regis%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Documento Nacional de Identidad</h3>
+                                <p><%-user_dni%></p>
+                            </div>
+                        </div>
+                    </div>
 
                 </section>
             </section>
     </main>
-    <script src="js/recetas.js"></script>
 </body>
 
 </html>

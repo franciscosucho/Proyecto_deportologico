@@ -2,6 +2,7 @@
 @import url("estilo_recetas.css");
 @import url("estilo_asesoramiento.css");
 @import url("estilo_nut.css");
+@import url("estilo_us.css");
 /* Estilo para la barra de desplazamiento */
 ::-webkit-scrollbar {
   width: 6px; /* Ancho de la barra */

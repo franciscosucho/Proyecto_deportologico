@@ -197,7 +197,12 @@ app.get('/datos_us', (req, res) => {
     var user_frecuencia = req.session.user_frecuencia
     var user_intensidad = req.session.user_intensidad
     var user_racha = req.session.user_racha
-    res.render('datos_us', {  user_racha, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    var user_intolerancia = req.session.user_intolerancia
+    var user_nombre_regis = req.session.user_nombre_regis
+    var user_apellido_regis = req.session.user_apellido_regis
+
+
+    res.render('datos_us', { user_racha, user_nombre_regis,user_intolerancia, user_apellido_regis, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 });
 
 app.get('/recetas', (req, res) => {
@@ -357,7 +362,11 @@ app.post('/enviar', (req, res) => {
                                 return res.render('login.ejs', { error: 'Error al registrar la racha' });
                             }
 
+
+
                             // Variables de sesión
+                            req.session.user_nombre_regis = nombre_regis
+                            req.session.user_apellido_regis = apellido_regis
                             req.session.user_name = nombre_usuario_regis;
                             req.session.user_dni = dni;
                             req.session.user_pass = password_regis;
@@ -400,7 +409,12 @@ app.get('/iniciar', (req, res) => {
 
         if (results.length > 0) {
             const dni = results[0].DNI;
+
+            var user_nombre_regis = req.session.user_nombre_regis
+            var user_apellido_regis = req.session.user_apellido_regis
             // Variables de sesión del usuario
+            req.session.user_nombre_regis = results[0].Nombre;
+            req.session.user_apellido_regis = results[0].Apellido;
             req.session.user_name = results[0].Nombre_usuario;
             req.session.user_dni = results[0].DNI;
             req.session.user_pass = results[0].password;
