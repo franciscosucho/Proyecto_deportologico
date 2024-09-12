@@ -8,8 +8,10 @@
   padding-left: 20px;
 }
 #main_recetas #cont_info_prin img {
-  width: auto;
-  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
 }
 #main_recetas #cont_info_prin .nombre_us {

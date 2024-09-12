@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Strong</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="shortcut icon" href="../public/resources/mental-strong.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section id="ventana_prin">
+            <aside id="menu_lateral">
+                <%- include('menu.ejs') %>
+            </aside>
+
+            <section id="main_recetas" class="cont_prog_main">
+                <h2 id="nombre_us">Tus actividades</h2>
+                <div id="cont_prog">
+                    <% let i=0; %>
+                        <% results.forEach(actividad=> { %>
+                            <div class="datos_user" id="datos_us<%= i %>">
+                                <div class="info">
+                                    <h3><%- actividad.Nombre %></h3>
+                                    <p>Tipo de medidad: <%-actividad.TipoRegistro %></p>
+
+                                </div>
+                                <div class="opciones">
+                                    <a href=" /progreso_focus/<%-actividad.ID %>">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                        progreso</a>
+                                    <a href="/progreso_editar/<%-actividad.ID %>">
+                                        <i class="fa-solid fa-pen"></i>
+                                        Actulizar datos
+                                    </a>
+                                </div>
+                            </div>
+                            <% i +=1; %>
+                                <% }) %>
+                </div>
+            </section>
+        </section>
+        </section>
+    </main>
+</body>
+
+</html>

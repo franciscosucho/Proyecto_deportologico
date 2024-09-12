@@ -235,7 +235,8 @@ CREATE TABLE `usuario` (
   `Email` varchar(100) NOT NULL,
   `Peso` decimal(5,2) NOT NULL,
   `Altura` decimal(6,2) NOT NULL,
-  `Genero` char(1) NOT NULL CHECK (`Genero` in ('M','F'))
+  `Genero` char(1) NOT NULL CHECK (`Genero` in ('M','F')),
+  `Foto_perfil`  varchar(400)  NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

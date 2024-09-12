@@ -21,7 +21,11 @@
             <section id="main_recetas">
 
                 <div id="cont_info_prin">
-                    <img src="./resources/chad.jfif">
+                    <% if(user_foto_perfil){%>
+                        <img src="<%-user_foto_perfil%>">
+                        <%} else {%>
+                            <img src="./resources/img_us/sin-foto.png">
+                        <%}%>
                     <h3 class="nombre_us"><%-user_name%></h3>
                 </div>
                 <section class="cont_rec" id="cont_us">
@@ -44,6 +48,23 @@
                             <div class="datos_user">
                                 <h3>Documento Nacional de Identidad</h3>
                                 <p><%-user_dni%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Genero</h3>
+
+                                <% if(user_genero=="M" ){%>
+                                    <p>Masculino</p>
+                                    <%} else {%>
+                                        <p>Femenino</p>
+                                        <%}%>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Altura</h3>
+                                <p><%-user_altura%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Peso</h3>
+                                <p><%-user_peso%></p>
                             </div>
                         </div>
 
@@ -86,23 +107,16 @@
 
                     <div id="cont_sec_datos">
                         <div class="cont_datos">
-                            <h4>Detalles de usuario</h4>
-                            <div class="datos_user">
-                                <h3>Dirección de correo</h3>
-                                <p><%-user_email%></p>
-                            </div>
-                            <div class="datos_user">
-                                <h3>Nombre</h3>
-                                <p><%-user_nombre_regis%></p>
-                            </div>
-                            <div class="datos_user">
-                                <h3>Apellido</h3>
-                                <p><%-user_apellido_regis%></p>
-                            </div>
-                            <div class="datos_user">
-                                <h3>Documento Nacional de Identidad</h3>
-                                <p><%-user_dni%></p>
-                            </div>
+                            <h4>Actividades</h4>
+                            <% let i=0; %>
+                                <% results.forEach(actividad=> { %>
+                                    <div class="datos_user" id="datos_us<%= i %>">
+                                        <h3><%- actividad.Nombre %></h3>
+                                        <p><%- actividad.TipoRegistro %></p>
+                                    </div>
+                                    <% i +=1; %>
+                                        <% }) %>
+
                         </div>
                     </div>
 

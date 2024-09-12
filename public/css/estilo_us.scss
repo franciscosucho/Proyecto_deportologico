@@ -10,9 +10,9 @@
          padding-left: 20px;
 
          img {
-
-             width: auto;
-             height: auto;
+            object-fit: cover;
+             width: 150px;
+             height: 150px;
              border-radius: 50%;
 
          }
@@ -84,9 +84,6 @@
              padding: 20px;
              flex-direction: column;
              gap: 50px;
-
-
-
          }
 
          #cont_sec_datos {
@@ -97,7 +94,7 @@
              flex-direction: column;
              gap: 50px;
              margin-right: 6px;
-           
+
 
              .cont_datos {
 

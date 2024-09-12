@@ -3,6 +3,7 @@
 @import url('estilo_asesoramiento.css');
 @import url('estilo_nut.css');
 @import url('estilo_us.css');
+@import url('estilo_progreso.css');
 $color_sombra:rgb(8, 8, 8);
 
 /* Estilo para la barra de desplazamiento */
@@ -47,7 +48,8 @@ body {
 
     #error_ini {
         color: rgb(185, 20, 20);
-        font-size: 1;
+        font-size: 1.3em;
+        text-decoration: underline;
         font-weight: bold;
     }
 

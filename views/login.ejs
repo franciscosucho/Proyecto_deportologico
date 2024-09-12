@@ -42,7 +42,7 @@
         <% } %>
       </form>
 
-      <form method="post" action="/enviar" id="cont_registrar" class="desac">
+      <form method="post" action="/enviar" id="cont_registrar" class="desac" enctype="multipart/form-data"> 
         <span id="texto_regs"></span>
 
         <div id="datos_personales" class="sub_form">
@@ -102,6 +102,10 @@
             <label for="password_regis">Contraseña</label>
             <input id="password_regis" name="password_regis" type="password" placeholder="Escriba su contraseña"
               required>
+          </div>
+          <div class="cont_inputs">
+            <label for="foto_perfil">Foto de perfil</label>
+            <input id="foto_perfil" name="foto_perfil" type="file" placeholder="Eliga un archvio">
           </div>
           <div class="cont_btn">
             <button class="btn_enviar_sesion" type="button">Siguiente</button>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Strong</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="shortcut icon" href="../public/resources/mental-strong.ico" type="image/x-icon">
+</head>
+
+<body>
+    <main>
+        <section id="ventana_prin">
+            <aside id="menu_lateral">
+                <%- include('menu.ejs') %>
+            </aside>
+
+            <section id="main_recetas" class="cont_prog_main">
+                <h2 id="nombre_us">Agregar actividad</h2>
+
+                <section class="cont_rec" id="cont_prog">
+                    <form method="post" action="/enviar_us" id="cont_registrar" class="form_us">
+                        <span id="texto_regs"></span>
+
+                        <div id="datos_personales" class="sub_form">
+                            <div class="cont_inputs">
+                                <label for="nombre_act">Nombre de la actividad</label>
+                                <input id="nombre_act" name="nombre_act" type="text"
+                                    placeholder="Escriba el Nombre de la actividad" required maxlength="40">
+                            </div>
+                            <div class="cont_inputs">
+                                <label for="tipo_act">como vas a querer medir tu progreso</label>
+                                <select id="tipo_act" name="tipo_act" required>
+                                    <option value="Tiempo">Tiempo</option>
+                                    <option value="Distancia">Distancia</option>
+                                    <option value="Peso">Peso</option>
+                                </select>
+                            </div>
+                            <div class="cont_btn">
+                                <button class="btn_enviar_sesion"  type="submit">Añadir actividad</button>
+                            </div>
+                        </div>
+                        <!-- Mostrar error si existe -->
+                        <% if (typeof error !=='undefined' ) { %>
+                            <span id="error_ini">
+                                <%= error %>
+                            </span>
+                            <% } %>
+                    </form>
+                </section>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>

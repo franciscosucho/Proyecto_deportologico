@@ -1,39 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mental Strong</title>
     <link rel="stylesheet" href="css/estilo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="shortcut icon" href="../public/resources/mental-strong.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <main>
-
         <section id="ventana_prin">
-
             <aside id="menu_lateral">
-                <%-include('menu.ejs')%>
+                <%- include('menu.ejs') %>
             </aside>
-            <div id="cont_main" class="cont_main">
-                <div id="cont_user">
-                    <i class="fa-solid fa-gear"></i>
-                    <i class="fa-solid fa-user"></i>
 
-                </div>
+            <section id="main_recetas" class="cont_prog_main">
+                <h2 id="nombre_us">Progreso</h2>
 
-                <h2 class="text_prin">progreso</h2>
+                <section class="cont_ver" id="cont_prog">
+                    <a href="/progreso_agregar">
+                        <img src="./resources/img_motivacion.png" alt="Agregar actividades">
+                        <span>Agregar actividades</span>
+                    </a>
 
-
-
-            </div>
+                    <a href="/progreso_ver">
+                        <img src="./resources/ver_actividades.webp" alt="Ver progreso en tus actividades">
+                        <span>Ver progreso en tus actividades</span>
+                    </a>
+                </section>
+            </section>
         </section>
     </main>
-
-
 </body>
 
 </html>

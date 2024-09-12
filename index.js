@@ -38,6 +38,19 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
 }))
+//configurar la subida de fotos del usuario
+const { randomUUID } = require("node:crypto")
+const multer = require('multer')
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, 'public/resources/img_us'), // Carpeta en donde se va a subir las imagenes, si la carpeta no existe se crea
+    filename: (req, file, cb, filename) => {
+        cb(null, randomUUID() + path.extname(file.originalname))
+    }
+})
+
+app.use(multer({ storage }).single('foto_perfil'))
+
+
 
 app.get('/', (req, res) => {
     if (req.session.user_dni != undefined) {
@@ -180,6 +193,91 @@ app.get('/index', isLogged, (req, res) => {
 
 
 })
+// todo lo que tiene que ver con progreso.
+//<---------------------------------------------------------------------------------------->
+app.get('/progreso', (req, res) => {
+    var user_dni = req.session.user_dni
+    res.render('progreso', { user_dni })
+
+})
+
+app.get('/progreso_agregar', (req, res) => {
+    var user_dni = req.session.user_dni
+    res.render('progreso_agregar', { user_dni })
+
+})
+app.get('/progreso_ver', (req, res) => {
+    var user_dni = req.session.user_dni
+    var query_datos_us = " SELECT * FROM progreso WHERE DNI_prog=?"
+    connection.query(query_datos_us, [user_dni], (err, results) => {
+        if (err) {
+            console.error('Error al verificar los datos:', err);
+            return res.render('login.ejs', { error: 'Error al verificar los datos' });
+        }
+        res.render('progreso_ver', { results, user_dni })
+
+    })
+})
+app.get('/progreso_focus:id_actividad', (req, res) => {
+    var id_actividad = req.params.id_actividad
+    var user_dni = req.session.user_dni
+    let query_act_us = "SELECT  * FROM `progreso_focus` WHERE id_actividad=? AND DNI_prog=?";
+    connection.query(query_act_us, [id_actividad, user_dni], (err, results) => {
+        if (err) {
+            console.error('Error al verificar el usuario:', err);
+            return res.render('progreso_agregar.ejs', { error: 'Error al verificar el usuario' });
+        }
+        res.render('progreso_ver', { results, user_dni })
+    });
+});
+app.get('/progreso_editar/:id_actividad', (req, res) => {
+    var id_actividad = req.params.id_actividad
+    var user_dni = req.session.user_dni
+    res.render('progreso_editar', {id_actividad,user_dni});
+
+});
+
+
+app.post('/progreso_actualizar', (req, res) => {
+    var user_dni = req.session.user_dni
+    let insert_act_act = "INSERT INTO `progreso_focus`( `id_actividad`, `DNI_prog`, `Fecha`, `Valor`) VALUES (?,?,?,?)"
+
+})
+
+//<---------------------------------------------------------------------------------------->
+
+
+
+
+app.post('/enviar_us', (req, res) => {
+    let { tipo_act, nombre_act } = req.body;
+    var user_dni = req.session.user_dni;
+    // Primero, verifica si ya existe el registro
+    let query_us = "SELECT * FROM progreso WHERE Nombre=? AND DNI_prog=?";
+    connection.query(query_us, [nombre_act, user_dni], (err, results) => {
+        if (err) {
+            console.error('Error al verificar el usuario:', err);
+            return res.render('progreso_agregar.ejs', { error: 'Error al verificar el usuario' });
+        }
+
+        if (results.length > 0) {
+            return res.render('progreso_agregar', { error: 'Error: Ya existe una actividad con ese nombre' });
+        }
+
+        let insert_us = "INSERT INTO `progreso`(`DNI_prog`, `TipoRegistro`, `Nombre`) VALUES (?,?,?)";
+        connection.query(insert_us, [user_dni, tipo_act, nombre_act], (err, results) => {
+            if (err) {
+                console.error('Error al insertar en usuario:', err);
+                return res.render('progreso_agregar.ejs', { error: 'Error al registrar el usuario' });
+            }
+
+            console.log("enviado con exito");
+            res.redirect('/progreso_agregar');
+        });
+    });
+});
+
+
 
 app.get('/datos_us', (req, res) => {
     var user_name = req.session.user_name
@@ -199,10 +297,16 @@ app.get('/datos_us', (req, res) => {
     var user_racha = req.session.user_racha
     var user_intolerancia = req.session.user_intolerancia
     var user_nombre_regis = req.session.user_nombre_regis
+    var user_foto_perfil = req.session.user_rutaImagen
     var user_apellido_regis = req.session.user_apellido_regis
-
-
-    res.render('datos_us', { user_racha, user_nombre_regis,user_intolerancia, user_apellido_regis, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    var query_datos_us = " SELECT * FROM progreso WHERE DNI_prog=?"
+    connection.query(query_datos_us, [user_dni], (err, results) => {
+        if (err) {
+            console.error('Error al verificar los datos:', err);
+            return res.render('login.ejs', { error: 'Error al verificar los datos' });
+        }
+        res.render('datos_us', { results, user_foto_perfil, user_racha, user_nombre_regis, user_intolerancia, user_apellido_regis, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    });
 });
 
 app.get('/recetas', (req, res) => {
@@ -317,12 +421,15 @@ app.post('/enviar', (req, res) => {
         } else {
             // Inserción en la tabla `usuario`
             const query_usuario = `
-                INSERT INTO usuario (DNI, Nombre_usuario, password, Nombre, Apellido, FechaNacimiento, Email, Peso, Altura, Genero)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO usuario (DNI, Nombre_usuario, password, Nombre, Apellido, FechaNacimiento, Email, Peso, Altura, Genero,Foto_perfil)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
             `;
+            const rutaImagen = req.file ? `/resources/img_us/${req.file.filename}` : null
             nombre_regis = capitalizarPrimeraLetra(nombre_regis);
             apellido_regis = capitalizarPrimeraLetra(apellido_regis);
-            connection.query(query_usuario, [dni, nombre_usuario_regis, password_regis, nombre_regis, apellido_regis, nacimiento, email_regis, peso, altura, opciones_genero], (err) => {
+
+
+            connection.query(query_usuario, [dni, nombre_usuario_regis, password_regis, nombre_regis, apellido_regis, nacimiento, email_regis, peso, altura, opciones_genero, rutaImagen], (err) => {
                 if (err) {
                     console.error('Error al insertar en usuario:', err);
                     return res.render('login.ejs', { error: 'Error al registrar el usuario' });
@@ -369,6 +476,7 @@ app.post('/enviar', (req, res) => {
                             req.session.user_apellido_regis = apellido_regis
                             req.session.user_name = nombre_usuario_regis;
                             req.session.user_dni = dni;
+                            req.session.user_rutaImagen = rutaImagen
                             req.session.user_pass = password_regis;
                             req.session.user_nac = nacimiento;
                             req.session.user_genero = opciones_genero;
@@ -416,6 +524,7 @@ app.get('/iniciar', (req, res) => {
             req.session.user_nombre_regis = results[0].Nombre;
             req.session.user_apellido_regis = results[0].Apellido;
             req.session.user_name = results[0].Nombre_usuario;
+            req.session.user_rutaImagen = results[0].Foto_perfil;
             req.session.user_dni = results[0].DNI;
             req.session.user_pass = results[0].password;
             req.session.user_nac = results[0].FechaNacimiento;

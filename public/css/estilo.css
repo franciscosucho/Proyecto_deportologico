@@ -3,6 +3,7 @@
 @import url("estilo_asesoramiento.css");
 @import url("estilo_nut.css");
 @import url("estilo_us.css");
+@import url("estilo_progreso.css");
 /* Estilo para la barra de desplazamiento */
 ::-webkit-scrollbar {
   width: 6px; /* Ancho de la barra */
@@ -41,7 +42,8 @@ body {
 }
 body #error_ini {
   color: rgb(185, 20, 20);
-  font-size: 1;
+  font-size: 1.3em;
+  text-decoration: underline;
   font-weight: bold;
 }
 body main {
