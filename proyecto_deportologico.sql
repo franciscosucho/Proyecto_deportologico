@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-09-2024 a las 23:24:25
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 12-09-2024 a las 04:39:22
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,7 +27,7 @@ CREATE TABLE `actividad_dia` (
   `Fecha` date NOT NULL,
   `Objetivos` text NOT NULL,
   `MarcadorCumplido` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `actividad_dia`
@@ -71,7 +71,7 @@ CREATE TABLE `deportivousuario` (
   `TipoDeporte` enum('Resistencia','Cardiovascular') NOT NULL,
   `Frecuencia` enum('3/7','4/7','5/7','6/7','7/7') NOT NULL,
   `Intensidad` enum('Ligera','Moderada','Alta') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `deportivousuario`
@@ -91,7 +91,9 @@ INSERT INTO `deportivousuario` (`ID_depor`, `DNI_depor`, `ObjetivosDeportivo`, `
 (27, 42098782, 'Mejorar la resistencia', 'Resistencia', '3/7', 'Moderada'),
 (28, 4309876, 'Mejorar la resistencia', 'Resistencia', '3/7', 'Moderada'),
 (29, 223098784, 'Mejorar la resistencia', 'Resistencia', '', ''),
-(30, 47805040, 'Mejorar la potencia', 'Cardiovascular', '4/7', 'Alta');
+(30, 47805040, 'Mejorar la potencia', 'Cardiovascular', '4/7', 'Alta'),
+(31, 48056809, 'Mejorar la resistencia', 'Cardiovascular', '4/7', ''),
+(32, 41098782, 'Mejorar la resistencia', 'Resistencia', '5/7', '');
 
 -- --------------------------------------------------------
 
@@ -103,7 +105,7 @@ CREATE TABLE `motivacion` (
   `ID` int(11) NOT NULL,
   `FraseMotivacional` text NOT NULL,
   `Autor` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -117,7 +119,7 @@ CREATE TABLE `nutricionalusuario` (
   `intolerancia` enum('Ninguna','Dairy','Egg','Gluten','Grain','Peanut','Seafood','Soy','Sulfite','Wheat') NOT NULL,
   `ObjetivoNutricion` enum('Pérdida de peso','Mantener peso','Ganar peso') NOT NULL,
   `TipoAlimentacion` enum('Omnívora','Vegetarian','Ovo-Vegetariano','Vegan','Pescetarian','Gluten Free') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `nutricionalusuario`
@@ -138,7 +140,9 @@ INSERT INTO `nutricionalusuario` (`ID_nut`, `DNI_nut`, `intolerancia`, `Objetivo
 (29, 4309876, 'Egg', 'Mantener peso', 'Ovo-Vegetariano'),
 (30, 2490863, '', 'Pérdida de peso', ''),
 (31, 223098784, '', 'Mantener peso', ''),
-(32, 47805040, 'Ninguna', 'Ganar peso', '');
+(32, 47805040, 'Ninguna', 'Ganar peso', ''),
+(33, 48056809, 'Ninguna', 'Mantener peso', ''),
+(34, 41098782, '', 'Mantener peso', 'Ovo-Vegetariano');
 
 -- --------------------------------------------------------
 
@@ -156,7 +160,7 @@ CREATE TABLE `profesional` (
   `Email` varchar(100) NOT NULL,
   `Numero` varchar(15) NOT NULL,
   `url` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `profesional`
@@ -178,27 +182,33 @@ CREATE TABLE `progreso` (
   `DNI_prog` int(11) NOT NULL,
   `TipoRegistro` enum('Tiempo','Distancia','Peso') NOT NULL,
   `Nombre` varchar(60) NOT NULL
-  
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `progreso`
+--
+
+INSERT INTO `progreso` (`ID`, `DNI_prog`, `TipoRegistro`, `Nombre`) VALUES
+(9, 47098781, 'Peso', 'press plano'),
+(10, 47098781, 'Distancia', 'correr');
 
 -- --------------------------------------------------------
 
 --
-
 -- Estructura de tabla para la tabla `progreso_focus`
 --
 
 CREATE TABLE `progreso_focus` (
   `ID` int(11) NOT NULL,
+  `id_actividad` int(11) NOT NULL,
   `DNI_prog` int(11) NOT NULL,
   `Fecha` date NOT NULL,
   `Valor` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
-
 -- Estructura de tabla para la tabla `racha`
 --
 
@@ -207,17 +217,19 @@ CREATE TABLE `racha` (
   `Dni_racha` int(11) NOT NULL,
   `dias` int(11) NOT NULL,
   `Fecha_ultimo_Ingreso` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `racha`
 --
 
 INSERT INTO `racha` (`ID_racha`, `Dni_racha`, `dias`, `Fecha_ultimo_Ingreso`) VALUES
-(3, 47098781, 5, '2024-09-02'),
+(3, 47098781, 1, '2024-09-11'),
 (4, 4309876, 1, '2024-08-30'),
 (5, 223098784, 1, '2024-09-02'),
-(6, 47805040, 1, '2024-09-03');
+(6, 47805040, 1, '2024-09-03'),
+(7, 48056809, 1, '2024-09-11'),
+(8, 41098782, 1, '2024-09-11');
 
 -- --------------------------------------------------------
 
@@ -236,29 +248,31 @@ CREATE TABLE `usuario` (
   `Peso` decimal(5,2) NOT NULL,
   `Altura` decimal(6,2) NOT NULL,
   `Genero` char(1) NOT NULL CHECK (`Genero` in ('M','F')),
-  `Foto_perfil`  varchar(400)  NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Foto_perfil` varchar(400) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`DNI`, `Nombre_usuario`, `password`, `Nombre`, `Apellido`, `FechaNacimiento`, `Email`, `Peso`, `Altura`, `Genero`) VALUES
-(2490863, 'adambarei', 'ss', 'Adam', 'Bareiro', '2003-02-22', 'adambarei@gmai.com', '67.00', '187.00', 'M'),
-(4309876, 'morebeltran', '1223', 'Morena', 'Beltran', '2003-12-20', 'morebeltran@gmail.com', '76.00', '167.00', 'F'),
-(20192780, 'germanpez', '222', 'german', 'pezella', '2002-08-20', 'germanpez@gmail.com', '85.00', '187.00', 'M'),
-(29087781, 'fabribus', '222', 'fabricio', 'bustos', '2003-04-05', 'fabribus@gmail.com', '67.00', '167.00', 'M'),
-(33098780, 'francoarmani', '912', 'Franco', 'Armani', '1989-09-09', 'francoarmani@gmail.com', '87.00', '190.00', 'M'),
-(34098781, 'paulodiaz', '912', 'Paulo', 'Diaz', '2018-12-09', 'paulodiaz@gmail.com', '87.00', '187.00', 'M'),
-(35098782, 'borjahaland', '123', 'Miguel', 'Borja', '2003-04-12', 'borjahaland@gmail.com', '76.00', '189.00', 'M'),
-(42098782, 'facucoli', '912', 'Facundo', 'Colidio', '2003-03-07', 'facucoli@gmail.com', '79.00', '179.00', 'M'),
-(43098782, 'santibeltran', '123', 'Santiago', 'Beltran', '2003-08-20', 'santibeltran@gmail.com', '76.00', '187.00', 'M'),
-(45098780, 'lopezfrutos', '4321', 'santiago', 'frutos', '1987-08-20', 'lopezfrutos@gmail.com', '76.00', '186.00', 'M'),
-(47098765, 'damianbetu', '333', 'damian', 'betular', '2003-08-30', 'damianbetu@gmail.com', '79.00', '183.00', 'M'),
-(47098781, 'fransucho', '1975', 'Francisco', 'Suchomela', '2005-12-20', 'franciscosuchomela@gmail.com', '65.00', '175.00', 'M'),
-(47805040, 'cris', 'cris10', 'Cristobal', 'Maier', '2007-03-20', 'cristobalmaier1@gmail.com', '64.00', '175.00', 'M'),
-(223098784, 'equi', 'ss', 'Ezequiel', 'Fernandez', '2001-03-20', 'equi@gmail.com', '87.00', '187.00', 'M'),
-(2147483647, 'beto_alonso', '1234', 'beto', 'alonso', '2002-02-12', 'beto@gmail.com', '70.00', '170.00', 'M');
+INSERT INTO `usuario` (`DNI`, `Nombre_usuario`, `password`, `Nombre`, `Apellido`, `FechaNacimiento`, `Email`, `Peso`, `Altura`, `Genero`, `Foto_perfil`) VALUES
+(2490863, 'adambarei', 'ss', 'Adam', 'Bareiro', '2003-02-22', 'adambarei@gmai.com', 67.00, 187.00, 'M', NULL),
+(4309876, 'morebeltran', '1223', 'Morena', 'Beltran', '2003-12-20', 'morebeltran@gmail.com', 76.00, 167.00, 'F', NULL),
+(20192780, 'germanpez', '222', 'german', 'pezella', '2002-08-20', 'germanpez@gmail.com', 85.00, 187.00, 'M', NULL),
+(29087781, 'fabribus', '222', 'fabricio', 'bustos', '2003-04-05', 'fabribus@gmail.com', 67.00, 167.00, 'M', NULL),
+(33098780, 'francoarmani', '912', 'Franco', 'Armani', '1989-09-09', 'francoarmani@gmail.com', 87.00, 190.00, 'M', NULL),
+(34098781, 'paulodiaz', '912', 'Paulo', 'Diaz', '2018-12-09', 'paulodiaz@gmail.com', 87.00, 187.00, 'M', NULL),
+(35098782, 'borjahaland', '123', 'Miguel', 'Borja', '2003-04-12', 'borjahaland@gmail.com', 76.00, 189.00, 'M', NULL),
+(41098782, 'lautuzzio', 'ss', 'Lautaro', 'Tuzzio', '2004-08-20', 'lautuzzio@gmail.com', 56.00, 176.00, 'F', '/resources/img_us/876cdb25-0d1d-45f5-893e-206c9be21b3c.jpg'),
+(42098782, 'facucoli', '912', 'Facundo', 'Colidio', '2003-03-07', 'facucoli@gmail.com', 79.00, 179.00, 'M', NULL),
+(43098782, 'santibeltran', '123', 'Santiago', 'Beltran', '2003-08-20', 'santibeltran@gmail.com', 76.00, 187.00, 'M', NULL),
+(45098780, 'lopezfrutos', '4321', 'santiago', 'frutos', '1987-08-20', 'lopezfrutos@gmail.com', 76.00, 186.00, 'M', NULL),
+(47098765, 'damianbetu', '333', 'damian', 'betular', '2003-08-30', 'damianbetu@gmail.com', 79.00, 183.00, 'M', NULL),
+(47098781, 'fransucho', '1975', 'Francisco', 'Suchomela', '2005-12-20', 'franciscosuchomela@gmail.com', 65.00, 175.00, 'M', NULL),
+(47805040, 'cris', 'cris10', 'Cristobal', 'Maier', '2007-03-20', 'cristobalmaier1@gmail.com', 64.00, 175.00, 'M', NULL),
+(48056809, 'Exaedro', 'ss', 'Julian', 'Grippaldi', '2007-05-29', 'Exaedro@gmail.com', 60.00, 173.00, 'M', '/resources/img_us/508f29ea-48e8-4e7e-96f1-8664d2105cc5.jfif'),
+(223098784, 'equi', 'ss', 'Ezequiel', 'Fernandez', '2001-03-20', 'equi@gmail.com', 87.00, 187.00, 'M', NULL),
+(2147483647, 'beto_alonso', '1234', 'beto', 'alonso', '2002-02-12', 'beto@gmail.com', 70.00, 170.00, 'M', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -305,6 +319,13 @@ ALTER TABLE `progreso`
   ADD KEY `DNI_prog` (`DNI_prog`);
 
 --
+-- Indices de la tabla `progreso_focus`
+--
+ALTER TABLE `progreso_focus`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `id_actividad` (`id_actividad`);
+
+--
 -- Indices de la tabla `racha`
 --
 ALTER TABLE `racha`
@@ -331,7 +352,7 @@ ALTER TABLE `actividad_dia`
 -- AUTO_INCREMENT de la tabla `deportivousuario`
 --
 ALTER TABLE `deportivousuario`
-  MODIFY `ID_depor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `ID_depor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `motivacion`
@@ -343,7 +364,7 @@ ALTER TABLE `motivacion`
 -- AUTO_INCREMENT de la tabla `nutricionalusuario`
 --
 ALTER TABLE `nutricionalusuario`
-  MODIFY `ID_nut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `ID_nut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `profesional`
@@ -355,13 +376,13 @@ ALTER TABLE `profesional`
 -- AUTO_INCREMENT de la tabla `progreso`
 --
 ALTER TABLE `progreso`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `racha`
 --
 ALTER TABLE `racha`
-  MODIFY `ID_racha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_racha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
@@ -390,6 +411,12 @@ ALTER TABLE `nutricionalusuario`
 --
 ALTER TABLE `progreso`
   ADD CONSTRAINT `progreso_ibfk_1` FOREIGN KEY (`DNI_prog`) REFERENCES `usuario` (`DNI`);
+
+--
+-- Filtros para la tabla `progreso_focus`
+--
+ALTER TABLE `progreso_focus`
+  ADD CONSTRAINT `progreso_focus_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `progreso` (`ID`);
 
 --
 -- Filtros para la tabla `racha`
