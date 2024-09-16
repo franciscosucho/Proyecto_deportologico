@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <main> 
+    <main>
 
         <section id="ventana_prin">
 
@@ -32,7 +32,7 @@
                         <h4>Ingredientes necesarios</h4>
                         <% var i=0; %>
                             <% while(i < data.extendedIngredients.length) { %>
-                                <li>
+                                <li class="ingredientes_ietm">
                                     <%= data.extendedIngredients[i].original %>
                                 </li>
                                 <% i +=1; %>
@@ -40,6 +40,7 @@
                     </ul>
                     <div class="seccion">
                         <h4>Instrucciones de la receta</h4>
+
                         <%- data.instructions %>
                     </div>
                     <div class="cont_ver_mas">
@@ -48,7 +49,7 @@
                         <span class="arrow"></span>
                     </div>
                     <div class="seccion" id="int_detalladas">
-                        <h4>Instrucciones detalladas</h4>
+                        <h4 id="text_int_det">Instrucciones detalladas</h4>
 
                         <% data.analyzedInstructions.forEach((instruction, index)=> { %>
                             <h3 class="instruction-title">Paso <%= index + 1 %>: <%= instruction.name || `Instrucción
@@ -65,7 +66,7 @@
                                         <p class="ingredients-title"><strong>Ingredientes:</strong></p>
                                         <ul class="ingredients-list">
                                             <% step.ingredients.forEach((ingredient)=> { %>
-                                                <li class="ingredient-item">
+                                                <li class="ingredient-item ingrediente">
                                                     <%= ingredient.name %>
                                                 </li>
                                                 <% }); %>

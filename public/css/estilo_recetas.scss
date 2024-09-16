@@ -1,7 +1,12 @@
 $color-principal-receta: #224439;
 $color_a: #5eca82;
+// $instruction-title:
+$color_p: #43bf7b;
 $color_text_primario: #ffff;
-$color_text_li: #666;
+$color_ingredientes_list: #dfdfdf;
+$color_ingredientes_item: #b5b3b3;
+$color_text_li: #b5b3b3;
+
 $color_h4: rgb(209, 209, 209);
 
 #main_recetas {
@@ -59,7 +64,7 @@ $color_h4: rgb(209, 209, 209);
                     max-width: 60%;
                     border-radius: 10px;
                     box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
-    
+
                 }
 
                 .text {
@@ -221,11 +226,19 @@ $color_h4: rgb(209, 209, 209);
 
         .seccion {
             transition: all .2s ease-in-out;
-
+            .ingredientes_ietm{
+                margin-left: 40px ;
+                
+            }
             &:hover {
                 h4 {
                     font-style: italic;
                 }
+            }
+            #text_int_det{
+                font-size: 2.5em;
+                width: 50vw;
+                color:$color_a !important;
             }
         }
 
@@ -266,6 +279,12 @@ $color_h4: rgb(209, 209, 209);
             gap: 4px;
             color: $color_h4;
 
+            ol{
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                
+            }
             h4 {
                 font-size: 2em;
                 color: white;
@@ -274,7 +293,7 @@ $color_h4: rgb(209, 209, 209);
 
             &#int_detalladas {
                 display: none;
-
+               
                 &.active {
                     display: flex;
                     flex-direction: column;
@@ -294,7 +313,7 @@ $color_h4: rgb(209, 209, 209);
 
                     .step-description {
                         font-size: 1em;
-                        color: #265346; // Gris oscuro
+                        color: $color_text_primario;
                         margin-bottom: 10px;
                     }
 
@@ -302,7 +321,7 @@ $color_h4: rgb(209, 209, 209);
                     .equipment-title {
                         font-weight: bold;
                         margin-bottom: 5px;
-                        color: #555; // Gris medio oscuro
+                        color: $color_ingredientes_list; // Gris medio oscuro
                     }
 
                     .ingredients-list,
@@ -311,9 +330,11 @@ $color_h4: rgb(209, 209, 209);
                         margin-left: 20px;
 
                         .ingredient-item,
+                        .ingredientes_ietm,
+                        .Intrucciones,
                         .equipment-item {
                             font-size: 0.95em;
-                            color: #666; // Gris medio
+                            color: $color_ingredientes_item;
                             margin-bottom: 5px;
                         }
                     }

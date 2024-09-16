@@ -4,29 +4,34 @@
 @import url('estilo_nut.css');
 @import url('estilo_us.css');
 @import url('estilo_progreso.css');
-$color_sombra:rgb(8, 8, 8);
+$color_sombra: rgb(8, 8, 8);
 
 /* Estilo para la barra de desplazamiento */
 ::-webkit-scrollbar {
-    width: 6px; /* Ancho de la barra */
-  }
-  
-  /* Estilo para el fondo de la barra de desplazamiento */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f100; /* Color de fondo */
-  }
-  
-  /* Estilo para el "thumb" (parte que se mueve) */
-  ::-webkit-scrollbar-thumb {
-    background: #888; /* Color del thumb */
-    border-radius: 10px; /* Bordes redondeados */
-  }
-  
-  /* Estilo para el "thumb" al pasar el mouse */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Color del thumb al pasar el mouse */
-  }
-  
+    width: 6px;
+    /* Ancho de la barra */
+}
+
+/* Estilo para el fondo de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+    background: #f1f1f100;
+    /* Color de fondo */
+}
+
+/* Estilo para el "thumb" (parte que se mueve) */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Color del thumb */
+    border-radius: 10px;
+    /* Bordes redondeados */
+}
+
+/* Estilo para el "thumb" al pasar el mouse */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Color del thumb al pasar el mouse */
+}
+
 
 
 * {
@@ -255,7 +260,7 @@ body {
                     rgba(50, 50, 100, 0.5), // Un tono oscuro y sutil
                     rgba(0, 0, 0, 0) // Transparente para el centro
                 );
- 
+
             .main_sec {
                 width: 85vw;
                 height: auto;
@@ -337,7 +342,7 @@ body {
 
                     #cont_item {
                         display: flex;
-                        justify-content: center ;
+                        justify-content: center;
                         align-items: center;
                         flex-direction: column;
                         gap: 40px;
@@ -466,12 +471,13 @@ body {
                                 background-color: transparent;
                                 border: 1px solid rgba(128, 128, 128, 0.432);
 
-                                &:hover{
+                                &:hover {
                                     transition: 0.3s ease-out;
                                     transform: scale(1.05);
-                                    background-color:#46a55f59;
+                                    background-color: #46a55f59;
                                     border: #419663 2px solid;
                                 }
+
                                 .text_racha {
                                     font-size: 2.4em;
                                     top: 35%;
@@ -501,7 +507,7 @@ body {
                                 object-fit: cover;
                                 filter: brightness(50%);
                                 border-radius: 30px;
-                                
+
                             }
 
                         }
@@ -515,3 +521,25 @@ body {
         }
     }
 }
+
+@media (max-width: 1360px) {
+    #menu_lateral {
+        width: 200px!important;
+
+        #cont_fixed {   
+        
+            width: 200px !important;
+        }
+    }
+    .item {
+        padding-left: 0px !important;
+        display: flex;
+        gap: 3px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+
