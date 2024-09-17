@@ -2,9 +2,123 @@ $color-primario: #64E788; // verde
 
 $color-primario: #64E788; // verde
 
+main {
+    #Actualizar_datos {
+        &.focus {
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #202020d5;
+        }
+
+        .form_us {
+            #cancel {
+                position: relative;
+                left: -45%;
+                top: 5%;
+                color: white;
+                cursor: pointer;
+                border-radius: 50%;
+                padding: 5px;
+                height: 40px;
+                width: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5em;
+                transition: all .2s ease-in-out;
+
+                &:hover {
+                    background-color: rgba(250, 235, 215, 0.274);
+                }
+            }
+
+            width: 60%;
+            height: 60%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            
+            flex-direction: column;
+            border-radius: 30px;
+            background-color: rgb(70, 70, 70);
+
+            h4 {
+                width: 100%;
+                text-align: center;
+                color: white;
+                font-size: 2em;
+            }
+
+            .cont_inp {
+                margin-top: 50px;
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                label {
+                    color: rgb(228, 228, 228);
+
+                }
+
+                input {
+                    height: 40px;
+                    width: 100%;
+                    border-radius: 20px;
+                    padding: 6px;
+                    background: white;
+                    border: none;
+                    color: black;
+                    font: inherit;
+                    /* Hereda la fuente del elemento padre */
+                }
+            }
+
+            .cont_btn {
+                height: 40px;
+                width: 30%;
+                display: flex;
+                margin-top: 50px;
+                
+
+                button {
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 20px;
+                    color: white;
+                    font-size: 1em;
+                    font-weight: bolder;
+                    border: none;
+                    /* Elimina el borde */
+                    outline: none;
+                    cursor: pointer;
+                    /* Elimina el contorno al hacer foco */
+                    background: #64E788;
+                    transition: all .2s ease-in-out;
+
+                    /* Elimina el fondo */
+                    &:hover {
+                        background: #4cb368;
+
+                    }
+                }
+
+            }
+        }
+    }
+}
+
 .cont_prog_main {
     align-items: center;
-    
+
     .form_us {
         height: 60vh !important;
 
@@ -14,12 +128,15 @@ $color-primario: #64E788; // verde
         display: flex;
         justify-content: center;
         align-items: center;
-        &.cont_ver{
+
+        &.cont_ver {
             flex-direction: row;
         }
+
         flex-direction: column;
         gap: 40px;
         width: 100%;
+
         &.cont_prog_ver {
             display: flex;
             flex-direction: column;
@@ -52,8 +169,12 @@ $color-primario: #64E788; // verde
             }
 
             .opciones {
+                display: flex;
+                width: auto;
 
-                a {
+                .cont_a {
+                    width: 60%;
+                    height: 50px;
                     color: white;
                     text-decoration: none;
                     border-radius: 10px;

@@ -223,6 +223,28 @@ $color_h4: rgb(209, 209, 209);
         align-items: center;
         flex-direction: column;
         gap: 20px;
+        #cont_text_main{
+            display: flex;
+            gap: 20px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            a{
+                padding-top: 2px;
+                color: white;
+                text-decoration: none;
+                height: auto;
+                width: auto;
+                i{
+                    font-size: 2em;
+                }
+            }
+            h2 {
+                font-size: 2em;
+                color: white;
+                font-style: italic;
+                text-decoration: underline;
+            }
+        }
 
         .seccion {
             transition: all .2s ease-in-out;
@@ -253,12 +275,7 @@ $color_h4: rgb(209, 209, 209);
             }
         }
 
-        h2 {
-            font-size: 2em;
-            color: white;
-            font-style: italic;
-            text-decoration: underline;
-        }
+        
 
         .text {
             color: rgb(219, 219, 219);
@@ -370,7 +387,7 @@ $color_h4: rgb(209, 209, 209);
                 cursor: pointer;
                 border: 2px solid rgba(82, 82, 82, 0.411);
                 transition: all .2s ease-in-out;
-
+                height: 60px;
                 &:hover {
                     background-color: rgba(128, 128, 128, 0.103);
                     width: 70%;

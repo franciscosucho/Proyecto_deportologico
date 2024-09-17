@@ -230,12 +230,6 @@ app.get('/progreso_focus:id_actividad', (req, res) => {
         res.render('progreso_ver', { results, user_dni })
     });
 });
-app.get('/progreso_editar/:id_actividad', (req, res) => {
-    var id_actividad = req.params.id_actividad
-    var user_dni = req.session.user_dni
-    res.render('progreso_editar', {id_actividad,user_dni});
-
-});
 
 
 app.post('/progreso_actualizar', (req, res) => {

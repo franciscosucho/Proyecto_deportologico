@@ -35,22 +35,76 @@
 
                                 </div>
                                 <div class="opciones">
-                                    <a href=" /progreso_focus/<%-actividad.ID %>">
+                                    <a href=" /progreso_focus/<%-actividad.ID %>" class="cont_a">
                                         <i class="fa-solid fa-chart-line"></i>
                                         progreso</a>
-                                    <a href="/progreso_editar/<%-actividad.ID %>">
+                                    <p class="btn_actualizar cont_a">
                                         <i class="fa-solid fa-pen"></i>
-                                        Actulizar datos
-                                    </a>
+                                        Actualizar datos
+                                    </p>
                                 </div>
                             </div>
                             <% i +=1; %>
                                 <% }) %>
                 </div>
+
             </section>
+
         </section>
         </section>
+        <div id="Actualizar_datos" class="desac">
+
+            <form method="post" action="/progreso_actualizar" class="form_us">
+                <i class="fa-solid fa-xmark" id="cancel"></i>
+
+                <h4>Actualizar Datos</h4>
+                <div class="cont_inp">
+                    <label for="nombre_act" id="label_nombre_act">Actualizar datos de</label>
+                    <input id="nombre_act" name="nombre_act" type="text" placeholder="Escriba el Nombre de la actividad"
+                        required maxlength="40">
+                </div>
+
+                <div class="cont_btn">
+                    <button class="btn_enviar_sesion" type="submit">Añadir actividad</button>
+                </div>
+
+                <!-- Mostrar error si existe -->
+                <% if (typeof error !=='undefined' ) { %>
+                    <span id="error_ini">
+                        <%= error %>
+                    </span>
+                    <% } %>
+            </form>
+        </div>
     </main>
+    <script>
+        const btn_actualizar = document.querySelectorAll(".btn_actualizar");
+        const Actualizar_datos = document.getElementById("Actualizar_datos");
+        const nombre_act_input = document.getElementById("nombre_act");
+        const label_nombre_act = document.getElementById("label_nombre_act");
+        btn_actualizar.forEach(actualizar => {
+            actualizar.addEventListener("click", (event) => {
+                // Obtener el contenedor padre
+                const datosUser = event.target.closest(".datos_user");
+
+                // Extraer el nombre de la actividad
+                const nombreActividad = datosUser.querySelector("h3").innerText;
+
+                // Colocar el nombre en el input del formulario
+                label_nombre_act.textContent = "Actulizando el valor de la actividad "+"`"+nombreActividad+"`";
+
+                // Mostrar el formulario
+                Actualizar_datos.classList.toggle("focus");
+                Actualizar_datos.classList.toggle("desac");
+            });
+        });
+
+        const cancel = document.getElementById("cancel");
+        cancel.addEventListener("click", () => {
+            Actualizar_datos.classList.toggle("focus");
+            Actualizar_datos.classList.toggle("desac");
+        });
+    </script>
 </body>
 
 </html>
