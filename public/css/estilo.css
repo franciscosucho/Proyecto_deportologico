@@ -293,7 +293,7 @@ body main #ventana_prin #menu_lateral #cont_fixed #cont_item {
   align-items: center;
   flex-direction: column;
   gap: 40px;
-  height: 70%;
+  height: 75%;
   width: 80%;
   list-style: none;
 }
@@ -340,6 +340,7 @@ body main #ventana_prin #cont_main #cont_user {
   left: 90%;
   width: auto;
   height: auto;
+  transition: all 0.2s ease-in-out;
 }
 body main #ventana_prin #cont_main #cont_user i {
   font-size: 1.4em;
@@ -350,7 +351,9 @@ body main #ventana_prin #cont_main #cont_user i {
   color: white;
 }
 body main #ventana_prin #cont_main #cont_user i:hover {
-  background-color: rgba(116, 116, 116, 0.2117647059);
+  background-color: #64E788;
+  transition: all 0.2s ease-in-out;
+  color: #121212; 
 }
 body main #ventana_prin #cont_main #cont_secciones {
   margin-top: 5%;

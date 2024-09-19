@@ -49,21 +49,17 @@ $color_h4: rgb(209, 209, 209);
                 display: flex;
                 justify-content: flex-start;
                 align-items: flex-start;
-                width: 90%;
+                width: 100%;
                 height: auto;
                 border-radius: 10px;
                 background-color: $color-principal-receta;
 
-                -webkit-box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
-                -moz-box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
-                box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
 
                 img {
                     height: 100%;
                     width: auto;
                     max-width: 60%;
                     border-radius: 10px;
-                    box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
 
                 }
 
@@ -85,7 +81,6 @@ $color_h4: rgb(209, 209, 209);
                     .dieta {
                         width: 50%;
                         color: rgb(170, 170, 170);
-
                     }
 
                     .cont_tiempo {
@@ -94,6 +89,11 @@ $color_h4: rgb(209, 209, 209);
                         justify-content: flex-start;
                         align-items: center;
                         gap: 5px;
+                        transition: all ease-in-out 0.3s;
+                        
+                        &:hover{
+                            background-color: #51451e;;
+                        }
                     }
 
                     .info {
@@ -120,7 +120,10 @@ $color_h4: rgb(209, 209, 209);
                         text-decoration: none;
                         border-radius: 2px;
                         padding: 5px;
-
+                        transition: all ease-in-out 0.3s;
+                        &:hover{
+                            background-color: #b59b48;
+                        }
                     }
 
 
@@ -135,7 +138,7 @@ $color_h4: rgb(209, 209, 209);
             flex-direction: column;
             gap: 20px;
             width: 20%;
-
+            margin-left: 70px;
             h4 {
                 color: #2c8364;
                 font-size: 2em;
@@ -215,10 +218,8 @@ $color_h4: rgb(209, 209, 209);
     gap: 20px;
     padding-bottom: 2%;
 
-
     #cont_recetas_main {
         width: 40vw;
-
         display: flex;
         align-items: center;
         flex-direction: column;

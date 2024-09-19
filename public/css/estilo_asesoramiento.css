@@ -12,16 +12,15 @@ body main #subtitulo {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2%;
   color: white;
-  font-size: 30px;
+  font-size: 28px;
   width: 100%;
   text-align: center;
 }
 body main #nombre_us {
   margin-top: 2%;
   color: white;
-  font-size: 40px;
+  font-size: 38px;
 }
 body main .contenedor_profesional {
   display: flex;
@@ -34,7 +33,7 @@ body main .contenedor_profesional {
 body main .contenedor_profesional .card {
   background-color: rgba(0, 0, 0, 0.363);
   color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -72,7 +71,7 @@ body main .contenedor_profesional .card .botones .more-info {
   border-radius: 10px;
   margin-top: 5%;
   padding: 5px;
-  transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+  transition: transform 0.3s ease-in-out;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -80,7 +79,6 @@ body main .contenedor_profesional .card .botones .more-info {
   height: 40px;
 }
 body main .contenedor_profesional .card .botones .more-info:hover {
-  transform: scale(1.1);
   background-color: rgba(255, 255, 255, 0.842);
 }
 body .info-extra {
