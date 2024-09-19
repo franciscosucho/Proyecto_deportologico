@@ -254,11 +254,9 @@ body {
 #habit_tracker {
   height: auto;
   width: 100%;
-  list-style: none;
   padding: 30px;
   background-color: rgb(37, 35, 35);
   border-radius: 15px;
-  gap: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -266,25 +264,45 @@ body {
 
 
 #cont_text_main{
+#actividad_hoy{
   width: 95%;
+  display: flex;
+  color: wheat;
+  justify-content: space-between;
+}
+
+#actividad_hoy h3{
+  color: rgb(218, 218, 218);
+  font-size: 1.37rem;
+}
+#cont_text_main{
+  align-items: flex-start;
   display: flex;
   justify-content: space-between;
 }
 #cont_text_main h3 {
   color: rgb(218, 218, 218);
   font-size: 1.37rem;
+  margin-bottom: 6%;
 }
 
 #habit_tracker #item_list {
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between; /* Alinea el contenido horizontalmente */
   align-items: flex-start;
-  flex-direction: row;
+  flex-direction: row; /* Mantener las secciones en fila */
   gap: 20px;
 }
 
+#cont_text_main, #actividad_hoy {
+  display: flex;
+  color: rgb(218, 218, 218);
+  font-size: 1.28rem;
+  align-items: center; /* Alinea los títulos verticalmente */
+  flex-direction: row; /* Mantiene los títulos en la misma fila */
+}
 
 
 #habit_tracker #item_list .item input {
@@ -307,6 +325,15 @@ body {
   gap: 10px ;
   width: 50%;
 }
+
+#cont_list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 20px;
+  gap: 10px;
+}
+
 #item_list #cont_list .item{
   display: flex;
   justify-content: flex-start;
@@ -386,4 +413,3 @@ input:focus {
   color: white;
 
 }
-
