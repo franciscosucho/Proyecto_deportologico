@@ -14,10 +14,20 @@ main {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #202020d5;
+            background-color: #000000dc;
         }
 
         .form_us {
+            width: 40%;
+            height: 60%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            gap: 20px;
+            flex-direction: column;
+            border-radius: 30px;
+            background-color: rgb(20, 20, 20);
             #cancel {
                 position: relative;
                 left: -45%;
@@ -39,29 +49,27 @@ main {
                 }
             }
 
-            width: 60%;
-            height: 60%;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 20px;
-            
-            flex-direction: column;
-            border-radius: 30px;
-            background-color: rgb(70, 70, 70);
+
 
             h4 {
                 width: 100%;
                 text-align: center;
                 color: white;
+                margin-bottom: 5%;
                 font-size: 2em;
             }
-
+            p{
+                color: rgb(228, 228, 228);
+                width: 60%;
+                text-align: center;
+            }
             .cont_inp {
-                margin-top: 50px;
+            
                 width: 60%;
                 display: flex;
                 flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
                 gap: 10px;
 
                 label {
@@ -84,14 +92,13 @@ main {
 
             .cont_btn {
                 height: 40px;
-                width: 30%;
+                width: 60%;
                 display: flex;
-                margin-top: 50px;
-                
-
+                justify-content: center;
+                align-items: flex-start;
                 button {
                     height: 100%;
-                    width: 100%;
+                    width: 40%;
                     border-radius: 20px;
                     color: white;
                     font-size: 1em;
@@ -170,15 +177,21 @@ main {
 
             .opciones {
                 display: flex;
-                width: auto;
+                width: auto;    
+                gap: 10px   ;
 
                 .cont_a {
-                    width: 60%;
+                    width: 8vw;
                     height: 50px;
                     color: white;
                     text-decoration: none;
                     border-radius: 10px;
                     padding: 10px;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center; 
+                    gap: 5px ;
                     transition: all .1s ease-in-out;
 
                     &:hover {

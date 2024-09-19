@@ -27,9 +27,9 @@
                 <h2 id="nombre_us">Tus actividades</h2>
                 <div id="cont_prog">
                     <% let i=0; %>
-                        <% results.forEach(actividad=> { %>
+                        <% results_query.forEach(actividad=> { %>
                             <div class="datos_user" id="datos_us<%= i %>">
-                                <div class="info">
+                                <div class="info" data-id="<%= actividad.ID %>">
                                     <h3><%- actividad.Nombre %></h3>
                                     <p>Tipo de medidad: <%-actividad.TipoRegistro %></p>
 
@@ -59,51 +59,73 @@
 
                 <h4>Actualizar Datos</h4>
                 <div class="cont_inp">
-                    <label for="nombre_act" id="label_nombre_act">Actualizar datos de</label>
-                    <input id="nombre_act" name="nombre_act" type="text" placeholder="Escriba el Nombre de la actividad"
-                        required maxlength="40">
-                </div>
+                    <label for="valor_act" id="label_nombre_act">Actualizar datos de</label>
+                    <input id="valor_act" name="valor_act" type="number" placeholder="Escriba su nuevo valor del ejercio"
+                        required maxlength="20">
 
-                <div class="cont_btn">
-                    <button class="btn_enviar_sesion" type="submit">Añadir actividad</button>
                 </div>
+                <input type="hidden" id="input_id" name="id_actividad">
+                <% if (results_select && results_select.length> 0) { %>
+                    <p>
+                        Tu última actualización fue el: <%= results_select.Fecha %>
+                            , con un valor de: <%= results_select.Valor %>.
+                    </p>
+                    <% } else { %>
+                        <p>
+                            Todavía no agregaste valores a esta actividad.
+                        </p>
+                        <% } %>
+                            <p>Se le recuerda que el intervalo de actualización recomendado es de entre 1 y 2 semanas.
+                            </p>
+                            <div class="cont_btn">
+                                <button class="btn_enviar_sesion" type="submit">Añadir actividad</button>
+                            </div>
 
-                <!-- Mostrar error si existe -->
-                <% if (typeof error !=='undefined' ) { %>
-                    <span id="error_ini">
-                        <%= error %>
-                    </span>
-                    <% } %>
+                            <!-- Mostrar error si existe -->
+                            <% if (typeof error !=='undefined' ) { %>
+                                <span id="error_ini">
+                                    <%= error %>
+                                </span>
+                                <% } %>
             </form>
         </div>
     </main>
     <script>
         const btn_actualizar = document.querySelectorAll(".btn_actualizar");
         const Actualizar_datos = document.getElementById("Actualizar_datos");
-        const nombre_act_input = document.getElementById("nombre_act");
         const label_nombre_act = document.getElementById("label_nombre_act");
+        const input = document.getElementById("input_id")
+        const cancel = document.getElementById("cancel");
+
         btn_actualizar.forEach(actualizar => {
             actualizar.addEventListener("click", (event) => {
+                document.querySelector('form').reset();
                 // Obtener el contenedor padre
                 const datosUser = event.target.closest(".datos_user");
 
                 // Extraer el nombre de la actividad
                 const nombreActividad = datosUser.querySelector("h3").innerText;
 
+                // Extraer el data-id
+                const actividadId = datosUser.querySelector(".info").getAttribute("data-id");
+                input.value = actividadId
                 // Colocar el nombre en el input del formulario
-                label_nombre_act.textContent = "Actulizando el valor de la actividad "+"`"+nombreActividad+"`";
+                label_nombre_act.textContent = "Actualizando el valor de la actividad " + "`" + nombreActividad + "`";
+
+
 
                 // Mostrar el formulario
                 Actualizar_datos.classList.toggle("focus");
                 Actualizar_datos.classList.toggle("desac");
             });
         });
-
-        const cancel = document.getElementById("cancel");
-        cancel.addEventListener("click", () => {
+        cancel.addEventListener("click", (event) => {
+            document.querySelector('form').reset();
+            // Mostrar el formulario
             Actualizar_datos.classList.toggle("focus");
             Actualizar_datos.classList.toggle("desac");
-        });
+
+        }) 
     </script>
 </body>
 

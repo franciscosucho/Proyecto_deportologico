@@ -269,10 +269,6 @@ body {
   display: flex;
   justify-content: space-between;
 }
-#cont_text_main h3 {
-  color: rgb(218, 218, 218);
-  font-size: 1.37rem;
-}
 
 #habit_tracker #item_list {
   width: 100%;
@@ -298,13 +294,32 @@ body {
 }
 
 #item_list #cont_list{
+
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
   padding-left: 20px;
-  gap: 10px ;
+  gap: 20px ;
   width: 50%;
+  height: 90%;
+
+}
+#item_list  h3{
+  color: rgb(218, 218, 218);
+  width: 10vw  ;
+  font-size: 1.37rem;
+
+}
+#item_list #cont_list #list{
+  display: flex;
+  gap: 20px ;
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
 }
 #item_list #cont_list .item{
   display: flex;
@@ -317,9 +332,10 @@ body {
   width: 80%;
 }
 #agregar {
- 
+  
   display: flex;
   flex-direction: column;
+  gap: 30px ;
   height: auto;
 }
 
@@ -333,6 +349,7 @@ body {
 }
 
 #cont_agregar input {
+ 
   width: 100%;
   color: white;
   border: none;
@@ -340,6 +357,7 @@ body {
   border-bottom: 1px solid rgba(128, 128, 128, 0.651);
 }
 #cont_agregar #cont_inp {
+  width: 100%;
   display: flex;
   gap: 10px;
   color: white;

@@ -206,6 +206,7 @@ app.get('/progreso_agregar', (req, res) => {
     res.render('progreso_agregar', { user_dni })
 
 })
+
 app.get('/progreso_ver', (req, res) => {
     var user_dni = req.session.user_dni
     var query_datos_us = " SELECT * FROM progreso WHERE DNI_prog=?"
@@ -214,10 +215,21 @@ app.get('/progreso_ver', (req, res) => {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
         }
-        res.render('progreso_ver', { results, user_dni })
+        const results_query = results
 
+        query_datos_us = "SELECT `ID`, `id_actividad`, `DNI_prog`, `Fecha`, `Valor` FROM progreso_focus WHERE `Fecha` = (SELECT MAX(`Fecha`) FROM `progreso_focus`)"
+        connection.query(query_datos_us, [], (err, results) => {
+            if (err) {
+                console.error('Error al verificar los datos:', err);
+                return res.render('login.ejs', { error: 'Error al verificar los datos' });
+            }
+            const results_select = results
+            res.render('progreso_ver', { results_query, results_select, user_dni })
+
+        })
     })
 })
+
 app.get('/progreso_focus:id_actividad', (req, res) => {
     var id_actividad = req.params.id_actividad
     var user_dni = req.session.user_dni
@@ -233,8 +245,24 @@ app.get('/progreso_focus:id_actividad', (req, res) => {
 
 
 app.post('/progreso_actualizar', (req, res) => {
+    const {
+        id_actividad,
+        valor_act
+    } = req.body;
+
     var user_dni = req.session.user_dni
-    let insert_act_act = "INSERT INTO `progreso_focus`( `id_actividad`, `DNI_prog`, `Fecha`, `Valor`) VALUES (?,?,?,?)"
+    let insert_act_act = "INSERT INTO `progreso_focus`( `id_actividad`,`DNI_prog`, `Fecha`, `Valor`) VALUES (?,?,?,?)"
+    var fecha=obtenerFechaActual();
+    
+    connection.query(insert_act_act, [id_actividad,user_dni, fecha, valor_act], (err, results) => {
+        if (err) {
+            console.error('Error al verificar los datos:', err);
+            return res.render('login.ejs', { error: 'Error al verificar los datos' });
+
+        }
+        console.log(results)
+    })
+    res.redirect('/progreso_ver');
 
 })
 
@@ -244,6 +272,7 @@ app.post('/progreso_actualizar', (req, res) => {
 
 
 app.post('/enviar_us', (req, res) => {
+    
     let { tipo_act, nombre_act } = req.body;
     var user_dni = req.session.user_dni;
     // Primero, verifica si ya existe el registro

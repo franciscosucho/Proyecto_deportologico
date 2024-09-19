@@ -8,18 +8,19 @@ main #Actualizar_datos.focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(32, 32, 32, 0.8352941176);
+  background-color: rgba(0, 0, 0, 0.862745098);
 }
 main #Actualizar_datos .form_us {
-  width: 60%;
+  width: 40%;
   height: 60%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 20px;
+  gap: 20px;
   flex-direction: column;
   border-radius: 30px;
-  background-color: rgb(70, 70, 70);
+  background-color: rgb(20, 20, 20);
 }
 main #Actualizar_datos .form_us #cancel {
   position: relative;
@@ -44,13 +45,20 @@ main #Actualizar_datos .form_us h4 {
   width: 100%;
   text-align: center;
   color: white;
+  margin-bottom: 5%;
   font-size: 2em;
 }
+main #Actualizar_datos .form_us p {
+  color: rgb(228, 228, 228);
+  width: 60%;
+  text-align: center;
+}
 main #Actualizar_datos .form_us .cont_inp {
-  margin-top: 50px;
   width: 60%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 10px;
 }
 main #Actualizar_datos .form_us .cont_inp label {
@@ -69,13 +77,14 @@ main #Actualizar_datos .form_us .cont_inp input {
 }
 main #Actualizar_datos .form_us .cont_btn {
   height: 40px;
-  width: 30%;
+  width: 60%;
   display: flex;
-  margin-top: 50px;
+  justify-content: center;
+  align-items: flex-start;
 }
 main #Actualizar_datos .form_us .cont_btn button {
   height: 100%;
-  width: 100%;
+  width: 40%;
   border-radius: 20px;
   color: white;
   font-size: 1em;
@@ -138,14 +147,20 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
 .cont_prog_main #cont_prog .datos_user .opciones {
   display: flex;
   width: auto;
+  gap: 10px;
 }
 .cont_prog_main #cont_prog .datos_user .opciones .cont_a {
-  width: 60%;
+  width: 8vw;
   height: 50px;
   color: white;
   text-decoration: none;
   border-radius: 10px;
   padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
   transition: all 0.1s ease-in-out;
 }
 .cont_prog_main #cont_prog .datos_user .opciones .cont_a:hover {
