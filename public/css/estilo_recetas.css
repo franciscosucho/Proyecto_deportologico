@@ -33,18 +33,16 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 90%;
+  width: 100%;
   height: auto;
   border-radius: 10px;
   background-color: #224439;
-  box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
 }
 #main_recetas .cont_rec #cont_recetas_main .cont_receta img {
   height: 100%;
   width: auto;
   max-width: 60%;
   border-radius: 10px;
-  box-shadow: 10px 9px 22px -1px rgb(37, 37, 37);
 }
 #main_recetas .cont_rec #cont_recetas_main .cont_receta .text {
   display: flex;
@@ -69,6 +67,10 @@
   justify-content: flex-start;
   align-items: center;
   gap: 5px;
+  transition: all ease-in-out 0.3s;
+}
+#main_recetas .cont_rec #cont_recetas_main .cont_receta .text .cont_tiempo:hover {
+  background-color: #51451e;
 }
 #main_recetas .cont_rec #cont_recetas_main .cont_receta .text .info {
   width: 100%;
@@ -92,12 +94,17 @@
   text-decoration: none;
   border-radius: 2px;
   padding: 5px;
+  transition: all ease-in-out 0.3s;
+}
+#main_recetas .cont_rec #cont_recetas_main .cont_receta .text .btn_receta:hover {
+  background-color: #b59b48;
 }
 #main_recetas .cont_rec #filtros {
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 20%;
+  margin-left: 70px;
 }
 #main_recetas .cont_rec #filtros h4 {
   color: #2c8364;

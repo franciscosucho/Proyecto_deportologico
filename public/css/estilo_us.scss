@@ -1,4 +1,24 @@
- #main_recetas {
+.cerrar-sesion{
+    display: flex;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    background-color: #64E788;
+    width: auto;
+    height: auto;
+    right: 20px;
+    top: 20px;
+    color: white;
+    gap: 5px;
+    cursor: pointer;
+    transition: all ease-in-out .3s ;
+    &:hover{
+        background-color: #51b66c;
+    }
+}
+
+#main_recetas {
 
      #cont_info_prin {
          display: flex;
@@ -30,25 +50,26 @@
          justify-content: flex-start;
          align-items: flex-start;
          height: 100%;
-         gap: 0px;
 
+        
          .cont_datos {
              display: flex;
-             justify-content: flex-start;
+             justify-content: center;
              gap: 30px;
              padding: 20px;
              flex-direction: column;
              align-items: flex-start;
              width: 100%;
              border-radius: 15px;
-             border: 1px solid gray;
+             border: 1px solid #64E788;
              color: white;
              transition: all .2s ease-in-out;
 
+            
              h4 {
-                 color: gray;
-                 font-weight: 100;
-                 font-size: 1.6em;
+                color:#51b66c;
+                font-weight: 100;
+                font-size: 1.6em;
              }
 
              .datos_user {
@@ -68,11 +89,7 @@
                  }
              }
 
-             &:hover {
-                 h4 {
-                     text-decoration: underline;
-                 }
-
+             &:hover{
                  background-color:rgba(128, 128, 128, 0.055);
              }
          }

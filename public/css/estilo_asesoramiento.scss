@@ -14,9 +14,8 @@ body {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 2%;
             color: white;
-            font-size: 30px;
+            font-size: 28px;
             width: 100%;
             text-align: center;
         }
@@ -24,7 +23,7 @@ body {
         #nombre_us {
             margin-top: 2%;
             color: white;
-            font-size: 40px;
+            font-size: 38px;
         }
 
         .contenedor_profesional {
@@ -32,13 +31,13 @@ body {
             flex-wrap: wrap;
             justify-content: center;
             width: 100%;
+            
             height: auto;
             align-items: flex-start;
             .card {
-
                 background-color: rgba(0, 0, 0, 0.363);
                 color: white;
-                border-radius: 20px;
+                border-radius: 10px;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -82,7 +81,7 @@ body {
                         border-radius: 10px;
                         margin-top: 5%;
                         padding: 5px;
-                        transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+                        transition: transform 0.3s ease-in-out;
                         font-size: 1rem;
                         font-weight: 600;
                         cursor: pointer;
@@ -90,7 +89,7 @@ body {
                         height: 40px;
 
                         &:hover {
-                            transform: scale(1.1);
+                          
                             background-color: rgba(255, 255, 255, 0.842);
                         }
                     }

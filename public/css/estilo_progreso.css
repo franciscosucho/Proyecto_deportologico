@@ -11,25 +11,35 @@ main #Actualizar_datos.focus {
   background-color: rgba(0, 0, 0, 0.862745098);
 }
 main #Actualizar_datos .form_us {
+<<<<<<< HEAD
   width: 40%;
   height: 60%;
+=======
+  width: 50%;
+  height: 50%;
+>>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   padding: 20px;
   gap: 20px;
   flex-direction: column;
   border-radius: 30px;
   background-color: rgb(20, 20, 20);
+=======
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: rgb(50, 50, 50);
+>>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
 }
 main #Actualizar_datos .form_us #cancel {
   position: relative;
-  left: -45%;
-  top: 5%;
+  right: -45%;
+  top: -8%;
   color: white;
   cursor: pointer;
   border-radius: 50%;
-  padding: 5px;
   height: 40px;
   width: 40px;
   display: flex;
@@ -54,7 +64,12 @@ main #Actualizar_datos .form_us p {
   text-align: center;
 }
 main #Actualizar_datos .form_us .cont_inp {
+<<<<<<< HEAD
   width: 60%;
+=======
+  margin-top: 4%;
+  width: 50%;
+>>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -67,7 +82,7 @@ main #Actualizar_datos .form_us .cont_inp label {
 main #Actualizar_datos .form_us .cont_inp input {
   height: 40px;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 6px;
   background: white;
   border: none;
@@ -79,6 +94,7 @@ main #Actualizar_datos .form_us .cont_btn {
   height: 40px;
   width: 60%;
   display: flex;
+<<<<<<< HEAD
   justify-content: center;
   align-items: flex-start;
 }
@@ -86,17 +102,22 @@ main #Actualizar_datos .form_us .cont_btn button {
   height: 100%;
   width: 40%;
   border-radius: 20px;
+=======
+  margin-top: 4%;
+}
+main #Actualizar_datos .form_us .cont_btn button {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+>>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
   color: white;
   font-size: 1em;
   font-weight: bolder;
   border: none;
-  /* Elimina el borde */
   outline: none;
   cursor: pointer;
-  /* Elimina el contorno al hacer foco */
   background: #64E788;
   transition: all 0.2s ease-in-out;
-  /* Elimina el fondo */
 }
 main #Actualizar_datos .form_us .cont_btn button:hover {
   background: #4cb368;
@@ -126,13 +147,13 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
   align-items: flex-start;
 }
 .cont_prog_main #cont_prog .datos_user {
-  width: 50%;
+  width: 52%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 5px;
-  padding: 10px;
-  border: 1PX solid rgba(117, 117, 117, 0.363);
+  padding: 12px;
+  border: 1px solid #64E788;
   border-radius: 10px;
 }
 .cont_prog_main #cont_prog .datos_user .info h3 {
@@ -147,24 +168,40 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
 .cont_prog_main #cont_prog .datos_user .opciones {
   display: flex;
   width: auto;
+<<<<<<< HEAD
   gap: 10px;
 }
 .cont_prog_main #cont_prog .datos_user .opciones .cont_a {
   width: 8vw;
   height: 50px;
+=======
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+.cont_prog_main #cont_prog .datos_user .opciones .cont_a {
+  width: auto;
+  cursor: pointer;
+  height: auto;
+>>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
   color: white;
   text-decoration: none;
   border-radius: 10px;
   padding: 10px;
+<<<<<<< HEAD
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   transition: all 0.1s ease-in-out;
+=======
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(236, 236, 236, 0.045);
+>>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
 }
 .cont_prog_main #cont_prog .datos_user .opciones .cont_a:hover {
-  background-color: rgba(236, 236, 236, 0.062);
+  background-color: rgba(236, 236, 236, 0.064);
 }
 .cont_prog_main a {
   position: relative;
@@ -199,9 +236,6 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
   font-weight: bolder;
-}
-.cont_prog_main a:hover {
-  transform: scale(1.05);
 }
 .cont_prog_main a:hover img {
   opacity: 0.7;
@@ -252,7 +286,7 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
 .cont_prog_main form .cont_inputs select,
 .cont_prog_main form .cont_inputs input {
   width: 60%;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: white;
   height: 8vh;
   padding: 10px;
@@ -277,7 +311,6 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
   transition: all 0.2s ease-in-out;
 }
 .cont_prog_main form button:hover {
-  transform: scale(1.1);
   background-color: #46a55f;
 }
 .cont_prog_main form#cont_registrar {
@@ -313,8 +346,10 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
   gap: 20px;
 }
 .cont_prog_main form#cont_registrar .sub_form .cont_btn button {
-  height: 100%;
-  width: 50%;
+  height: auto;
+  padding: 10px;
+  border-radius: 10px;
+  width: 60%;
 }
 .cont_prog_main form#cont_registrar .desac {
   display: none !important;

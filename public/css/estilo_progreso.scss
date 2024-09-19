@@ -1,7 +1,5 @@
 $color-primario: #64E788; // verde
 
-$color-primario: #64E788; // verde
-
 main {
     #Actualizar_datos {
         &.focus {
@@ -30,12 +28,11 @@ main {
             background-color: rgb(20, 20, 20);
             #cancel {
                 position: relative;
-                left: -45%;
-                top: 5%;
+                right: -45%;
+                top: -8%;
                 color: white;
                 cursor: pointer;
                 border-radius: 50%;
-                padding: 5px;
                 height: 40px;
                 width: 40px;
                 display: flex;
@@ -43,13 +40,21 @@ main {
                 align-items: center;
                 font-size: 1.5em;
                 transition: all .2s ease-in-out;
-
                 &:hover {
                     background-color: rgba(250, 235, 215, 0.274);
                 }
             }
 
-
+            width: 60%;
+            height: 60%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            
+            flex-direction: column;
+            border-radius: 30px;
+            background-color: rgb(70, 70, 70);
 
             h4 {
                 width: 100%;
@@ -64,23 +69,21 @@ main {
                 text-align: center;
             }
             .cont_inp {
-            
+                margin-top: 50px;
                 width: 60%;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: flex-start;
                 gap: 10px;
-
                 label {
                     color: rgb(228, 228, 228);
-
                 }
 
                 input {
                     height: 40px;
                     width: 100%;
-                    border-radius: 20px;
+                    border-radius: 10px;
                     padding: 6px;
                     background: white;
                     border: none;
@@ -94,24 +97,21 @@ main {
                 height: 40px;
                 width: 60%;
                 display: flex;
-                justify-content: center;
-                align-items: flex-start;
+                margin-top: 50px;
+                
+
                 button {
                     height: 100%;
-                    width: 40%;
+                    width: 100%;
                     border-radius: 20px;
                     color: white;
                     font-size: 1em;
                     font-weight: bolder;
                     border: none;
-                    /* Elimina el borde */
                     outline: none;
                     cursor: pointer;
-                    /* Elimina el contorno al hacer foco */
                     background: #64E788;
                     transition: all .2s ease-in-out;
-
-                    /* Elimina el fondo */
                     &:hover {
                         background: #4cb368;
 
@@ -152,13 +152,13 @@ main {
         }
 
         .datos_user {
-            width: 50%;
+            width: 52%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 5px;
-            padding: 10px;
-            border: 1PX solid rgba(117, 117, 117, 0.363);
+            padding: 12px;
+            border: 1px solid $color-primario;
             border-radius: 10px;
 
             .info {
@@ -166,43 +166,31 @@ main {
                     font-weight: 600;
                     color: white;
                 }
-
                 p {
                     margin-top: 10px;
                     font-weight: lighter;
                     color: rgb(197, 197, 197);
-
                 }
             }
-
             .opciones {
                 display: flex;
-                width: auto;    
-                gap: 10px   ;
+                width: auto;
 
                 .cont_a {
-                    width: 8vw;
+                    width: 60%;
                     height: 50px;
                     color: white;
                     text-decoration: none;
                     border-radius: 10px;
                     padding: 10px;
-                    cursor: pointer;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center; 
-                    gap: 5px ;
                     transition: all .1s ease-in-out;
 
                     &:hover {
-                        background-color: rgba(236, 236, 236, 0.062);
+                        background-color: rgba(236, 236, 236, 0.064);
                     }
                 }
             }
-
         }
-
-
     }
 
     a {
@@ -213,7 +201,7 @@ main {
         border-radius: 10px;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); // Agrega sombra
         transition: transform 0.3s ease; // Animación de escalado
-
+        
         img {
             border-radius: 10px;
             width: 100%;
@@ -242,7 +230,7 @@ main {
         }
 
         &:hover {
-            transform: scale(1.05); // Escala el contenedor ligeramente
+            
 
             img {
                 opacity: 0.7; // Reduce la opacidad al hacer hover
@@ -306,7 +294,7 @@ main {
             select,
             input {
                 width: 60%;
-                border-radius: 20px;
+                border-radius: 10px;
                 background-color: white;
                 height: 8vh;
                 padding: 10px;
@@ -334,7 +322,7 @@ main {
             transition: all .2s ease-in-out;
 
             &:hover {
-                transform: scale(1.1);
+                
                 background-color: #46a55f;
             }
         }
@@ -347,7 +335,6 @@ main {
                 width: 100%;
                 text-align: center;
                 color: rgb(226, 226, 226);
-
                 font-size: 1em;
                 display: flex;
                 justify-content: center;
@@ -372,10 +359,12 @@ main {
                     align-items: center;
                     flex-direction: row-reverse;
                     gap: 20px;
-
+                    
                     button {
-                        height: 100%;
-                        width: 50%;
+                        height: auto;
+                        padding: 10px;
+                        border-radius: 10px;
+                        width: 60%;
                     }
 
                 }

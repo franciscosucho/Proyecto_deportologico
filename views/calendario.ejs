@@ -28,6 +28,7 @@
 </article>
 <div class="" id="habit_tracker">
     <div id="item_list">
+<<<<<<< HEAD
 
         <div id="agregar">
             <h3>Agregar actividad</h3>
@@ -61,3 +62,67 @@
         </div>
     </div>
 </div>
+=======
+        <div id="cont_text_main">
+            <div id="agregar">
+                <h3>Agregar actividad</h3>
+                <form method="post" action="/nueva_actividad" id="cont_agregar">
+                    <div id="cont_inp">
+                        <input id="info_act" name="info_act" type="text" placeholder="Escriba el nuevo evento que quiere realizar:" required maxlength="100">
+                    </div>
+                    <input id="fecha_act" name="fecha_act" type="date" required>
+                    <button id="btn_enviar_act" type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+        <ul id="cont_list">
+            <h3 id="actividad_hoy" style="display: none;">Tu actividad de hoy</h3>
+            <% results.forEach(actividad=> { %>
+                <li class="item">
+                    <% if(actividad.MarcadorCumplido=="1" ){%>
+                        <input type="checkbox" name="check" data-id="<%- actividad.ID_act %>" class="item_act" checked>
+                        <span class="text_item tachado"><%- actividad.Objetivos %></span>
+                    <%} else {%>
+                        <input type="checkbox" name="check" data-id="<%- actividad.ID_act %>" class="item_act">
+                        <span class="text_item "><%- actividad.Objetivos %></span>
+                    <%}%>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Verificar si hay actividades en la lista
+    var listItems = document.querySelectorAll('#cont_list .item');
+    
+    // Mostrar el título "Tu actividad de hoy" solo si hay elementos en la lista
+    if (listItems.length > 0) {
+        document.getElementById('actividad_hoy').style.display = 'block';
+    }
+});
+
+// Capturar el formulario y agregar evento de envío
+document.getElementById('cont_agregar').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevenir el envío inmediato del formulario
+
+    // Simulamos el envío del formulario y agregamos la actividad a la lista
+    var newItem = document.createElement('li');
+    newItem.classList.add('item');
+    newItem.innerHTML = `
+        <input type="checkbox" name="check" class="item_act">
+        <span class="text_item">${document.getElementById('info_act').value}</span>
+    `;
+
+    // Añadir el nuevo elemento a la lista
+    document.getElementById('cont_list').appendChild(newItem);
+
+    // Mostrar el título "Tu actividad de hoy" si hay actividades
+    document.getElementById('actividad_hoy').style.display = 'block';
+
+    // Enviar el formulario (esto podría ser reemplazado por un envío AJAX)
+    this.submit();
+});
+
+</script>
+>>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
