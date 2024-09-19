@@ -6,3 +6,13 @@ Trabajo a seguir:
                 
 Ideas:
         Login para los entrenadores
+
+
+
+rehacer:
+        *index.ejs: rehacer el habit tracker y ver que funcione lo demas
+        *datos_us:
+                .cambiar el color del borde que pusieron.
+                .hacer que ande el boton de cerrar sesion.
+        *progreso:
+                ver hasta donde borraron y rehacer.
