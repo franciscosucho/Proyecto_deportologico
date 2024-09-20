@@ -263,7 +263,7 @@ body {
 
 
 
-#cont_text_main{
+
 #actividad_hoy{
   width: 95%;
   display: flex;
@@ -280,14 +280,6 @@ body {
   display: flex;
   justify-content: space-between;
 }
-<<<<<<< HEAD
-=======
-#cont_text_main h3 {
-  color: rgb(218, 218, 218);
-  font-size: 1.37rem;
-  margin-bottom: 6%;
-}
->>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
 
 #habit_tracker #item_list {
   width: 100%;
@@ -437,5 +429,4 @@ input:focus {
   font-weight: 100;
   color: white;
 
-}
 }

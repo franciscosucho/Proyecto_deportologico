@@ -4,7 +4,7 @@
   padding: 10px;
   border-radius: 10px;
   position: absolute;
-  background-color: #64E788;
+  background-color: #49a863;
   width: auto;
   height: auto;
   right: 20px;
@@ -15,7 +15,7 @@
   transition: all ease-in-out 0.3s;
 }
 .cerrar-sesion:hover {
-  background-color: #51b66c;
+  background-color: #5bc778;
 }
 
 #main_recetas #cont_info_prin {
@@ -54,7 +54,7 @@
   align-items: flex-start;
   width: 100%;
   border-radius: 15px;
-  border: 1px solid #64E788;
+  border: 1px solid rgba(148, 148, 148, 0.6980392157);
   color: white;
   transition: all 0.2s ease-in-out;
 }

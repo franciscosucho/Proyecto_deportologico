@@ -16,7 +16,7 @@ main {
         }
 
         .form_us {
-            width: 40%;
+            width: 45%;
             height: 60%;
             display: flex;
             justify-content: flex-start;
@@ -26,10 +26,14 @@ main {
             flex-direction: column;
             border-radius: 30px;
             background-color: rgb(20, 20, 20);
+
+
+
+
             #cancel {
                 position: relative;
-                right: -45%;
-                top: -8%;
+                right: 47%;
+                top: 0%;
                 color: white;
                 cursor: pointer;
                 border-radius: 50%;
@@ -40,21 +44,13 @@ main {
                 align-items: center;
                 font-size: 1.5em;
                 transition: all .2s ease-in-out;
+
                 &:hover {
                     background-color: rgba(250, 235, 215, 0.274);
                 }
             }
 
-            width: 60%;
-            height: 60%;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 20px;
-            
-            flex-direction: column;
-            border-radius: 30px;
-            background-color: rgb(70, 70, 70);
+
 
             h4 {
                 width: 100%;
@@ -63,11 +59,13 @@ main {
                 margin-bottom: 5%;
                 font-size: 2em;
             }
-            p{
+
+            p {
                 color: rgb(228, 228, 228);
                 width: 60%;
                 text-align: center;
             }
+
             .cont_inp {
                 margin-top: 50px;
                 width: 60%;
@@ -76,6 +74,7 @@ main {
                 justify-content: flex-start;
                 align-items: flex-start;
                 gap: 10px;
+
                 label {
                     color: rgb(228, 228, 228);
                 }
@@ -98,7 +97,7 @@ main {
                 width: 60%;
                 display: flex;
                 margin-top: 50px;
-                
+
 
                 button {
                     height: 100%;
@@ -112,6 +111,7 @@ main {
                     cursor: pointer;
                     background: #64E788;
                     transition: all .2s ease-in-out;
+
                     &:hover {
                         background: #4cb368;
 
@@ -158,7 +158,7 @@ main {
             align-items: center;
             gap: 5px;
             padding: 12px;
-            border: 1px solid $color-primario;
+            border: 1px solid rgba(112, 112, 112, 0.623);
             border-radius: 10px;
 
             .info {
@@ -166,17 +166,24 @@ main {
                     font-weight: 600;
                     color: white;
                 }
+
                 p {
                     margin-top: 10px;
                     font-weight: lighter;
                     color: rgb(197, 197, 197);
                 }
             }
+
             .opciones {
                 display: flex;
+                gap: 20px;
                 width: auto;
 
                 .cont_a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 4px;
                     width: 60%;
                     height: 50px;
                     color: white;
@@ -184,16 +191,17 @@ main {
                     border-radius: 10px;
                     padding: 10px;
                     transition: all .1s ease-in-out;
-
+                    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); // Agrega sombra
+                    cursor: pointer;
                     &:hover {
                         background-color: rgba(236, 236, 236, 0.064);
                     }
-                }
+                }   
             }
         }
     }
 
-    a {
+    .prog_a {
         position: relative;
         width: 30vw;
         height: 60vh;
@@ -201,7 +209,7 @@ main {
         border-radius: 10px;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); // Agrega sombra
         transition: transform 0.3s ease; // Animación de escalado
-        
+
         img {
             border-radius: 10px;
             width: 100%;
@@ -230,7 +238,7 @@ main {
         }
 
         &:hover {
-            
+
 
             img {
                 opacity: 0.7; // Reduce la opacidad al hacer hover
@@ -322,7 +330,7 @@ main {
             transition: all .2s ease-in-out;
 
             &:hover {
-                
+
                 background-color: #46a55f;
             }
         }
@@ -359,7 +367,7 @@ main {
                     align-items: center;
                     flex-direction: row-reverse;
                     gap: 20px;
-                    
+
                     button {
                         height: auto;
                         padding: 10px;

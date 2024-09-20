@@ -11,32 +11,21 @@ main #Actualizar_datos.focus {
   background-color: rgba(0, 0, 0, 0.862745098);
 }
 main #Actualizar_datos .form_us {
-<<<<<<< HEAD
-  width: 40%;
+  width: 45%;
   height: 60%;
-=======
-  width: 50%;
-  height: 50%;
->>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-<<<<<<< HEAD
   padding: 20px;
   gap: 20px;
   flex-direction: column;
   border-radius: 30px;
   background-color: rgb(20, 20, 20);
-=======
-  flex-direction: column;
-  border-radius: 20px;
-  background-color: rgb(50, 50, 50);
->>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
 }
 main #Actualizar_datos .form_us #cancel {
   position: relative;
-  right: -45%;
-  top: -8%;
+  right: 47%;
+  top: 0%;
   color: white;
   cursor: pointer;
   border-radius: 50%;
@@ -64,12 +53,8 @@ main #Actualizar_datos .form_us p {
   text-align: center;
 }
 main #Actualizar_datos .form_us .cont_inp {
-<<<<<<< HEAD
+  margin-top: 50px;
   width: 60%;
-=======
-  margin-top: 4%;
-  width: 50%;
->>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -94,22 +79,12 @@ main #Actualizar_datos .form_us .cont_btn {
   height: 40px;
   width: 60%;
   display: flex;
-<<<<<<< HEAD
-  justify-content: center;
-  align-items: flex-start;
-}
-main #Actualizar_datos .form_us .cont_btn button {
-  height: 100%;
-  width: 40%;
-  border-radius: 20px;
-=======
-  margin-top: 4%;
+  margin-top: 50px;
 }
 main #Actualizar_datos .form_us .cont_btn button {
   height: 100%;
   width: 100%;
-  border-radius: 10px;
->>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
+  border-radius: 20px;
   color: white;
   font-size: 1em;
   font-weight: bolder;
@@ -153,7 +128,7 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
   align-items: center;
   gap: 5px;
   padding: 12px;
-  border: 1px solid #64E788;
+  border: 1px solid rgba(112, 112, 112, 0.623);
   border-radius: 10px;
 }
 .cont_prog_main #cont_prog .datos_user .info h3 {
@@ -167,43 +142,28 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
 }
 .cont_prog_main #cont_prog .datos_user .opciones {
   display: flex;
-  width: auto;
-<<<<<<< HEAD
-  gap: 10px;
-}
-.cont_prog_main #cont_prog .datos_user .opciones .cont_a {
-  width: 8vw;
-  height: 50px;
-=======
-  justify-content: center;
-  text-align: center;
   gap: 20px;
+  width: auto;
 }
 .cont_prog_main #cont_prog .datos_user .opciones .cont_a {
-  width: auto;
-  cursor: pointer;
-  height: auto;
->>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 60%;
+  height: 50px;
   color: white;
   text-decoration: none;
   border-radius: 10px;
   padding: 10px;
-<<<<<<< HEAD
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
   transition: all 0.1s ease-in-out;
-=======
-  transition: all 0.2s ease-in-out;
-  background-color: rgba(236, 236, 236, 0.045);
->>>>>>> fc702e7d30333cffb3248aa30dabdca8f6262b02
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 .cont_prog_main #cont_prog .datos_user .opciones .cont_a:hover {
   background-color: rgba(236, 236, 236, 0.064);
 }
-.cont_prog_main a {
+.cont_prog_main .prog_a {
   position: relative;
   width: 30vw;
   height: 60vh;
@@ -212,7 +172,7 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
-.cont_prog_main a img {
+.cont_prog_main .prog_a img {
   border-radius: 10px;
   width: 100%;
   height: 100%;
@@ -221,7 +181,7 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.cont_prog_main a span {
+.cont_prog_main .prog_a span {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -237,11 +197,11 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
   transition: opacity 0.3s ease, transform 0.3s ease;
   font-weight: bolder;
 }
-.cont_prog_main a:hover img {
+.cont_prog_main .prog_a:hover img {
   opacity: 0.7;
   transform: scale(1.1);
 }
-.cont_prog_main a:hover span {
+.cont_prog_main .prog_a:hover span {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1.1);
 }

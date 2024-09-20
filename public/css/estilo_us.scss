@@ -1,10 +1,10 @@
-.cerrar-sesion{
+.cerrar-sesion {
     display: flex;
     border: none;
     padding: 10px;
     border-radius: 10px;
     position: absolute;
-    background-color: #64E788;
+    background-color: #49a863;
     width: auto;
     height: auto;
     right: 20px;
@@ -12,111 +12,112 @@
     color: white;
     gap: 5px;
     cursor: pointer;
-    transition: all ease-in-out .3s ;
-    &:hover{
-        background-color: #51b66c;
+    transition: all ease-in-out .3s;
+
+    &:hover {
+        background-color: #5bc778;
     }
 }
 
 #main_recetas {
 
-     #cont_info_prin {
-         display: flex;
-         justify-content: flex-start;
-         align-items: center;
-         gap: 30px;
-         height: auto;
-         width: 100%;
-         padding-left: 20px;
+    #cont_info_prin {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 30px;
+        height: auto;
+        width: 100%;
+        padding-left: 20px;
 
-         img {
+        img {
             object-fit: cover;
-             width: 150px;
-             height: 150px;
-             border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
 
-         }
+        }
 
-         .nombre_us {
-             font-size: 3em;
-             color: white;
-             font-weight: bolder;
-         }
+        .nombre_us {
+            font-size: 3em;
+            color: white;
+            font-weight: bolder;
+        }
 
-     }
+    }
 
-     #cont_us {
-         display: flex;
-         justify-content: flex-start;
-         align-items: flex-start;
-         height: 100%;
+    #cont_us {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 100%;
 
-        
-         .cont_datos {
-             display: flex;
-             justify-content: center;
-             gap: 30px;
-             padding: 20px;
-             flex-direction: column;
-             align-items: flex-start;
-             width: 100%;
-             border-radius: 15px;
-             border: 1px solid #64E788;
-             color: white;
-             transition: all .2s ease-in-out;
 
-            
-             h4 {
-                color:#51b66c;
+        .cont_datos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid #949494b2;
+            color: white;
+            transition: all .2s ease-in-out;
+
+
+            h4 {
+                color: #51b66c;
                 font-weight: 100;
                 font-size: 1.6em;
-             }
+            }
 
-             .datos_user {
-                 display: flex;
-                 flex-direction: column;
-                 gap: 5px;
+            .datos_user {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
 
-                 h3 {
-                     font-weight: 600;
-                     color: white;
-                 }
+                h3 {
+                    font-weight: 600;
+                    color: white;
+                }
 
-                 p {
-                     font-weight: 100;
-                     color: rgb(197, 197, 197);
+                p {
+                    font-weight: 100;
+                    color: rgb(197, 197, 197);
 
-                 }
-             }
+                }
+            }
 
-             &:hover{
-                 background-color:rgba(128, 128, 128, 0.055);
-             }
-         }
+            &:hover {
+                background-color: rgba(128, 128, 128, 0.055);
+            }
+        }
 
-         #cont_main {
-             width: 50%;
-             display: flex;
-             justify-content: flex-start;
-             padding: 20px;
-             flex-direction: column;
-             gap: 50px;
-         }
+        #cont_main {
+            width: 50%;
+            display: flex;
+            justify-content: flex-start;
+            padding: 20px;
+            flex-direction: column;
+            gap: 50px;
+        }
 
-         #cont_sec_datos {
-             width: 45%;
-             display: flex;
-             justify-content: flex-start;
-             padding: 20px;
-             flex-direction: column;
-             gap: 50px;
-             margin-right: 6px;
+        #cont_sec_datos {
+            width: 45%;
+            display: flex;
+            justify-content: flex-start;
+            padding: 20px;
+            flex-direction: column;
+            gap: 50px;
+            margin-right: 6px;
 
 
-             .cont_datos {
+            .cont_datos {
 
-                 width: 100%;
-             }
-         }
-     }
- }
+                width: 100%;
+            }
+        }
+    }
+}

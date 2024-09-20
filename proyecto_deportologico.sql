@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2024 a las 04:39:22
+-- Tiempo de generación: 20-09-2024 a las 17:45:31
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -56,7 +56,17 @@ INSERT INTO `actividad_dia` (`ID_act`, `Dni_act`, `Fecha`, `Objetivos`, `Marcado
 (21, 47098781, '2024-08-29', 'frutos cerra el orto', 0),
 (22, 47098781, '2024-08-29', 'tomar unas birras', 0),
 (23, 47098781, '2024-09-10', 'ir al cole', 0),
-(24, 47098781, '2024-09-02', 'ir a digitales', 0);
+(24, 47098781, '2024-09-02', 'ir a digitales', 0),
+(25, 47098781, '2024-09-13', 'ir al tropi', 0),
+(26, 47098781, '2024-09-13', 'ir a new york', 0),
+(27, 47098781, '2024-09-18', 'tomar un vinito', 0),
+(28, 47098781, '2024-09-18', 'ir a new york', 0),
+(29, 47098781, '2024-09-18', 'tomar unas birras', 0),
+(30, 47098781, '2024-09-25', 'ir al tropi', 0),
+(31, 47098781, '2024-09-18', 'ir al tropi', 0),
+(32, 47098781, '2024-09-18', 'frutos cerra el orto', 0),
+(33, 47098781, '2024-09-18', 'comer', 0),
+(34, 47098781, '2024-09-19', 'ir al tropi', 0);
 
 -- --------------------------------------------------------
 
@@ -206,6 +216,18 @@ CREATE TABLE `progreso_focus` (
   `Valor` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `progreso_focus`
+--
+
+INSERT INTO `progreso_focus` (`ID`, `id_actividad`, `DNI_prog`, `Fecha`, `Valor`) VALUES
+(1, 9, 47098781, '2024-09-01', 20.00),
+(2, 9, 47098781, '2024-09-08', 40.00),
+(3, 9, 47098781, '2024-09-15', 60.00),
+(4, 9, 47098781, '2024-09-18', 50.00),
+(6, 10, 47098781, '2024-09-19', 2.00),
+(7, 9, 47098781, '2024-09-20', 40.00);
+
 -- --------------------------------------------------------
 
 --
@@ -224,7 +246,7 @@ CREATE TABLE `racha` (
 --
 
 INSERT INTO `racha` (`ID_racha`, `Dni_racha`, `dias`, `Fecha_ultimo_Ingreso`) VALUES
-(3, 47098781, 1, '2024-09-11'),
+(3, 47098781, 3, '2024-09-20'),
 (4, 4309876, 1, '2024-08-30'),
 (5, 223098784, 1, '2024-09-02'),
 (6, 47805040, 1, '2024-09-03'),
@@ -346,7 +368,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `actividad_dia`
 --
 ALTER TABLE `actividad_dia`
-  MODIFY `ID_act` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID_act` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `deportivousuario`
@@ -377,6 +399,12 @@ ALTER TABLE `profesional`
 --
 ALTER TABLE `progreso`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `progreso_focus`
+--
+ALTER TABLE `progreso_focus`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `racha`

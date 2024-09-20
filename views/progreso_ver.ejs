@@ -11,9 +11,7 @@
     <link rel="shortcut icon" href="../public/resources/mental-strong.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -22,110 +20,113 @@
             <aside id="menu_lateral">
                 <%- include('menu.ejs') %>
             </aside>
-
+           
             <section id="main_recetas" class="cont_prog_main">
                 <h2 id="nombre_us">Tus actividades</h2>
                 <div id="cont_prog">
-                    <% let i=0; %>
-                        <% results_query.forEach(actividad=> { %>
-                            <div class="datos_user" id="datos_us<%= i %>">
-                                <div class="info" data-id="<%= actividad.ID %>">
-                                    <h3><%- actividad.Nombre %></h3>
-                                    <p>Tipo de medidad: <%-actividad.TipoRegistro %></p>
+              
+                    <% let i = 0; %>
 
+                    <% if (results_query_prog && results_query_prog.length > 0) { %>
+                        <% results_query_prog.forEach(actividad => { %>
+                            <div class="datos_user" id="datos_us<%= i %>">
+                                <div class="info" data-id="<%= actividad.ID %>" data-tipo="<%= actividad.TipoRegistro %>" 
+                                     <% const ultimaEntrada = Array.isArray(results_select_prog) ? results_select_prog.find(entry => entry.id_actividad === actividad.ID) : null; %>
+                                     <% if (ultimaEntrada) { %>
+                                         data-fecha="<%= new Date(ultimaEntrada.Fecha).toLocaleDateString('es-ES') %>" 
+                                         data-valor="<%= ultimaEntrada.Valor %>"
+                                     <% } else { %>
+                                         data-fecha="" 
+                                         data-valor=""
+                                     <% } %>
+                                >
+                                    <h3><%- actividad.Nombre %></h3>
+                                    <p>Tipo de medida: <%- actividad.TipoRegistro %></p>
                                 </div>
                                 <div class="opciones">
-                                    <a href=" /progreso_focus/<%-actividad.ID %>" class="cont_a">
+                                    <a href="/progreso_focus/<%- actividad.ID %>" class="cont_a">
                                         <i class="fa-solid fa-chart-line"></i>
-                                        Progreso</a>
+                                        Progreso
+                                    </a>
                                     <p class="btn_actualizar cont_a">
                                         <i class="fa-solid fa-pen"></i>
-                                        Actualizar
+                                        Actualizar datos
                                     </p>
                                 </div>
                             </div>
-                            <% i +=1; %>
-                                <% }) %>
+                            <% i += 1; %>
+                        <% }) %>
+                    <% } else { %>
+                        <p>No tienes actividades registradas.</p>
+                    <% } %>
                 </div>
-
+          
             </section>
+        </section>
 
-        </section>
-        </section>
         <div id="Actualizar_datos" class="desac">
-
             <form method="post" action="/progreso_actualizar" class="form_us">
                 <i class="fa-solid fa-xmark" id="cancel"></i>
-
-                <h4>Actualizar datos</h4>
+                <h4>Actualizar Datos</h4>
                 <div class="cont_inp">
                     <label for="valor_act" id="label_nombre_act">Actualizar datos de</label>
-                    <input id="valor_act" name="valor_act" type="number" placeholder="Escriba su nuevo valor del ejercio"
-                        required maxlength="20">
-
+                    <input id="valor_act" name="valor_act" type="number" placeholder="Escriba su nuevo valor del ejercicio" required maxlength="20">
                 </div>
                 <input type="hidden" id="input_id" name="id_actividad">
-                <% if (results_select && results_select.length> 0) { %>
-                    <p>
-                        Tu última actualización fue el: <%= results_select.Fecha %>
-                            , con un valor de: <%= results_select.Valor %>.
-                    </p>
-                    <% } else { %>
-                        <p>
-                            Todavía no agregaste valores a esta actividad.
-                        </p>
-                        <% } %>
-                            <p>Se le recuerda que el intervalo de actualización recomendado es de entre 1 y 2 semanas.
-                            </p>
-                            <div class="cont_btn">
-                                <button class="btn_enviar_sesion" type="submit">Añadir actividad</button>
-                            </div>
+                <% if (results_select_prog && results_select_prog.length > 0) { %>
+                    <p id="text_info"></p>
+                <% } else { %>
+                    <p>Todavía no agregaste valores a esta actividad.</p>
+                <% } %>
+                <p>Se le recuerda que el intervalo de actualización recomendado es de entre 1 y 2 semanas.</p>
+                <div class="cont_btn">
+                    <button class="btn_enviar_sesion" type="submit">Añadir actividad</button>
+                </div>
 
-                            <!-- Mostrar error si existe -->
-                            <% if (typeof error !=='undefined' ) { %>
-                                <span id="error_ini">
-                                    <%= error %>
-                                </span>
-                                <% } %>
+                <% if (typeof error !== 'undefined') { %>
+                    <span id="error_ini"><%= error %></span>
+                <% } %>
             </form>
         </div>
     </main>
+    
     <script>
         const btn_actualizar = document.querySelectorAll(".btn_actualizar");
         const Actualizar_datos = document.getElementById("Actualizar_datos");
         const label_nombre_act = document.getElementById("label_nombre_act");
-        const input = document.getElementById("input_id")
+        const input = document.getElementById("input_id");
         const cancel = document.getElementById("cancel");
 
         btn_actualizar.forEach(actualizar => {
             actualizar.addEventListener("click", (event) => {
                 document.querySelector('form').reset();
-                // Obtener el contenedor padre
                 const datosUser = event.target.closest(".datos_user");
-
-                // Extraer el nombre de la actividad
                 const nombreActividad = datosUser.querySelector("h3").innerText;
-
-                // Extraer el data-id
                 const actividadId = datosUser.querySelector(".info").getAttribute("data-id");
-                input.value = actividadId
-                // Colocar el nombre en el input del formulario
-                label_nombre_act.textContent = "Actualizando el valor de la actividad " + "`" + nombreActividad + "`";
+                const fecha = datosUser.querySelector(".info").getAttribute("data-fecha");
+                const valor = datosUser.querySelector(".info").getAttribute("data-valor");
+                const tipo_dom = datosUser.querySelector(".info").getAttribute("data-tipo");
+                const text_info = document.getElementById("text_info");
+                
+                let tipo;
+                if (tipo_dom === "Peso") { tipo = "Kg"; } 
+                else if (tipo_dom === "Distancia") { tipo = "Km"; } 
+                else if (tipo_dom === "Tiempo") { tipo = "min"; }
 
-
-
-                // Mostrar el formulario
+                text_info.innerText = `Tu última actualización fue el: ${fecha}, con un valor de: ${valor} ${tipo}`;
+                input.value = actividadId;
+                label_nombre_act.textContent = "Actualizando el valor de la actividad " + nombreActividad;
+                
                 Actualizar_datos.classList.toggle("focus");
                 Actualizar_datos.classList.toggle("desac");
             });
         });
-        cancel.addEventListener("click", (event) => {
+
+        cancel.addEventListener("click", () => {
             document.querySelector('form').reset();
-            // Mostrar el formulario
             Actualizar_datos.classList.toggle("focus");
             Actualizar_datos.classList.toggle("desac");
-
-        }) 
+        });
     </script>
 </body>
 

@@ -208,38 +208,51 @@ app.get('/progreso_agregar', (req, res) => {
 })
 
 app.get('/progreso_ver', (req, res) => {
-    var user_dni = req.session.user_dni
-    var query_datos_us = " SELECT * FROM progreso WHERE DNI_prog=?"
-    connection.query(query_datos_us, [user_dni], (err, results) => {
+    const user_dni = req.session.user_dni;
+    const query_datos_us = "SELECT * FROM progreso WHERE DNI_prog=?";
+
+    connection.query(query_datos_us, [user_dni], (err, results_query_prog) => {
         if (err) {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
         }
-        const results_query = results
+        
+        // Consulta para obtener results_select
+        const query_datos_us_focus = `
+        SELECT pf.ID, pf.id_actividad, pf.DNI_prog, pf.Fecha, pf.Valor FROM progreso_focus pf INNER JOIN ( SELECT id_actividad, MAX(Fecha) AS ultima_fecha FROM progreso_focus GROUP BY id_actividad ) AS subquery ON pf.id_actividad = subquery.id_actividad AND pf.Fecha = subquery.ultima_fecha;
+        `;
 
-        query_datos_us = "SELECT `ID`, `id_actividad`, `DNI_prog`, `Fecha`, `Valor` FROM progreso_focus WHERE `Fecha` = (SELECT MAX(`Fecha`) FROM `progreso_focus`)"
-        connection.query(query_datos_us, [], (err, results) => {
+        connection.query(query_datos_us_focus, [], (err, results) => {
             if (err) {
-                console.error('Error al verificar los datos:', err);
-                return res.render('login.ejs', { error: 'Error al verificar los datos' });
+                console.error('Error al obtener los datos de progreso_focus:', err);
+                return res.render('login.ejs', { error: 'Error al obtener los datos' });
             }
-            const results_select = results
-            res.render('progreso_ver', { results_query, results_select, user_dni })
+            const results_select_prog = results
+            console.log("KKKK")
+            console.log(results_query_prog)
+            // Asegúrate de pasar results_query y results_select a la vista
+            res.render('progreso_ver', { results_select_prog ,results_query_prog });
+        });
+        
+      
+    });
+});
 
-        })
-    })
-})
 
-app.get('/progreso_focus:id_actividad', (req, res) => {
-    var id_actividad = req.params.id_actividad
-    var user_dni = req.session.user_dni
-    let query_act_us = "SELECT  * FROM `progreso_focus` WHERE id_actividad=? AND DNI_prog=?";
+
+app.get('/progreso_focus/:id_actividad', (req, res) => {
+    var id_actividad = req.params.id_actividad;
+    var user_dni = req.session.user_dni;
+
+
+    let query_act_us = "SELECT * FROM `progreso_focus` WHERE id_actividad = ? AND DNI_prog = ?";
     connection.query(query_act_us, [id_actividad, user_dni], (err, results) => {
         if (err) {
             console.error('Error al verificar el usuario:', err);
+
             return res.render('progreso_agregar.ejs', { error: 'Error al verificar el usuario' });
         }
-        res.render('progreso_ver', { results, user_dni })
+        res.render('progreso_ver', {results, user_dni });
     });
 });
 
@@ -252,9 +265,9 @@ app.post('/progreso_actualizar', (req, res) => {
 
     var user_dni = req.session.user_dni
     let insert_act_act = "INSERT INTO `progreso_focus`( `id_actividad`,`DNI_prog`, `Fecha`, `Valor`) VALUES (?,?,?,?)"
-    var fecha=obtenerFechaActual();
-    
-    connection.query(insert_act_act, [id_actividad,user_dni, fecha, valor_act], (err, results) => {
+    var fecha = obtenerFechaActual();
+
+    connection.query(insert_act_act, [id_actividad, user_dni, fecha, valor_act], (err, results) => {
         if (err) {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
@@ -272,7 +285,7 @@ app.post('/progreso_actualizar', (req, res) => {
 
 
 app.post('/enviar_us', (req, res) => {
-    
+
     let { tipo_act, nombre_act } = req.body;
     var user_dni = req.session.user_dni;
     // Primero, verifica si ya existe el registro
@@ -300,7 +313,17 @@ app.post('/enviar_us', (req, res) => {
     });
 });
 
+app.get('/cerrar_sesion', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).send('Error al cerrar sesión');
+        }
+        res.clearCookie('connect.sid'); // En caso de usar express-session
+        res.redirect('/'); // Redirigir al login
+    });
 
+
+})
 
 app.get('/datos_us', (req, res) => {
     var user_name = req.session.user_name
