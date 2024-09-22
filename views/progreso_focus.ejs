@@ -4,21 +4,160 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progreso de Actividad</title>
+    <title>Mental Strong</title>
     <link rel="stylesheet" href="/css/estilo.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="shortcut icon" href="/resources/mental-strong.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 </head>
-
+<% results_prog_focus.forEach(actividad=> { %>
+    <div data-fecha="<%= actividad.Fecha %>" data-valor="<%= actividad.Valor %>"
+        class="actividades desac">
+    </div>
+    <% }) %>
 <body>
     <main>
-        <h2>Progreso de la Actividad</h2>
+        <section id="ventana_prin">
+            <aside id="menu_lateral">
+                <%- include('menu.ejs') %>
+            </aside>
 
+            <section id="main_recetas" class="cont_prog_main">
+                <div class="info desac" data-tipo="<%- results_prog[0].TipoRegistro %>"></div>
+                <div id="cont_text_main">
+                    <a href="/progreso_ver">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                    <h2 id="nombre_us">Progreso de la actividad "<%- results_prog[0].Nombre %>"</h2>
+                </div>
+
+           
+              
+
+                        <figure id="cont_chart">
+                            <canvas id="chart_line"></canvas>
+                        </figure>
+            </section>
+        </section>
     </main>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
-    <script src="js/progreso.js"></script>
-</body>
+    <script>
+        const info = document.querySelector('.info');
+        let tipo = info.getAttribute('data-tipo');
+        if(tipo=="Peso"){tipo="Kg"}
+        if(tipo=="Distancia"){tipo="m"}
+        if(tipo=="Tiempo"){tipo="min"}
+
+        // Función para leer y guardar los datos de los divs con clase 'actividades'
+        function leerYGuardarDatos() {
+            const divs = document.querySelectorAll('.actividades');
+            const datosGuardados = [];
+
+            divs.forEach(div => {
+                let fechaCompleta = div.getAttribute('data-fecha');
+                let fecha = new Date(fechaCompleta);
+                let fechaFormateada = fecha.toLocaleDateString('es-ES', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+
+                let valor = div.getAttribute('data-valor');
+                datosGuardados.push({
+                    fecha: fechaFormateada,
+                    valor: parseFloat(valor)
+                });
+            });
+
+            return datosGuardados;
+        }
+
+        const resultados = leerYGuardarDatos();
+        let fechas = [];
+        let valores = [];
+
+        resultados.forEach(actividad => {
+            fechas.push(actividad.fecha);
+            valores.push(actividad.valor);
+        });
+
+        const renderChart = () => {
+            const ctx = document.getElementById('chart_line').getContext('2d');
+
+            const data = {
+                labels: fechas,
+                datasets: [{
+                    label: 'Desempeño en el Tiempo',
+                    data: valores,
+                    borderColor: 'rgba(62, 144, 95, 1)',
+                    backgroundColor: 'rgba(62, 144, 95, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            };
+
+            const options = {
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'white',
+                            font: {
+                                size: 14
+                            }
+                        },
+                        grid: {
+                            color: '#444444'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'white',
+                            font: {
+                                size: 14
+                            }
+                        },
+                        grid: {
+                            color: '#444444'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            color: '#e3e3e3',
+                            font: {
+                                size: 16
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                return 'Progreso en la actividad: ' + tooltipItem.raw +" "+ tipo;
+                            }
+                        }
+                    }
+                }
+            };
+
+            new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: options
+            });
+        };
+
+        renderChart();
+    </script>
 </body>
 
 </html>

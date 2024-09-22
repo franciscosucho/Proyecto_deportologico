@@ -1,3 +1,14 @@
+#cont_text_main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 30px;
+}
+#cont_text_main a {
+  font-size: 2em;
+  color: white;
+}
+
 main #Actualizar_datos.focus {
   position: absolute;
   height: 100%;
@@ -313,4 +324,20 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
 }
 .cont_prog_main form#cont_registrar .desac {
   display: none !important;
+}
+
+#cont_chart {
+  width: 70%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgba(124, 124, 124, 0.0941176471);
+  padding: 20px;
+  border-radius: 10px;
+}
+#cont_chart h3 {
+  color: white;
 }/*# sourceMappingURL=estilo_progreso.css.map */

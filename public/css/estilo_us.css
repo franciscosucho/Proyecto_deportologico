@@ -63,20 +63,28 @@
   font-weight: 100;
   font-size: 1.6em;
 }
-#main_recetas #cont_us .cont_datos .datos_user {
+#main_recetas #cont_us .cont_datos .link {
+  text-decoration: none;
+  padding: 20px;
+  width: 60%;
+  border-radius: 6px;
+  transition: all 0.1s ease-in-out;
+}
+#main_recetas #cont_us .cont_datos .link .datos_user {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-#main_recetas #cont_us .cont_datos .datos_user h3 {
+#main_recetas #cont_us .cont_datos .link .datos_user h3 {
   font-weight: 600;
   color: white;
 }
-#main_recetas #cont_us .cont_datos .datos_user p {
+#main_recetas #cont_us .cont_datos .link .datos_user p {
   font-weight: 100;
   color: rgb(197, 197, 197);
 }
-#main_recetas #cont_us .cont_datos:hover {
+#main_recetas #cont_us .cont_datos .link:hover {
   background-color: rgba(128, 128, 128, 0.055);
 }
 #main_recetas #cont_us #cont_main {

@@ -216,7 +216,7 @@ app.get('/progreso_ver', (req, res) => {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
         }
-        
+
         // Consulta para obtener results_select
         const query_datos_us_focus = `
         SELECT pf.ID, pf.id_actividad, pf.DNI_prog, pf.Fecha, pf.Valor FROM progreso_focus pf INNER JOIN ( SELECT id_actividad, MAX(Fecha) AS ultima_fecha FROM progreso_focus GROUP BY id_actividad ) AS subquery ON pf.id_actividad = subquery.id_actividad AND pf.Fecha = subquery.ultima_fecha;
@@ -228,13 +228,11 @@ app.get('/progreso_ver', (req, res) => {
                 return res.render('login.ejs', { error: 'Error al obtener los datos' });
             }
             const results_select_prog = results
-            console.log("KKKK")
-            console.log(results_query_prog)
             // Asegúrate de pasar results_query y results_select a la vista
-            res.render('progreso_ver', { results_select_prog ,results_query_prog });
+            res.render('progreso_ver', { results_select_prog, results_query_prog });
         });
-        
-      
+
+
     });
 });
 
@@ -244,16 +242,25 @@ app.get('/progreso_focus/:id_actividad', (req, res) => {
     var id_actividad = req.params.id_actividad;
     var user_dni = req.session.user_dni;
 
-
-    let query_act_us = "SELECT * FROM `progreso_focus` WHERE id_actividad = ? AND DNI_prog = ?";
-    connection.query(query_act_us, [id_actividad, user_dni], (err, results) => {
+    let query_act_prog = "SELECT * FROM `progreso` WHERE ID=? AND DNI_prog=?; "
+    connection.query(query_act_prog, [id_actividad, user_dni], (err, results_prog) => {
         if (err) {
             console.error('Error al verificar el usuario:', err);
-
             return res.render('progreso_agregar.ejs', { error: 'Error al verificar el usuario' });
         }
-        res.render('progreso_ver', {results, user_dni });
+
+        let query_act_us = "SELECT * FROM `progreso_focus` WHERE id_actividad = ? AND DNI_prog = ?";
+        connection.query(query_act_us, [id_actividad, user_dni], (err, results_prog_focus) => {
+            if (err) {
+                console.error('Error al verificar el usuario:', err);
+
+                return res.render('progreso_agregar.ejs', { error: 'Error al verificar el usuario' });
+            }
+            res.render('progreso_focus', { results_prog, results_prog_focus, user_dni });
+        });
     });
+
+
 });
 
 

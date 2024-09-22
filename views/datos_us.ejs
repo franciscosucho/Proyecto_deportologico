@@ -15,7 +15,7 @@
     <main>
         <section id="ventana_prin">
 
-            <aside id="menu_lateral"> 
+            <aside id="menu_lateral">
                 <%-include('menu.ejs')%>
             </aside>
             <section id="main_recetas">
@@ -25,8 +25,8 @@
                         <img src="<%-user_foto_perfil%>">
                         <%} else {%>
                             <img src="./resources/img_us/sin-foto.png">
-                        <%}%>
-                    <h3 class="nombre_us"><%-user_name%></h3>
+                            <%}%>
+                                <h3 class="nombre_us"><%-user_name%></h3>
                 </div>
                 <section class="cont_rec" id="cont_us">
 
@@ -106,10 +106,12 @@
                             <h4>Actividades</h4>
                             <% let i=0; %>
                                 <% results.forEach(actividad=> { %>
-                                    <div class="datos_user" id="datos_us<%= i %>">
-                                        <h3><%- actividad.Nombre %></h3>
-                                        <p><%- actividad.TipoRegistro %></p>
-                                    </div>
+                                    <a class="link" href="/progreso_focus/<%- actividad.ID %>">
+                                        <div class="datos_user" id="datos_us<%= i %>">
+                                            <h3><%- actividad.Nombre %></h3>
+                                            <p><%- actividad.TipoRegistro %></p>
+                                        </div>
+                                    </a>
                                     <% i +=1; %>
                                         <% }) %>
                         </div>
@@ -119,8 +121,8 @@
             </section>
     </main>
     <a href="/cerrar_sesion">
-    <span  class="cerrar-sesion">
-        <i class="fa-solid fa-right-from-bracket"></i>Cerrar sesion</span>
+        <span class="cerrar-sesion">
+            <i class="fa-solid fa-right-from-bracket"></i>Cerrar sesion</span>
     </a>
 </body>
 
