@@ -314,7 +314,7 @@ app.post('/enviar_us', (req, res) => {
                 return res.render('progreso_agregar.ejs', { error: 'Error al registrar el usuario' });
             }
 
-            console.log("enviado con exito");
+         
             res.redirect('/progreso_agregar');
         });
     });

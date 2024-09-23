@@ -3,9 +3,10 @@ $color-primario: #64E788; // verde
 #cont_text_main {
     display: flex;
     justify-content: flex-start;
-    align-items: flex-end   ;
+    align-items: flex-end;
     gap: 30px;
-    a{
+
+    a {
         font-size: 2em;
         color: white;
     }
@@ -29,7 +30,7 @@ main {
 
         .form_us {
             width: 45%;
-            height: 60%;
+            height: 70%;
             display: flex;
             justify-content: flex-start;
             align-items: center;
@@ -39,12 +40,9 @@ main {
             border-radius: 30px;
             background-color: rgb(20, 20, 20);
 
-
-
-
             #cancel {
                 position: relative;
-                right: 47%;
+                left: 47%;
                 top: 0%;
                 color: white;
                 cursor: pointer;
@@ -62,24 +60,23 @@ main {
                 }
             }
 
-
-
             h4 {
                 width: 100%;
+                height: auto;
                 text-align: center;
                 color: white;
-                margin-bottom: 5%;
+                margin-bottom: 3%;
                 font-size: 2em;
             }
 
             p {
                 color: rgb(228, 228, 228);
                 width: 60%;
-                text-align: center;
+                text-align: left;
             }
 
             .cont_inp {
-                margin-top: 50px;
+                margin-top: 10px;
                 width: 60%;
                 display: flex;
                 flex-direction: column;
@@ -105,14 +102,12 @@ main {
             }
 
             .cont_btn {
-                height: 40px;
+                height: 5vh;
                 width: 60%;
                 display: flex;
-                margin-top: 50px;
-
 
                 button {
-                    height: 100%;
+                    height: 5vh;
                     width: 100%;
                     border-radius: 20px;
                     color: white;
@@ -139,7 +134,8 @@ main {
     align-items: center;
 
     .form_us {
-        height: 60vh !important;
+        min-height: 60vh !important;
+        height: auto;
 
     }
 
@@ -188,15 +184,14 @@ main {
 
             .opciones {
                 display: flex;
-                gap: 20px;
+                gap: 25px;
                 width: auto;
-
                 .cont_a {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    gap: 4px;
-                    width: 60%;
+                    gap: 8px;
+                    width: 70%;
                     height: 50px;
                     color: white;
                     text-decoration: none;
