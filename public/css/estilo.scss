@@ -68,6 +68,7 @@ body {
         background-color: rgb(37, 35, 35);
 
         #registro {
+            min-height: 100vh !important;
             height: auto !important;
             padding-top: 10%;
             width: 100%;
@@ -211,16 +212,15 @@ body {
                     }
 
                     .sub_form {
-                        height: 100vh;
+                        height: auto;
                         width: 100%;
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
                         flex-direction: column;
                         gap: 20px;
-
                         .cont_btn {
-                            height: 60px;
+                            height: 40px;
                             width: 50%;
                             display: flex;
                             justify-content: center;

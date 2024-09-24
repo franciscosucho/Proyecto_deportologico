@@ -9,6 +9,10 @@ $color-primario: #64E788; // verde
     a {
         font-size: 2em;
         color: white;
+        transition: all .2s ease-in-out;
+        &:hover{
+            color: #46a55f;
+        }
     }
 
 }
@@ -65,7 +69,6 @@ main {
                 height: auto;
                 text-align: center;
                 color: white;
-                margin-bottom: 3%;
                 font-size: 2em;
             }
 
@@ -109,19 +112,18 @@ main {
                 button {
                     height: 5vh;
                     width: 100%;
-                    border-radius: 20px;
+                    border-radius: 15px;
                     color: white;
                     font-size: 1em;
                     font-weight: bolder;
                     border: none;
                     outline: none;
                     cursor: pointer;
-                    background: #64E788;
+                    background: #46a55f;
                     transition: all .2s ease-in-out;
 
                     &:hover {
-                        background: #4cb368;
-
+                        background: #3f9456;
                     }
                 }
 
@@ -192,7 +194,7 @@ main {
                     align-items: center;
                     gap: 8px;
                     width: 70%;
-                    height: 50px;
+                    height: 40px;
                     color: white;
                     text-decoration: none;
                     border-radius: 10px;

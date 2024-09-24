@@ -90,9 +90,10 @@ $color_h4: rgb(209, 209, 209);
                         align-items: center;
                         gap: 5px;
                         transition: all ease-in-out 0.3s;
-                        
-                        &:hover{
-                            background-color: #51451e;;
+
+                        &:hover {
+                            background-color: #51451e;
+                            ;
                         }
                     }
 
@@ -121,7 +122,8 @@ $color_h4: rgb(209, 209, 209);
                         border-radius: 2px;
                         padding: 5px;
                         transition: all ease-in-out 0.3s;
-                        &:hover{
+
+                        &:hover {
                             background-color: #b59b48;
                         }
                     }
@@ -139,6 +141,7 @@ $color_h4: rgb(209, 209, 209);
             gap: 20px;
             width: 20%;
             margin-left: 70px;
+
             h4 {
                 color: #2c8364;
                 font-size: 2em;
@@ -224,21 +227,30 @@ $color_h4: rgb(209, 209, 209);
         align-items: center;
         flex-direction: column;
         gap: 20px;
-        #cont_text_main{
+
+        #cont_text_main {
             display: flex;
             gap: 20px;
             justify-content: flex-start;
             align-items: flex-start;
-            a{
+
+            a {
                 padding-top: 2px;
                 color: white;
                 text-decoration: none;
                 height: auto;
                 width: auto;
-                i{
-                    font-size: 2em;
+                transition: all .2s ease-in-out;
+
+                i {
+                    font-size: 1.2em;
+                }
+
+                &:hover {
+                    color: #43bf7b;
                 }
             }
+
             h2 {
                 font-size: 2em;
                 color: white;
@@ -249,19 +261,22 @@ $color_h4: rgb(209, 209, 209);
 
         .seccion {
             transition: all .2s ease-in-out;
-            .ingredientes_ietm{
-                margin-left: 40px ;
-                
+
+            .ingredientes_ietm {
+                margin-left: 40px;
+
             }
+
             &:hover {
                 h4 {
                     font-style: italic;
                 }
             }
-            #text_int_det{
+
+            #text_int_det {
                 font-size: 2.5em;
                 width: 50vw;
-                color:$color_a !important;
+                color: $color_a !important;
             }
         }
 
@@ -276,11 +291,14 @@ $color_h4: rgb(209, 209, 209);
             }
         }
 
-        
+
+        #img_rec {
+            width: 40vw;
+        }
 
         .text {
             color: rgb(219, 219, 219);
-            width: 30vw;
+            width: 40vw;
 
             a {
                 color: $color_a;
@@ -291,18 +309,21 @@ $color_h4: rgb(209, 209, 209);
         .seccion {
             display: flex;
             flex-direction: column;
-
+            justify-content: flex-start;
+            align-items: flex-start;
             width: 100%;
-            padding-left: 15%;
+            
+            
             gap: 4px;
             color: $color_h4;
 
-            ol{
+            ol {
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
-                
+
             }
+
             h4 {
                 font-size: 2em;
                 color: white;
@@ -311,7 +332,7 @@ $color_h4: rgb(209, 209, 209);
 
             &#int_detalladas {
                 display: none;
-               
+
                 &.active {
                     display: flex;
                     flex-direction: column;
@@ -389,6 +410,7 @@ $color_h4: rgb(209, 209, 209);
                 border: 2px solid rgba(82, 82, 82, 0.411);
                 transition: all .2s ease-in-out;
                 height: 60px;
+
                 &:hover {
                     background-color: rgba(128, 128, 128, 0.103);
                     width: 70%;

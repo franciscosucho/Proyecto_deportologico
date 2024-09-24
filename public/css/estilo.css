@@ -61,6 +61,7 @@ body main {
   background-color: rgb(37, 35, 35);
 }
 body main #registro {
+  min-height: 100vh !important;
   height: auto !important;
   padding-top: 10%;
   width: 100%;
@@ -183,7 +184,7 @@ body main #registro form#cont_registrar #texto_regs {
   margin: 10px 0px;
 }
 body main #registro form#cont_registrar .sub_form {
-  height: 100vh;
+  height: auto;
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -192,7 +193,7 @@ body main #registro form#cont_registrar .sub_form {
   gap: 20px;
 }
 body main #registro form#cont_registrar .sub_form .cont_btn {
-  height: 60px;
+  height: 40px;
   width: 50%;
   display: flex;
   justify-content: center;

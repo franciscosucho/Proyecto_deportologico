@@ -65,7 +65,17 @@
             border: 1px solid #949494b2;
             color: white;
             transition: all .2s ease-in-out;
-
+            .cont_link{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                a{
+                    color: #49a863;
+                }
+                
+            }
+            
 
             h4 {
                 color: #51b66c;
@@ -129,5 +139,17 @@
                 width: 100%;
             }
         }
+    }
+}
+
+#cont_us_editar{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    color: white;
+    .datos_user{
+        width: 100%;
+        display:flex ;
     }
 }

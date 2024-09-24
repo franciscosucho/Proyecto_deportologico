@@ -7,6 +7,10 @@
 #cont_text_main a {
   font-size: 2em;
   color: white;
+  transition: all 0.2s ease-in-out;
+}
+#cont_text_main a:hover {
+  color: #46a55f;
 }
 
 main #Actualizar_datos.focus {
@@ -56,7 +60,6 @@ main #Actualizar_datos .form_us h4 {
   height: auto;
   text-align: center;
   color: white;
-  margin-bottom: 3%;
   font-size: 2em;
 }
 main #Actualizar_datos .form_us p {
@@ -95,18 +98,18 @@ main #Actualizar_datos .form_us .cont_btn {
 main #Actualizar_datos .form_us .cont_btn button {
   height: 5vh;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 15px;
   color: white;
   font-size: 1em;
   font-weight: bolder;
   border: none;
   outline: none;
   cursor: pointer;
-  background: #64E788;
+  background: #46a55f;
   transition: all 0.2s ease-in-out;
 }
 main #Actualizar_datos .form_us .cont_btn button:hover {
-  background: #4cb368;
+  background: #3f9456;
 }
 
 .cont_prog_main {
@@ -163,7 +166,7 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
   align-items: center;
   gap: 8px;
   width: 70%;
-  height: 50px;
+  height: 40px;
   color: white;
   text-decoration: none;
   border-radius: 10px;

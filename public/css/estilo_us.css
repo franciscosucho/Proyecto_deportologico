@@ -58,6 +58,15 @@
   color: white;
   transition: all 0.2s ease-in-out;
 }
+#main_recetas #cont_us .cont_datos .cont_link {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#main_recetas #cont_us .cont_datos .cont_link a {
+  color: #49a863;
+}
 #main_recetas #cont_us .cont_datos h4 {
   color: #51b66c;
   font-weight: 100;
@@ -106,4 +115,16 @@
 }
 #main_recetas #cont_us #cont_sec_datos .cont_datos {
   width: 100%;
+}
+
+#cont_us_editar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  color: white;
+}
+#cont_us_editar .datos_user {
+  width: 100%;
+  display: flex;
 }/*# sourceMappingURL=estilo_us.css.map */

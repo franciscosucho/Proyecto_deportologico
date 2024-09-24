@@ -312,7 +312,6 @@ body {
 }
 
 #item_list #cont_list{
-
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
