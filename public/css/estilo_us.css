@@ -66,6 +66,10 @@
 }
 #main_recetas #cont_us .cont_datos .cont_link a {
   color: #49a863;
+  transition: all 0.1s ease-in-out;
+}
+#main_recetas #cont_us .cont_datos .cont_link a:hover {
+  color: #61d480;
 }
 #main_recetas #cont_us .cont_datos h4 {
   color: #51b66c;
@@ -127,4 +131,88 @@
 #cont_us_editar .datos_user {
   width: 100%;
   display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+#cont_us_editar .datos_user h3 {
+  width: 35%;
+  font-weight: 600;
+  color: white;
+}
+#cont_us_editar h4 {
+  color: #51b66c;
+  font-weight: 100;
+  font-size: 1.6em;
+}
+#cont_us_editar input {
+  display: flex;
+  border: none;
+  border-radius: 5px;
+  width: 250px;
+  font-size: 1rem;
+  padding: 10px;
+  height: 30px;
+  margin-left: 50px;
+  color: black;
+}
+#cont_us_editar .bloqueado {
+  background-color: rgb(207, 207, 207);
+  cursor: no-drop;
+  color: black;
+}
+#cont_us_editar .cont_datos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid rgba(148, 148, 148, 0.6980392157);
+  color: white;
+  transition: all 0.2s ease-in-out;
+  margin-top: 4%;
+}
+#cont_us_editar .cont_datos .cont_link {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#cont_us_editar .cont_datos .cont_link a {
+  color: #49a863;
+  transition: all 0.2s ease-in-out;
+}
+#cont_us_editar .cont_datos .cont_link a:hover {
+  color: #5bc778;
+}
+#cont_us_editar .cont_datos h4 {
+  color: #51b66c;
+  font-weight: 100;
+  font-size: 1.6em;
+}
+#cont_us_editar .cont_datos .link {
+  text-decoration: none;
+  padding: 20px;
+  width: 60%;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+#cont_us_editar .cont_datos .link .datos_user {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+}
+#cont_us_editar .cont_datos .link .datos_user .opcion {
+  font-weight: 600;
+  color: white;
+}
+#cont_us_editar .cont_datos .link .datos_user p {
+  font-weight: 100;
+  color: rgb(197, 197, 197);
+}
+#cont_us_editar .cont_datos .link:hover {
+  background-color: rgba(128, 128, 128, 0.055);
 }/*# sourceMappingURL=estilo_us.css.map */

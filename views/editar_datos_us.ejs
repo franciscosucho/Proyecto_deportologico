@@ -32,87 +32,68 @@
 
                     <div id="cont_main">
                         <div class="cont_datos">
-                                <input type="text" placeholder="Detalles">
-                            <h4>Detalles de usuario</h4>
-                            <div class="datos_user">
-                                <input type="text" placeholder="Correo">
-                                <h3>Dirección de correo</h3>
-                                <p><%-user_email%></p>
-                            </div>
-                            <div class="datos_user">
-                                <input type="text" placeholder="Nombre">
-                                <h3>Nombre</h3>
-                                <p><%-user_nombre_regis%></p>
-                            </div>
-                            <div class="datos_user">
-                                <input type="text" placeholder="Apellido">
-                                <h3>Apellido</h3>
-                                <p><%-user_apellido_regis%></p>
-                            </div>
-                            <div class="datos_user">
-                                <input type="text" placeholder="DNI">
-                                <h3>Documento Nacional de Identidad</h3>
-                                <p><%-user_dni%></p>
-                            </div>
-                            <div class="datos_user">
-                                <input type="text" placeholder="Genero">
-                                <h3>Genero</h3>
 
-                                <% if(user_genero=="M" ){%>
-                                    <p>Masculino</p>
-                                    <%} else {%>
-                                        <p>Femenino</p>
-                                        <%}%>
+                            <h4>Detalles de usuario</h4>
+
+                            <div class="datos_user">
+                                <h3>Nombre</h3>
+                                <input class="bloqueado" type="text" value="<%-user_nombre_regis%>" readonly>
                             </div>
                             <div class="datos_user">
-                                <input type="text" placeholder="Altura">
+                                <h3>Apellido</h3>
+                                <input class="bloqueado" type="text" value="<%-user_apellido_regis%>" readonly>
+                            </div>
+                            <div class="datos_user">
+                                <h3>DNI</h3>
+                                <input class="bloqueado" type="text" value="<%-user_dni%>" readonly>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Correo</h3>
+                                <input type="text" value="<%-user_email%>">
+                            </div>
+                            <div class="datos_user">
+                                <h3>Genero</h3>
+                                <input type="text" placeholder="Genero" value="<%-user_genero%>">
+                            </div>
+                            <div class="datos_user">
                                 <h3>Altura</h3>
-                                <p><%-user_altura%> cm</p>
+                                <input type="text" placeholder="Altura" value="<%-user_altura%>">
                             </div>
                             <div class="datos_user">
-                                <input type="text" placeholder="Peso">
                                 <h3>Peso</h3>
-                                <p><%-user_peso%> Kg</p>
+                                <input type="text" placeholder="Peso" value="<%-user_peso%>">
                             </div>
                         </div>
-
                         <div class="cont_datos">
-                            <input type="text" placeholder="Detalles nutrición">
                             <h4>Detalles de nutricion</h4>
                             <div class="datos_user">
-                                <input type="text" placeholder="Tipo de dieta">
                                 <h3>Tipo de dieta</h3>
-                                <p><%-user_dieta%></p>
+                                <input type="text" placeholder="Tipo de dieta" value="<%-user_dieta%>">
                             </div>
                             <div class="datos_user">
-                                <input type="text" placeholder="Objetivo nutricional">
                                 <h3>Objetivo nutricional</h3>
-                                <p><%-user_obj_nut%></p>
+                                <input type="text" placeholder="Objetivo nutricional" value="<%-user_obj_nut%>">
                             </div>
                         </div>
 
                         <div class="cont_datos">
-                            <input type="text" placeholder="Detalles deporte">
                             <h4>Detalles de deporte</h4>
                             <div class="datos_user">
-                                <input type="text" placeholder="TIpo deporte">
                                 <h3>Tipo de deporte</h3>
-                                <p><%-user_deporte%></p>
+                                <input type="text" placeholder="TIpo deporte" value="<%-user_deporte%>">
                             </div>
                             <div class="datos_user">
-                                <input type="text" placeholder="Objetivo deportivo">
                                 <h3>Objetivo deportivo</h3>
-                                <p><%-user_obj_dep%></p>
+                                <input type="text" placeholder="Objetivo deportivo" value="<%-user_obj_dep%>">
                             </div>
                             <div class="datos_user">
-                                <input type="text" placeholder="Frecuencia">
                                 <h3>Frecuencia de la actividad</h3>
-                                <p><%-user_frecuencia%> ( Frecuencia / Dias de la semana )</p>
+                                <input type="text" placeholder="Frecuencia" value="<%-user_frecuencia%>">
                             </div>
                             <div class="datos_user">
-                                <input type="text" placeholder="Intensidad">
                                 <h3>Intensidad de la actividad</h3>
-                                <p><%-user_intensidad%> </p>
+                                <input type="text" placeholder="Intensidad" value="<%-user_intensidad%>">
+
                             </div>
                         </div>
                     </div>
