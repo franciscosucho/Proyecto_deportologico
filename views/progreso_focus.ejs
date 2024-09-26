@@ -48,7 +48,9 @@
         const info = document.querySelector('.info');
         let tipo = info.getAttribute('data-tipo');
         if(tipo=="Peso"){tipo="Kg"}
-        if(tipo=="Distancia"){tipo="Km"}
+        if(tipo=="Distancia_Km"){tipo="Km"}
+        if(tipo=="Distancia_m"){tipo="m"}
+        if(tipo=="Repeticiones"){tipo="reps"}
         if(tipo=="Tiempo"){tipo="min"}
 
         // Función para leer y guardar los datos de los divs con clase 'actividades'

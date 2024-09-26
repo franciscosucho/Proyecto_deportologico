@@ -29,12 +29,6 @@ question.forEach((qst, index) => {
 
 
 
-
-
-
-
-
-
 function calcularIMC(peso, altura) {
     // Convertir la altura a metros,si está en centímetros
     let alturaEnMetros = altura / 100;

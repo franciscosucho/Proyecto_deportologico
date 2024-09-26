@@ -190,7 +190,7 @@ INSERT INTO `profesional` (`ID`, `DNI`, `Nombre`, `Apellido`, `Profesion`, `Desc
 CREATE TABLE `progreso` (
   `ID` int(11) NOT NULL,
   `DNI_prog` int(11) NOT NULL,
-  `TipoRegistro` enum('Tiempo','Distancia','Peso') NOT NULL,
+  `TipoRegistro` enum('Tiempo','Distancia_m','Distancia_Km','Repeticiones','Peso') NOT NULL,
   `Nombre` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -200,7 +200,7 @@ CREATE TABLE `progreso` (
 
 INSERT INTO `progreso` (`ID`, `DNI_prog`, `TipoRegistro`, `Nombre`) VALUES
 (9, 47098781, 'Peso', 'press plano'),
-(10, 47098781, 'Distancia', 'correr');
+(10, 47098781, 'Distancia Km', 'correr');
 
 -- --------------------------------------------------------
 

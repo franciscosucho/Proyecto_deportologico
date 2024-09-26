@@ -1,16 +1,26 @@
-/*
-let i = 0;
-const url = 'https://cors-anywhere.herokuapp.com/https://zenquotes.io/api/random';
+let i = 0; // Contador para las solicitudes
+const url = 'https://api.api-ninjas.com/v1/quotes?category=inspirational'; // Endpoint para citas inspiracionales
 
 async function getapi() {
   try {
+    // Hacer 8 solicitudes para obtener 8 frases
+    while (i < 6) {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'X-Api-Key': 'iOJKkr79JPPXQJeYGp6tIQ==HuYECca5mLCMGc04', 
+          'Content-Type': 'application/json'
+        }
+      });
 
-    // Hacer 8 solicitudes para obtener 8 frases aleatorias
-    for (let i = 0; i < 5; i++) {
-      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Error en la solicitud: ' + response.statusText);
+      }
+
       const data = await response.json();
-      console.log(data)
-      create_frase(data);
+      // Asegúrate de que `data` tenga la estructura esperada
+      create_frase(data[0]); // Usar el primer elemento de la respuesta
+      i++;
     }
 
   } catch (error) {
@@ -18,18 +28,7 @@ async function getapi() {
   }
 }
 
-getapi();
-*/
-function peticion_api() {
-  fetch('https://api.quotable.io/random?tags=wisdom&lang=en')
-    .then(response => response.json())
-    .then(data => {
-      const fraseJson = { content: data.content, author: data.author };
-      create_frase(fraseJson);
-    })
-    .catch(error => console.error('Error:', error));
-}
-
+// Función para crear la frase en el DOM
 function create_frase(fraseJson) {
   const main_frases = document.getElementById("cont_frases_sub");
   const cont_frase = document.createElement("div");
@@ -37,38 +36,16 @@ function create_frase(fraseJson) {
 
   const text = document.createElement('p');
   text.classList.add('text');
-  text.textContent = fraseJson.content;
+  text.textContent = fraseJson.quote; // Cambia 'quote' si es necesario
 
   const author = document.createElement('h4');
-  author.textContent = fraseJson.author;
+  author.textContent = fraseJson.author; // Cambia 'author' si es necesario
   author.classList.add('author');
   cont_frase.appendChild(author);
   cont_frase.appendChild(text);
 
   main_frases.appendChild(cont_frase);
 }
-let
-while (i <= 5) {
-  peticion_api();
-  i++;
-}
 
-/*
-function create_frase(fraseJson) {
-    const main_frases = document.getElementById("cont_frases_sub");
-    const cont_frase = document.createElement("div");
-    cont_frase.classList.add('cont_frase');
-
-    const text = document.createElement('p');
-    text.classList.add('text');
-    text.textContent = fraseJson[0].q;
-
-    const author = document.createElement('h4');
-    author.textContent = fraseJson[0].a;
-    author.classList.add('author');
-    cont_frase.appendChild(author);
-    cont_frase.appendChild(text);
-
-    main_frases.appendChild(cont_frase);
-}
-*/
+// Llamar a la función para obtener las frases
+getapi();

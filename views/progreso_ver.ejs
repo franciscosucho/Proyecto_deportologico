@@ -45,10 +45,18 @@
                                                         <% } %>
                                                             >
                                                             <h3><%- actividad.Nombre %></h3>
-                                                            <p>Tipo de medida: <%- actividad.TipoRegistro %></p>
+                                                            <% if (actividad.TipoRegistro == "Distancia_Km") { %>
+                                                                <p>Tipo de medida: Distancia en Km</p>
+                                                            <% } else if (actividad.TipoRegistro == "Distancia_m") { %>
+                                                                <p>Tipo de medida: Distancia en m</p>
+                                                            <% } else { %>
+                                                                <p>Tipo de medida: <%- actividad.TipoRegistro %></p>
+                                                            <% } %>
+                                                            
+                                                          
                                     </div>
                                     <div class="opciones">
-                                        <a href="/progreso_focus/<%- actividad.ID %>" class="cont_a">
+                                        <a href="/progreso_focus/<%-actividad.ID %>" class="cont_a">
                                             <i class="fa-solid fa-chart-line"></i>
                                             Progreso
                                         </a>
@@ -73,11 +81,11 @@
                 <i class="fa-solid fa-xmark" id="cancel"></i>
                 <h4>Actualizar Datos</h4>
                 <div class="cont_inp">
-                    <label for="valor_act" id="label_nombre_act">Actualizar datos de</label>
+                    <label for="valor_act" id="label_nombre_act"></label>
                     <input id="valor_act" name="valor_act" type="number"
                         placeholder="Escriba su nuevo valor del ejercicio" required maxlength="20">
                 </div>
-                <input type="hidden" id="input_id" name="id_actividad">
+                <input type="hidden" id="id_actividad" name="id_actividad">
 
                 <p id="text_info"></p>
 
@@ -100,7 +108,8 @@
         const btn_actualizar = document.querySelectorAll(".btn_actualizar");
         const Actualizar_datos = document.getElementById("Actualizar_datos");
         const label_nombre_act = document.getElementById("label_nombre_act");
-        const input = document.getElementById("input_id");
+        const input = document.getElementById("id_actividad");
+        const input_val = document.getElementById("valor_act");
         const cancel = document.getElementById("cancel");
 
         btn_actualizar.forEach(actualizar => {
@@ -113,20 +122,22 @@
                 const valor = datosUser.querySelector(".info").getAttribute("data-valor");
                 const tipo_dom = datosUser.querySelector(".info").getAttribute("data-tipo");
                 const text_info = document.getElementById("text_info");
-                if (fecha) {
-                    let tipo;
-                    if (tipo_dom === "Peso") { tipo = "Kg"; }
-                    else if (tipo_dom === "Distancia") { tipo = "Km"; }
-                    else if (tipo_dom === "Tiempo") { tipo = "min"; }
+                let tipo;
+                if (tipo_dom === "Peso") { tipo = "Kg"; }
+                else if (tipo_dom === "Distancia_km") { tipo = "Km"; }
+                else if (tipo_dom === "Distancia_m") { tipo = "m"; }
+                else if (tipo_dom === "Repeticiones") { tipo = "reps"; }
+                else if (tipo_dom === "Tiempo") { tipo = "min"; }
 
+                if (fecha) {
                     text_info.innerText = `Tu última actualización fue el: ${fecha},con un valor de: ${valor} ${tipo}`;
-                    input.value = actividadId;
-                    label_nombre_act.textContent = "Actualizando el valor de la actividad " + nombreActividad;
                 }
                 else {
                     text_info.innerText = `Todavía no agregaste valores a esta actividad.`;
-
                 }
+                input.value = actividadId;
+                input_val.setAttribute(`placeholder`, `Escriba el nuevo valor, la actividad esta medida en: ${tipo}`);
+                label_nombre_act.textContent = "Actualizando el valor de la actividad " + nombreActividad;
 
                 Actualizar_datos.classList.toggle("focus");
                 Actualizar_datos.classList.toggle("desac");

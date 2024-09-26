@@ -269,7 +269,7 @@ app.post('/progreso_actualizar', (req, res) => {
         id_actividad,
         valor_act
     } = req.body;
-
+    console.log(id_actividad)
     var user_dni = req.session.user_dni
     let insert_act_act = "INSERT INTO `progreso_focus`( `id_actividad`,`DNI_prog`, `Fecha`, `Valor`) VALUES (?,?,?,?)"
     var fecha = obtenerFechaActual();
@@ -278,9 +278,8 @@ app.post('/progreso_actualizar', (req, res) => {
         if (err) {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
-
         }
-        console.log(results)
+      
     })
     res.redirect('/progreso_ver');
 
