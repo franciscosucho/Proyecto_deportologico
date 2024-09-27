@@ -34,72 +34,263 @@
                         <div class="cont_datos">
 
                             <h4>Detalles de usuario</h4>
+                            <form method="post" action="/editar_datos_prin" class="form_act_us">
+                                <div class="datos_user_act">
+                                    <label>Nombre</label>
+                                    <p class="text_bloq bloqueado"><%- user_nombre_regis %></p>
+                                </div>
+                                <div class="datos_user_act">
+                                    <label>Apellido</label>
+                                    <p class="text_bloq bloqueado"><%- user_apellido_regis %></p>
+                                </div>
+                                <div class="datos_user_act">
+                                    <label>DNI</label>
+                                    <p class="text_bloq bloqueado"><%- user_dni %></p>
+                                </div>
 
-                            <div class="datos_user">
-                                <h3>Nombre</h3>
-                                <input class="bloqueado" type="text" value="<%-user_nombre_regis%>" readonly>
-                            </div>
-                            <div class="datos_user">
-                                <h3>Apellido</h3>
-                                <input class="bloqueado" type="text" value="<%-user_apellido_regis%>" readonly>
-                            </div>
-                            <div class="datos_user">
-                                <h3>DNI</h3>
-                                <input class="bloqueado" type="text" value="<%-user_dni%>" readonly>
-                            </div>
-                            <div class="datos_user">
-                                <h3>Correo</h3>
-                                <input type="text" value="<%-user_email%>">
-                            </div>
-                            <div class="datos_user">
-                                <h3>Genero</h3>
-                                <input type="text" placeholder="Genero" value="<%-user_genero%>">
-                            </div>
-                            <div class="datos_user">
-                                <h3>Altura</h3>
-                                <input type="text" placeholder="Altura" value="<%-user_altura%>">
-                            </div>
-                            <div class="datos_user">
-                                <h3>Peso</h3>
-                                <input type="text" placeholder="Peso" value="<%-user_peso%>">
-                            </div>
+                                <div class="datos_user_act">
+                                    <label>Correo</label>
+                                    <input type="text" id="email_act" name="email_act" value="<%- user_email %>">
+                                </div>
+                                <div class="datos_user_act">
+                                    <label>Genero</label>
+                                    <% if (user_genero !=='M' ) { %>
+                                        <p class="text_bloq bloqueado">Masculino</p>
+                                        <% } else { %>
+                                            <p class="text_bloq bloqueado">Femenino</p>
+                                            <% } %>
+                                </div>
+                                <div class="datos_user_act">
+                                    <label>Altura (Cm)</label>
+                                    <input type="text" placeholder="Altura" value="<%- user_altura %>" id="altura_act"
+                                        name="altura_act">
+                                </div>
+                                <div class="datos_user_act">
+                                    <label>Peso (Kg)</label>
+                                    <input type="text" placeholder="Peso" value="<%- user_peso %>" id="peso_act"
+                                        name="peso_act">
+                                </div>
+                                <div class="cont_btns">
+                                    <button type="submit" class="btn_enviar">Actualizar informacion</button>
+                                    <a href="/datos_us" class="btn_cancelar">Cancelar</a>
+                                </div>
+                            </form>
+
                         </div>
                         <div class="cont_datos">
                             <h4>Detalles de nutricion</h4>
-                            <div class="datos_user">
-                                <h3>Tipo de dieta</h3>
-                                <input type="text" placeholder="Tipo de dieta" value="<%-user_dieta%>">
-                            </div>
-                            <div class="datos_user">
-                                <h3>Objetivo nutricional</h3>
-                                <input type="text" placeholder="Objetivo nutricional" value="<%-user_obj_nut%>">
-                            </div>
+                            <form action="editar_datos_prin" class="form_act_us">
+                                <div class="datos_user_act">
+                                    <label>Tipo de dieta</label>
+                                    <select id="dieta" name="dieta" required>
+                                        <option value=" " <%=user_dieta==' ' ? 'selected' : '' %>>Omnívora</option>
+
+                                        <% if (user_dieta !=='Vegetariana' ) { %>
+                                            <option value="Vegetariana">Vegetariana</option>
+                                            <% } else { %>
+                                                <option value="Vegetariana" selected>Vegetariana</option>
+                                                <% } %>
+
+                                                    <% if (user_dieta !=='Ovo-Vegetariano' ) { %>
+                                                        <option value="Ovo-Vegetariano">Ovo-Vegetariano</option>
+                                                        <% } else { %>
+                                                            <option value="Ovo-Vegetariano" selected>Ovo-Vegetariano
+                                                            </option>
+                                                            <% } %>
+
+                                                                <% if (user_dieta !=='Vegana' ) { %>
+                                                                    <option value="Vegana">Vegana</option>
+                                                                    <% } else { %>
+                                                                        <option value="Vegana" selected>Vegana</option>
+                                                                        <% } %>
+
+                                                                            <% if (user_dieta !=='Pescetariana' ) { %>
+                                                                                <option value="Pescetariana">
+                                                                                    Pescetariana
+                                                                                </option>
+                                                                                <% } else { %>
+                                                                                    <option value="Pescetariana"
+                                                                                        selected>
+                                                                                        Pescetariana</option>
+                                                                                    <% } %>
+
+                                                                                        <% if (user_dieta
+                                                                                            !=='Sin gluten' ) { %>
+                                                                                            <option value="Sin gluten">
+                                                                                                Sin
+                                                                                                gluten</option>
+                                                                                            <% } else { %>
+                                                                                                <option
+                                                                                                    value="Sin gluten"
+                                                                                                    selected>Sin gluten
+                                                                                                </option>
+                                                                                                <% } %>
+                                    </select>
+                                </div>
+                                <div class="datos_user_act">
+                                    <label>Objetivo nutricional</label>
+                                    <select id="objetivo_nutricional" name="objetivo_nutricional" required>
+                                        <% if (user_obj_nut !=='Perdida de peso' ) { %>
+                                            <option value="Perdida de peso">Pérdida de peso</option>
+                                            <% } else { %>
+                                                <option value="Perdida de peso" selected>Pérdida de peso</option>
+                                                <% } %>
+
+                                                    <% if (user_obj_nut !=='Mantener peso' ) { %>
+                                                        <option value="Mantener peso">Mantener peso</option>
+                                                        <% } else { %>
+                                                            <option value="Mantener peso" selected>Mantener peso
+                                                            </option>
+                                                            <% } %>
+
+                                                                <% if (user_obj_nut !=='Ganar peso' ) { %>
+                                                                    <option value="Ganar peso">Ganar peso</option>
+                                                                    <% } else { %>
+                                                                        <option value="Ganar peso" selected>Ganar peso
+                                                                        </option>
+                                                                        <% } %>
+                                    </select>
+
+                                </div>
+                                <div class="datos_user_act">
+                                    <label>Intolerancias</label>
+                                    <p class="text_bloq bloqueado"><%-user_intolerancia%></p>
+
+                                </div>
+                                <div class="cont_btns">
+                                    <button type="submit" class="btn_enviar">Actualizar informacion</button>
+                                    <a href="/datos_us" class="btn_cancelar">Cancelar</a>
+                                </div>
+                            </form>
                         </div>
 
                         <div class="cont_datos">
                             <h4>Detalles de deporte</h4>
-                            <div class="datos_user">
-                                <h3>Tipo de deporte</h3>
-                                <input type="text" placeholder="TIpo deporte" value="<%-user_deporte%>">
-                            </div>
-                            <div class="datos_user">
-                                <h3>Objetivo deportivo</h3>
-                                <input type="text" placeholder="Objetivo deportivo" value="<%-user_obj_dep%>">
-                            </div>
-                            <div class="datos_user">
-                                <h3>Frecuencia de la actividad</h3>
-                                <input type="text" placeholder="Frecuencia" value="<%-user_frecuencia%>">
-                            </div>
-                            <div class="datos_user">
-                                <h3>Intensidad de la actividad</h3>
-                                <input type="text" placeholder="Intensidad" value="<%-user_intensidad%>">
+                            <form action="editar_datos_prin" class="form_act_us">
+                                <div class="datos_user_act">
+                                    <label>Tipo de deporte</label>
+                                    <select id="tipo_deporte" name="tipo_deporte" required>
+                                        <% if (user_deporte !=='Resistencia' ) { %>
+                                            <option value="Resistencia">Resistencia</option>
+                                            <% } else { %>
+                                                <option value="Resistencia" selected>Resistencia</option>
+                                                <% } %>
 
-                            </div>
+                                                    <% if (user_deporte !=='Cardiovascular' ) { %>
+                                                        <option value="Cardiovascular">Cardiovascular</option>
+                                                        <% } else { %>
+                                                            <option value="Cardiovascular" selected>Cardiovascular
+                                                            </option>
+                                                            <% } %>
+                                    </select>
+                                </div>
+                                <div class="datos_user_act">
+                                    <label>Objetivo deportivo</label>
+                                    <select id="obj_deportivo" name="obj_deportivo" required>
+                                        <% if (user_obj_dep !=='Mejorar la resistencia' ) { %>
+                                            <option value="Mejorar la resistencia">Mejorar la resistencia</option>
+                                            <% } else { %>
+                                                <option value="Mejorar la resistencia" selected>Mejorar la resistencia
+                                                </option>
+                                                <% } %>
+
+                                                    <% if (user_obj_dep !=='Mejorar la potencia' ) { %>
+                                                        <option value="Mejorar la potencia">Mejorar la potencia</option>
+                                                        <% } else { %>
+                                                            <option value="Mejorar la potencia" selected>Mejorar la
+                                                                potencia
+                                                            </option>
+                                                            <% } %>
+                                    </select>
+                                </div>
+                                <div class="datos_user_act">
+                                    <label>Frecuencia de la actividad</label>
+                                    <select id="frecuencia" name="frecuencia" required>
+                                        <% if (user_frecuencia !=='2/7' ) { %>
+                                            <option value="2/7">2/7</option>
+                                            <% } else { %>
+                                                <option value="2/7" selected>2/7</option>
+                                                <% } %>
+
+                                                    <% if (user_frecuencia !=='3/7' ) { %>
+                                                        <option value="3/7">3/7</option>
+                                                        <% } else { %>
+                                                            <option value="3/7" selected>3/7</option>
+                                                            <% } %>
+
+                                                                <% if (user_frecuencia !=='4/7' ) { %>
+                                                                    <option value="4/7">4/7</option>
+                                                                    <% } else { %>
+                                                                        <option value="4/7" selected>4/7</option>
+                                                                        <% } %>
+
+                                                                            <% if (user_frecuencia !=='5/7' ) { %>
+                                                                                <option value="5/7">5/7</option>
+                                                                                <% } else { %>
+                                                                                    <option value="5/7" selected>5/7
+                                                                                    </option>
+                                                                                    <% } %>
+
+                                                                                        <% if (user_frecuencia !=='6/7'
+                                                                                            ) { %>
+                                                                                            <option value="6/7">6/7
+                                                                                            </option>
+                                                                                            <% } else { %>
+                                                                                                <option value="6/7"
+                                                                                                    selected>6/7
+                                                                                                </option>
+                                                                                                <% } %>
+
+                                                                                                    <% if
+                                                                                                        (user_frecuencia
+                                                                                                        !=='7/7' ) { %>
+                                                                                                        <option
+                                                                                                            value="7/7">
+                                                                                                            7/7</option>
+                                                                                                        <% } else { %>
+                                                                                                            <option
+                                                                                                                value="7/7"
+                                                                                                                selected>
+                                                                                                                7/7
+                                                                                                            </option>
+                                                                                                            <% } %>
+                                    </select>
+                                </div>
+                                <div class="datos_user_act">
+                                    <label>Intensidad de la actividad</label>
+                                    <select id="intensidad" name="intensidad" required>
+                                        <% if (user_intensidad !=='Baja' ) { %>
+                                            <option value="Baja">Baja</option>
+                                            <% } else { %>
+                                                <option value="Baja" selected>Baja</option>
+                                                <% } %>
+
+                                                    <% if (user_intensidad !=='Media' ) { %>
+                                                        <option value="Media">Media</option>
+                                                        <% } else { %>
+                                                            <option value="Media" selected>Media</option>
+                                                            <% } %>
+
+                                                                <% if (user_intensidad !=='Alta' ) { %>
+                                                                    <option value="Alta">Alta</option>
+                                                                    <% } else { %>
+                                                                        <option value="Alta" selected>Alta</option>
+                                                                        <% } %>
+                                    </select>
+
+                                </div>
+                                <div class="cont_btns">
+                                    <button type="submit" class="btn_enviar">Actualizar informacion</button>
+                                    <a href="/datos_us" class="btn_cancelar">Cancelar</a>
+                                </div>
+                            </form>
                         </div>
+
                     </div>
                 </section>
             </section>
     </main>
+    <script></script>
 </body>
 
 </html>

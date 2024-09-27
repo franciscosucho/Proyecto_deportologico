@@ -19,6 +19,27 @@
     }
 }
 
+.cont_datos {
+    .datos_user {
+
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        h3 {
+            font-weight: 600;
+            color: white;
+        }
+
+        p {
+            font-weight: 100;
+            color: rgb(145, 145, 145) !important;
+
+        }
+    }
+}
+
 #main_recetas {
 
     #cont_info_prin {
@@ -111,7 +132,6 @@
 
                     p {
                         font-weight: 100;
-                        color: rgb(197, 197, 197);
 
                     }
                 }
@@ -157,18 +177,71 @@
     height: 100%;
     color: white;
 
-    .datos_user {
+    .form_act_us {
         width: 100%;
+        justify-content: flex-start;
+        align-items: flex-start;
         display: flex;
-        flex-direction: row;
-        gap: 10px;
+        flex-direction: column;
+        gap: 20px;
 
-        h3 {
-            width: 35%;
-            font-weight: 600;
-            color: white;
+        .datos_user_act {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: row;
+            gap: 10px;
+
+            label {
+                width: 35%;
+                font-weight: 600;
+                color: white;
+            }
+        }
+
+        .cont_btns {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 60px;
+            gap: 10px;
+
+            .btn_enviar {
+                border: none;
+                outline: none;
+                cursor: pointer;
+                background-color: #49a863;
+                color: white;
+                font-size: .9em;
+                padding: 8px;
+                border-radius: 10px;
+                width: 20%;
+                transition: all .1s ease-in-out;
+
+                &:hover {
+                    background-color: #307242;
+                    ;
+                }
+            }
+
+            .btn_cancelar {
+                padding: 8px;
+                color: white;
+                border-radius: 10px;
+                text-decoration: none;
+                background-color: rgba(78, 78, 78, 0.411);
+                transition: all .1s ease-in-out;
+
+                &:hover {
+                    background-color: rgba(46, 46, 46, 0.61);
+                }
+            }
         }
     }
+
 
     h4 {
         color: #51b66c;
@@ -176,11 +249,15 @@
         font-size: 1.6em;
     }
 
-    input {
+    input,
+    select,
+    .text_bloq {
         display: flex;
+        justify-content: flex-start;
+        align-items: center;
         border: none;
         border-radius: 5px;
-        width: 250px;
+        width: 35%;
         font-size: 1rem;
         padding: 10px;
         height: 30px;
@@ -188,8 +265,12 @@
         color: black;
     }
 
+    select {
+        padding: 0px;
+    }
+
     .bloqueado {
-        background-color: rgb(207, 207, 207);
+        background-color: rgb(175, 175, 175);
         cursor: no-drop;
         color: black;
     }

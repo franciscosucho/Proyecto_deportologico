@@ -37,7 +37,7 @@
         <!-- Mostrar error si existe -->
         <% if (typeof error !=='undefined' ) { %>
           <span id="error_ini">
-            <%= error %>
+            <%= error %> 
           </span>
         <% } %>
       </form>
@@ -126,18 +126,18 @@
             </select>
           </div>
           <div class="cont_inputs">
-            <label for="intolerancia">Intolerancia</label>
-            <select id="intolerancia" name="intolerancia" required>
+            <label for="intolerancia">Intolerancias</label>
+            <select id="intolerancia" name="intolerancia" required multiple>
               <option value="Ninguna">Ninguna</option>
-              <option value="Lácteos">Lácteos</option>
-              <option value="Huevo">Huevo</option>
+              <option value="Dairy">Lácteos</option>
+              <option value="Egg">Huevo</option>
               <option value="Gluten">Gluten</option>
-              <option value="Grano">Grano</option>
-              <option value="Maní">Maní</option>
-              <option value="Mariscos">Mariscos</option>
-              <option value="Soja">Soja</option>
-              <option value="Sulfito">Sulfito</option>
-              <option value="Trigo">Trigo</option>
+              <option value="Grain">Grano</option>
+              <option value="Peanut">Maní</option>
+              <option value="Seafood">Mariscos</option>
+              <option value="Soy">Soja</option>
+              <option value="Sulfite">Sulfito</option>
+              <option value="Wheat">Trigo</option>
             </select>
           </div>
           <div class="cont_inputs">

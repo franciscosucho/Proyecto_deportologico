@@ -41,7 +41,7 @@
                                 <h3>Dirección de correo</h3>
                                 <p><%-user_email%></p>
                             </div>
-                            <div class="datos_user">
+                            <div class="datos_user ">
                                 <h3>Nombre</h3>
                                 <p><%-user_nombre_regis%></p>
                             </div>
@@ -76,11 +76,21 @@
                             <h4>Detalles de nutricion</h4>
                             <div class="datos_user">
                                 <h3>Tipo de dieta</h3>
-                                <p><%-user_dieta%></p>
+                                <% if(user_dieta==" " ){%>
+                                    <p>Omnívora</p>
+                                    <%} else {%>
+                                        <p><%-user_dieta%></p>
+                                        <%}%>
+
                             </div>
                             <div class="datos_user">
                                 <h3>Objetivo nutricional</h3>
                                 <p><%-user_obj_nut%></p>
+                            </div>
+                            <div class="datos_user">
+                                <h3>Intolerancias</h3>
+                                <p><%-user_intolerancia%></p>
+
                             </div>
                         </div>
 
@@ -128,6 +138,9 @@
         <span class="cerrar-sesion">
             <i class="fa-solid fa-right-from-bracket"></i>Cerrar sesion</span>
     </a>
+    <script>
+        
+    </script>
 </body>
 
 </html>

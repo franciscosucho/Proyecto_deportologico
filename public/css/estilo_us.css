@@ -18,6 +18,21 @@
   background-color: #5bc778;
 }
 
+.cont_datos .datos_user {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.cont_datos .datos_user h3 {
+  font-weight: 600;
+  color: white;
+}
+.cont_datos .datos_user p {
+  font-weight: 100;
+  color: rgb(145, 145, 145) !important;
+}
+
 #main_recetas #cont_info_prin {
   display: flex;
   justify-content: flex-start;
@@ -95,7 +110,6 @@
 }
 #main_recetas #cont_us .cont_datos .link .datos_user p {
   font-weight: 100;
-  color: rgb(197, 197, 197);
 }
 #main_recetas #cont_us .cont_datos .link:hover {
   background-color: rgba(128, 128, 128, 0.055);
@@ -128,35 +142,87 @@
   height: 100%;
   color: white;
 }
-#cont_us_editar .datos_user {
+#cont_us_editar .form_act_us {
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#cont_us_editar .form_act_us .datos_user_act {
   width: 100%;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
   flex-direction: row;
   gap: 10px;
 }
-#cont_us_editar .datos_user h3 {
+#cont_us_editar .form_act_us .datos_user_act label {
   width: 35%;
   font-weight: 600;
   color: white;
+}
+#cont_us_editar .form_act_us .cont_btns {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 60px;
+  gap: 10px;
+}
+#cont_us_editar .form_act_us .cont_btns .btn_enviar {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #49a863;
+  color: white;
+  font-size: 0.9em;
+  padding: 8px;
+  border-radius: 10px;
+  width: 20%;
+  transition: all 0.1s ease-in-out;
+}
+#cont_us_editar .form_act_us .cont_btns .btn_enviar:hover {
+  background-color: #307242;
+}
+#cont_us_editar .form_act_us .cont_btns .btn_cancelar {
+  padding: 8px;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  background-color: rgba(78, 78, 78, 0.411);
+  transition: all 0.1s ease-in-out;
+}
+#cont_us_editar .form_act_us .cont_btns .btn_cancelar:hover {
+  background-color: rgba(46, 46, 46, 0.61);
 }
 #cont_us_editar h4 {
   color: #51b66c;
   font-weight: 100;
   font-size: 1.6em;
 }
-#cont_us_editar input {
+#cont_us_editar input,
+#cont_us_editar select,
+#cont_us_editar .text_bloq {
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
   border: none;
   border-radius: 5px;
-  width: 250px;
+  width: 35%;
   font-size: 1rem;
   padding: 10px;
   height: 30px;
   margin-left: 50px;
   color: black;
 }
+#cont_us_editar select {
+  padding: 0px;
+}
 #cont_us_editar .bloqueado {
-  background-color: rgb(207, 207, 207);
+  background-color: rgb(175, 175, 175);
   cursor: no-drop;
   color: black;
 }

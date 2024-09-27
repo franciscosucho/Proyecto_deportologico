@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-09-2024 a las 17:45:31
+-- Tiempo de generación: 27-09-2024 a las 17:16:07
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -103,7 +103,8 @@ INSERT INTO `deportivousuario` (`ID_depor`, `DNI_depor`, `ObjetivosDeportivo`, `
 (29, 223098784, 'Mejorar la resistencia', 'Resistencia', '', ''),
 (30, 47805040, 'Mejorar la potencia', 'Cardiovascular', '4/7', 'Alta'),
 (31, 48056809, 'Mejorar la resistencia', 'Cardiovascular', '4/7', ''),
-(32, 41098782, 'Mejorar la resistencia', 'Resistencia', '5/7', '');
+(32, 41098782, 'Mejorar la resistencia', 'Resistencia', '5/7', ''),
+(33, 3409876, 'Mejorar la resistencia', 'Resistencia', '', '');
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,7 @@ CREATE TABLE `motivacion` (
 CREATE TABLE `nutricionalusuario` (
   `ID_nut` int(11) NOT NULL,
   `DNI_nut` int(11) NOT NULL,
-  `intolerancia` enum('Ninguna','Dairy','Egg','Gluten','Grain','Peanut','Seafood','Soy','Sulfite','Wheat') NOT NULL,
+  `intolerancia` set('Ninguna','Dairy','Egg','Gluten','Grain','Peanut','Seafood','Soy','Sulfite','Wheat') NOT NULL,
   `ObjetivoNutricion` enum('Pérdida de peso','Mantener peso','Ganar peso') NOT NULL,
   `TipoAlimentacion` enum('Omnívora','Vegetarian','Ovo-Vegetariano','Vegan','Pescetarian','Gluten Free') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -152,7 +153,8 @@ INSERT INTO `nutricionalusuario` (`ID_nut`, `DNI_nut`, `intolerancia`, `Objetivo
 (31, 223098784, '', 'Mantener peso', ''),
 (32, 47805040, 'Ninguna', 'Ganar peso', ''),
 (33, 48056809, 'Ninguna', 'Mantener peso', ''),
-(34, 41098782, '', 'Mantener peso', 'Ovo-Vegetariano');
+(34, 41098782, '', 'Mantener peso', 'Ovo-Vegetariano'),
+(36, 3409876, 'Dairy,Egg,Gluten,Grain,Peanut', 'Pérdida de peso', '');
 
 -- --------------------------------------------------------
 
@@ -200,7 +202,7 @@ CREATE TABLE `progreso` (
 
 INSERT INTO `progreso` (`ID`, `DNI_prog`, `TipoRegistro`, `Nombre`) VALUES
 (9, 47098781, 'Peso', 'press plano'),
-(10, 47098781, 'Distancia Km', 'correr');
+(10, 47098781, '', 'correr');
 
 -- --------------------------------------------------------
 
@@ -251,7 +253,8 @@ INSERT INTO `racha` (`ID_racha`, `Dni_racha`, `dias`, `Fecha_ultimo_Ingreso`) VA
 (5, 223098784, 1, '2024-09-02'),
 (6, 47805040, 1, '2024-09-03'),
 (7, 48056809, 1, '2024-09-11'),
-(8, 41098782, 1, '2024-09-11');
+(8, 41098782, 1, '2024-09-11'),
+(9, 3409876, 1, '2024-09-27');
 
 -- --------------------------------------------------------
 
@@ -279,6 +282,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`DNI`, `Nombre_usuario`, `password`, `Nombre`, `Apellido`, `FechaNacimiento`, `Email`, `Peso`, `Altura`, `Genero`, `Foto_perfil`) VALUES
 (2490863, 'adambarei', 'ss', 'Adam', 'Bareiro', '2003-02-22', 'adambarei@gmai.com', 67.00, 187.00, 'M', NULL),
+(3409876, 'jereromero', '22', 'Jeremias', 'Romero', '2024-09-26', 'jereromero@gmail.com', 65.00, 198.00, 'M', NULL),
 (4309876, 'morebeltran', '1223', 'Morena', 'Beltran', '2003-12-20', 'morebeltran@gmail.com', 76.00, 167.00, 'F', NULL),
 (20192780, 'germanpez', '222', 'german', 'pezella', '2002-08-20', 'germanpez@gmail.com', 85.00, 187.00, 'M', NULL),
 (29087781, 'fabribus', '222', 'fabricio', 'bustos', '2003-04-05', 'fabribus@gmail.com', 67.00, 167.00, 'M', NULL),
@@ -374,7 +378,7 @@ ALTER TABLE `actividad_dia`
 -- AUTO_INCREMENT de la tabla `deportivousuario`
 --
 ALTER TABLE `deportivousuario`
-  MODIFY `ID_depor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `ID_depor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `motivacion`
@@ -386,7 +390,7 @@ ALTER TABLE `motivacion`
 -- AUTO_INCREMENT de la tabla `nutricionalusuario`
 --
 ALTER TABLE `nutricionalusuario`
-  MODIFY `ID_nut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `ID_nut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `profesional`
@@ -410,7 +414,7 @@ ALTER TABLE `progreso_focus`
 -- AUTO_INCREMENT de la tabla `racha`
 --
 ALTER TABLE `racha`
-  MODIFY `ID_racha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_racha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas

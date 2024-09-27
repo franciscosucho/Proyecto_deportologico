@@ -128,7 +128,7 @@ app.post('/nueva_actividad', (req, res) => {
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
 
         }
-        console.log("se envio")
+
     })
     res.redirect('/index');
 })
@@ -279,7 +279,7 @@ app.post('/progreso_actualizar', (req, res) => {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
         }
-      
+
     })
     res.redirect('/progreso_ver');
 
@@ -289,7 +289,8 @@ app.post('/progreso_actualizar', (req, res) => {
 
 
 
-
+//Logica para todo lo que es la parte de los datos del usuario.
+//<---------------------------------------------------------------------------------------->
 app.post('/enviar_us', (req, res) => {
 
     let { tipo_act, nombre_act } = req.body;
@@ -313,7 +314,7 @@ app.post('/enviar_us', (req, res) => {
                 return res.render('progreso_agregar.ejs', { error: 'Error al registrar el usuario' });
             }
 
-         
+
             res.redirect('/progreso');
         });
     });
@@ -381,11 +382,35 @@ app.get('/editar_datos_us', (req, res) => {
     var user_nombre_regis = req.session.user_nombre_regis
     var user_foto_perfil = req.session.user_rutaImagen
     var user_apellido_regis = req.session.user_apellido_regis
-    
+
 
     res.render('editar_datos_us', { user_foto_perfil, user_racha, user_nombre_regis, user_intolerancia, user_apellido_regis, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 });
 
+app.post('/editar_datos_prin', (req, res) => {
+    var user_dni = req.session.user_dni
+    let {
+        email_act, altura_act, peso_act
+    } = req.body;
+
+    let update_us = "UPDATE `usuario` SET `Email`=?,`Peso`=?,`Altura`=? WHERE DNI=?"
+
+    connection.query(update_us, [email_act, peso_act, altura_act, user_dni], (err, results) => {
+        if (err) {
+            console.error('Error al verificar el usuario:', err);
+            return res.render('progreso_agregar.ejs', { error: 'Error al actualizar los datos' });
+        }
+        res.redirect('/datos_us');
+    });
+
+})
+
+
+
+
+
+
+//<---------------------------------------------------------------------------------------->
 app.get('/recetas', (req, res) => {
 
     var user_name = req.session.user_name
@@ -474,6 +499,8 @@ app.post('/enviar', (req, res) => {
         tipo_deporte, obj_deportivo, frecuencia, intensidad, intolerancia
     } = req.body;
 
+    const intoleranciasString = Array.isArray(intolerancia) ? intolerancia.join(',') : intolerancia;
+    intolerancia = intoleranciasString
     const query_ant = `
         SELECT DNI, Nombre_usuario, Email 
         FROM usuario 
@@ -621,6 +648,7 @@ app.get('/iniciar', (req, res) => {
                 if (results.length > 0) {
                     req.session.user_dieta = results[0].TipoAlimentacion;
                     req.session.user_obj_nut = results[0].ObjetivoNutricion;
+                    req.session.user_intolerancia = results[0].intolerancia;
                 }
             });
 
