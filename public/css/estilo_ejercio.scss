@@ -6,3 +6,92 @@
     align-items: center;
     flex-direction: column;
 }
+// Estilos del mapa de músculos
+.muscle-map {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .body-silhouette {
+    width: 100%;
+    height: auto;
+  }
+  
+  .body-outline {
+    fill: $body-outline-color;
+    stroke: $body-stroke-color;
+    stroke-width: 2;
+  }
+  
+  .muscle-group {
+    fill: transparent;
+    stroke-width: 2;
+    cursor: pointer;
+    @include transition(fill);
+  
+    &:hover {
+      fill: $hover-color;
+    }
+  
+    &.active {
+      fill: currentColor;
+    }
+  }
+  
+  // Estilos de la sección de información
+  .info-section {
+    margin-top: 20px;
+    text-align: center;
+  
+    h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: $primary-color;
+    }
+  
+    p {
+      font-size: 16px;
+      color: lighten($primary-color, 20%);
+    }
+  }
+  
+  // Animaciones
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .muscle-group {
+    &:hover {
+      animation: pulse 0.5s infinite;
+    }
+  }
+  
+  // Media queries para responsividad
+  @media (max-width: 480px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .title {
+      font-size: 20px;
+    }
+  
+    .info-section {
+      h2 {
+        font-size: 18px;
+      }
+  
+      p {
+        font-size: 14px;
+      }
+    }
+  }
