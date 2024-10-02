@@ -160,7 +160,9 @@ function calculo_TMB(peso, altura, edad, genero) {
     else if (genero === "F") {
         TMB = (10 * peso) + (6.25 * altura) - (5 * edad) - 161
     }
-
+    if (frecuencia == "2/7") {
+        calorias_consumir = TMB * 1.375
+    }
     if (frecuencia == "3/7") {
         calorias_consumir = TMB * 1.375
     }
@@ -191,7 +193,9 @@ function calculo_TMB(peso, altura, edad, genero) {
     else {
         categoria = "Mantener Peso ";
     }
+
     calorias_consumir = calorias_consumir.toFixed(1);
+    
     return categoria;
 }
 // hacer el grafico de torta
@@ -200,8 +204,10 @@ const getDataColors = opacity => {
     const colors = ['#32a852', '#2a9d8f', '#264653', '#f4f4f4', '#ffffff', '#5c5c5c', '#ffc300', '#003566']
     return colors.map(color => opacity ? `${color + opacity}` : color)
 }
+
 const printChart = (calorias, obj_nut) => {
     const resultado = distribucion_macros(calorias, obj_nut);
+    console.log(resultado)
     renderModelChart(resultado);
 }
 const renderModelChart = (macros) => {
@@ -258,16 +264,16 @@ function distribucion_macros(calorias, obj_nut) {
         proteinas: 0,
         grasas: 0
     };
-
     // Distribuciones por objetivo nutricional
     switch (obj_nut) {
+        
         case "Mantener peso":
             macros.carbohidratos = 0.55;
             macros.proteinas = 0.20;
             macros.grasas = 0.25;
             break;
 
-        case "Pérdida de peso":
+        case "Perdida de peso":
             macros.carbohidratos = 0.40;
             macros.proteinas = 0.35;
             macros.grasas = 0.25;
