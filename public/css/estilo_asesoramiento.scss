@@ -81,16 +81,14 @@ body {
                         border-radius: 10px;
                         margin-top: 5%;
                         padding: 5px;
-                        transition: transform 0.3s ease-in-out;
+                        transition: all 0.2s ease-in-out;
                         font-size: 1rem;
                         font-weight: 600;
                         cursor: pointer;
                         width: 140px;
                         height: 40px;
-
                         &:hover {
-                          
-                            background-color: rgba(255, 255, 255, 0.842);
+                            background-color: rgba(173, 173, 173, 0.842);
                         }
                     }
                 }

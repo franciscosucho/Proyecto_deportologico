@@ -206,9 +206,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 60px;
+            margin-left: 12%;
             gap: 10px;
-
+            
             .btn_enviar {
                 border: none;
                 outline: none;
@@ -219,8 +219,8 @@
                 padding: 8px;
                 border-radius: 10px;
                 width: 20%;
-                transition: all .1s ease-in-out;
-
+                transition: all .2s ease-in-out;
+                text-align: center;
                 &:hover {
                     background-color: #307242;
                     ;
@@ -234,7 +234,8 @@
                 text-decoration: none;
                 background-color: rgba(78, 78, 78, 0.411);
                 transition: all .1s ease-in-out;
-
+                width: 20%;
+                text-align: center;
                 &:hover {
                     background-color: rgba(46, 46, 46, 0.61);
                 }

@@ -281,30 +281,35 @@ body {
                         display: grid;
                         grid-template-columns: repeat(2, 1fr);
                         grid-template-rows: repeat(3, 1fr);
-                        grid-column-gap: 40px;
-                        grid-row-gap: 40px;
+                        grid-column-gap: 20px;
+                        grid-row-gap: 20px;
 
                         .cont_frase {
                             height: auto;
-                            width: 40vh;
-                            padding: 30px;
+                            width: 45vh;
+                            padding: 20px;
                             background-color: #2b2b2b;
-                            border-radius: 30px;
+                            border-radius: 20px;
                             display: flex;
                             gap: 10px;
                             flex-direction: column;
                             -webkit-box-shadow: 10px 10px 12px -4px $color_sombra;
                             -moz-box-shadow: 10px 10px 12px -4px $color_sombra;
                             box-shadow: 10px 10px 12px -4px $color_sombra;
-
+                            
+                            background-image: 
+                            linear-gradient(to right, rgba(47, 255, 5, 0.096) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(47, 255, 5, 0.096)1px, transparent 1px);
+                        background-size: 14px 24px, 14px 24px; // Tamaño para los gradientes
+                    
                             .author {
 
-                                color: rgb(214, 214, 214);
+                                color: rgb(243, 243, 243);
                                 font-style: italic;
                             }
 
                             .text {
-                                color: rgb(204, 204, 204);
+                                color: rgb(189, 189, 189);
                             }
                         }
                     }
@@ -397,6 +402,9 @@ body {
                 align-items: flex-start;
                 flex-direction: column;
 
+                h4{
+                    color: rgb(190, 190, 190);
+                }
                 #cont_user {
                     position: absolute;
                     left: 90%;

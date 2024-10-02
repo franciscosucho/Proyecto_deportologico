@@ -226,7 +226,7 @@ const renderModelChart = (macros) => {
                 callbacks: {
                     label: (tooltipItem) => {
                         const value = tooltipItem.raw;
-                        return value + ' g'; // Agrega el signo de gramos 'g'
+                        return value + 'g'; // Agrega el signo de gramos 'g'
                     }
                 }
             },
@@ -294,3 +294,4 @@ function distribucion_macros(calorias, obj_nut) {
 
 // renderizar el gráfico con los datos calculados
 printChart(calorias_consumir, obj_nut);
+

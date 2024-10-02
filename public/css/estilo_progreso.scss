@@ -225,7 +225,7 @@ main {
             width: 100%;
             height: 100%;
             transition: transform 0.5s ease, opacity 0.3s ease; // Agrega suavidad en el zoom y opacidad
-            opacity: 0.5; // Mayor opacidad en la imagen
+            opacity: 0.45; // Mayor opacidad en la imagen
             object-fit: cover; // Asegura que las imágenes mantengan proporción
         }
 

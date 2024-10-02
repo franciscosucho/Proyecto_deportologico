@@ -192,7 +192,7 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
   width: 100%;
   height: 100%;
   transition: transform 0.5s ease, opacity 0.3s ease;
-  opacity: 0.5;
+  opacity: 0.45;
   -o-object-fit: cover;
      object-fit: cover;
 }

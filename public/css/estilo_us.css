@@ -169,7 +169,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 60px;
+  margin-left: 12%;
   gap: 10px;
 }
 #cont_us_editar .form_act_us .cont_btns .btn_enviar {
@@ -182,7 +182,8 @@
   padding: 8px;
   border-radius: 10px;
   width: 20%;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
 }
 #cont_us_editar .form_act_us .cont_btns .btn_enviar:hover {
   background-color: #307242;
@@ -194,6 +195,8 @@
   text-decoration: none;
   background-color: rgba(78, 78, 78, 0.411);
   transition: all 0.1s ease-in-out;
+  width: 20%;
+  text-align: center;
 }
 #cont_us_editar .form_act_us .cont_btns .btn_cancelar:hover {
   background-color: rgba(46, 46, 46, 0.61);
