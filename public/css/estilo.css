@@ -4,6 +4,7 @@
 @import url("estilo_nut.css");
 @import url("estilo_us.css");
 @import url("estilo_progreso.css");
+@import url("estilo_ejercio.css");
 /* Estilo para la barra de desplazamiento */
 ::-webkit-scrollbar {
   width: 6px;

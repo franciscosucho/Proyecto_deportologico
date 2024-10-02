@@ -358,6 +358,7 @@ app.get('/datos_us', (req, res) => {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
         }
+
         res.render('datos_us', { results, user_foto_perfil, user_racha, user_nombre_regis, user_intolerancia, user_apellido_regis, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
     });
 });
@@ -388,21 +389,106 @@ app.get('/editar_datos_us', (req, res) => {
 });
 
 app.post('/editar_datos_prin', (req, res) => {
-    var user_dni = req.session.user_dni
-    let {
-        email_act, altura_act, peso_act
-    } = req.body;
+    var user_dni = req.session.user_dni;
+    let { email_act, altura_act, peso_act } = req.body;
 
-    let update_us = "UPDATE `usuario` SET `Email`=?,`Peso`=?,`Altura`=? WHERE DNI=?"
+    let update_us = "UPDATE `usuario` SET `Email`=?,`Peso`=?,`Altura`=? WHERE DNI=?";
 
     connection.query(update_us, [email_act, peso_act, altura_act, user_dni], (err, results) => {
         if (err) {
-            console.error('Error al verificar el usuario:', err);
+            console.error('Error al actualizar los datos:', err);
             return res.render('progreso_agregar.ejs', { error: 'Error al actualizar los datos' });
         }
+        req.session.user_email = email_act ? email_act : req.session.user_email
+        req.session.user_altura = altura_act ? altura_act : req.session.user_altura
+        req.session.user_peso = peso_act ? peso_act : req.session.user_peso
+
         res.redirect('/datos_us');
     });
 
+
+});
+app.post('/editar_datos_nutri', (req, res) => {
+    var user_dni = req.session.user_dni;
+    let { dieta, objetivo_nutricional } = req.body;
+
+    let update_us = "UPDATE `nutricionalusuario` SET `ObjetivoNutricion`= ?,`TipoAlimentacion`= ? WHERE DNI_nut=? ";
+
+    connection.query(update_us, [dieta, objetivo_nutricional, user_dni], (err, results) => {
+        if (err) {
+            console.error('Error al actualizar los datos:', err);
+            return res.render('progreso_agregar.ejs', { error: 'Error al actualizar los datos' });
+        }
+        req.session.user_dieta = dieta ? dieta : req.session.user_dieta
+        req.session.user_obj_nut = objetivo_nutricional ? objetivo_nutricional : req.session.user_obj_nut
+
+        res.redirect('/datos_us');
+    });
+
+
+});
+
+app.post('/editar_datos_deporte', (req, res) => {
+    var user_dni = req.session.user_dni;
+    let { tipo_deporte, obj_deportivo, frecuencia, intensidad } = req.body;
+
+    let update_us = "UPDATE `deportivousuario` SET `ObjetivosDeportivo`=?,`TipoDeporte`=?,`Frecuencia`=? ,`Intensidad`=? WHERE DNI_depor=?";
+
+    connection.query(update_us, [obj_deportivo, tipo_deporte, frecuencia, intensidad, user_dni], (err, results) => {
+        if (err) {
+            console.error('Error al actualizar los datos:', err);
+            return res.render('progreso_agregar.ejs', { error: 'Error al actualizar los datos' });
+        }
+        req.session.user_obj_dep = obj_deportivo ? obj_deportivo : req.session.user_obj_dep
+        req.session.user_deporte = tipo_deporte ? tipo_deporte : req.session.user_deporte
+        req.session.user_frecuencia = frecuencia ? frecuencia : req.session.user_frecuencia
+        req.session.user_intensidad = intensidad ? intensidad : req.session.user_intensidad
+
+        res.redirect('/datos_us');
+    });
+
+
+});
+
+
+
+//seccion para el ejercio del usuario
+//<---------------------------------------------------------------------------------------->
+app.get('/ejercio', (req, res) => {
+
+    var user_name = req.session.user_name
+    var user_genero = req.session.user_genero
+    var user_peso = req.session.user_peso
+    var user_altura = req.session.user_altura
+    var user_dieta = req.session.user_dieta
+    var user_obj_nut = req.session.user_obj_nut
+    var user_deporte = req.session.user_deporte
+    var user_obj_dep = req.session.user_obj_dep
+    var user_frecuencia = req.session.user_frecuencia
+    var user_intensidad = req.session.user_intensidad
+    res.render('ejercio', { user_name,user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+
+})
+app.get('/lista_ejercios', (req, res) => {
+
+    var user_name = req.session.user_name
+    var user_genero = req.session.user_genero
+    var user_peso = req.session.user_peso
+    var user_altura = req.session.user_altura
+    var user_dieta = req.session.user_dieta
+    var user_obj_nut = req.session.user_obj_nut
+    var user_deporte = req.session.user_deporte
+    var user_obj_dep = req.session.user_obj_dep
+    var user_frecuencia = req.session.user_frecuencia
+    var user_intensidad = req.session.user_intensidad
+    res.render('lista_ejercios', { user_name,user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    
+})
+app.get('/ejercio_focus/id_ejercio', (req, res) => {
+    var id_ejercio = req.params.id_ejercio
+    
+    res.render('lista_ejercios', { id_ejercio })
+    
 })
 
 
