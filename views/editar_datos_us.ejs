@@ -49,16 +49,16 @@
                                 </div>
 
                                 <div class="datos_user_act">
-                                    <label>Correo</label>
-                                    <input type="text" id="email_act" name="email_act" value="<%- user_email %>">
-                                </div>
-                                <div class="datos_user_act">
                                     <label>Genero</label>
                                     <% if (user_genero !=='M' ) { %>
                                         <p class="text_bloq bloqueado">Masculino</p>
                                         <% } else { %>
                                             <p class="text_bloq bloqueado">Femenino</p>
                                             <% } %>
+                                </div>
+                                <div class="datos_user_act">
+                                    <label>Correo</label>
+                                    <input type="text" id="email_act" name="email_act" value="<%- user_email %>">
                                 </div>
                                 <div class="datos_user_act">
                                     <label>Altura (Cm)</label>
@@ -292,5 +292,5 @@
     </main>
 
 </body>
-
+    <script src="editar_datos_us.ejs"></script>
 </html>
