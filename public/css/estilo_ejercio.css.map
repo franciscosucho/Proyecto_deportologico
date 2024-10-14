@@ -1,1 +1,1 @@
-{"version":3,"sources":["estilo_ejercio.scss","estilo_ejercio.css"],"names":[],"mappings":"AAAA;EACI,WAAA;EACA,YAAA;EACA,aAAA;EACA,2BAAA;EACA,mBAAA;EACA,sBAAA;ACCJ","file":"estilo_ejercio.css"}
+{"version":3,"sources":["estilo_ejercio.scss","estilo_ejercio.css"],"names":[],"mappings":"AAAA;EAEE,WAAA;EACA,YAAA;EAEA,aAAA;EACA,qCAAA;EACA,kCAAA;EACA,oBAAA;EACA,iBAAA;EACA,sBAAA;EACA,aAAA;ACDF;ADEE;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,sBAAA;EACA,UAAA;EACA,WAAA;EACA,qBAAA;EACA,mBAAA;ACAJ","file":"estilo_ejercio.css"}

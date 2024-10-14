@@ -1,97 +1,23 @@
-#cont_lista{
-    width: 100%;
-    height: 100%;
+#cont_lista {
+
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  background-color: blue;
+  padding: 10px;
+  .cont_ejercio {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 80%;
+    height: 90%;
+    background-color: red;
+    border-radius: 20px;
+  }
 }
-// Estilos del mapa de músculos
-.muscle-map {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  
-  .body-silhouette {
-    width: 100%;
-    height: auto;
-  }
-  
-  .body-outline {
-    fill: $body-outline-color;
-    stroke: $body-stroke-color;
-    stroke-width: 2;
-  }
-  
-  .muscle-group {
-    fill: transparent;
-    stroke-width: 2;
-    cursor: pointer;
-    @include transition(fill);
-  
-    &:hover {
-      fill: $hover-color;
-    }
-  
-    &.active {
-      fill: currentColor;
-    }
-  }
-  
-  // Estilos de la sección de información
-  .info-section {
-    margin-top: 20px;
-    text-align: center;
-  
-    h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: $primary-color;
-    }
-  
-    p {
-      font-size: 16px;
-      color: lighten($primary-color, 20%);
-    }
-  }
-  
-  // Animaciones
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  .muscle-group {
-    &:hover {
-      animation: pulse 0.5s infinite;
-    }
-  }
-  
-  // Media queries para responsividad
-  @media (max-width: 480px) {
-    .container {
-      padding: 10px;
-    }
-  
-    .title {
-      font-size: 20px;
-    }
-  
-    .info-section {
-      h2 {
-        font-size: 18px;
-      }
-  
-      p {
-        font-size: 14px;
-      }
-    }
-  }
