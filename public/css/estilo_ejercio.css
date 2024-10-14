@@ -4,18 +4,21 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  background-color: blue;
-  padding: 10px;
+  grid-column-gap: 20px;
+  grid-row-gap: 15px;
+  padding: 20px;
 }
 #cont_lista .cont_ejercio {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 80%;
-  height: 90%;
-  background-color: red;
-  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+#cont_lista .cont_ejercio:hover {
+  transform: scale(1.05);
 }/*# sourceMappingURL=estilo_ejercio.css.map */
