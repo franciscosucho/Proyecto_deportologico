@@ -50,16 +50,15 @@
             var i = 0;
             while (i < ejercio.results.length) {
 
-                const cont_ejercio = document.createElement('div');
+                const cont_ejercio = document.createElement('a');
                 const id_ejercio = ejercio.results[i].id;
                 cont_ejercio.setAttribute('data-id', id_ejercio);
                 cont_ejercio.classList.add('cont_ejercio');
-
+                img_ejercio=document.createElement('img');
                 // Convertimos el nombre a formato de archivo para buscar la imagen
                 const id_name = ejercio.results[i].name.trim().replace(/\s+/g, '-').toLowerCase();
-                
-                // Asignamos la imagen de fondo utilizando la ruta correcta 
-                cont_ejercio.style.backgroundImage = `url(resources/img_ejercicios/${id_name}.jpg)`;
+            
+                img_ejercio.src = `resources/img_ejercicios/${id_name}.jpg`;
                 cont_ejercio.style.backgroundSize = "cover";  // Asegura que la imagen cubra el contenedor
                 cont_ejercio.style.backgroundPosition = "center"; // Centra la imagen
 
@@ -70,15 +69,14 @@
                 const link = document.createElement('a');
                 link.classList.add('btn_receta');
                 const ver_receta = document.createElement('span');
-                ver_receta.textContent = "Ver ejercicios";
-
+             
                 const icon_arrow = document.createElement('i');
                 icon_arrow.classList.add('fa-solid', 'fa-arrow-right');
-                link.href = '/ejercio_focus/:' + id_ejercio;
+                cont_ejercio.href = '/ejercio_focus/:' + id_ejercio;
 
                 link.appendChild(ver_receta);
                 link.appendChild(icon_arrow);
-
+                cont_ejercio.appendChild(img_ejercio);
                 cont_ejercio.appendChild(name);
                 cont_ejercio.appendChild(link);
 
