@@ -830,3 +830,25 @@ function capitalizarPrimeraLetra(texto) {
     if (!texto) return '';
     return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 }
+
+app.get('/rutinas', (req, res) => {
+
+    var user_name = req.session.user_name
+    var user_dni = req.session.user_dni
+    var user_pass = req.session.user_pass
+    var user_nac = req.session.user_nac
+    var user_genero = req.session.user_genero
+    var user_peso = req.session.user_peso
+    var user_altura = req.session.user_altura
+    var user_email = req.session.user_email
+    var user_dieta = req.session.user_dieta
+    var user_obj_nut = req.session.user_obj_nut
+    var user_deporte = req.session.user_deporte
+    var user_obj_dep = req.session.user_obj_dep
+    var user_frecuencia = req.session.user_frecuencia
+    var user_intolerancia = req.session.user_intolerancia
+    var user_intensidad = req.session.user_intensidad
+
+    res.render('rutinas', { user_name, user_intolerancia, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+
+})
