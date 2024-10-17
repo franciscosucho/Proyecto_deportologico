@@ -4,13 +4,13 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  
+
 }
 
 .body {
   background-color: #1a1a1a;
   color: #fff;
-  
+
 }
 
 #cont_rutinas {
@@ -140,5 +140,103 @@
         transform: translate(-50%, -50%) scale(1.1); // Hace zoom en el texto
       }
     }
+  }
+}
+#cont_ejercio_focus_main{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+#cont_ejercio_focus {
+
+  width: 60%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: flex-start !important;
+  align-items: flex-start;
+  gap: 20px;
+
+  .cont_ejercio {
+    background-color: #111b2e;
+
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 20vw;
+    height: auto;
+ 
+    transition: all .2s ease-in-out;
+  
+    &:hover{
+      background-color:  #141f33;;
+    }
+    .cont_text_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      width: 100%;
+      height: auto;
+      padding: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.247);
+
+      .name {
+        font-size: 1.6em;
+        color: white;
+      }
+
+      .dif {
+        padding: 5px;
+        border-radius: 15px;
+        color: white;
+        font-weight: 700;
+        background-color: #2663ea;
+      }
+    }
+
+    .cont_text {
+      width: 100%;
+      padding: 20px;
+      font-size: 1.3em;
+      font-weight: 700;
+      color: white;
+      height: 45vh;
+      overflow: scroll;
+      ul {
+        list-style: none;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+
+        li {
+          color: rgb(199, 197, 197);
+          font-size: .8em;
+          font-weight: 300;
+        }
+      }
+    }
+
+    .cont_equip {
+      padding: 20px;
+      padding-bottom: 10px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 5px;
+      color: #949494;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cont_ejercio_focus {
+    grid-template-columns: 1fr;
   }
 }

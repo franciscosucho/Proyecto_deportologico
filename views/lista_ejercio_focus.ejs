@@ -25,12 +25,15 @@
 
             <section id="main_recetas" class="cont_prog_main">
                 <div id="cont_text_main">
-                    <a href="/lista_ejercio_focus">
+                    <a href="/lista_ejercios">
                         <i class="fa-solid fa-arrow-left"></i>
                     </a>
                     <h2 id="nombre_us">Lista de ejercios de <%-nombre_ejer%></h2>
+                </div>
+                <div id="cont_ejercio_focus_main">
                     <section id="cont_ejercio_focus" data-ejer="<%-nombre_ejer%>"></section>
                 </div>
+
             </section>
         </section>
     </main>
@@ -45,44 +48,81 @@
                 'x-rapidapi-host': 'exercises-by-api-ninjas.p.rapidapi.com'
             }
         };
-    
+
         // Declara una función async para usar await
         async function fetchExercises() {
             try {
                 const response = await fetch(url, options);
-                const result = await response.json();  
+                const result = await response.json();
                 create_ejercio(result);
-                console.log(result)
+
             } catch (error) {
                 console.error(error);
             }
         }
-    
+
         // Llama la función async
         fetchExercises();
-        
+
         function create_ejercio(result) {
             result.forEach(ejercicio => {
                 const cont_ejercio = document.createElement("div");
+                cont_ejercio.classList.add("cont_ejercio")
                 const name = document.createElement("h4");
+
+                const cont_text_header = document.createElement("div")
+                cont_text_header.classList.add("cont_text_header")
+                const cont_text = document.createElement("div")
+                cont_text.classList.add("cont_text")
                 name.textContent = ejercicio.name;
-              
+                name.classList.add("name")
                 const dif = document.createElement("h5");
-                dif.textContent = `Dificultad: ${ejercicio.difficulty}`;
-    
-                const ins = document.createElement("p");
-                ins.textContent = `Instrucciones: ${ejercicio.instructions}`;
-    
+                dif.textContent = ` ${ejercicio.difficulty}`;
+                dif.classList.add("dif")
+                const ins = document.createElement("div")
+                const instrucciones = ejercicio.instructions.split('.'); // Separa el texto por puntos
+                const ul = document.createElement('ul'); // Crea una lista no ordenada
+
+                instrucciones.forEach((instruccion, index) => {
+                    if (instruccion.trim() !== '') { // Verifica que no esté vacío
+                        const li = document.createElement('li');
+                        li.textContent = `${index + 1}. ${instruccion.trim()}`; // Agrega el número de instrucción y el texto
+                        ul.appendChild(li); // Añade el <li> a la lista
+                    }
+                });
+
+                ins.textContent = 'Instrucciones:'; // Puedes mantener el título o ajustarlo
+                ins.appendChild(ul); // Añade la lista de instrucciones al contenedor
+
+                ins.classList.add("ins")
+                const cont_equip = document.createElement("div");
+                cont_equip.classList.add("cont_equip");
+                const icon_gym = document.createElement("li")
+                icon_gym.classList.add('fa-solid', 'fa-dumbbell')
                 const equip = document.createElement("h5");
-                equip.textContent = `Equipo: ${ejercicio.equipment}`;
-    
-                cont_ejercio.appendChild(name);
-                cont_ejercio.appendChild(dif);
-                cont_ejercio.appendChild(ins);
-                cont_ejercio.appendChild(equip);
+                let text_equip = ejercicio.equipment.replace(/_/g, ' ');
+                equip.textContent = `Equipo: ${text_equip}`;
+                equip.classList.add("equip")
+
+                cont_text_header.appendChild(name)
+                cont_text_header.appendChild(dif)
+                cont_ejercio.appendChild(cont_text_header)
+
+                cont_equip.appendChild(icon_gym)
+                cont_equip.appendChild(equip)
+                cont_ejercio.appendChild(cont_equip)
+
+                cont_text.appendChild(ins)
+
+                cont_ejercio.appendChild(cont_text);
                 cont_ejercio_focus.appendChild(cont_ejercio);
+
+
+
             });
         }
+
+
     </script>
 </body>
 
