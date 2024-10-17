@@ -41,42 +41,61 @@
     <script>
 
         const cont_lista = document.getElementById("cont_lista")
-        const url = `https://wger.de/api/v2/exercisecategory/`
-        fetch(url)
-            .then((res) => res.json())
-            .then((data) => {
+        
+            
+                lista_ejercios = ["abdominals",
+                    "abductors",
+                    "adductors",
+                    "biceps",
+                    "calves",
+                    "chest",
+                    "forearms",
+                    "glutes",
+                    "hamstrings",
+                    "lats",
+                    "lower_back",
+                    "middle_back",
+                    "neck",
+                    "quadriceps",
+                    "traps",
+                    "triceps"
+                ]
+                let i=0
+                lista_ejercios.forEach(ejercio => {
+                    create_recetas(ejercio,i)
+                    i++
+                });
 
-                create_recetas(data)
-            });
+            
 
 
-        function create_recetas(ejercio) {
-            var i = 0;
-            while (i < ejercio.results.length) {
+        function create_recetas(ejercio,i) {
+            
+           
 
                 const cont_ejercio = document.createElement('a');
-                const id_ejercio = ejercio.results[i].id;
+                const id_ejercio = i;
                 cont_ejercio.setAttribute('data-id', id_ejercio);
                 cont_ejercio.classList.add('cont_ejercio');
-                img_ejercio=document.createElement('img');
+                img_ejercio = document.createElement('img');
                 // Convertimos el nombre a formato de archivo para buscar la imagen
-                const id_name = ejercio.results[i].name.trim().replace(/\s+/g, '-').toLowerCase();
-            
+                const id_name = ejercio.trim().replace(/\s+/g, '-').toLowerCase();
+
                 img_ejercio.src = `resources/img_ejercicios/${id_name}.jpg`;
                 cont_ejercio.style.backgroundSize = "cover";  // Asegura que la imagen cubra el contenedor
                 cont_ejercio.style.backgroundPosition = "center"; // Centra la imagen
 
                 const name = document.createElement('h3');
                 name.classList.add('name_ejercio');
-                name.textContent = ejercio.results[i].name;
+                name.textContent = ejercio
 
                 const link = document.createElement('a');
                 link.classList.add('btn_receta');
                 const ver_receta = document.createElement('span');
-             
+
                 const icon_arrow = document.createElement('i');
                 icon_arrow.classList.add('fa-solid', 'fa-arrow-right');
-                cont_ejercio.href = '/ejercio_focus/:' + id_ejercio;
+                cont_ejercio.href = '/ejercio_focus/:' + ejercio;
 
                 link.appendChild(ver_receta);
                 link.appendChild(icon_arrow);
@@ -85,8 +104,7 @@
                 cont_ejercio.appendChild(link);
 
                 cont_lista.appendChild(cont_ejercio);
-                i++;
-            }
+            
         }
 
     </script>
