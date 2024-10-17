@@ -28,7 +28,7 @@
                     <a href="/ejercio">
                         <i class="fa-solid fa-arrow-left"></i>
                     </a>
-                    <h2 id="nombre_us">Lista de ejercicios</h2>
+                    <h2 id="nombre_us">Lista de Músculos</h2>
                 </div>
                 <ul id="cont_lista">
 
@@ -45,7 +45,6 @@
             
                 lista_ejercios = ["abdominals",
                     "abductors",
-                    "adductors",
                     "biceps",
                     "calves",
                     "chest",
@@ -80,14 +79,18 @@
                 img_ejercio = document.createElement('img');
                 // Convertimos el nombre a formato de archivo para buscar la imagen
                 const id_name = ejercio.trim().replace(/\s+/g, '-').toLowerCase();
-
-                img_ejercio.src = `resources/img_ejercicios/${id_name}.jpg`;
+                if(ejercio=="lower_back" || ejercio=="middle_back"){
+                    img_ejercio.src = `resources/img_ejercicios/back.jpg`;
+                }
+                else{
+                    img_ejercio.src = `resources/img_ejercicios/${id_name}.jpg`;
+                }
+               
                 cont_ejercio.style.backgroundSize = "cover";  // Asegura que la imagen cubra el contenedor
                 cont_ejercio.style.backgroundPosition = "center"; // Centra la imagen
-
                 const name = document.createElement('h3');
                 name.classList.add('name_ejercio');
-                name.textContent = ejercio
+                name.textContent = ejercio.replace(/_/g, ' ');
 
                 const link = document.createElement('a');
                 link.classList.add('btn_receta');
@@ -95,7 +98,7 @@
 
                 const icon_arrow = document.createElement('i');
                 icon_arrow.classList.add('fa-solid', 'fa-arrow-right');
-                cont_ejercio.href = '/ejercio_focus/:' + ejercio;
+                cont_ejercio.href = '/lista_ejercio_focus/' + ejercio;
 
                 link.appendChild(ver_receta);
                 link.appendChild(icon_arrow);

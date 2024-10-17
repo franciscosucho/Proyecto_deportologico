@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mental Strong</title>
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="/css/estilo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="shortcut icon" href="../public/resources/mental-strong.ico" type="image/x-icon">
@@ -24,11 +24,66 @@
             </aside>
 
             <section id="main_recetas" class="cont_prog_main">
-                <h2 id="nombre_us">Lista de ejercios</h2>
+                <div id="cont_text_main">
+                    <a href="/lista_ejercio_focus">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                    <h2 id="nombre_us">Lista de ejercios de <%-nombre_ejer%></h2>
+                    <section id="cont_ejercio_focus" data-ejer="<%-nombre_ejer%>"></section>
+                </div>
             </section>
         </section>
     </main>
-
+    <script>
+        const cont_ejercio_focus = document.getElementById("cont_ejercio_focus");
+        const nombre_ejer = cont_ejercio_focus.getAttribute("data-ejer");
+        const url = `https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises?muscle=${nombre_ejer}`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-key': 'd5bb8086d5msh205752128cad326p1bc9f9jsna92fbd0567a7',
+                'x-rapidapi-host': 'exercises-by-api-ninjas.p.rapidapi.com'
+            }
+        };
+    
+        // Declara una función async para usar await
+        async function fetchExercises() {
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();  
+                create_ejercio(result);
+                console.log(result)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    
+        // Llama la función async
+        fetchExercises();
+        
+        function create_ejercio(result) {
+            result.forEach(ejercicio => {
+                const cont_ejercio = document.createElement("div");
+                const name = document.createElement("h4");
+                name.textContent = ejercicio.name;
+              
+                const dif = document.createElement("h5");
+                dif.textContent = `Dificultad: ${ejercicio.difficulty}`;
+    
+                const ins = document.createElement("p");
+                ins.textContent = `Instrucciones: ${ejercicio.instructions}`;
+    
+                const equip = document.createElement("h5");
+                equip.textContent = `Equipo: ${ejercicio.equipment}`;
+    
+                cont_ejercio.appendChild(name);
+                cont_ejercio.appendChild(dif);
+                cont_ejercio.appendChild(ins);
+                cont_ejercio.appendChild(equip);
+                cont_ejercio_focus.appendChild(cont_ejercio);
+            });
+        }
+    </script>
 </body>
 
 </html>

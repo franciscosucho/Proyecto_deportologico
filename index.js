@@ -484,10 +484,10 @@ app.get('/lista_ejercios', (req, res) => {
     res.render('lista_ejercios', { user_name,user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
     
 })
-app.get('/ejercio_focus/id_ejercio', (req, res) => {
-    var id_ejercio = req.params.id_ejercio
+app.get('/lista_ejercio_focus/:nombre_ejer', (req, res) => {
+    var nombre_ejer = req.params.nombre_ejer
     
-    res.render('lista_ejercios', { id_ejercio })
+    res.render('lista_ejercio_focus', { nombre_ejer })
     
 })
 
