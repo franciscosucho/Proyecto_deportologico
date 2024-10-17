@@ -357,7 +357,8 @@ body main #ventana_prin #cont_main #cont_user i {
   color: white;
 }
 body main #ventana_prin #cont_main #cont_user i:hover {
-  background-color: rgba(116, 116, 116, 0.2117647059);
+  background-color: rgba(78, 78, 78, 0.2117647059);
+  color: #64E788;
 }
 body main #ventana_prin #cont_main #cont_secciones {
   margin-top: 5%;

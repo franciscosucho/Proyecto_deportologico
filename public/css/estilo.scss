@@ -220,6 +220,7 @@ body {
                         align-items: center;
                         flex-direction: column;
                         gap: 20px;
+                        
                         .cont_btn {
                             height: 40px;
                             width: 50%;
@@ -228,10 +229,11 @@ body {
                             align-items: center;
                             flex-direction: row-reverse;
                             gap: 20px;
-
+                            
                             button {
                                 height: 100%;
                                 width: 50%;
+                                
                             }
 
                         }
@@ -420,7 +422,8 @@ body {
                         color: white;
 
                         &:hover {
-                            background-color: #74747436;
+                            background-color: #4e4e4e36;
+                            color: $color-primario;
                         }
                     }
                 }

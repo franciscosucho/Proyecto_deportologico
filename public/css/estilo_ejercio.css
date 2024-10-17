@@ -1,3 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.body {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+#cont_rutinas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.cont_recomendaciones {
+  display: flex;
+  gap: 30px;
+}
+
+.recomendacion_item {
+  background-color: #333;
+  width: 450px;
+  height: 200px;
+  border-radius: 20px;
+}
+
+.todas_rutinas {
+  font-size: 1.7em;
+  margin-top: 6%;
+}
+
+.rutinas_lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rutina_item {
+  background-color: #333;
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+}
+
 #cont_lista {
   width: 100%;
   height: 100%;
@@ -22,8 +70,8 @@
   border-radius: 20px;
   width: 100%;
   height: 100%;
-  transition: transform 0.5s ease, opacity 0.3s ease;
-  opacity: 0.45;
+  transition: transform 0.5s ease, opacity 1s ease;
+  opacity: 0.3;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -65,7 +113,8 @@
   opacity: 0.7;
   transform: scale(1.1);
 }
-#cont_lista .cont_ejercio:hover span, #cont_lista .cont_ejercio:hover h3 {
+#cont_lista .cont_ejercio:hover span,
+#cont_lista .cont_ejercio:hover h3 {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1.1);
 }/*# sourceMappingURL=estilo_ejercio.css.map */

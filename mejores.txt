@@ -1,18 +1,9 @@
 Trabajo a seguir:
+                en la parte de progreso, cuando agregas actividad, estaria bueno agregarle un valor inicial
 
-                Terminar seccion Asesoramiento
-                Terminar Racha (Inicio)
-                Empezar seccion nutricon y progreso
-                
 Ideas:
-        Login para los entrenadores
 
 
 
 rehacer:
-        *index.ejs: rehacer el habit tracker y ver que funcione lo demas
-        *datos_us:
-                .cambiar el color del borde que pusieron.
-                .hacer que ande el boton de cerrar sesion.
-        *progreso:
-                ver hasta donde borraron y rehacer.
+       
