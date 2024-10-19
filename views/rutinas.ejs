@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
         rel="stylesheet">
 </head>
 
@@ -28,24 +28,116 @@
                     <a href="/ejercio">
                         <i class="fa-solid fa-arrow-left"></i>
                     </a>
-                    <h2 id="nombre_us">Recomendación</h2>
+                    <h2 id="nombre_us">Rutinas</h2>
                 </div>
-                <section id="cont_rutinas">
-                    
+                <section id="cont_rutinas" data-int="<%-user_intensidad%>" data-frec="<%-user_frecuencia %>"
+                    data-deporte="<%-user_deporte%>">
                     <div class="cont_recomendaciones">
-                        <div class="recomendacion_item"></div>
-                        <div class="recomendacion_item"></div>
                     </div>
+
                     <h3 class="todas_rutinas">Todas las rutinas</h3>
                     <div class="rutinas_lista">
-                        <div class="rutina_item"></div>
-                        <div class="rutina_item"></div>
-                        <div class="rutina_item"></div>
+                        <% let i=0; %>
+                            <% results.forEach(rutina=> { %>
+                                <div class="rutina_item" id="datos_us<%= i %>">
+                                    <h5><%- rutina.intensidad %></h5>
+                                    <h3><%- rutina.nombre_rutina %></h3>
+                                    <h4> Frecuencia (<%- rutina.frecuencia %> dias de la semana)</h4>
+                                    <p>Objetivo: <%- rutina.objetivo %></p>
+                                    <a href="#">Ver Más </a>
+                                </div>
+                                <% i +=1; %>
+                                    <% }) %>
                     </div>
                 </section>
             </section>
         </section>
     </main>
+    <script>
+        $(document).ready(function () {
+            // Obtener intensidad y frecuencia del dataset del contenedor
+            const intensidad = $('#cont_rutinas').data('int');
+            const frecuencia = $('#cont_rutinas').data('frec');
+            const deporte = $('#cont_rutinas').data('deporte');
+
+            const recomendaciones = $('.cont_recomendaciones');
+
+            // Crear un div con título y texto
+            function crearRutina(titulo, descripcion) {
+                const text_main = $('<h2>Rutina Recomendada</h2>');
+                const divRutina = $('<div></div>').addClass('rutina_item');
+                const h3 = $('<h3></h3>').text(titulo);
+                const p = $('<p></p>').text(descripcion);
+                divRutina.append(h3, p);
+                recomendaciones.append(text_main, divRutina);
+            }
+
+            // Normalizar frecuencia
+            const frecuencia_normalizada = frecuencia.replace(/\s+/g, '');
+
+            // Agregar rutinas según la intensidad y la frecuencia
+            if (deporte == "Fuerza") {
+                if (intensidad === 'ligera') {
+                    if (frecuencia_normalizada === "3/7" || frecuencia_normalizada === "4/7") {
+                        crearRutina('Rutina de Fuerza Ligera (3-4 días por semana)', 'Objetivo: tonificar y mantener un estado físico saludable.');
+                    } else if (frecuencia_normalizada === "5/7" || frecuencia_normalizada === "6/7") {
+                        crearRutina('Rutina de Fuerza Moderada (4-5 días por semana)', 'Objetivo: ganar fuerza y tonificar.');
+                    }
+                } else if (intensidad === 'Moderada') {
+                    if (frecuencia_normalizada === "3/7") {
+                        crearRutina('Rutina de Fuerza Moderada (3 días por semana)', 'Objetivo: aumentar la fuerza y resistencia muscular.');
+                    } else if (frecuencia_normalizada === "4/7" || frecuencia_normalizada === "5/7") {
+                        crearRutina('Rutina de Fuerza Avanzada (4-5 días por semana)', 'Objetivo: mejorar la resistencia cardiovascular y muscular.');
+                    } else if (frecuencia_normalizada === "6/7") {
+                        crearRutina('Rutina de Fuerza Intensa (5-6 días por semana)', 'Objetivo: ganar masa muscular y mejorar la resistencia.');
+                    }
+                } else if (intensidad === 'Alta') {
+                    if (frecuencia_normalizada === "3/7") {
+                        crearRutina('Rutina de Fuerza Alta (3 días por semana)', 'Objetivo: aumentar la resistencia y fuerza muscular.');
+                    } else if (frecuencia_normalizada === "4/7") {
+                        crearRutina('Rutina de Fuerza Muy Alta (4 días por semana)', 'Objetivo: mejorar la resistencia cardiovascular y aumentar la masa muscular.');
+                    } else if (frecuencia_normalizada === "5/7") {
+                        crearRutina('Rutina de Fuerza Intensiva (5 días por semana)', 'Objetivo: mejorar la capacidad física de manera avanzada.');
+                    } else if (frecuencia_normalizada === "6/7") {
+                        crearRutina('Rutina de Fuerza Extrema (6 días por semana)', 'Objetivo: ganar masa muscular y mejorar la capacidad aeróbica.');
+                    }
+                }
+
+            }
+            if (deporte == "Cardiovascular") {
+
+                // Rutinas cardiovasculares
+                if (intensidad === 'ligera') {
+                    if (frecuencia_normalizada === "3/7") {
+                        crearRutina('Rutina Cardiovascular Ligera (3 días por semana)', 'Objetivo: mejorar la salud cardiovascular y la resistencia general.');
+                    } else if (frecuencia_normalizada === "4/7") {
+                        crearRutina('Rutina Cardiovascular Moderada (4 días por semana)', 'Objetivo: mantener un estado físico saludable.');
+                    }
+                } else if (intensidad === 'Moderada') {
+                    if (frecuencia_normalizada === "3/7") {
+                        crearRutina('Rutina Cardiovascular Moderada (3 días por semana)', 'Objetivo: aumentar la resistencia cardiovascular.');
+                    } else if (frecuencia_normalizada === "4/7" || frecuencia_normalizada === "5/7") {
+                        crearRutina('Rutina Cardiovascular Intensa (4-5 días por semana)', 'Objetivo: mejorar la capacidad aeróbica y la resistencia general.');
+                    } else if (frecuencia_normalizada === "6/7") {
+                        crearRutina('Rutina Cardiovascular Alta (5-6 días por semana)', 'Objetivo: optimizar la salud cardiovascular y resistencia.');
+                    }
+                } else if (intensidad === 'Alta') {
+                    if (frecuencia_normalizada === "4/7") {
+                        crearRutina('Rutina Cardiovascular Muy Alta (4 días por semana)', 'Objetivo: maximizar la resistencia y capacidad cardiovascular.');
+                    } else if (frecuencia_normalizada === "5/7") {
+                        crearRutina('Rutina Cardiovascular Extrema (5 días por semana)', 'Objetivo: alcanzar un alto nivel de condición física cardiovascular.');
+                    } else if (frecuencia_normalizada === "6/7") {
+                        crearRutina('Rutina Cardiovascular Intensiva (6 días por semana)', 'Objetivo: ganar resistencia aeróbica y mejorar la salud en general.');
+                    }
+                }
+            }
+
+            // Si no hay coincidencias, se muestra un mensaje
+            if (recomendaciones.is(':empty')) {
+                recomendaciones.append('<p>No hay recomendaciones disponibles para su plan de entrenamiento.</p>');
+            }
+        });
+    </script>
 </body>
 
 </html>

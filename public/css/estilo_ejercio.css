@@ -15,6 +15,46 @@
   gap: 20px;
   padding: 10px;
 }
+#cont_rutinas .rutina_item {
+  height: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.2s ease-in-out;
+}
+#cont_rutinas .rutina_item:hover {
+  background-color: rgb(73, 73, 73);
+}
+#cont_rutinas .rutina_item h3 {
+  font-size: 1.5em;
+  font-weight: 800;
+}
+#cont_rutinas .rutina_item p {
+  font-size: 0.9em;
+  color: #f0f0f0;
+}
+#cont_rutinas .rutina_item a {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: rgba(78, 78, 78, 0.631372549);
+  color: white;
+  text-decoration: none;
+}
+#cont_rutinas .cont_recomendaciones {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+#cont_rutinas .cont_recomendaciones .rutina_item {
+  background-color: #56cc75;
+}
+#cont_rutinas .cont_recomendaciones .rutina_item:hover {
+  background-color: #4db669;
+}
 
 .cont_recomendaciones {
   display: flex;

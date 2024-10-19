@@ -276,6 +276,82 @@ CREATE TABLE `usuario` (
   `Foto_perfil` varchar(400) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+
+-- Crear la tabla 'rutinas'
+CREATE TABLE rutinas (
+    id_rutina INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_rutina VARCHAR(100) NOT NULL,
+    intensidad ENUM('baja', 'media', 'alta') NOT NULL,
+    frecuencia INT NOT NULL,
+    objetivo VARCHAR(255) NOT NULL
+);
+
+-- Insertar datos en la tabla 'rutinas'
+INSERT INTO rutinas (nombre_rutina, intensidad, frecuencia, objetivo)
+VALUES
+    -- Rutinas de desarrollo cardiovascular
+    ('Rutina de intensidad baja (Cardiovascular)', 'baja', 3, 'Mejorar la movilidad, tonificar suavemente y mantener un estado físico saludable.'),
+    ('Rutina de intensidad media (Cardiovascular)', 'media', 4, 'Ganar fuerza, mejorar la resistencia y tonificar.'),
+    ('Rutina de intensidad alta (Cardiovascular)', 'alta', 5, 'Ganar masa muscular, mejorar la capacidad aeróbica y la resistencia.'),
+    
+    -- Rutinas de ejercicios de fuerza
+    ('Rutina de fuerza de baja intensidad', 'baja', 3, 'Desarrollar fuerza de manera gradual, ideal para principiantes.'),
+    ('Rutina de fuerza de media intensidad', 'media', 4, 'Aumentar la fuerza y la masa muscular, recomendada para usuarios intermedios.'),
+    ('Rutina de fuerza de alta intensidad', 'alta', 5, 'Desarrollar fuerza avanzada y aumentar la capacidad muscular.');
+
+-- Crear la tabla 'rutina_dia'
+CREATE TABLE rutina_dia (
+    id_rutina_dia INT AUTO_INCREMENT PRIMARY KEY,
+    id_rutina_fo INT,
+    dia ENUM('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo') NOT NULL,
+    ej_sup INT NULL,
+    ej_core INT NULL,
+    ej_inf INT NULL,
+    cardio_num INT NULL,
+    tipo_cardio ENUM('ligero', 'moderado', 'intenso') NULL,
+    FOREIGN KEY (id_rutina_fo) REFERENCES rutinas(id_rutina)
+);
+
+-- Insertar datos en la tabla 'rutina_dia'
+INSERT INTO rutina_dia (id_rutina_fo, dia, ej_sup, ej_core, ej_inf, cardio_num, tipo_cardio)
+VALUES
+    -- Rutinas de desarrollo cardiovascular (baja, media, alta intensidad)
+    (1, 'Lunes', 2, 1, 3, 20, 'ligero'),  -- Cardiovascular baja
+    (1, 'Miércoles', NULL, 2, 4, 25, 'ligero'),
+    (1, 'Viernes', 2, 2, 2, 20, 'ligero'),
+
+    (2, 'Lunes', 3, 2, 3, 20, 'moderado'),  -- Cardiovascular media
+    (2, 'Miércoles', NULL, 2, 4, 25, 'moderado'),
+    (2, 'Viernes', 3, 2, 3, 20, 'moderado'),
+    (2, 'Sábado', NULL, 3, NULL, 40, 'moderado'),
+
+    (3, 'Lunes', 3, 2, 4, 20, 'intenso'),  -- Cardiovascular alta
+    (3, 'Martes', NULL, 2, 4, 30, 'moderado'),
+    (3, 'Jueves', 4, 3, NULL, 25, 'moderado'),
+    (3, 'Viernes', 3, 2, 3, 20, 'moderado'),
+    (3, 'Sábado', NULL, 3, NULL, 60, 'intenso'),
+
+    -- Rutinas de ejercicios de fuerza (baja, media, alta intensidad)
+    (4, 'Lunes', 2, 1, 3, NULL, NULL),  -- Fuerza baja
+    (4, 'Miércoles', NULL, 2, 4, NULL, NULL),
+    (4, 'Viernes', 2, 2, 2, NULL, NULL),
+
+    (5, 'Lunes', 3, 2, 3, NULL, NULL),  -- Fuerza media
+    (5, 'Miércoles', NULL, 2, 4, NULL, NULL),
+    (5, 'Viernes', 3, 2, 3, NULL, NULL),
+    (5, 'Sábado', NULL, 3, NULL, NULL, NULL),
+
+    (6, 'Lunes', 3, 2, 4, NULL, NULL),  -- Fuerza alta
+    (6, 'Martes', NULL, 2, 4, NULL, NULL),
+    (6, 'Jueves', 4, 3, NULL, NULL, NULL),
+    (6, 'Viernes', 3, 2, 3, NULL, NULL),
+    (6, 'Sábado', NULL, 3, NULL, NULL, NULL);
+
+
+
+
+
 --
 -- Volcado de datos para la tabla `usuario`
 --

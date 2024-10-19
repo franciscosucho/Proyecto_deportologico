@@ -466,7 +466,7 @@ app.get('/ejercio', (req, res) => {
     var user_obj_dep = req.session.user_obj_dep
     var user_frecuencia = req.session.user_frecuencia
     var user_intensidad = req.session.user_intensidad
-    res.render('ejercio', { user_name,user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    res.render('ejercio', { user_name, user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
 
 })
 app.get('/lista_ejercios', (req, res) => {
@@ -481,19 +481,40 @@ app.get('/lista_ejercios', (req, res) => {
     var user_obj_dep = req.session.user_obj_dep
     var user_frecuencia = req.session.user_frecuencia
     var user_intensidad = req.session.user_intensidad
-    res.render('lista_ejercios', { user_name,user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
-    
+    res.render('lista_ejercios', { user_name, user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+
 })
 app.get('/lista_ejercio_focus/:nombre_ejer', (req, res) => {
     var nombre_ejer = req.params.nombre_ejer
-    
+
     res.render('lista_ejercio_focus', { nombre_ejer })
-    
+
 })
 
 
 
+app.get('/rutinas', (req, res) => {
 
+    var user_name = req.session.user_name
+    var user_genero = req.session.user_genero
+    var user_peso = req.session.user_peso
+    var user_altura = req.session.user_altura
+    var user_dieta = req.session.user_dieta
+    var user_obj_nut = req.session.user_obj_nut
+    var user_deporte = req.session.user_deporte
+    var user_obj_dep = req.session.user_obj_dep
+    var user_frecuencia = req.session.user_frecuencia
+    var user_intensidad = req.session.user_intensidad
+
+    const query_rut = 'SELECT `id_rutina`, `nombre_rutina`, `intensidad`, `frecuencia`, `objetivo` FROM `rutinas` WHERE 1'
+    connection.query(query_rut, [], (err, results) => {
+        if (err) {
+            console.error('Error al insertar en usuario:', err);
+            return res.render('progreso_agregar.ejs', { error: 'Error al registrar el usuario' });
+        }
+        res.render('rutinas', {results, user_name, user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    })
+})
 
 
 //<---------------------------------------------------------------------------------------->
@@ -831,24 +852,3 @@ function capitalizarPrimeraLetra(texto) {
     return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 }
 
-app.get('/rutinas', (req, res) => {
-
-    var user_name = req.session.user_name
-    var user_dni = req.session.user_dni
-    var user_pass = req.session.user_pass
-    var user_nac = req.session.user_nac
-    var user_genero = req.session.user_genero
-    var user_peso = req.session.user_peso
-    var user_altura = req.session.user_altura
-    var user_email = req.session.user_email
-    var user_dieta = req.session.user_dieta
-    var user_obj_nut = req.session.user_obj_nut
-    var user_deporte = req.session.user_deporte
-    var user_obj_dep = req.session.user_obj_dep
-    var user_frecuencia = req.session.user_frecuencia
-    var user_intolerancia = req.session.user_intolerancia
-    var user_intensidad = req.session.user_intensidad
-
-    res.render('rutinas', { user_name, user_intolerancia, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
-
-})
