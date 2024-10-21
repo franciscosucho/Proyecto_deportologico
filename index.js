@@ -512,7 +512,35 @@ app.get('/rutinas', (req, res) => {
             console.error('Error al insertar en usuario:', err);
             return res.render('progreso_agregar.ejs', { error: 'Error al registrar el usuario' });
         }
-        res.render('rutinas', {results, user_name, user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+        res.render('rutinas', { results, user_name, user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    })
+})
+app.get('/rutina_focus/:id_rut', (req, res) => {
+    var id_rutina = req.params.id_rut;
+    var user_name = req.session.user_name
+    var user_genero = req.session.user_genero
+    var user_peso = req.session.user_peso
+    var user_altura = req.session.user_altura
+    var user_dieta = req.session.user_dieta
+    var user_obj_nut = req.session.user_obj_nut
+    var user_deporte = req.session.user_deporte
+    var user_obj_dep = req.session.user_obj_dep
+    var user_frecuencia = req.session.user_frecuencia
+    var user_intensidad = req.session.user_intensidad
+    const query_rut = 'SELECT `id_rutina`, `nombre_rutina`, `intensidad`, `frecuencia`, `objetivo` FROM `rutinas` WHERE id_rutina=?'
+    connection.query(query_rut, [id_rutina], (err, results) => {
+        if (err) {
+            console.error('Error al insertar en usuario:', err);
+            return res.render('progreso_agregar.ejs', { error: 'Error al registrar el usuario' });
+        }
+        const query_rut_focus = 'SELECT `id_rutina_dia`, `id_rutina_fo`, `dia`, `ej_sup`, `ej_core`, `ej_inf`, `cardio_num`, `tipo_cardio` FROM `rutina_dia` WHERE id_rutina_fo=?'
+        connection.query(query_rut_focus, [id_rutina], (err, results_focus) => {
+            if (err) {
+                console.error('Error al insertar en usuario:', err);
+                return res.render('progreso_agregar.ejs', { error: 'Error al registrar el usuario' });
+            }
+            res.render('rutina_focus', { results, results_focus, user_name, user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+        })
     })
 })
 

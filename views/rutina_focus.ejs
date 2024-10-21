@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Strong</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="shortcut icon" href="../public/resources/mental-strong.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="body">
+    <main>
+        <section id="ventana_prin">
+            <aside id="menu_lateral">
+                <%- include('menu.ejs') %>
+            </aside>
+
+            <section id="main_recetas" class="cont_prog_main">
+                <div id="cont_text_main">
+                    <a href="/ejercio">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                    <h2 id="nombre_us"><%-results[0].nombre_rutina %></h2>
+                </div>
+                <section id="cont_rutina_focus">
+                    <% let i=0; %>
+
+                        <% results_focus.forEach(dia=> { %>
+                            <div class="dias">
+                                <h2><%-dia.dia%></h2>
+                                <div class="cont_text">
+                                    <div class="sub_text">
+                                        <% if(dia.ej_sup){ %>
+                                            <p>Parte superior:</p>
+                                            <h4> <%-dia.ej_sup%> ejercios</h4>
+                                            <% }%>
+
+                                    </div>
+                                    <div class="sub_text">
+                                        <% if(dia.ej_core){ %>
+                                            <p>core:</p>
+                                            <h4> <%-dia.ej_core%> ejercios</h4>
+                                            <% }%>
+
+                                    </div>
+                                    <div class="sub_text">
+                                        <% if(dia.ej_inf){ %>
+                                            <p>Parte inferior:</p>
+                                            <h4> <%-dia.ej_inf%> ejercios</h4>
+                                            <% }%>
+
+                                    </div>
+                                    <div class="sub_text">
+                                        <% if(dia.cardio_num){ %>
+                                            <p>Cardio:</p>
+                                            <h4><%-dia.cardio_num%> min, con una intensidad <%-dia.tipo_cardio%> </h4>
+                                            <% }%>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <% i +=1; %>
+                                <% }) %>
+                </section>
+            </section>
+        </section>
+    </main>
+
+</body>
+
+</html>
