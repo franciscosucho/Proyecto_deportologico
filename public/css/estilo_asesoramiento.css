@@ -19,6 +19,7 @@ body main #subtitulo {
 }
 body main #nombre_us {
   margin-top: 2%;
+  text-align: center;
   color: white;
   font-size: 38px;
 }

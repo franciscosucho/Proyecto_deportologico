@@ -269,6 +269,7 @@ body main #ventana_prin .text_prin {
   font-size: 2em;
   color: white;
   font-style: italic;
+  text-align: center;
 }
 body main #ventana_prin #menu_lateral {
   height: auto;

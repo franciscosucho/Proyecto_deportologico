@@ -80,10 +80,10 @@
                 // Convertimos el nombre a formato de archivo para buscar la imagen
                 const id_name = ejercio.trim().replace(/\s+/g, '-').toLowerCase();
                 if(ejercio=="lower_back" || ejercio=="middle_back"){
-                    img_ejercio.src = `resources/img_ejercicios/back.jpg`;
+                    img_ejercio.src = `resources/img_ejercicios/back.webp`;
                 }
                 else{
-                    img_ejercio.src = `resources/img_ejercicios/${id_name}.jpg`;
+                    img_ejercio.src = `resources/img_ejercicios/${id_name}.webp`;
                 }
                
                 cont_ejercio.style.backgroundSize = "cover";  // Asegura que la imagen cubra el contenedor

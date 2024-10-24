@@ -15,7 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
         rel="stylesheet">
 </head>
-
+ 
 <body class="body">
     <main>
         <section id="ventana_prin">
@@ -37,36 +37,176 @@
                             <div class="dias">
                                 <h2><%-dia.dia%></h2>
                                 <div class="cont_text">
-                                    <div class="sub_text">
-                                        <% if(dia.ej_sup){ %>
-                                            <p>Parte superior:</p>
-                                            <h4> <%-dia.ej_sup%> ejercios</h4>
-                                            <% }%>
+                                    <% if(dia.ej_biceps){ %>
+                                        <div class="sub_text">
 
-                                    </div>
-                                    <div class="sub_text">
-                                        <% if(dia.ej_core){ %>
-                                            <p>core:</p>
-                                            <h4> <%-dia.ej_core%> ejercios</h4>
-                                            <% }%>
+                                            <p>Biceps:</p>
+                                            <h4> <%-dia.ej_biceps%> ejercios</h4>
 
-                                    </div>
-                                    <div class="sub_text">
-                                        <% if(dia.ej_inf){ %>
-                                            <p>Parte inferior:</p>
-                                            <h4> <%-dia.ej_inf%> ejercios</h4>
-                                            <% }%>
 
-                                    </div>
-                                    <div class="sub_text">
-                                        <% if(dia.cardio_num){ %>
-                                            <p>Cardio:</p>
-                                            <h4><%-dia.cardio_num%> min, con una intensidad <%-dia.tipo_cardio%> </h4>
-                                            <% }%>
+                                        </div>
+                                        <% }%>
+                                            <% if(dia.ej_triceps){ %>
+                                                <div class="sub_text">
 
-                                    </div>
+                                                    <p>Triceps:</p>
+                                                    <h4> <%-dia.ej_triceps%> ejercios</h4>
 
+
+                                                </div>
+                                                <% }%>
+                                                    <% if(dia.ej_espalda){ %>
+                                                        <div class="sub_text">
+
+                                                            <p>Espalda:</p>
+                                                            <h4> <%-dia.ej_espalda%> ejercios</h4>
+
+
+                                                        </div>
+                                                        <% }%>
+                                                            <% if(dia.ej_hombros){ %>
+                                                                <div class="sub_text">
+
+                                                                    <p>Hombros:</p>
+                                                                    <h4> <%-dia.ej_hombros%> ejercios</h4>
+
+
+                                                                </div>
+                                                                <% }%>
+                                                                    <% if(dia.ej_pecho){ %>
+                                                                        <div class="sub_text">
+
+                                                                            <p>Pecho:</p>
+                                                                            <h4> <%-dia.ej_pecho%> ejercios</h4>
+
+
+                                                                        </div>
+                                                                        <% }%>
+                                                                            <% if(dia.ej_trapecio){ %>
+                                                                                <div class="sub_text">
+
+                                                                                    <p>Trapecio:</p>
+                                                                                    <h4> <%-dia.ej_trapecio%> ejercios
+                                                                                    </h4>
+
+
+                                                                                </div>
+                                                                                <% }%>
+                                                                                    <% if(dia.ej_abdominales){ %>
+                                                                                        <div class="sub_text">
+
+                                                                                            <p>Abdominales:</p>
+                                                                                            <h4> <%-dia.ej_abdominales%>
+                                                                                                    ejercios</h4>
+
+
+                                                                                        </div>
+                                                                                        <% }%>
+                                                                                            <% if(dia.ej_isquiotibial){
+                                                                                                %>
+                                                                                                <div class="sub_text">
+
+                                                                                                    <p>Isquiotibial:</p>
+                                                                                                    <h4> <%-dia.ej_isquiotibial%>
+                                                                                                            ejercios
+                                                                                                    </h4>
+
+
+                                                                                                </div>
+                                                                                                <% }%>
+                                                                                                    <% if(dia.ej_cuadriceps){
+                                                                                                        %>
+                                                                                                        <div
+                                                                                                            class="sub_text">
+
+                                                                                                            <p>Cuadriceps:
+                                                                                                            </p>
+                                                                                                            <h4><%-dia.ej_cuadriceps%>
+                                                                                                                    ejercios
+                                                                                                            </h4>
+
+
+                                                                                                        </div>
+                                                                                                        <% }%>
+                                                                                                            <% if(dia.ej_gluteo){
+                                                                                                                %>
+                                                                                                                <div
+                                                                                                                    class="sub_text">
+
+                                                                                                                    <p>Gluteo:
+                                                                                                                    </p>
+                                                                                                                    <h4><%-dia.ej_gluteo%>
+                                                                                                                            ejercios
+                                                                                                                    </h4>
+
+
+                                                                                                                </div>
+                                                                                                                <% }%>
+                                                                                                                    <% if(dia.ej_gemelos){
+                                                                                                                        %>
+                                                                                                                        <div
+                                                                                                                            class="sub_text">
+
+                                                                                                                            <p>Gemelos:
+                                                                                                                            </p>
+                                                                                                                            <h4><%-dia.ej_gemelos%>
+                                                                                                                                    ejercios
+                                                                                                                            </h4>
+
+
+                                                                                                                        </div>
+                                                                                                                        <%
+                                                                                                                            }%>
+                                                                                                                            <% if(dia.ej_antebrazo){
+                                                                                                                                %>
+                                                                                                                                <div
+                                                                                                                                    class="sub_text">
+
+                                                                                                                                    <p>Antebrazo:
+                                                                                                                                    </p>
+                                                                                                                                    <h4><%-dia.ej_antebrazo%>
+                                                                                                                                            ejercios
+                                                                                                                                    </h4>
+
+
+                                                                                                                                </div>
+                                                                                                                                <%
+                                                                                                                                    }%>
+                                                                                                                                    <% if(dia.ej_abductores){
+                                                                                                                                        %>
+                                                                                                                                        <div
+                                                                                                                                            class="sub_text">
+
+                                                                                                                                            <p>Abductores:
+                                                                                                                                            </p>
+                                                                                                                                            <h4><%-dia.ej_abductores%>
+                                                                                                                                                    ejercios
+                                                                                                                                            </h4>
+
+
+                                                                                                                                        </div>
+                                                                                                                                        <%
+                                                                                                                                            }%>
+                                                                                                                                            <% if(dia.cardio_num){
+                                                                                                                                                %>
+                                                                                                                                                <div
+                                                                                                                                                    class="sub_text">
+
+                                                                                                                                                    <p>Cardio:
+                                                                                                                                                    </p>
+                                                                                                                                                    <h4><%-dia.cardio_num%>
+                                                                                                                                                            min,
+                                                                                                                                                            con
+                                                                                                                                                            una
+                                                                                                                                                            intensidad
+                                                                                                                                                            <%-dia.tipo_cardio%>
+                                                                                                                                                    </h4>
+
+                                                                                                                                                </div>
+                                                                                                                                                <%
+                                                                                                                                                    }%>
                                 </div>
+
 
 
                             </div>

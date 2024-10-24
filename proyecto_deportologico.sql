@@ -302,57 +302,43 @@ VALUES
 
 -- Crear la tabla 'rutina_dia'
 CREATE TABLE rutina_dia (
-    id_rutina_dia INT AUTO_INCREMENT PRIMARY KEY,
-    id_rutina_fo INT,
-    dia ENUM('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo') NOT NULL,
-    ej_sup INT NULL,
-    ej_core INT NULL,
-    ej_inf INT NULL,
-    cardio_num INT NULL,
-    tipo_cardio ENUM('ligero', 'moderado', 'intenso') NULL,
+    id_rutina_dia INT AUTO_INCREMENT PRIMARY KEY,--1
+    id_rutina_fo INT,--2
+    dia ENUM('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo') NOT NULL,--3
+    --
+    ej_biceps INT NULL,--4
+    ej_triceps INT NULL,--5
+    ej_espalda INT NULL,--6
+    ej_hombros INT NULL,--6
+    ej_pecho INT NULL,--7
+    ej_trapecio INT NULL,--8
+    ej_abdominales INT NULL,--9
+    ej_isquiotibial INT NULL,--10
+    ej_cuadriceps INT NULL,--11
+    ej_gluteo INT NULL,--12
+    ej_gemelos INT NULL,--13
+    ej_antebrazo INT NULL,--14
+    ej_abductores INT NULL,--15
+    cardio_num TIME NULL,--16
+    tipo_cardio ENUM('ligero', 'moderado', 'intenso') NULL,--17
     FOREIGN KEY (id_rutina_fo) REFERENCES rutinas(id_rutina)
 );
+INSERT INTO rutina_dia (id_rutina_fo, dia, cardio_num, tipo_cardio, ej_isquiotibiales, ej_cuadriceps, ej_gluteo, ej_gemelos, ej_abductores, ej_biceps, ej_triceps, ej_espalda, ej_hombros, ej_pecho, ej_trapecio, ej_antebrazo, ej_abdominales) 
+VALUES 
+(1, 'Lunes', '00:30:00', 'moderado', 2, 2, 1, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 'Miércoles', '00:30:00', 'ligero', NULL, NULL, NULL, NULL, NULL, 3, 2, 2, 2, 1, NULL, NULL, NULL),
+(1, 'Viernes', '00:15:00', 'intenso', NULL, NULL, NULL, NULL, NULL, 2, 2, 2, 2, NULL, 2, 2, 2),
 
--- Insertar datos en la tabla 'rutina_dia'
-INSERT INTO rutina_dia (id_rutina_fo, dia, ej_sup, ej_core, ej_inf, cardio_num, tipo_cardio)
-VALUES
-    -- Rutinas de desarrollo cardiovascular (baja, media, alta intensidad)
-    (1, 'Lunes', 2, 1, 3, 20, 'ligero'),  -- Cardiovascular baja
-    (1, 'Miércoles', NULL, 2, 4, 25, 'ligero'),
-    (1, 'Viernes', 2, 2, 2, 20, 'ligero'),
+(2, 'Lunes', '00:20:00', 'intenso', NULL, NULL, NULL, 2, 1, 3, 2, 2, 2, 1, NULL, NULL, NULL),
+(2, 'Martes', '00:35:00', 'moderado', 2, 3, 2, 2, 1, NULL, NULL, NULL, NULL, NULL, 2, 2, 2),
+(2, 'Jueves', '00:25:00', 'intenso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 2, 2, NULL, 1, 2),
+(2, 'Viernes', '00:35:00', 'moderado', 2, 3, 2, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 
-    (2, 'Lunes', 3, 2, 3, 20, 'moderado'),  -- Cardiovascular media
-    (2, 'Miércoles', NULL, 2, 4, 25, 'moderado'),
-    (2, 'Viernes', 3, 2, 3, 20, 'moderado'),
-    (2, 'Sábado', NULL, 3, NULL, 40, 'moderado'),
-
-    (3, 'Lunes', 3, 2, 4, 20, 'intenso'),  -- Cardiovascular alta
-    (3, 'Martes', NULL, 2, 4, 30, 'moderado'),
-    (3, 'Jueves', 4, 3, NULL, 25, 'moderado'),
-    (3, 'Viernes', 3, 2, 3, 20, 'moderado'),
-    (3, 'Sábado', NULL, 3, NULL, 60, 'intenso'),
-
-    -- Rutinas de ejercicios de fuerza (baja, media, alta intensidad)
-    (4, 'Lunes', 2, 1, 3, NULL, NULL),  -- Fuerza baja
-    (4, 'Miércoles', NULL, 2, 4, NULL, NULL),
-    (4, 'Viernes', 2, 2, 2, NULL, NULL),
-
-    (5, 'Lunes', 3, 2, 3, NULL, NULL),  -- Fuerza media
-    (5, 'Miércoles', NULL, 2, 4, NULL, NULL),
-    (5, 'Viernes', 3, 2, 3, NULL, NULL),
-    (5, 'Sábado', NULL, 3, NULL, NULL, NULL),
-
-    (6, 'Lunes', 3, 2, 4, NULL, NULL),  -- Fuerza alta
-    (6, 'Martes', NULL, 2, 4, NULL, NULL),
-    (6, 'Jueves', 4, 3, NULL, NULL, NULL),
-    (6, 'Viernes', 3, 2, 3, NULL, NULL),
-    (6, 'Sábado', NULL, 3, NULL, NULL, NULL);
-
-
-
-
-
---
+(3, 'Lunes', '00:25:00', 'intenso', 2, 3, 1, 1, 1, 3, 2, 2, 2, 2, 1, NULL, NULL),
+(3, 'Martes', '00:40:00', 'moderado', 2, 3, 2, 2, 1, NULL, NULL, NULL, NULL, NULL, 2, 2, 2),
+(3, 'Miércoles', '00:30:00', 'intenso', NULL, NULL, NULL, NULL, NULL, 3, 2, 2, 2, 1, 2, NULL, NULL),
+(3, 'Viernes', '00:30:00', 'intenso', 2, 3, 2, 2, 1, 2, 2, 2, 2, NULL, 2, 2, 2),
+(3, 'Sábado', '00:40:00', 'moderado', 2, 3, 2, 2, 1, NULL, NULL, NULL, NULL, NULL, 2, 2, 2);
 -- Volcado de datos para la tabla `usuario`
 --
 
