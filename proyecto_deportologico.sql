@@ -317,6 +317,11 @@ CREATE TABLE rutina_dia (
     tipo_cardio ENUM('ligero', 'moderado', 'intenso') NULL,
     FOREIGN KEY (id_rutina_fo) REFERENCES rutinas(id_rutina)
 );
+INSERT INTO rutina_dia (id_rutina_fo, dia, cardio_num, tipo_cardio, ej_isquiotibiales, ej_cuadriceps, ej_gluteo, ej_gemelos, ej_abductores, ej_biceps, ej_triceps, ej_espalda, ej_hombros, ej_pecho, ej_trapecio, ej_antebrazo, ej_abdominales) 
+VALUES 
+(1, 'Lunes', '00:30:00', 'moderado', 2, 2, 1, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 'Miércoles', '00:30:00', 'ligero', NULL, NULL, NULL, NULL, NULL, 3, 2, 2, 2, 1, NULL, NULL, NULL),
+(1, 'Viernes', '00:15:00', 'intenso', NULL, NULL, NULL, NULL, NULL, 2, 2, 2, 2, NULL, 2, 2, 2),
 
 -- Insertar datos en la tabla 'rutina_dia'
 INSERT INTO rutina_dia (id_rutina_fo, dia, ej_pecho, ej_biceps, ej_triceps, ej_hombros, ej_cuadriceps, ej_abdominales, ej_femorales, ej_gemelos, ej_espada, cardio_num, tipo_cardio)

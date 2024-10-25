@@ -40,18 +40,24 @@
                         <% let i=0; %>
                             <% results.forEach(rutina=> { %>
                                 <div class="rutina_item" data-id="<%- rutina.id_rutina %>">
-                                    <% if( rutina.intensidad == "baja" ){ %>
-                                        <h5 class="baja"><%- rutina.intensidad %></h5>
-                                    <% } else if( rutina.intensidad == "media" ){ %>
-                                        <h5 class="media"><%- rutina.intensidad %></h5>
-                                    <% } else { %>
-                                        <h5 class="alta"><%- rutina.intensidad %></h5>
-                                    <% } %>
-                                    
-                                    <h3><%- rutina.nombre_rutina %></h3>
-                                    <h4> Frecuencia (<%- rutina.frecuencia %> dias de la semana)</h4>
-                                    <p>Objetivo: <%- rutina.objetivo %></p>
-                                    <a href="/rutina_focus/<%- rutina.id_rutina %>">Ver Más </a>
+                                    <% if( rutina.intensidad=="baja" ){ %>
+                                        <div class="cont_int">
+                                            <h5 class="baja"><%- rutina.intensidad %></h5>
+                                        </div>
+                                        <% } else if( rutina.intensidad=="media" ){ %>
+                                            <div class="cont_int">
+                                                <h5 class="media"><%- rutina.intensidad %></h5>
+                                            </div>
+                                            <% } else { %>
+                                                <div class="cont_int">
+                                                    <h5 class="alta"><%- rutina.intensidad %></h5>
+                                                </div>
+                                                <% } %>
+
+                                                    <h3><%- rutina.nombre_rutina %></h3>
+                                                    <h4> Frecuencia (<%- rutina.frecuencia %> dias de la semana)</h4>
+                                                    <p>Objetivo: <%- rutina.objetivo %></p>
+                                                    <a href="/rutina_focus/<%- rutina.id_rutina %>">Ver Más </a>
                                 </div>
                                 <% i +=1; %>
                                     <% }) %>
@@ -70,13 +76,13 @@
             const recomendaciones = $('.cont_recomendaciones');
 
             // Crear un div con título y texto
-            function crearRutina(titulo, descripcion,id) {
+            function crearRutina(titulo, descripcion, id) {
                 const text_main = $('<h2>Rutina Recomendada</h2>');
                 const divRutina = $('<div></div>').addClass('rutina_item');
                 const h3 = $('<h3></h3>').text(titulo);
-                const link = $('<a></a>').attr('href', '/rutina_focus/'+id).text("Ver Más");
+                const link = $('<a></a>').attr('href', '/rutina_focus/' + id).text("Ver Más");
                 const p = $('<p></p>').text(descripcion);
-                divRutina.append(h3, p,link);
+                divRutina.append(h3, p, link);
                 recomendaciones.append(text_main, divRutina);
             }
 
@@ -87,27 +93,27 @@
             if (deporte == "Fuerza") {
                 if (intensidad === 'ligera') {
                     if (frecuencia_normalizada === "3/7" || frecuencia_normalizada === "4/7") {
-                        crearRutina('Rutina de Fuerza Ligera (3-4 días por semana)', 'Objetivo: tonificar y mantener un estado físico saludable.',4);
+                        crearRutina('Rutina de Fuerza Ligera (3-4 días por semana)', 'Objetivo: tonificar y mantener un estado físico saludable.', 4);
                     } else if (frecuencia_normalizada === "5/7" || frecuencia_normalizada === "6/7") {
-                        crearRutina('Rutina de Fuerza Moderada (4-5 días por semana)', 'Objetivo: ganar fuerza y tonificar.',5);
+                        crearRutina('Rutina de Fuerza Moderada (4-5 días por semana)', 'Objetivo: ganar fuerza y tonificar.', 5);
                     }
                 } else if (intensidad === 'Moderada') {
                     if (frecuencia_normalizada === "3/7") {
-                        crearRutina('Rutina de Fuerza Moderada (3 días por semana)', 'Objetivo: aumentar la fuerza y resistencia muscular.',5);
+                        crearRutina('Rutina de Fuerza Moderada (3 días por semana)', 'Objetivo: aumentar la fuerza y resistencia muscular.', 5);
                     } else if (frecuencia_normalizada === "4/7" || frecuencia_normalizada === "5/7") {
-                        crearRutina('Rutina de Fuerza Avanzada (4-5 días por semana)', 'Objetivo: mejorar la resistencia cardiovascular y muscular.',5);
+                        crearRutina('Rutina de Fuerza Avanzada (4-5 días por semana)', 'Objetivo: mejorar la resistencia cardiovascular y muscular.', 5);
                     } else if (frecuencia_normalizada === "6/7") {
-                        crearRutina('Rutina de Fuerza Intensa (5-6 días por semana)', 'Objetivo: ganar masa muscular y mejorar la resistencia.',6);
+                        crearRutina('Rutina de Fuerza Intensa (5-6 días por semana)', 'Objetivo: ganar masa muscular y mejorar la resistencia.', 6);
                     }
                 } else if (intensidad === 'Alta') {
                     if (frecuencia_normalizada === "3/7") {
-                        crearRutina('Rutina de Fuerza Alta (3 días por semana)', 'Objetivo: aumentar la resistencia y fuerza muscular.',5);
+                        crearRutina('Rutina de Fuerza Alta (3 días por semana)', 'Objetivo: aumentar la resistencia y fuerza muscular.', 5);
                     } else if (frecuencia_normalizada === "4/7") {
-                        crearRutina('Rutina de Fuerza Muy Alta (4 días por semana)', 'Objetivo: mejorar la resistencia cardiovascular y aumentar la masa muscular.',5);
+                        crearRutina('Rutina de Fuerza Muy Alta (4 días por semana)', 'Objetivo: mejorar la resistencia cardiovascular y aumentar la masa muscular.', 5);
                     } else if (frecuencia_normalizada === "5/7") {
-                        crearRutina('Rutina de Fuerza Intensiva (5 días por semana)', 'Objetivo: mejorar la capacidad física de manera avanzada.',6);
+                        crearRutina('Rutina de Fuerza Intensiva (5 días por semana)', 'Objetivo: mejorar la capacidad física de manera avanzada.', 6);
                     } else if (frecuencia_normalizada === "6/7") {
-                        crearRutina('Rutina de Fuerza Extrema (6 días por semana)', 'Objetivo: ganar masa muscular y mejorar la capacidad aeróbica.',6);
+                        crearRutina('Rutina de Fuerza Extrema (6 días por semana)', 'Objetivo: ganar masa muscular y mejorar la capacidad aeróbica.', 6);
                     }
                 }
 
@@ -117,25 +123,25 @@
                 // Rutinas cardiovasculares
                 if (intensidad === 'ligera') {
                     if (frecuencia_normalizada === "3/7") {
-                        crearRutina('Rutina Cardiovascular Ligera (3 días por semana)', 'Objetivo: mejorar la salud cardiovascular y la resistencia general.',1);
+                        crearRutina('Rutina Cardiovascular Ligera (3 días por semana)', 'Objetivo: mejorar la salud cardiovascular y la resistencia general.', 1);
                     } else if (frecuencia_normalizada === "4/7") {
-                        crearRutina('Rutina Cardiovascular Moderada (4 días por semana)', 'Objetivo: mantener un estado físico saludable.',2);
+                        crearRutina('Rutina Cardiovascular Moderada (4 días por semana)', 'Objetivo: mantener un estado físico saludable.', 2);
                     }
                 } else if (intensidad === 'Moderada') {
                     if (frecuencia_normalizada === "3/7") {
-                        crearRutina('Rutina Cardiovascular Moderada (3 días por semana)', 'Objetivo: aumentar la resistencia cardiovascular.',2);
+                        crearRutina('Rutina Cardiovascular Moderada (3 días por semana)', 'Objetivo: aumentar la resistencia cardiovascular.', 2);
                     } else if (frecuencia_normalizada === "4/7" || frecuencia_normalizada === "5/7") {
-                        crearRutina('Rutina Cardiovascular Intensa (4-5 días por semana)', 'Objetivo: mejorar la capacidad aeróbica y la resistencia general.',2);
+                        crearRutina('Rutina Cardiovascular Intensa (4-5 días por semana)', 'Objetivo: mejorar la capacidad aeróbica y la resistencia general.', 2);
                     } else if (frecuencia_normalizada === "6/7") {
-                        crearRutina('Rutina Cardiovascular Alta (5-6 días por semana)', 'Objetivo: optimizar la salud cardiovascular y resistencia.',2);
+                        crearRutina('Rutina Cardiovascular Alta (5-6 días por semana)', 'Objetivo: optimizar la salud cardiovascular y resistencia.', 2);
                     }
                 } else if (intensidad === 'Alta') {
                     if (frecuencia_normalizada === "4/7") {
-                        crearRutina('Rutina Cardiovascular Muy Alta (4 días por semana)', 'Objetivo: maximizar la resistencia y capacidad cardiovascular.',3);
+                        crearRutina('Rutina Cardiovascular Muy Alta (4 días por semana)', 'Objetivo: maximizar la resistencia y capacidad cardiovascular.', 3);
                     } else if (frecuencia_normalizada === "5/7") {
-                        crearRutina('Rutina Cardiovascular Extrema (5 días por semana)', 'Objetivo: alcanzar un alto nivel de condición física cardiovascular.',3);
+                        crearRutina('Rutina Cardiovascular Extrema (5 días por semana)', 'Objetivo: alcanzar un alto nivel de condición física cardiovascular.', 3);
                     } else if (frecuencia_normalizada === "6/7") {
-                        crearRutina('Rutina Cardiovascular Intensiva (6 días por semana)', 'Objetivo: ganar resistencia aeróbica y mejorar la salud en general.',3);
+                        crearRutina('Rutina Cardiovascular Intensiva (6 días por semana)', 'Objetivo: ganar resistencia aeróbica y mejorar la salud en general.', 3);
                     }
                 }
             }

@@ -95,36 +95,27 @@
   height: 100px;
   border-radius: 10px;
 }
-.rutina_item .baja {
-  width: 60px;
-  position: relative;
-  left: 87%;
+.rutina_item .cont_int {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.rutina_item .cont_int h5 {
   text-align: center;
-  top: 0%;
   padding: 8px;
+  width: 30%;
   border-radius: 20px;
+}
+.rutina_item .cont_int .baja {
   background-color: #bbf7d1;
   color: #2c7447;
 }
-.rutina_item .media {
-  position: relative;
-  left: 87%;
-  width: 60px;
-  text-align: center;
-  top: 0%;
-  padding: 5px;
-  border-radius: 20px;
+.rutina_item .cont_int .media {
   background-color: rgb(254, 241, 139);
   color: #b2923e;
 }
-.rutina_item .alta {
-  position: relative;
-  left: 87%;
-  width: 60px;
-  text-align: center;
-  top: 0%;
-  padding: 5px;
-  border-radius: 20px;
+.rutina_item .cont_int .alta {
   background-color: #fecaca;
   color: #a45151;
 }
@@ -161,7 +152,8 @@
   align-items: flex-start;
   gap: 20px;
   width: 20%;
-  height: 30vh;
+  min-height: 30vh;
+  height: auto;
 }
 #cont_rutina_focus .dias h2 {
   font-size: 1.4em;
