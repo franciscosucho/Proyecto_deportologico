@@ -677,7 +677,7 @@ app.post('/enviar', (req, res) => {
                 // Inserción en la tabla `nutricionalusuario`
                 const query_nutri = `
                     INSERT INTO nutricionalusuario (DNI_nut, intolerancia, ObjetivoNutricion, TipoAlimentacion)
-                    VALUES (?, ?, ?, ?)
+                    VALUES (?, ?, ?, ?) 
                 `;
                 connection.query(query_nutri, [dni, intolerancia, objetivo_nutricional, dieta], (err) => {
                     if (err) {
@@ -695,6 +695,7 @@ app.post('/enviar', (req, res) => {
                             console.error('Error al insertar en deportivousuario:', err);
                             return res.render('login.ejs', { error: 'Error al registrar los datos deportivos' });
                         }
+                        
 
                         // Inserción en la tabla `racha`
                         const fechaActual = obtenerFechaActual()

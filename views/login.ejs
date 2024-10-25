@@ -105,7 +105,10 @@
           </div>
           <div class="cont_inputs">
             <label for="foto_perfil">Foto de perfil</label>
-            <input id="foto_perfil" name="foto_perfil" type="file" placeholder="Eliga un archvio">
+            <div id="cont_inp_foto">
+              <input id="foto_perfil" name="foto_perfil" type="file" placeholder="Eliga un archvio">
+            </div>
+           
           </div>
           <div class="cont_btn">
             <button class="btn_enviar_sesion" type="button">Siguiente</button>
@@ -177,14 +180,13 @@
               <option value="4/7">4/7</option>
               <option value="5/7">5/7</option>
               <option value="6/7">6/7</option>
-              <option value="7/7">7/7</option>
             </select>
           </div>
           <div class="cont_inputs">
             <label for="intensidad">Intensidad</label>
             <select id="intensidad" name="intensidad" required>
-              <option value="Baja">Baja</option>
-              <option value="Media">Media</option>
+              <option value="Ligera">Ligera</option>
+              <option value="Moderada">Moderada</option>
               <option value="Alta">Alta</option>
             </select>
           </div>

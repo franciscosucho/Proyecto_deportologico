@@ -51,7 +51,7 @@ $color-primario: #64E788; // verde
 body {
     width: 100vw;
     overflow-x: hidden;
-
+   
     #error_ini {
         color: rgb(185, 20, 20);
         font-size: 1.3em;
@@ -66,7 +66,7 @@ body {
         flex-direction: column;
         width: 100%;
         height: auto;
-        background-color: rgb(37, 35, 35);
+        background-color: transparent;
 
         #registro {
             min-height: 100vh !important;
@@ -153,6 +153,29 @@ body {
                     width: 100%;
                     gap: 5px;
 
+                    #cont_inp_foto {
+                        display: flex !important;
+                        justify-content: flex-start !important;
+                        align-items: center !important;
+                        width: 60%;
+                        border-radius: 20px;
+                        background-color: white;
+                        height: 7vh;
+                        padding: 10px;
+                        border: none;
+                        outline: none;
+                        box-shadow: none;
+                        font-size: 1.1em;
+                        color: #121212 !important;
+                        background-color: white;
+
+                        #foto_perfil {
+
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+
                     label {
                         width: 60%;
                         text-align: start;
@@ -165,7 +188,7 @@ body {
                         width: 60%;
                         border-radius: 20px;
                         background-color: white;
-                        height: 8vh;
+                        height: 7vh;
                         padding: 10px;
                         border: none;
                         outline: none;
@@ -180,7 +203,7 @@ body {
                     border-radius: 30px;
                     width: auto;
                     min-width: 50%;
-                    height: 50px;
+                    height: 50px !important;
                     background-color: $color-primario;
                     font-size: 1.1em;
                     font-weight: bolder;
@@ -220,7 +243,7 @@ body {
                         align-items: center;
                         flex-direction: column;
                         gap: 20px;
-                        
+
                         .cont_btn {
                             height: 40px;
                             width: 50%;
@@ -229,11 +252,11 @@ body {
                             align-items: center;
                             flex-direction: row-reverse;
                             gap: 20px;
-                            
+
                             button {
                                 height: 100%;
                                 width: 50%;
-                                
+
                             }
 
                         }
@@ -298,12 +321,12 @@ body {
                             -webkit-box-shadow: 10px 10px 12px -4px $color_sombra;
                             -moz-box-shadow: 10px 10px 12px -4px $color_sombra;
                             box-shadow: 10px 10px 12px -4px $color_sombra;
-                            
-                            background-image: 
-                            linear-gradient(to right, rgba(47, 255, 5, 0.096) 1px, transparent 1px),
-                            linear-gradient(to bottom, rgba(47, 255, 5, 0.096)1px, transparent 1px);
-                        background-size: 14px 24px, 14px 24px; // Tamaño para los gradientes
-                    
+
+                            background-image:
+                                linear-gradient(to right, rgba(47, 255, 5, 0.096) 1px, transparent 1px),
+                                linear-gradient(to bottom, rgba(47, 255, 5, 0.096)1px, transparent 1px);
+                            background-size: 14px 24px, 14px 24px; // Tamaño para los gradientes
+
                             .author {
 
                                 color: rgb(243, 243, 243);
@@ -357,11 +380,12 @@ body {
                         height: 75%;
                         width: 80%;
                         list-style: none;
+
                         a {
                             width: 100%;
                             height: 10%;
                             text-decoration: none;
-                            
+
                             .item {
                                 display: flex;
                                 justify-content: flex-start;
@@ -399,14 +423,11 @@ body {
             }
 
             #cont_main {
-                display: flex;
-                justify-content: flex-start;
-                align-items: flex-start;
-                flex-direction: column;
-
-                h4{
+                
+                h4 {
                     color: rgb(190, 190, 190);
                 }
+
                 #cont_user {
                     position: absolute;
                     left: 90%;
@@ -435,7 +456,7 @@ body {
                     align-items: center;
                     width: 100%;
                     height: 100%;
-
+                    
                     #sec_prin {
                         display: flex;
                         justify-content: flex-start;
@@ -533,13 +554,13 @@ body {
 
 @media (max-width: 1360px) {
     #menu_lateral {
-        width: 200px!important;
-
-        #cont_fixed {   
+        width: 200px !important;
         
+        #cont_fixed {
             width: 200px !important;
         }
     }
+
     .item {
         padding-left: 0px !important;
         display: flex;
@@ -552,3 +573,22 @@ body {
 
 }
 
+@media (max-width: 1000px) {
+    body main #ventana_prin #cont_main #cont_secciones {
+        flex-direction: column !important;
+        #sec_prin{
+            width: 80vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #sec_secu{
+            margin-top: 5%;
+            width: 80vw;
+            flex-direction: row;
+            .btn_sec{
+                font-size: 1.6em;
+            }
+        }
+    }
+}

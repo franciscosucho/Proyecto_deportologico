@@ -59,7 +59,7 @@ body main {
   flex-direction: column;
   width: 100%;
   height: auto;
-  background-color: rgb(37, 35, 35);
+  background-color: transparent;
 }
 body main #registro {
   min-height: 100vh !important;
@@ -134,6 +134,26 @@ body main #registro form .cont_inputs {
   width: 100%;
   gap: 5px;
 }
+body main #registro form .cont_inputs #cont_inp_foto {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  width: 60%;
+  border-radius: 20px;
+  background-color: white;
+  height: 7vh;
+  padding: 10px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 1.1em;
+  color: #121212 !important;
+  background-color: white;
+}
+body main #registro form .cont_inputs #cont_inp_foto #foto_perfil {
+  height: 100%;
+  width: 100%;
+}
 body main #registro form .cont_inputs label {
   width: 60%;
   text-align: start;
@@ -144,7 +164,7 @@ body main #registro form .cont_inputs input {
   width: 60%;
   border-radius: 20px;
   background-color: white;
-  height: 8vh;
+  height: 7vh;
   padding: 10px;
   border: none;
   outline: none;
@@ -156,7 +176,7 @@ body main #registro form button {
   border-radius: 30px;
   width: auto;
   min-width: 50%;
-  height: 50px;
+  height: 50px !important;
   background-color: #64E788;
   font-size: 1.1em;
   font-weight: bolder;
@@ -333,12 +353,6 @@ body main #ventana_prin #menu_lateral #cont_fixed #cont_item a .item:hover {
   background-color: #419663;
   transform: scale(1.05);
 }
-body main #ventana_prin #cont_main {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-}
 body main #ventana_prin #cont_main h4 {
   color: rgb(190, 190, 190);
 }
@@ -461,5 +475,24 @@ body main .desac {
     align-items: center !important;
     flex-direction: column;
     text-align: center;
+  }
+}
+@media (max-width: 1000px) {
+  body main #ventana_prin #cont_main #cont_secciones {
+    flex-direction: column !important;
+  }
+  body main #ventana_prin #cont_main #cont_secciones #sec_prin {
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  body main #ventana_prin #cont_main #cont_secciones #sec_secu {
+    margin-top: 5%;
+    width: 80vw;
+    flex-direction: row;
+  }
+  body main #ventana_prin #cont_main #cont_secciones #sec_secu .btn_sec {
+    font-size: 1.6em;
   }
 }/*# sourceMappingURL=estilo.css.map */
