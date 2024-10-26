@@ -478,6 +478,29 @@ body main .desac {
     text-align: center;
   }
 }
+@media (max-width: 550px) {
+  #menu_lateral {
+    width: 100px !important;
+  }
+  #menu_lateral #cont_fixed {
+    width: 100px !important;
+  }
+  #menu_lateral #cont_fixed img {
+    display: none;
+  }
+  #menu_lateral #cont_fixed a .item span {
+    display: none;
+  }
+  .item {
+    padding-left: 0px !important;
+    display: flex;
+    gap: 3px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column;
+    text-align: center;
+  }
+}
 @media (max-width: 1000px) {
   body main #ventana_prin #cont_main #cont_secciones {
     flex-direction: column !important;

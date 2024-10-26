@@ -10,7 +10,8 @@ $color-primario: #64E788; // verde
         font-size: 2em;
         color: white;
         transition: all .2s ease-in-out;
-        &:hover{
+
+        &:hover {
             color: #46a55f;
         }
     }
@@ -145,14 +146,15 @@ main {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        gap: 40px;
+        width: 100%;
 
         &.cont_ver {
             flex-direction: row;
         }
 
-        flex-direction: column;
-        gap: 40px;
-        width: 100%;
+
 
         &.cont_prog_ver {
             display: flex;
@@ -160,9 +162,9 @@ main {
             justify-content: flex-start;
             align-items: flex-start;
         }
- 
+
         .datos_user {
-            width: 52%;
+            width: 55%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -188,6 +190,7 @@ main {
                 display: flex;
                 gap: 25px;
                 width: auto;
+
                 .cont_a {
                     display: flex;
                     justify-content: center;
@@ -413,4 +416,66 @@ main {
     h3 {
         color: white;
     }
+}
+
+@media (max-width: 1200px) {
+    #main_recetas {
+        #cont_prog {
+            .datos_user {
+                width: 80%;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 700px) {
+    #main_recetas {
+        #cont_prog {
+            .datos_user {
+                flex-direction: column;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 1250px) {
+    #Actualizar_datos {
+        .form_us {
+            width: 80% !important;
+            height: 80% !important;
+        }
+    }
+
+}
+
+@media (max-width: 860px) {
+    #cont_registrar {
+        width: 90%;
+
+        #datos_personales {
+            width: 100%;
+
+            .cont_inputs {
+
+                label,
+                input,
+                select {
+                    width: 80%;
+                }
+
+
+            }
+
+            .cont_btn {
+                width: 80%;
+
+                button {
+                    width: 80%;
+                }
+            }
+        }
+    }
+
 }

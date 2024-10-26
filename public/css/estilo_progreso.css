@@ -137,7 +137,7 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
   align-items: flex-start;
 }
 .cont_prog_main #cont_prog .datos_user {
-  width: 52%;
+  width: 55%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -344,4 +344,40 @@ main #Actualizar_datos .form_us .cont_btn button:hover {
 }
 #cont_chart h3 {
   color: white;
+}
+
+@media (max-width: 1200px) {
+  #main_recetas #cont_prog .datos_user {
+    width: 80%;
+  }
+}
+@media (max-width: 700px) {
+  #main_recetas #cont_prog .datos_user {
+    flex-direction: column;
+  }
+}
+@media (max-width: 1250px) {
+  #Actualizar_datos .form_us {
+    width: 80% !important;
+    height: 80% !important;
+  }
+}
+@media (max-width: 860px) {
+  #cont_registrar {
+    width: 90%;
+  }
+  #cont_registrar #datos_personales {
+    width: 100%;
+  }
+  #cont_registrar #datos_personales .cont_inputs label,
+  #cont_registrar #datos_personales .cont_inputs input,
+  #cont_registrar #datos_personales .cont_inputs select {
+    width: 80%;
+  }
+  #cont_registrar #datos_personales .cont_btn {
+    width: 80%;
+  }
+  #cont_registrar #datos_personales .cont_btn button {
+    width: 80%;
+  }
 }/*# sourceMappingURL=estilo_progreso.css.map */

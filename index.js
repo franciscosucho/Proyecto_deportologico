@@ -533,7 +533,7 @@ app.get('/rutina_focus/:id_rut', (req, res) => {
             console.error('Error al insertar en usuario:', err);
             return res.render('progreso_agregar.ejs', { error: 'Error al registrar el usuario' });
         }
-        const query_rut_focus = 'SELECT `id_rutina_dia`, `id_rutina_fo`, `dia`, `ej_sup`, `ej_core`, `ej_inf`, `cardio_num`, `tipo_cardio` FROM `rutina_dia` WHERE id_rutina_fo=?'
+        const query_rut_focus = 'SELECT * FROM `rutina_dia` WHERE id_rutina_fo=?'
         connection.query(query_rut_focus, [id_rutina], (err, results_focus) => {
             if (err) {
                 console.error('Error al insertar en usuario:', err);

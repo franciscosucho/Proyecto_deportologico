@@ -12,7 +12,9 @@
   color: #fff;
 
 }
-
+.cont_rutinas_main{
+  width: 100% !important;
+}
 #cont_rutinas {
   display: flex;
   flex-direction: column;
@@ -69,7 +71,15 @@
   }
 }
 
-
+.text_prin{
+  width: 90%;
+  
+  h5{
+    color: rgb(204, 204, 204);
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+}
 .cont_recomendaciones {
   display: flex;
   justify-content: flex-start;
@@ -113,7 +123,7 @@
 
   .cont_int {
     width: 100%;
-    display: flex; 
+    display: flex;
     justify-content: flex-end;
     align-items: center;
 
@@ -144,32 +154,55 @@
 }
 
 /* Responsivo: 2 columnas para pantallas medianas */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .rutinas_lista {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Responsivo: 1 columna para pantallas pequeñas */
-@media (max-width: 480px) {
+@media (max-width: 820px  ) {
+  #cont_rutinas{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+   
+    .cont_recomendaciones{
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      h2{
+        text-align: center;
+      }
+      padding: 20px;
+    }
+  }
   .rutinas_lista {
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
     grid-template-columns: 1fr;
+    
   }
 
 }
 
 
 #cont_rutina_focus {
-  display: flex;
+  
   width: 100%;
-
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
+ 
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  
+  align-items: flex-start; /* Centra verticalmente */
+  justify-items: center; /* Alinea al inicio horizontalmente */
+  min-height: 100vh;
   height: auto;
-  gap: 40px;
-
+  gap: 30px;
+  
   .dias {
+    position: relative;
     padding: 20px;
     border-radius: 20px;
     border: 1px solid rgba(128, 128, 128, 0.247);
@@ -179,10 +212,9 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 20px;
-    width: 20%;
-    min-height: 30vh;
+    width: 90%;
     height: auto;
-
+    min-height: 90%;
     h2 {
       font-size: 1.4em;
       color: #4db669;
@@ -191,7 +223,7 @@
     }
 
     .cont_text {
-      height: 100%;
+      height:20vh;
       width: 100%;
       display: flex;
       justify-content: flex-start;
@@ -201,16 +233,63 @@
 
       .sub_text {
         display: flex;
+        flex-direction: column;
         gap: 5px;
       }
     }
-
+    a{
+      top: 85%;
+      left: 1%;
+      width: 90%;
+      margin: 10px;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      background-color: #33333354;
+      position: absolute;
+      text-decoration: none;
+      color: white;
+     
+   
+    }
   }
 }
-
-
-
-
+@media (max-width: 1250px) {
+  #cont_rutina_focus{
+    grid-template-columns: repeat(3, 1fr) !important;
+    .dias{
+      height: 100%;
+    }
+  }
+   
+  
+}
+@media (max-width: 870px  ) {
+  #cont_rutina_focus{
+    grid-template-columns: repeat(2, 1fr) !important;
+    .dias{
+      height: 53vh;
+    }
+  }
+   
+  
+}
+@media (max-width: 725px  ) {
+  #cont_rutina_focus{
+    grid-template-columns: repeat(1, 1fr) !important;
+    .dias{
+      width: 80%;
+      height: 53vh;
+       .cont_text {
+        .sub_text{
+          flex-direction: row;
+        }
+       }
+    }
+  }
+   
+  
+}
 
 
 
@@ -310,7 +389,7 @@
 
 #cont_ejercio_focus {
 
-  width: 60%;
+  width: 60%; 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: flex-start !important;
@@ -401,5 +480,19 @@
 @media (max-width: 768px) {
   .cont_ejercio_focus {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1000px) {
+  .cont_ejercio_main {
+
+    #cont_prog {
+    
+      display: flex;
+      flex-direction: column !important;
+      a{
+        width: 45vw;
+      }
+    }
   }
 }

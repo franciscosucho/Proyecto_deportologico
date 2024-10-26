@@ -15,7 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
         rel="stylesheet">
 </head>
- 
+
 <body class="body">
     <main>
         <section id="ventana_prin">
@@ -30,7 +30,12 @@
                     </a>
                     <h2 id="nombre_us"><%-results[0].nombre_rutina %></h2>
                 </div>
+                <div class="text_prin">
+                    <h5>Para cada ejercio se recoemida que realice entre 3 o 4 series, con un peso que te permita
+                        entrenar en un rango de repeticiones de 8 a 12. </h5>
+                </div>
                 <section id="cont_rutina_focus">
+                    
                     <% let i=0; %>
 
                         <% results_focus.forEach(dia=> { %>
@@ -196,19 +201,17 @@
                                                                                                                                                     </p>
                                                                                                                                                     <h4><%-dia.cardio_num%>
                                                                                                                                                             min,
-                                                                                                                                                            con
-                                                                                                                                                            una
-                                                                                                                                                            intensidad
+                                                                                                                                                            intensidad:
                                                                                                                                                             <%-dia.tipo_cardio%>
                                                                                                                                                     </h4>
 
                                                                                                                                                 </div>
+
                                                                                                                                                 <%
                                                                                                                                                     }%>
+
                                 </div>
-
-
-
+                                <a href="/lista_ejercios">Ver lista de ejercios</a>
                             </div>
                             <% i +=1; %>
                                 <% }) %>

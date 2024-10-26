@@ -276,11 +276,16 @@ body {
   font-size: 1.37rem;
 }
 #cont_text_main{
-  align-items: flex-start;
   display: flex;
-  justify-content: space-between;
+  align-items: center !important;
+ 
+  justify-content: center !important;
+  
 }
-
+#cont_text_main h2{
+  width: 50%;
+  height: auto;
+}
 #habit_tracker #item_list {
   width: 100%;
   height: auto;

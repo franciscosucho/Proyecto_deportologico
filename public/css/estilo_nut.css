@@ -21,6 +21,7 @@
   text-align: center;
   width: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  height: 25vh;
 }
 #cont_sub .card .info {
   color: gainsboro;
@@ -175,4 +176,31 @@
   padding: 10px;
   border-top: 1px solid gainsboro;
   width: 100%;
+}
+
+@media (max-width: 1100px) {
+  #cont_nut {
+    flex-direction: column !important;
+    gap: 40px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  #cont_nut #cont_main {
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+  }
+  #cont_nut #cont_main #macros {
+    width: 80%;
+  }
+  #cont_nut #cont_sub {
+    width: 90%;
+    flex-direction: row !important;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  #cont_nut #cont_sub .card {
+    height: 35vh;
+  }
 }/*# sourceMappingURL=estilo_nut.css.map */
