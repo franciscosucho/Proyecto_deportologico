@@ -314,44 +314,44 @@ CREATE TABLE rutina_dia (
     ej_femorales INT NULL,
     ej_gemelos INT NULL,
     ej_espada INT NULL,
+    ej_abductores INT NULL,
     cardio_num int NULL,
     tipo_cardio ENUM('ligero', 'moderado', 'intenso') NULL,
     FOREIGN KEY (id_rutina_fo) REFERENCES rutinas(id_rutina)
 );
 
-
-INSERT INTO rutina_dia (id_rutina_fo, dia, ej_pecho, ej_biceps, ej_triceps, ej_hombros, ej_cuadriceps, ej_abdominales, ej_femorales, ej_gemelos, ej_espada, cardio_num, tipo_cardio,ej_gluteos)
+INSERT INTO rutina_dia (id_rutina_fo, dia, ej_pecho, ej_biceps, ej_triceps, ej_hombros, ej_cuadriceps, ej_abdominales, ej_femorales, ej_gemelos, ej_espada, cardio_num, tipo_cardio, ej_gluteos, ej_abductores)
 VALUES
 -- Rutina Cardiovascular - Nivel Bajo (3 días)
-    (1, 'Lunes', NULL, NULL, NULL, NULL, 2, NULL, 2, 1, NULL, 30, 'moderado',2),  -- Isquiotibiales, cuadriceps, gluteos, gemelos, abductores
-    (1, 'Miércoles', 3, NULL, 2, 2, NULL, NULL, NULL, NULL, NULL, 30, 'ligero',NULL),  -- Pecho, triceps, hombro, trapecio
-    (1, 'Viernes', NULL, 3, 2, NULL, NULL, 2, NULL, NULL, NULL, 15, 'intenso',NULL),  -- Espalda, biceps, antebrazo, abdominales
+    (1, 'Lunes', NULL, NULL, NULL, NULL, 2, NULL, 3, 1, NULL, 30, 'moderado', 2, 2),  -- Cuadriceps, glúteos, gemelos, abductores
+    (1, 'Miércoles', 3, NULL, 2, 2, NULL, NULL, NULL, NULL, NULL, 30, 'ligero', NULL, NULL),  -- Pecho, triceps, hombro, trapecio
+    (1, 'Viernes', NULL, 3, NULL, NULL, NULL, 2, NULL, NULL, NULL, 15, 'intenso', NULL, NULL),  -- Espalda, biceps, antebrazo, abdominales
 -- Rutina Cardiovascular - Nivel Medio (4 días)
-    (2, 'Lunes', 3, NULL, 2, NULL, NULL, NULL, NULL, 2, NULL, 20, 'intenso',NULL),  -- Pecho, triceps, gemelos
-    (2, 'Martes', NULL, 3, NULL, NULL, 2, NULL, 2, NULL, NULL, 35, 'moderado',NULL),  -- Espalda, biceps, antebrazo
-    (2, 'Jueves', NULL, NULL, NULL, 2, NULL, NULL, NULL, 1, NULL, 25, 'intenso',NULL),  -- Hombro, trapecio, abdominales
-    (2, 'Viernes', NULL, NULL, NULL, NULL, 2, 3, NULL, 1, NULL, 35, 'moderado',2),  -- Isquiotibiales, cuadriceps, abductores
+    (2, 'Lunes', 3, NULL, 2, NULL, NULL, NULL, NULL, 2, NULL, 20, 'intenso', NULL, NULL),  -- Pecho, triceps, gemelos
+    (2, 'Martes', NULL, 3, NULL, NULL, NULL, NULL, 2, NULL, NULL, 35, 'moderado', NULL, NULL),  -- Espalda, biceps, antebrazo
+    (2, 'Jueves', NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, 25, 'intenso', NULL, NULL),  -- Hombro, trapecio, abdominales
+    (2, 'Viernes', NULL, NULL, NULL, NULL, 3, NULL, NULL, 1, NULL, 35, 'moderado', 2, NULL),  -- Cuadriceps, abductores, isquiotibiales
 -- Rutina Cardiovascular - Nivel Alto (5 días)
-    (3, 'Lunes', 3, NULL, 2, 2, NULL, NULL, NULL, 1, NULL, 25, 'intenso',NULL),  -- Pecho, triceps, hombro, trapecio
-    (3, 'Martes', NULL, NULL, NULL, NULL, 2, 3, NULL, 2, NULL, 40, 'moderado',2),  -- Isquiotibiales, cuadriceps, gemelos, abductores
-    (3, 'Miércoles', NULL, 3, 2, NULL, NULL, 2, 2, NULL, NULL, 30, 'intenso',NULL),  -- Espalda, biceps, abdominales
-    (3, 'Viernes', 2, 2, NULL, 2, 2, NULL, 2, 2, NULL, 30, 'intenso',NULL),  -- Pecho, espalda, biceps, triceps, hombro
-    (3, 'Sábado', NULL, NULL, NULL, NULL, 2, 3, NULL, 1, NULL, 40, 'moderado',2),  -- Isquiotibiales, cuadriceps, gemelos, abductores
--- Rutina de Fuerza - Nivel Bajo (3 días)
-    (4, 'Lunes', 3, 3, 2, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL,NULL),  -- Pecho, triceps, hombro, trapecio, abdominales
-    (4, 'Miércoles', NULL, NULL, NULL, NULL, 3, 3, 2, NULL, NULL, 20, 'moderado',NULL),  -- Espalda, biceps, antebrazo, gemelo
-    (4, 'Viernes', NULL, NULL, NULL, NULL, NULL, NULL, 2, 3, NULL, NULL, NULL,2),  -- Isquiotibiales, cuadriceps, abductores, gluteos
--- Rutina de Fuerza - Nivel Medio (4 días)
-    (5, 'Lunes', 3, 3, 2, 2, NULL, NULL, NULL, NULL, NULL, 30, 'moderado',NULL),  -- Pecho, triceps, abdominales, gemelos
-    (5, 'Martes', NULL, NULL, NULL, NULL, 3, 3, 2, NULL, NULL, NULL, NULL,NULL),  -- Espalda, biceps, antebrazo
-    (5, 'Jueves', NULL, NULL, NULL, NULL, NULL, NULL, 3, 2, NULL, 20, 'moderado',2),  -- Hombro, trapecio, gluteos
-    (5, 'Viernes', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL, NULL, NULL,NULL),  -- Isquiotibiales, cuadriceps, abductores
--- Rutina de Fuerza - Nivel Alto (5 días)
-    (6, 'Lunes', 3, 2, 2, NULL, NULL, NULL, NULL, NULL, NULL, 30, 'moderado',NULL),  -- Pecho, triceps, hombro, trapecio
-    (6, 'Martes', NULL, NULL, NULL, NULL, NULL, NULL, 2, 3, NULL, NULL, NULL,2),  -- Isquiotibiales, cuadriceps, gluteos, abductores, gemelos
-    (6, 'Miércoles', NULL, NULL, NULL, 2, 3, 2, NULL, NULL, NULL, 20, 'intenso',NULL),  -- Espalda, biceps, abdominales
-    (6, 'Viernes', 3, 2, 2, NULL, 3, 2, NULL, NULL, NULL, NULL, NULL,NULL),  -- Pecho, espalda, biceps, triceps, hombros
-    (6, 'Sábado', NULL, NULL, NULL, NULL, NULL, NULL, 2, 3, NULL, 20, 'moderado',2);  -- Isquiotibiales, cuadriceps, gluteos, gemelos
+    (3, 'Lunes', 3, NULL, 2, 2, NULL, NULL, NULL, 1, NULL, 25, 'intenso', NULL, NULL),  -- Pecho, triceps, hombro, trapecio
+    (3, 'Martes', NULL, NULL, NULL, NULL, 3, NULL, 2, 2, NULL, 40, 'moderado', NULL, 1),  -- Cuadriceps, gemelos, isquiotibiales, abductores
+    (3, 'Miércoles', NULL, 3, 2, NULL, NULL, 2, NULL, NULL, NULL, 30, 'intenso', NULL, NULL),  -- Espalda, biceps, abdominales
+    (3, 'Viernes', 2, 2, NULL, 2, NULL, NULL, 2, NULL, NULL, 30, 'intenso', NULL, NULL),  -- Pecho, espalda, hombro, triceps, biceps
+    (3, 'Sábado', NULL, NULL, NULL, NULL, 3, NULL, NULL, 2, NULL, 40, 'moderado', 2, 1),  -- Cuadriceps, abductores, isquiotibiales, gemelos
+-- Rutina Fuerza - Nivel Bajo (3 días)
+    (4, 'Lunes', 3, NULL, 3, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2),  -- Pecho, triceps, hombro, trapecio, abdominales
+    (4, 'Miércoles', NULL, 3, NULL, NULL, NULL, NULL, NULL, 1, NULL, 20, 'moderado', NULL, NULL),  -- Espalda, biceps, antebrazo, gemelo
+    (4, 'Viernes', NULL, NULL, NULL, NULL, 3, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL),  -- Cuadriceps, abductores, isquiotibiales, glúteos
+-- Rutina Fuerza - Nivel Medio (4 días)
+    (5, 'Lunes', 3, NULL, 3, NULL, NULL, NULL, NULL, 2, NULL, 30, 'liviano', NULL, NULL),  -- Pecho, triceps, abdominales, gemelos
+    (5, 'Martes', NULL, NULL, NULL, NULL, 3, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL),  -- Espalda, biceps, antebrazo
+    (5, 'Jueves', NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, 20, 'moderado', 2, NULL),  -- Hombro, trapecio, glúteos
+    (5, 'Viernes', NULL, NULL, NULL, NULL, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2),  -- Cuadriceps, abductores, isquiotibiales
+-- Rutina Fuerza - Nivel Alto (5 días)
+    (6, 'Lunes', 3, NULL, 2, 2, NULL, NULL, NULL, NULL, NULL, 30, 'moderado', NULL, NULL),  -- Pecho, triceps, hombro, trapecio
+    (6, 'Martes', NULL, NULL, NULL, NULL, 3, NULL, 2, 2, NULL, NULL, NULL, 1, NULL),  -- Cuadriceps, gemelos, isquiotibiales, abductores
+    (6, 'Miércoles', NULL, 3, 2, NULL, NULL, 2, NULL, NULL, NULL, 20, 'intenso', NULL, NULL),  -- Espalda, biceps, abdominales
+    (6, 'Viernes', 3, NULL, 2, 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),  -- Pecho, espalda, hombros, triceps, biceps
+    (6, 'Sábado', NULL, NULL, NULL, NULL, 3, NULL, NULL, 2, NULL, 20, 'moderado', NULL, 2);  -- Cuadriceps, gemelos, isquiotibiales, glúteos
 
 -- Volcado de datos para la tabla `usuario`
 --

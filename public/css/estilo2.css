@@ -280,11 +280,12 @@ body {
   align-items: center !important;
  
   justify-content: center !important;
-  
 }
 #cont_text_main h2{
-  width: 50%;
-  height: auto;
+  text-align: start;
+  width: auto;
+  height: 100%;
+
 }
 #habit_tracker #item_list {
   width: 100%;

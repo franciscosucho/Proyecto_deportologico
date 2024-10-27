@@ -313,8 +313,8 @@ $color_h4: rgb(209, 209, 209);
             justify-content: flex-start;
             align-items: flex-start;
             width: 100%;
-            
-            
+
+
             gap: 4px;
             color: $color_h4;
 
@@ -333,7 +333,7 @@ $color_h4: rgb(209, 209, 209);
 
             &#int_detalladas {
                 display: none;
-                
+
                 &.active {
                     display: flex;
                     flex-direction: column;
