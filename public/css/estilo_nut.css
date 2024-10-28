@@ -21,7 +21,8 @@
   text-align: center;
   width: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 25vh;
+  min-height: 25vh;
+  height: auto;
 }
 #cont_sub .card .info {
   color: gainsboro;
@@ -201,6 +202,7 @@
     align-items: center;
   }
   #cont_nut #cont_sub .card {
-    height: 35vh;
+    min-height: 35vh;
+    height: auto;
   }
 }/*# sourceMappingURL=estilo_nut.css.map */

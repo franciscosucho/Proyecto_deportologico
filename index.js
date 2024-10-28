@@ -628,123 +628,6 @@ const fechaAyer = `${añoAyer}-${mesAyer}-${díaAyer}`;
 
 
 app.post('/enviar', (req, res) => {
-    let {
-        nombre_regis, apellido_regis, dni, nacimiento, opciones_genero, peso, altura,
-        nombre_usuario_regis, email_regis, password_regis, dieta, objetivo_nutricional,
-        tipo_deporte, obj_deportivo, frecuencia, intensidad, intolerancia
-    } = req.body;
-
-    const intoleranciasString = Array.isArray(intolerancia) ? intolerancia.join(',') : intolerancia;
-    intolerancia = intoleranciasString
-    const query_ant = `
-        SELECT DNI, Nombre_usuario, Email 
-        FROM usuario 
-        WHERE DNI = ? OR Nombre_usuario = ? OR Email = ?
-    `;
-
-    connection.query(query_ant, [dni, nombre_usuario_regis, email_regis], (err, results) => {
-        if (err) {
-            console.error('Error al verificar los datos:', err);
-            return res.render('login.ejs', { error: 'Error al verificar los datos' });
-        }
-
-        if (results.length > 0) {
-            const existing = results[0];
-            if (existing.DNI === dni) {
-                return res.render('login.ejs', { error: 'Error: El DNI ya está registrado' });
-            } else if (existing.Nombre_usuario === nombre_usuario_regis) {
-                return res.render('login.ejs', { error: 'Error: El Nombre de usuario ya está tomado' });
-            } else if (existing.Email === email_regis) {
-                return res.render('login.ejs', { error: 'Error: El Email ya está registrado' });
-            }
-        } else {
-            // Inserción en la tabla `usuario`
-            const query_usuario = `
-                INSERT INTO usuario (DNI, Nombre_usuario, password, Nombre, Apellido, FechaNacimiento, Email, Peso, Altura, Genero,Foto_perfil)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
-            `;
-            const rutaImagen = req.file ? `/resources/img_us/${req.file.filename}` : null
-            nombre_regis = capitalizarPrimeraLetra(nombre_regis);
-            apellido_regis = capitalizarPrimeraLetra(apellido_regis);
-
-
-            connection.query(query_usuario, [dni, nombre_usuario_regis, password_regis, nombre_regis, apellido_regis, nacimiento, email_regis, peso, altura, opciones_genero, rutaImagen], (err) => {
-                if (err) {
-                    console.error('Error al insertar en usuario:', err);
-                    return res.render('login.ejs', { error: 'Error al registrar el usuario' });
-                }
-
-                // Inserción en la tabla `nutricionalusuario`
-                const query_nutri = `
-                    INSERT INTO nutricionalusuario (DNI_nut, intolerancia, ObjetivoNutricion, TipoAlimentacion)
-                    VALUES (?, ?, ?, ?) 
-                `;
-                connection.query(query_nutri, [dni, intolerancia, objetivo_nutricional, dieta], (err) => {
-                    if (err) {
-                        console.error('Error al insertar en nutricionalusuario:', err);
-                        return res.render('login.ejs', { error: 'Error al registrar los datos nutricionales' });
-                    }
-
-                    // Inserción en la tabla `deportivousuario`
-                    const query_deport = `
-                        INSERT INTO deportivousuario (DNI_depor, ObjetivosDeportivo, TipoDeporte, Frecuencia, Intensidad)
-                        VALUES (?, ?, ?, ?, ?)
-                    `;
-                    connection.query(query_deport, [dni, obj_deportivo, tipo_deporte, frecuencia, intensidad], (err) => {
-                        if (err) {
-                            console.error('Error al insertar en deportivousuario:', err);
-                            return res.render('login.ejs', { error: 'Error al registrar los datos deportivos' });
-                        }
-
-
-                        // Inserción en la tabla `racha`
-                        const fechaActual = obtenerFechaActual()
-
-                        //INSERT INTO racha (Dni_racha,dias,Fecha_ultimo_Ingreso) VALUES (?,?,?,?)
-                        const query_racha = `
-                            INSERT INTO racha (Dni_racha, dias ,  Fecha_ultimo_Ingreso) VALUES (?, ?, ?)`;
-                        connection.query(query_racha, [dni, 1, fechaActual], (err) => {
-                            if (err) {
-                                console.error('Error al insertar en racha:', err);
-                                return res.render('login.ejs', { error: 'Error al registrar la racha' });
-                            }
-
-
-
-                            // Variables de sesión
-                            req.session.user_nombre_regis = nombre_regis
-                            req.session.user_apellido_regis = apellido_regis
-                            req.session.user_name = nombre_usuario_regis;
-                            req.session.user_dni = dni;
-                            req.session.user_rutaImagen = rutaImagen
-                            req.session.user_pass = password_regis;
-                            req.session.user_nac = nacimiento;
-                            req.session.user_genero = opciones_genero;
-                            req.session.user_peso = peso;
-                            req.session.user_altura = altura;
-                            req.session.user_email = email_regis;
-                            req.session.user_dieta = dieta;
-                            req.session.user_intolerancia = intolerancia
-                            req.session.user_obj_nut = objetivo_nutricional;
-                            req.session.user_deporte = tipo_deporte;
-                            req.session.user_obj_dep = obj_deportivo;
-                            req.session.user_frecuencia = frecuencia;
-                            req.session.user_intensidad = intensidad;
-                            req.session.user_fecha_comienzo = fechaActual;
-
-                            res.redirect('/index');
-                        });
-                    });
-                });
-            });
-        }
-    });
-});
-
-
-
-
-app.post('/enviar', (req, res) => {
     try {
         let {
             nombre_regis, apellido_regis, dni, nacimiento, opciones_genero, peso, altura,
@@ -816,7 +699,7 @@ app.post('/enviar', (req, res) => {
                                             console.error('Error al insertar en deportivousuario:', err);
                                             return res.render('login.ejs', { error: 'Error al registrar los datos deportivos' });
                                         }
-                                        console.log(frecuencia)
+
                                         // Inserción en la tabla `racha`
                                         const fechaActual = obtenerFechaActual();
                                         const query_racha = `
@@ -872,6 +755,118 @@ app.post('/enviar', (req, res) => {
         console.error('Error al procesar la solicitud:', error);
         res.render('login.ejs', { error: 'Ocurrió un error al procesar la solicitud' });
     }
+});
+app.get('/iniciar', (req, res) => {
+    const { nombre_ini, password_ini } = req.query;
+
+    const query_ini = 'SELECT * FROM usuario WHERE(Nombre_usuario = ? OR Email = ?) AND password = ? ';
+    connection.query(query_ini, [nombre_ini, nombre_ini, password_ini], (err, results) => {
+        if (err) {
+            return res.render('login.ejs', {
+                error: 'Error al verificar los datos'
+            });
+        }
+
+        if (results.length > 0) {
+            const dni = results[0].DNI;
+
+            var user_nombre_regis = req.session.user_nombre_regis
+            var user_apellido_regis = req.session.user_apellido_regis
+            // Variables de sesión del usuario
+            req.session.user_nombre_regis = results[0].Nombre;
+            req.session.user_apellido_regis = results[0].Apellido;
+            req.session.user_name = results[0].Nombre_usuario;
+            req.session.user_rutaImagen = results[0].Foto_perfil;
+            req.session.user_dni = results[0].DNI;
+            req.session.user_pass = results[0].password;
+            req.session.user_nac = results[0].FechaNacimiento;
+            req.session.user_email = results[0].Email;
+            req.session.user_peso = results[0].Peso;
+            req.session.user_altura = results[0].Altura;
+            req.session.user_genero = results[0].Genero;
+
+            const query_nutri = `
+            SELECT * FROM nutricionalusuario WHERE DNI_nut = ?`;
+            connection.query(query_nutri, [dni], (err, results) => {
+                if (err) {
+                    return res.render('login.ejs', {
+                        error: 'Error al verificar los datos'
+                    });
+                }
+                if (results.length > 0) {
+                    req.session.user_dieta = results[0].TipoAlimentacion;
+                    req.session.user_obj_nut = results[0].ObjetivoNutricion;
+                    req.session.user_intolerancia = results[0].intolerancia;
+                }
+            });
+
+            const query_deport = `
+            SELECT * FROM deportivousuario WHERE DNI_depor = ?`;
+            connection.query(query_deport, [dni], (err, results) => {
+                if (err) {
+                    return res.render('login.ejs', {
+                        error: 'Error al verificar los datos'
+                    });
+                }
+                if (results.length > 0) {
+                    req.session.user_deporte = results[0].TipoDeporte;
+                    req.session.user_obj_dep = results[0].ObjetivosDeportivo;
+                    req.session.user_frecuencia = results[0].Frecuencia;
+                    req.session.user_intensidad = results[0].Intensidad;
+                }
+            });
+
+            // Verificar y actualizar racha
+            const query_racha = `
+            SELECT * FROM racha WHERE Dni_racha = ?`;
+            connection.query(query_racha, [dni], (err, results) => {
+                if (err) {
+                    return res.render('login.ejs', {
+                        error: 'Error al verificar la racha'
+                    });
+                }
+                if (results.length > 0) {
+                    let racha = results[0].dias;
+                    let fechaUltimoIngreso = results[0].Fecha_ultimo_Ingreso; // Asumiendo que esta es una fecha en formato ISO
+                    let fecha = new Date(fechaUltimoIngreso);
+
+                    let anio = fecha.getFullYear();
+                    let mes = ("0" + (fecha.getMonth() + 1)).slice(-2); // Sumamos 1 porque getMonth() devuelve un índice 0-11
+                    let dia = ("0" + fecha.getDate()).slice(-2);
+
+                    let fechaFormateada = `${anio}-${mes}-${dia}`;
+                    fechaUltimoIngreso = fechaFormateada;
+
+                    // Asegúrate de que fechaAyer y fechaActual estén también en formato YYYY-MM-DD
+                    if (fechaUltimoIngreso === fechaAyer) {
+                        // Incrementa la racha
+                        racha++;
+                    } else if (fechaUltimoIngreso < fechaAyer) {
+                        // Si el usuario no ingresó ayer, se reinicia la racha
+                        racha = 1;
+                    }
+
+                    req.session.user_racha = racha
+                    // Actualiza la fecha del último ingreso y la racha
+                    const query_actualizar_racha = `
+                    UPDATE racha SET Fecha_ultimo_Ingreso = ?, dias = ? WHERE Dni_racha = ?`;
+                    connection.query(query_actualizar_racha, [fechaActual, racha, dni], (err) => {
+                        if (err) {
+                            return res.render('login.ejs', {
+                                error: 'Error al actualizar la racha'
+                            });
+                        }
+                        // Redirigir a la página de inicio
+                        return res.redirect('/index');
+                    });
+                }
+            });
+        } else {
+            return res.render('login.ejs', {
+                error: 'Usuario o contraseña incorrectos'
+            });
+        }
+    });
 });
 
 
