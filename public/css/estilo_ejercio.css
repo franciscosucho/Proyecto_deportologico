@@ -17,7 +17,7 @@
 #cont_rutinas {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
   padding: 10px;
 }
 #cont_rutinas .rutina_item {
@@ -44,9 +44,13 @@
 #cont_rutinas .rutina_item a {
   padding: 8px;
   border-radius: 8px;
-  background-color: rgba(83, 83, 83, 0.847);
+  background-color: rgba(75, 75, 75, 0.847);
   color: white;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+#cont_rutinas .rutina_item a:hover {
+  background-color: rgba(82, 82, 82, 0.847);
 }
 #cont_rutinas .cont_recomendaciones {
   display: flex;
@@ -169,8 +173,8 @@
   align-items: flex-start; /* Centra verticalmente */
   justify-items: center; /* Alinea al inicio horizontalmente */
   min-height: 100vh;
-  height: auto;
-  gap: 30px;
+  height: 100%;
+  gap: 20px;
 }
 #cont_rutina_focus .dias {
   position: relative;
@@ -182,10 +186,9 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 20px;
+  gap: 10px;
   width: 90%;
-  height: auto;
-  min-height: 90%;
+  height: 62vh;
 }
 #cont_rutina_focus .dias h2 {
   font-size: 1.4em;
@@ -218,6 +221,10 @@
   position: absolute;
   text-decoration: none;
   color: white;
+  transition: all 0.3s ease-in-out;
+}
+#cont_rutina_focus .dias a:hover {
+  background-color: rgba(100, 231, 135, 0.631372549);
 }
 
 @media (max-width: 1250px) {
@@ -233,7 +240,7 @@
     grid-template-columns: repeat(2, 1fr) !important;
   }
   #cont_rutina_focus .dias {
-    height: 53vh;
+    height: 55vh;
   }
 }
 @media (max-width: 725px) {
@@ -329,7 +336,7 @@
 }
 
 #cont_ejercio_focus {
-  width: 60%;
+  width: 80%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: flex-start !important;
@@ -343,7 +350,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 20vw;
+  width: 30vw;
   height: auto;
   transition: all 0.2s ease-in-out;
 }
