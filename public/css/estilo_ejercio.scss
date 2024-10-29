@@ -18,9 +18,9 @@
 #cont_rutinas {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
   padding: 10px;
-
+  
   .rutina_item {
     height: auto;
     padding: 20px;
@@ -48,9 +48,14 @@
     a {
       padding: 8px;
       border-radius: 8px;
-      background-color: rgba(83, 83, 83, 0.847);
+      background-color: rgba(75, 75, 75, 0.847);
       color: white;
       text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      &:hover{
+        background-color: rgba(82, 82, 82, 0.847);
+
+      }  
     }
   }
 
@@ -191,15 +196,13 @@
 #cont_rutina_focus {
   
   width: 100%;
- 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  
   align-items: flex-start; /* Centra verticalmente */
   justify-items: center; /* Alinea al inicio horizontalmente */
   min-height: 100vh;
-  height: auto;
-  gap: 30px;
+  height: 100%;
+  gap: 20px;
   
   .dias {
     position: relative;
@@ -211,10 +214,11 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 20px;
+    gap: 10px;
     width: 90%;
-    height: auto;
-    min-height: 90%;
+    
+    height: 62vh;
+    
     h2 {
       font-size: 1.4em;
       color: #4db669;
@@ -249,7 +253,11 @@
       position: absolute;
       text-decoration: none;
       color: white;
-     
+      transition: all 0.3s ease-in-out;
+      
+      &:hover{
+        background-color: #64e787a1;
+      }
    
     }
   }
@@ -268,7 +276,7 @@
   #cont_rutina_focus{
     grid-template-columns: repeat(2, 1fr) !important;
     .dias{
-      height: 53vh;
+      height: 55vh;
     }
   }
    
@@ -389,7 +397,7 @@
 
 #cont_ejercio_focus {
 
-  width: 60%; 
+  width: 80%; 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: flex-start !important;
@@ -398,13 +406,12 @@
 
   .cont_ejercio {
     background-color: #111b2e;
-
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 20vw;
+    width: 30vw;
     height: auto;
 
     transition: all .2s ease-in-out;
