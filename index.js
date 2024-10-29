@@ -5,13 +5,25 @@ const { View } = require('electron');
 const app = express()
 const session = require('express-session')
 
-// Conexión a la base de datos
+
+// mysql://root:UDMcwejtfPFXeIKskxZKBljfbMxOvdUu@autorack.proxy.rlwy.net:27511/railway
+
 const connection = mysql.createConnection({
-    host: 'localhost',
+    host: 'autorack.proxy.rlwy.net',
     user: 'root',
-    password: '',
+    password: 'UDMcwejtfPFXeIKskxZKBljfbMxOvdUu',
     database: 'proyecto_deportologico',
+    port:27511,
 });
+
+
+// Conexión a la base de datos
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'proyecto_deportologico',
+// });
 
 
 const isLogged = (req, res, next) => {

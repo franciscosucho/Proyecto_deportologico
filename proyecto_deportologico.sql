@@ -87,6 +87,7 @@ CREATE TABLE `deportivousuario` (
 -- Volcado de datos para la tabla `deportivousuario`
 --
 
+
 INSERT INTO `deportivousuario` (`ID_depor`, `DNI_depor`, `ObjetivosDeportivo`, `TipoDeporte`, `Frecuencia`, `Intensidad`) VALUES
 (17, 47098781, 'Mejorar la resistencia', 'Fuerza', '4/7', 'Moderada'),
 (18, 2147483647, 'Cardiovascular', 'Cardiovascular', '5/7', 'Moderada'),
