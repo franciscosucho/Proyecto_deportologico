@@ -49,9 +49,6 @@
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
-#cont_rutinas .rutina_item a:hover {
-  background-color: rgba(82, 82, 82, 0.847);
-}
 #cont_rutinas .cont_recomendaciones {
   display: flex;
   justify-content: flex-start;
