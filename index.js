@@ -8,22 +8,22 @@ const session = require('express-session')
 
 // mysql://root:UDMcwejtfPFXeIKskxZKBljfbMxOvdUu@autorack.proxy.rlwy.net:27511/railway
 
-const connection = mysql.createConnection({
-    host: 'autorack.proxy.rlwy.net',
-    user: 'root',
-    password: 'UDMcwejtfPFXeIKskxZKBljfbMxOvdUu',
-    database: 'proyecto_deportologico',
-    port:27511,
-});
+//const connection = mysql.createConnection({
+//    host: 'autorack.proxy.rlwy.net',
+//    user: 'root',
+//    password: 'UDMcwejtfPFXeIKskxZKBljfbMxOvdUu',
+//    database: 'proyecto_deportologico',
+//    port:27511,
+//});
 
 
 // Conexión a la base de datos
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'proyecto_deportologico',
-// });
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'proyecto_deportologico',
+});
 
 
 const isLogged = (req, res, next) => {
@@ -130,11 +130,19 @@ app.post('/calendario/update/:fechaFormateada', (req, res) => {
 app.post('/nueva_actividad', (req, res) => {
     var user_dni = req.session.user_dni
     const {
-        info_act, fecha_act
+        info_act, fecha_us
     } = req.body;
+    // Suponiendo que fecha_us está en formato "YYYY-MM-DD"
+    const [año_us, mes_us, día_us] = fecha_us.split('-');
 
+    let año = obtenerFechaActual()[2];
+    let mes = obtenerFechaActual()[2];
+    let dia = obtenerFechaActual()[3];
+    if (fecha_us < dia) {
+        console.log("la fecha coincide")
+    }
     const query_agregar_act = 'INSERT INTO actividad_dia( Dni_act, Fecha, Objetivos, MarcadorCumplido) VALUES (?,?,?,?)';
-    connection.query(query_agregar_act, [user_dni, fecha_act, info_act, 0], (err, results) => {
+    connection.query(query_agregar_act, [user_dni, fecha_us, info_act, 0], (err, results) => {
         if (err) {
             console.error('Error al verificar los datos:', err);
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
@@ -284,7 +292,7 @@ app.post('/progreso_actualizar', (req, res) => {
     console.log(id_actividad)
     var user_dni = req.session.user_dni
     let insert_act_act = "INSERT INTO `progreso_focus`( `id_actividad`,`DNI_prog`, `Fecha`, `Valor`) VALUES (?,?,?,?)"
-    var fecha = obtenerFechaActual();
+    var fecha = obtenerFechaActual()[0];
 
     connection.query(insert_act_act, [id_actividad, user_dni, fecha, valor_act], (err, results) => {
         if (err) {
@@ -713,7 +721,7 @@ app.post('/enviar', (req, res) => {
                                         }
 
                                         // Inserción en la tabla `racha`
-                                        const fechaActual = obtenerFechaActual();
+                                        const fechaActual = obtenerFechaActual()[0];
                                         const query_racha = `
                                             INSERT INTO racha (Dni_racha, dias, Fecha_ultimo_Ingreso) VALUES (?, ?, ?)
                                         `;
@@ -897,8 +905,9 @@ function obtenerFechaActual() {
     const año = fecha.getFullYear();
     const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 (enero) a 11 (diciembre)
     const día = String(fecha.getDate()).padStart(2, '0');
+    const fecha_completa = `${año}-${mes}-${día}`;
+    return [fecha_completa, año, mes, día];
 
-    return `${año}-${mes}-${día}`;
 }
 function capitalizarPrimeraLetra(texto) {
     if (!texto) return '';

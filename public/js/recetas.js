@@ -2,7 +2,7 @@ const cont_recetas_main = document.getElementById("cont_recetas_main")
 
 
 
- 
+
 //variables de api
 //------------------------------------------------------------------------
 const data_us = document.getElementById('data_us')
@@ -139,11 +139,43 @@ function create_recetas(receta) {
         cont_recetas_main.appendChild(cont_receta);
         i++;
     }
+}
+// Define la función de traducción
+async function traducirTexto(texto, origen, destino) {
+    try {
+        const respuesta = await fetch("https://translate.argosopentech.com/translate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                q: texto,
+                source: origen,
+                target: destino,
+                format: "text"
+            })
+        });
 
+        const datos = await respuesta.json();
+        return datos.translatedText;
+
+    } catch (error) {
+        console.error("Error al traducir:", error);
+    }
 }
 
+// Ejemplo de uso
+const textoAtraducir = "Hello, how are you?";
+traducirTexto(textoAtraducir, "en", "es")
+    .then(traduccion => console.log("Texto traducido:", traduccion))
+    .catch(error => console.error("Error en la traducción:", error));
 
 
-
-
-
+function fetch_traducir(origen, destino) {
+    let url = "https://translate.argosopentech.com/translate"
+    fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log("")
+        });
+}
