@@ -142,15 +142,39 @@ item_act.forEach(item => {
 
         fetch(`http://localhost:3000/calendario/chequear/${estado}/${id}`, { method: 'POST' })
             .then(() => {
-                
+
             })
             .catch(err => console.error('Error:', err));
         location.reload(true);
     });
 });
 
-const btn_enviar_act = document.getElementById("btn_enviar_act")
-btn_enviar_act.addEventListener('click', () => {
-    location.reload(true);
-})
 
+
+const btn_enviar_act = document.getElementById("btn_enviar_act");
+btn_enviar_act.addEventListener('click', (event) => { // Pasamos `event` como parámetro
+
+    const fecha_us = document.getElementById("fecha_us").value;
+    let fecha_act = new Date(obtenerFechaActual()[0]);
+    let fecha_comparacion = new Date(fecha_us);
+
+    const fechaActSinHora = fecha_act.toISOString().split('T')[0];
+    const fechaCompSinHora = fecha_comparacion.toISOString().split('T')[0];
+
+    if (fechaCompSinHora >= fechaActSinHora) {
+        location.reload(true); // Recarga la página
+    } else {
+        event.preventDefault(); // Cancela la recarga
+        alert("La fecha ingresada debe ser mayor o igual a la fecha actual.");
+    }
+});
+
+function obtenerFechaActual() {
+    const fecha = new Date();
+    const año = fecha.getFullYear();
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 (enero) a 11 (diciembre)
+    const día = String(fecha.getDate()).padStart(2, '0');
+    const fecha_completa = `${año}-${mes}-${día}`;
+    return [fecha_completa, año, mes, día];
+
+}

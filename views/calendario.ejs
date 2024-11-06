@@ -38,26 +38,30 @@
                         placeholder="Agregar nueva actividad" required maxlength="100">
                 </div>
 
-                <input id="fecha_act" name="fecha_act" type="date" required>
+                <input id="fecha_us" name="fecha_us" type="date" required>
                 <button id="btn_enviar_act" type="submit">Enviar</button>
             </form>
         </div>
         <div id="cont_list">
             <h3>Tu actividad de hoy</h3>
             <ul id="list">
-                <% results.forEach(actividad=> { %>
-                    <li class="item">
-                        <% if(actividad.MarcadorCumplido=="1" ){%>
-                            <input type="checkbox" name="check" data-id="<%- actividad.ID_act %>" class="item_act"
-                                checked>
-                            <span class="text_item tachado"><%- actividad.Objetivos %></span>
-                            <%} else {%>
+                <% if (results && results.length > 0) { %>
+                    <% results.forEach(actividad => { %>
+                        <li class="item">
+                            <% if (actividad.MarcadorCumplido == "1") { %>
+                                <input type="checkbox" name="check" data-id="<%- actividad.ID_act %>" class="item_act" checked>
+                                <span class="text_item tachado"><%- actividad.Objetivos %></span>
+                            <% } else { %>
                                 <input type="checkbox" name="check" data-id="<%- actividad.ID_act %>" class="item_act">
-                                <span class="text_item "><%- actividad.Objetivos %></span>
-                                <%}%>
-                    </li>
-                    <% }) %>
+                                <span class="text_item"><%- actividad.Objetivos %></span>
+                            <% } %>
+                        </li>
+                    <% }); %>
+                <% } else { %>
+                    <li>No tienes actividades programadas para hoy.</li>
+                <% } %>
             </ul>
         </div>
+       
     </div>
 </div>

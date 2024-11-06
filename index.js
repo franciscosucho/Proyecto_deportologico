@@ -1,3 +1,6 @@
+
+
+
 const express = require('express')
 const path = require('node:path')
 const mysql = require('mysql2');
@@ -129,18 +132,11 @@ app.post('/calendario/update/:fechaFormateada', (req, res) => {
 
 app.post('/nueva_actividad', (req, res) => {
     var user_dni = req.session.user_dni
-    const {
+    let {
         info_act, fecha_us
     } = req.body;
-    // Suponiendo que fecha_us está en formato "YYYY-MM-DD"
-    const [año_us, mes_us, día_us] = fecha_us.split('-');
 
-    let año = obtenerFechaActual()[2];
-    let mes = obtenerFechaActual()[2];
-    let dia = obtenerFechaActual()[3];
-    if (fecha_us < dia) {
-        console.log("la fecha coincide")
-    }
+
     const query_agregar_act = 'INSERT INTO actividad_dia( Dni_act, Fecha, Objetivos, MarcadorCumplido) VALUES (?,?,?,?)';
     connection.query(query_agregar_act, [user_dni, fecha_us, info_act, 0], (err, results) => {
         if (err) {
@@ -148,9 +144,9 @@ app.post('/nueva_actividad', (req, res) => {
             return res.render('login.ejs', { error: 'Error al verificar los datos' });
 
         }
-
+        res.redirect('/index');
     })
-    res.redirect('/index');
+
 })
 
 
@@ -208,7 +204,7 @@ app.get('/index', isLogged, (req, res) => {
 
         }
         res.render('index', { results, user_racha, user_name, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
-
+        // o el valor de error si existe
     })
 
 

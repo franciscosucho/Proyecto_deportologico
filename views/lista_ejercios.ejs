@@ -41,73 +41,89 @@
     <script>
 
         const cont_lista = document.getElementById("cont_lista")
-        
-            
-                lista_ejercios = ["abdominals",
-                    "abductors",
-                    "biceps",
-                    "calves",
-                    "chest",
-                    "forearms",
-                    "glutes",
-                    "hamstrings",
-                    "lats",
-                    "lower_back",
-                    "middle_back",
-                    "neck",
-                    "quadriceps",
-                    "traps",
-                    "triceps"
-                ]
-                let i=0
-                lista_ejercios.forEach(ejercio => {
-                    create_recetas(ejercio,i)
-                    i++
-                });
 
-            
+        lista_ejercicios_esp = [
+            "abdominales",
+            "abductores",
+            "bíceps",
+            "pantorrillas",
+            "pecho",
+            "antebrazos",
+            "glúteos",
+            "isquiotibiales",
+            "dorsales",
+            "zona lumbar",
+            "zona media de la espalda",
+            "cuello",
+            "cuádriceps",
+            "trapecios",
+            "tríceps"
+        ]
+        lista_ejercios = ["abdominals",
+            "abductors",
+            "biceps",
+            "calves",
+            "chest",
+            "forearms",
+            "glutes",
+            "hamstrings",
+            "lats",
+            "lower_back",
+            "middle_back",
+            "neck",
+            "quadriceps",
+            "traps",
+            "triceps"
+        ]
+        let i = 0
+        lista_ejercios.forEach(ejercio => {
+            create_recetas(ejercio, i)
+            i++
+        });
 
 
-        function create_recetas(ejercio,i) {
-            
-           
 
-                const cont_ejercio = document.createElement('a');
-                const id_ejercio = i;
-                cont_ejercio.setAttribute('data-id', id_ejercio);
-                cont_ejercio.classList.add('cont_ejercio');
-                img_ejercio = document.createElement('img');
-                // Convertimos el nombre a formato de archivo para buscar la imagen
-                const id_name = ejercio.trim().replace(/\s+/g, '-').toLowerCase();
-                if(ejercio=="lower_back" || ejercio=="middle_back"){
-                    img_ejercio.src = `resources/img_ejercicios/back.webp`;
-                }
-                else{
-                    img_ejercio.src = `resources/img_ejercicios/${id_name}.webp`;
-                }
-               
-                cont_ejercio.style.backgroundSize = "cover";  // Asegura que la imagen cubra el contenedor
-                cont_ejercio.style.backgroundPosition = "center"; // Centra la imagen
-                const name = document.createElement('h3');
-                name.classList.add('name_ejercio');
-                name.textContent = ejercio.replace(/_/g, ' ');
 
-                const link = document.createElement('a');
-                link.classList.add('btn_receta');
-                const ver_receta = document.createElement('span');
+        function create_recetas(ejercio, i) {
 
-                const icon_arrow = document.createElement('i');
-                icon_arrow.classList.add('fa-solid', 'fa-arrow-right');
-                cont_ejercio.href = '/lista_ejercio_focus/' + ejercio;
 
-                link.appendChild(ver_receta);
-                link.appendChild(icon_arrow);
-                cont_ejercio.appendChild(img_ejercio);
-                cont_ejercio.appendChild(name);
-                cont_ejercio.appendChild(link);
 
-                cont_lista.appendChild(cont_ejercio);
-            
+            const cont_ejercio = document.createElement('a');
+            const id_ejercio = i;
+            cont_ejercio.setAttribute('data-id', id_ejercio);
+            cont_ejercio.classList.add('cont_ejercio');
+            img_ejercio = document.createElement('img');
+            // Convertimos el nombre a formato de archivo para buscar la imagen
+            const id_name = ejercio.trim().replace(/\s+/g, '-').toLowerCase();
+            if (ejercio == "lower_back" || ejercio == "middle_back") {
+                img_ejercio.src = `resources/img_ejercicios/back.webp`;
+            }
+            else {
+                img_ejercio.src = `resources/img_ejercicios/${id_name}.webp`;
+            }
+
+            cont_ejercio.style.backgroundSize = "cover";  // Asegura que la imagen cubra el contenedor
+            cont_ejercio.style.backgroundPosition = "center"; // Centra la imagen
+            const name = document.createElement('h3');
+            name.classList.add('name_ejercio');
+            name.textContent = lista_ejercicios_esp[i].replace(/_/g, ' ');
+
+            const link = document.createElement('a');
+            link.classList.add('btn_receta');
+            const ver_receta = document.createElement('span');
+
+            const icon_arrow = document.createElement('i');
+            icon_arrow.classList.add('fa-solid', 'fa-arrow-right');
+            cont_ejercio.href = '/lista_ejercio_focus/' + ejercio;
+
+            link.appendChild(ver_receta);
+            link.appendChild(icon_arrow);
+            cont_ejercio.appendChild(img_ejercio);
+            cont_ejercio.appendChild(name);
+            cont_ejercio.appendChild(link);
+
+            cont_lista.appendChild(cont_ejercio);
+
         }
 
     </script>

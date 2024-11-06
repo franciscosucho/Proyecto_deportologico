@@ -140,42 +140,45 @@ function create_recetas(receta) {
         i++;
     }
 }
-// Define la función de traducción
-async function traducirTexto(texto, origen, destino) {
+// import { traducirTexto } from './traduccion';
+// console.log(traducirTexto("Hello, how are you?"));
+
+//Clave y endpoint de tu servicio de traducción
+const key = "AAtpHWDgeRn5NtufpCiIdWtrXUmEw46jQnS3GPB0tHAz0dlDHhhzJQQJ99AKACYeBjFXJ3w3AAAbACOGLL3k";
+const endpoint = "https://api.cognitive.microsofttranslator.com/";
+const location = "East US";
+// Función para traducir texto
+async function traducirTexto(texto) {
+
+
+
+
+    const path = '/translate';
+    const url = `${endpoint}${path}?api-version=3.0&from=en&to=en&to=es`;
+
+    // Configuración de la solicitud
+    const options = {
+        method: 'POST',
+        headers: {
+            'Ocp-Apim-Subscription-Key': key,
+            'Ocp-Apim-Subscription-Region': location,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify([{ 'Text': texto }])
+    };
+
     try {
-        const respuesta = await fetch("https://translate.argosopentech.com/translate", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                q: texto,
-                source: origen,
-                target: destino,
-                format: "text"
-            })
-        });
+        // Llamada a la API
+        const response = await fetch(url, options);
+        const data = await response.json();
 
-        const datos = await respuesta.json();
-        return datos.translatedText;
-
+        // Mostrar resultados de traducción
+        console.log(data);
+        return data; // Devuelve el resultado para procesarlo más adelante
     } catch (error) {
-        console.error("Error al traducir:", error);
+        console.error("Error en la traducción:", error);
     }
 }
 
 // Ejemplo de uso
-const textoAtraducir = "Hello, how are you?";
-traducirTexto(textoAtraducir, "en", "es")
-    .then(traduccion => console.log("Texto traducido:", traduccion))
-    .catch(error => console.error("Error en la traducción:", error));
-
-
-function fetch_traducir(origen, destino) {
-    let url = "https://translate.argosopentech.com/translate"
-    fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log("")
-        });
-}
+traducirTexto("Hello, how are you?");
