@@ -19,7 +19,6 @@
                 <%-include('menu.ejs')%>
             </aside>
             <section id="main_recetas_focus">
-
                 <section id="cont_recetas_main">
                     <div id="cont_text_main">
                         <a href="/recetas">
@@ -47,7 +46,7 @@
                     <div class="seccion">
                         <h4>Instrucciones de la receta</h4>
 
-                        <%- data.instructions %>
+                       <p class="inst_juntas"><%- data.instructions %></p> 
                     </div>
                     <div class="cont_ver_mas">
                         <span class="arrow"></span>
@@ -64,7 +63,7 @@
 
                             <% instruction.steps.forEach((step)=> { %>
                                 <div class="step">
-                                    <p class="step-description"><strong>Paso <%= step.number %>:</strong>
+                                    <p class="step-description">
                                         <%= step.step %>
                                     </p>
 
@@ -102,7 +101,9 @@
                                 int_detalladas.classList.toggle('active')
                             });
                         });
+
                     </script>
+                    <script src="js/recetas_focus.js"></script>
                 </section>
             </section>
         </section>

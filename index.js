@@ -587,13 +587,14 @@ app.get('/receta_focus/:id_receta', (req, res) => {
 
 
     var id_receta = req.params.id_receta
-    var data = require('./public/js/info_receta.json')
+    //var data = require('./public/js/info_receta.json')
     const apiId = '31f5fad495dc42f0b38d901ddaf47e9a';
 
     var url = `https://api.spoonacular.com/recipes/${id_receta}/information?apiKey=${apiId}`;
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
+            
             res.render('receta_focus', { data })
 
         });

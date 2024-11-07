@@ -39,6 +39,8 @@
     </main>
     <script>
         const cont_ejercio_focus = document.getElementById("cont_ejercio_focus");
+
+        // Variables de API
         const nombre_ejer = cont_ejercio_focus.getAttribute("data-ejer");
         const url = `https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises?muscle=${nombre_ejer}`;
         const options = {
@@ -49,80 +51,121 @@
             }
         };
 
-        // Declara una función async para usar await
-        async function fetchExercises() {
+        // Carga los ejercicios
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchExercises(url, options);
+        });
+
+        // Función que obtiene los ejercicios de la API
+        async function fetchExercises(url, options) {
             try {
                 const response = await fetch(url, options);
                 const result = await response.json();
-                create_ejercio(result);
-
+                createEjercicios(result);
             } catch (error) {
-                console.error(error);
+                console.error('Error fetching exercises:', error);
             }
         }
 
-        // Llama la función async
-        fetchExercises();
-
-        function create_ejercio(result) {
-            result.forEach(ejercicio => {
+        // Función que crea los ejercicios en la página
+        async function createEjercicios(result) {
+            result.forEach(async ejercicio => {
                 const cont_ejercio = document.createElement("div");
-                cont_ejercio.classList.add("cont_ejercio")
+                cont_ejercio.classList.add("cont_ejercio");
+
                 const name = document.createElement("h4");
+                const cont_text_header = document.createElement("div");
+                cont_text_header.classList.add("cont_text_header");
 
-                const cont_text_header = document.createElement("div")
-                cont_text_header.classList.add("cont_text_header")
-                const cont_text = document.createElement("div")
-                cont_text.classList.add("cont_text")
-                name.textContent = ejercicio.name;
-                name.classList.add("name")
+                const cont_text = document.createElement("div");
+                cont_text.classList.add("cont_text");
+
+                const name_es = await traducirTexto(ejercicio.name);
+                name.textContent = name_es;
+                name.classList.add("name");
+
                 const dif = document.createElement("h5");
-                dif.textContent = ` ${ejercicio.difficulty}`;
-                dif.classList.add("dif")
-                const ins = document.createElement("div")
-                const instrucciones = ejercicio.instructions.split('.'); // Separa el texto por puntos
-                const ul = document.createElement('ul'); // Crea una lista no ordenada
+                const dif_es = await traducirTexto(ejercicio.difficulty);
+                dif.textContent = ` ${dif_es}`;
+                dif.classList.add("dif");
 
-                instrucciones.forEach((instruccion, index) => {
-                    if (instruccion.trim() !== '') { // Verifica que no esté vacío
-                        const li = document.createElement('li');
-                        li.textContent = `${index + 1}. ${instruccion.trim()}`; // Agrega el número de instrucción y el texto
-                        ul.appendChild(li); // Añade el <li> a la lista
+                const ins = document.createElement("div");
+                const instrucciones = ejercicio.instructions.split('.');
+                const ul = document.createElement('ul');
+                ul.classList.add("cont_inst")
+                for (const [index, instruccion] of instrucciones.entries()) {
+                    if (instruccion.trim() !== '') {
+                        let li = document.createElement('li');
+                        let ins_es = await traducirTexto(instruccion);
+
+                        li.textContent = `${index + 1}. ${ins_es}`;
+
+                        ul.appendChild(li);
                     }
-                });
+                }
+                ins.textContent = 'Instrucciones:';
+                ins.appendChild(ul);
+                ins.classList.add("ins");
 
-                ins.textContent = 'Instrucciones:'; // Puedes mantener el título o ajustarlo
-                ins.appendChild(ul); // Añade la lista de instrucciones al contenedor
-
-                ins.classList.add("ins")
                 const cont_equip = document.createElement("div");
                 cont_equip.classList.add("cont_equip");
-                const icon_gym = document.createElement("li")
-                icon_gym.classList.add('fa-solid', 'fa-dumbbell')
+
+                const icon_gym = document.createElement("li");
+                icon_gym.classList.add('fa-solid', 'fa-dumbbell');
+
                 const equip = document.createElement("h5");
                 let text_equip = ejercicio.equipment.replace(/_/g, ' ');
+                text_equip = await traducirTexto(text_equip);
                 equip.textContent = `Equipo: ${text_equip}`;
-                equip.classList.add("equip")
+                equip.classList.add("equip");
 
-                cont_text_header.appendChild(name)
-                cont_text_header.appendChild(dif)
-                cont_ejercio.appendChild(cont_text_header)
+                cont_text_header.appendChild(name);
+                cont_text_header.appendChild(dif);
+                cont_ejercio.appendChild(cont_text_header);
 
-                cont_equip.appendChild(icon_gym)
-                cont_equip.appendChild(equip)
-                cont_ejercio.appendChild(cont_equip)
+                cont_equip.appendChild(icon_gym);
+                cont_equip.appendChild(equip);
+                cont_ejercio.appendChild(cont_equip);
 
-                cont_text.appendChild(ins)
-
+                cont_text.appendChild(ins);
                 cont_ejercio.appendChild(cont_text);
+
                 cont_ejercio_focus.appendChild(cont_ejercio);
-
-
-
             });
         }
 
+        // Clave y endpoint para la traducción
+        const key = "eQIFoJcy8xWDZEHxGewZh78ZxtCzYL2DhapjGWQSgdcarLtnJIF1JQQJ99AKACYeBjFXJ3w3AAAbACOGTs9G";
+        const endpoint = "https://api.cognitive.microsofttranslator.com/";
+        const regionLocation = "eastus";
 
+        // Función para traducir texto
+        async function traducirTexto(texto) {
+            const path = '/translate';
+            const url = `${endpoint}${path}?api-version=3.0&from=en&to=es`;
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Ocp-Apim-Subscription-Key': key,
+                    'Ocp-Apim-Subscription-Region': regionLocation,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify([{ 'Text': texto }])
+            };
+
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                return data[0].translations[0].text;
+            } catch (error) {
+                console.error("Error en la traducción:", error);
+            }
+        }
     </script>
 </body>
 

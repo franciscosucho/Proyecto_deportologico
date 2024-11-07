@@ -1,8 +1,5 @@
 const cont_recetas_main = document.getElementById("cont_recetas_main")
 
-
-
-
 //variables de api
 //------------------------------------------------------------------------
 const data_us = document.getElementById('data_us')
@@ -62,106 +59,99 @@ function fetch_recetas(url) {
 
 
 
-function create_recetas(receta) {
+async function create_recetas(receta) {
     var i = 0;
     while (i < receta.recipes.length) {
-
         const cont_receta = document.createElement('div');
-        const id_receta = receta.recipes[i].id
+        const id_receta = receta.recipes[i].id;
         cont_receta.setAttribute('data-id', id_receta);
         cont_receta.classList.add('cont_receta');
-
-
 
         const sprite = document.createElement('img');
         sprite.classList.add("sprite");
         sprite.src = receta.recipes[i].image;
 
-
-
         const text = document.createElement('div');
         text.classList.add('text');
 
-
-        //tiempo receta
+        // tiempo receta
         const cont_tiempo = document.createElement('div');
-        cont_tiempo.classList.add("cont_tiempo")
+        cont_tiempo.classList.add("cont_tiempo");
         const icon_tiempo = document.createElement("i");
-        // Agregar múltiples clases al elemento
         icon_tiempo.classList.add("fa-regular", "fa-clock");
-        const tiempo = receta.recipes[i].readyInMinutes
+        const tiempo = receta.recipes[i].readyInMinutes;
         const tiempo_receta = document.createElement('p');
         tiempo_receta.classList.add("tiempo_receta");
         let centenas = Math.floor(tiempo / 100);
         let decenas = Math.floor((tiempo % 100) / 10);
-        tiempo_receta.textContent = centenas + "h " + decenas + "0min"
+        tiempo_receta.textContent = centenas + "h " + decenas + "0min";
 
-
-
-
-        cont_tiempo.appendChild(icon_tiempo)
-        cont_tiempo.appendChild(tiempo_receta)
-
+        cont_tiempo.appendChild(icon_tiempo);
+        cont_tiempo.appendChild(tiempo_receta);
 
         // dieta
         const dieta_receta = document.createElement('h4');
         dieta_receta.classList.add('dieta');
-        dieta_receta.textContent = receta.recipes[i].diets
-
+        let dieta_es = await traducirTexto( receta.recipes[i].diets);
+        let text_receta=""
+        receta.recipes[i].diets.forEach(element => {
+            text_receta += element + ",";
+        });
+        dieta_receta.textContent = dieta_es || "Traducción no disponible";
+        
+        console.log(text_receta)
 
 
         const name = document.createElement('h3');
         name.classList.add('name_receta');
-        name.textContent = receta.recipes[i].title;
+        let name_receta = await traducirTexto(receta.recipes[i].title);
+        name.textContent = name_receta || "Traducción no disponible";
 
-
-        const info = document.createElement('div')
+        const info = document.createElement('div');
         info.classList.add('info');
-        info.innerHTML = receta.recipes[i].summary
-        const link = document.createElement('a')
+
+        // Espera a que la traducción se complete
+        const informacion_es = await traducirTexto(receta.recipes[i].summary);
+        info.innerHTML = informacion_es || "Traducción no disponible";
+
+        const link = document.createElement('a');
         link.classList.add('btn_receta');
-        const ver_receta = document.createElement('span')
-        ver_receta.textContent = "Ver receta"
-        //Mandar las etiquetas
-        const icon_arrow = document.createElement('i')
-        icon_arrow.classList.add('fa-solid', 'fa-arrow-right')
+        const ver_receta = document.createElement('span');
+        ver_receta.textContent = "Ver receta";
+        
+        const icon_arrow = document.createElement('i');
+        icon_arrow.classList.add('fa-solid', 'fa-arrow-right');
         link.href = '/receta_focus/' + id_receta;
-        link.appendChild(ver_receta)
-        link.appendChild(icon_arrow)
+        link.appendChild(ver_receta);
+        link.appendChild(icon_arrow);
 
         text.appendChild(name);
         text.appendChild(dieta_receta);
         text.appendChild(cont_tiempo);
-        text.appendChild(info)
-        text.appendChild(link)
+        text.appendChild(info);
+        text.appendChild(link);
         cont_receta.appendChild(sprite);
         cont_receta.appendChild(text);
         cont_recetas_main.appendChild(cont_receta);
         i++;
     }
 }
-// import { traducirTexto } from './traduccion';
-// console.log(traducirTexto("Hello, how are you?"));
-
-//Clave y endpoint de tu servicio de traducción
-const key = "AAtpHWDgeRn5NtufpCiIdWtrXUmEw46jQnS3GPB0tHAz0dlDHhhzJQQJ99AKACYeBjFXJ3w3AAAbACOGLL3k";
+// Clave y endpoint 
+const key = "eQIFoJcy8xWDZEHxGewZh78ZxtCzYL2DhapjGWQSgdcarLtnJIF1JQQJ99AKACYeBjFXJ3w3AAAbACOGTs9G";
 const endpoint = "https://api.cognitive.microsofttranslator.com/";
-const location = "East US";
+const regionLocation = "eastus"; 
+
 // Función para traducir texto
 async function traducirTexto(texto) {
-
-
-
-
     const path = '/translate';
-    const url = `${endpoint}${path}?api-version=3.0&from=en&to=en&to=es`;
+    const url = `${endpoint}${path}?api-version=3.0&from=en&to=es`;
 
     // Configuración de la solicitud
     const options = {
         method: 'POST',
         headers: {
             'Ocp-Apim-Subscription-Key': key,
-            'Ocp-Apim-Subscription-Region': location,
+            'Ocp-Apim-Subscription-Region': regionLocation,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify([{ 'Text': texto }])
@@ -170,15 +160,17 @@ async function traducirTexto(texto) {
     try {
         // Llamada a la API
         const response = await fetch(url, options);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
         const data = await response.json();
-
-        // Mostrar resultados de traducción
-        console.log(data);
-        return data; // Devuelve el resultado para procesarlo más adelante
+        // Devuelve solo el texto traducido
+        return data[0].translations[0].text;
+        
     } catch (error) {
         console.error("Error en la traducción:", error);
     }
 }
 
-// Ejemplo de uso
-traducirTexto("Hello, how are you?");

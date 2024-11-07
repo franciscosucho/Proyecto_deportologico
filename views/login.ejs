@@ -37,14 +37,14 @@
         <!-- Mostrar error si existe -->
         <% if (typeof error !=='undefined' ) { %>
           <span id="error_ini">
-            <%= error %> 
+            <%= error %>
           </span>
-        <% } %>
+          <% } %>
       </form>
 
-      <form method="post" action="/enviar" id="cont_registrar" class="desac" enctype="multipart/form-data"> 
+      <form method="post" action="/enviar" id="cont_registrar" class="desac" enctype="multipart/form-data">
         <span id="texto_regs"></span>
- 
+
         <div id="datos_personales" class="sub_form">
           <div class="cont_inputs">
             <label for="nombre_regis">Nombre</label>
@@ -53,8 +53,8 @@
           </div>
           <div class="cont_inputs">
             <label for="apellido_regis">Apellido</label>
-            <input id="apellido_regis" name="apellido_regis" type="text" placeholder="Escriba su apellido"
-              required maxlength="40">
+            <input id="apellido_regis" name="apellido_regis" type="text" placeholder="Escriba su apellido" required
+              maxlength="40">
           </div>
           <div class="cont_inputs">
             <label for="dni">DNI</label>
@@ -108,7 +108,7 @@
             <div id="cont_inp_foto">
               <input id="foto_perfil" name="foto_perfil" type="file" placeholder="Eliga un archvio">
             </div>
-           
+
           </div>
           <div class="cont_btn">
             <button class="btn_enviar_sesion" type="button">Siguiente</button>
@@ -130,18 +130,18 @@
           </div>
           <div class="cont_inputs">
             <label for="intolerancia">Intolerancias</label>
-            <select id="intolerancia" name="intolerancia" required multiple>
-              <option value="Ninguna">Ninguna</option>
-              <option value="Dairy">Lácteos</option>
-              <option value="Egg">Huevo</option>
-              <option value="Gluten">Gluten</option>
-              <option value="Grain">Grano</option>
-              <option value="Peanut">Maní</option>
-              <option value="Seafood">Mariscos</option>
-              <option value="Soy">Soja</option>
-              <option value="Sulfite">Sulfito</option>
-              <option value="Wheat">Trigo</option>
-            </select>
+            <fieldset>
+              <label> <input type="checkbox" name="intolerancia" value="Ninguna"> Ninguna</label>
+              <label><input type="checkbox" name="intolerancia" value="Dairy"> Lácteos</label>
+              <label><input type="checkbox" name="intolerancia" value="Egg"> Huevo</label>
+              <label><input type="checkbox" name="intolerancia" value="Gluten"> Gluten</label>
+              <label><input type="checkbox" name="intolerancia" value="Grain"> Grano</label>
+              <label><input type="checkbox" name="intolerancia" value="Peanut"> Maní</label>
+              <label><input type="checkbox" name="intolerancia" value="Seafood"> Mariscos</label>
+              <label><input type="checkbox" name="intolerancia" value="Soy"> Soja</label>
+              <label><input type="checkbox" name="intolerancia" value="Sulfite"> Sulfito</label>
+              <label><input type="checkbox" name="intolerancia" value="Wheat"> Trigo</label>
+            </fieldset>
           </div>
           <div class="cont_inputs">
             <label for="objetivo_nutricional">Objetivo nutricional</label>

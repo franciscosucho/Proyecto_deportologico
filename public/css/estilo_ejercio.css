@@ -167,8 +167,10 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: flex-start; /* Centra verticalmente */
-  justify-items: center; /* Alinea al inicio horizontalmente */
+  align-items: flex-start;
+  /* Centra verticalmente */
+  justify-items: center;
+  /* Alinea al inicio horizontalmente */
   min-height: 100vh;
   height: 100%;
   gap: 20px;
@@ -348,7 +350,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   width: 30vw;
-  height: auto;
+  height: 60vh;
   transition: all 0.2s ease-in-out;
 }
 #cont_ejercio_focus .cont_ejercio:hover {
@@ -387,6 +389,7 @@
   list-style: none;
   width: 100%;
   padding: 20px;
+  height: 50%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
