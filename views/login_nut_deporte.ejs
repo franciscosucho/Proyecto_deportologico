@@ -2,202 +2,102 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <title>Mental Strong</title>
-  <link rel="stylesheet" href="css/estilo.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link rel="shortcut icon" href="../public/resources/mental-strong.ico" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <title>Mental Strong</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="shortcut icon" href="../public/resources/mental-strong.ico" type="image/x-icon">
 </head>
 
 <body>
-  <main>
-    <section id="registro">
-      <div id="cont_selec">
-        <img src="./resources/mental-strong.ico" alt="Logo">
+    <main>
+        <section id="registro">
 
-        <div id="cont_url">
-          <span id="btn_registrar" class="desactivo">Registrarse</span>
-          <span id="btn_iniciar" class="activo">Iniciar sesión</span>
-        </div>
-      </div>
+            <form method="post" action="/enviar_2" id="cont_registrar" class="desac" enctype="multipart/form-data">
 
-      <form method="get" action="/iniciar" id="cont_iniciar" class="sub_form">
-        <div class="cont_inputs">
-          <label for="nombre_ini">Nombre de usuario o Email</label>
-          <input id="nombre_ini" name="nombre_ini" type="text" placeholder="Escriba su nombre de usuario o Email"
-            required maxlength="60">
-        </div>
-        <div class="cont_inputs">
-          <label for="password_ini">Contraseña</label>
-          <input id="password_ini" name="password_ini" type="password" placeholder="Escriba su Contraseña" required
-            maxlength="60">
-        </div>
-        <button id="btn_ini_sesion" type="submit">Ingresar</button>
-        <!-- Mostrar error si existe -->
-        <% if (typeof error !=='undefined' ) { %>
-          <span id="error_ini">
-            <%= error %>
-          </span>
-          <% } %>
-      </form>
+                <div id="datos_nutricionales" class="sub_form desac">
+                    <div class="cont_inputs">
+                        <label for="dieta">Tipo de dieta</label>
+                        <select id="dieta" name="dieta" required>
+                            <option value=" ">Omnívora</option>
+                            <option value="Vegetariana">Vegetariana</option>
+                            <option value="Ovo-Vegetariano">Ovo-Vegetariano</option>
+                            <option value="Vegana">Vegana</option>
+                            <option value="Pescetariana">Pescetariana</option>
+                            <option value="Sin gluten">Sin gluten</option>
+                        </select>
+                    </div>
+                    <div class="cont_inputs">
+                        <label for="intolerancia">Intolerancias</label>
+                        <fieldset>
+                            <label> <input type="checkbox" name="intolerancia" value="Ninguna"> Ninguna</label>
+                            <label><input type="checkbox" name="intolerancia" value="Dairy"> Lácteos</label>
+                            <label><input type="checkbox" name="intolerancia" value="Egg"> Huevo</label>
+                            <label><input type="checkbox" name="intolerancia" value="Gluten"> Gluten</label>
+                            <label><input type="checkbox" name="intolerancia" value="Grain"> Grano</label>
+                            <label><input type="checkbox" name="intolerancia" value="Peanut"> Maní</label>
+                            <label><input type="checkbox" name="intolerancia" value="Seafood"> Mariscos</label>
+                            <label><input type="checkbox" name="intolerancia" value="Soy"> Soja</label>
+                            <label><input type="checkbox" name="intolerancia" value="Sulfite"> Sulfito</label>
+                            <label><input type="checkbox" name="intolerancia" value="Wheat"> Trigo</label>
+                        </fieldset>
+                    </div>
+                    <div class="cont_inputs">
+                        <label for="objetivo_nutricional">Objetivo nutricional</label>
+                        <select id="objetivo_nutricional" name="objetivo_nutricional" required>
+                            <option value="Perdida de peso">Pérdida de peso</option>
+                            <option value="Mantener peso">Mantener peso</option>
+                            <option value="Ganar peso">Ganar peso</option>
+                        </select>
+                    </div>
+                    <div class="cont_btn">
+                        <button class="btn_enviar_sesion" type="button">Siguiente</button>
+                        <button class="btn_atras" type="button">Atrás</button>
+                    </div>
+                </div>
 
-      <form method="post" action="/enviar" id="cont_registrar" class="desac" enctype="multipart/form-data">
-        <span id="texto_regs"></span>
-
-        <div id="datos_personales" class="sub_form">
-          <div class="cont_inputs">
-            <label for="nombre_regis">Nombre</label>
-            <input id="nombre_regis" name="nombre_regis" type="text" placeholder="Escriba su nombre" required
-              maxlength="40" class="input">
-          </div>
-          <div class="cont_inputs">
-            <label for="apellido_regis">Apellido</label>
-            <input id="apellido_regis" name="apellido_regis" type="text" placeholder="Escriba su apellido" required
-              maxlength="40" class="input">
-          </div>
-          <div class="cont_inputs">
-            <label for="dni">DNI</label>
-            <input id="dni" name="dni" type="number" placeholder="Escriba su DNI" required maxlength="8" class="input">
-          </div>
-          <div class="cont_inputs">
-            <label for="nacimiento">Nacimiento</label>
-            <input id="nacimiento" name="nacimiento" type="date" placeholder="Escriba su fecha de nacimiento" required class="input">
-          </div>
-          <div class="cont_inputs">
-            <label for="opciones_genero">Género</label>
-            <select id="opciones_genero" name="opciones_genero" required>
-              <option value="M">Masculino</option>
-              <option value="F">Femenino</option>
-            </select>
-          </div>
-          <div class="cont_inputs">
-            <label for="peso">Peso (En Kgs)</label>
-            <input id="peso" name="peso" type="number" placeholder="Escriba su peso en kgs" min="0" step="1" required
-              maxlength="6" class="input">
-          </div>
-          <div class="cont_inputs">
-            <label for="altura">Altura (En Cms)</label>
-            <input id="altura" name="altura" type="number" placeholder="Escriba su altura en Cms" min="0" required
-              maxlength="6" class="input">
-          </div>
-          <div class="cont_btn">
-            <button class="btn_enviar_sesion" type="button">Siguiente</button>
-            <button class="btn_atras" type="button">Atrás</button>
-          </div>
-        </div>
-
-        <div id="datos_acceso" class="sub_form desac">
-          <div class="cont_inputs">
-            <label for="nombre_usuario_regis">Nombre de usuario</label>
-            <input id="nombre_usuario_regis" name="nombre_usuario_regis" type="text"
-              placeholder="Escriba su nombre de usuario" required maxlength="60" class="input">
-          </div>
-          <div class="cont_inputs">
-            <label for="email_regis">Email</label>
-            <input id="email_regis" name="email_regis" type="email" placeholder="Escriba su email" required
-              maxlength="60" class="input">
-          </div>
-          <div class="cont_inputs">
-            <label for="password_regis">Contraseña</label>
-            <input id="password_regis" name="password_regis" type="password" placeholder="Escriba su contraseña"
-              required class="input">
-          </div>
-          <div class="cont_inputs">
-            <label for="foto_perfil">Foto de perfil</label>
-            <div id="cont_inp_foto">
-              <input id="foto_perfil" name="foto_perfil" type="file" placeholder="Eliga un archvio">
-            </div>
-
-          </div>
-          <div class="cont_btn">
-            <button class="btn_enviar_sesion" type="button">Siguiente</button>
-            <button class="btn_atras" type="button">Atrás</button>
-          </div>
-        </div>
-
-        <div id="datos_nutricionales" class="sub_form desac">
-          <div class="cont_inputs">
-            <label for="dieta">Tipo de dieta</label>
-            <select id="dieta" name="dieta" required>
-              <option value=" ">Omnívora</option>
-              <option value="Vegetariana">Vegetariana</option>
-              <option value="Ovo-Vegetariano">Ovo-Vegetariano</option>
-              <option value="Vegana">Vegana</option>
-              <option value="Pescetariana">Pescetariana</option>
-              <option value="Sin gluten">Sin gluten</option>
-            </select>
-          </div>
-          <div class="cont_inputs">
-            <label for="intolerancia">Intolerancias</label>
-            <fieldset>
-              <label> <input type="checkbox" name="intolerancia" value="Ninguna"> Ninguna</label>
-              <label><input type="checkbox" name="intolerancia" value="Dairy"> Lácteos</label>
-              <label><input type="checkbox" name="intolerancia" value="Egg"> Huevo</label>
-              <label><input type="checkbox" name="intolerancia" value="Gluten"> Gluten</label>
-              <label><input type="checkbox" name="intolerancia" value="Grain"> Grano</label>
-              <label><input type="checkbox" name="intolerancia" value="Peanut"> Maní</label>
-              <label><input type="checkbox" name="intolerancia" value="Seafood"> Mariscos</label>
-              <label><input type="checkbox" name="intolerancia" value="Soy"> Soja</label>
-              <label><input type="checkbox" name="intolerancia" value="Sulfite"> Sulfito</label>
-              <label><input type="checkbox" name="intolerancia" value="Wheat"> Trigo</label>
-            </fieldset>
-          </div>
-          <div class="cont_inputs">
-            <label for="objetivo_nutricional">Objetivo nutricional</label>
-            <select id="objetivo_nutricional" name="objetivo_nutricional" required>
-              <option value="Perdida de peso">Pérdida de peso</option>
-              <option value="Mantener peso">Mantener peso</option>
-              <option value="Ganar peso">Ganar peso</option>
-            </select>
-          </div>
-          <div class="cont_btn">
-            <button class="btn_enviar_sesion" type="button">Siguiente</button>
-            <button class="btn_atras" type="button">Atrás</button>
-          </div>
-        </div>
-
-        <div id="datos_deportivos" class="sub_form desac">
-          <div class="cont_inputs">
-            <label for="tipo_deporte">Tipo de deporte</label>
-            <select id="tipo_deporte" name="tipo_deporte" required>
-              <option value="Fuerza">Fuerza</option>
-              <option value="Cardiovascular">Cardiovascular</option>
-            </select>
-          </div>
-          <div class="cont_inputs">
-            <label for="obj_deportivo">Objetivo deportivo</label>
-            <select id="obj_deportivo" name="obj_deportivo" required>
-              <option value="Mejorar la resistencia">Mejorar la resistencia</option>
-              <option value="Mejorar la potencia">Mejorar la potencia</option>
-            </select>
-          </div>
-          <div class="cont_inputs">
-            <label for="frecuencia">Frecuencia (Días de entrenamiento/Semana)</label>
-            <select id="frecuencia" name="frecuencia" required>
-              <option value="3/7">3/7</option>
-              <option value="4/7">4/7</option>
-              <option value="5/7">5/7</option>
-              <option value="6/7">6/7</option>
-            </select>
-          </div>
-          <div class="cont_inputs">
-            <label for="intensidad">Intensidad</label>
-            <select id="intensidad" name="intensidad" required>
-              <option value="Ligera">Ligera</option>
-              <option value="Moderada">Moderada</option>
-              <option value="Alta">Alta</option>
-            </select>
-          </div>
-          <div class="cont_btn">
-            <button id="btn_registrar_sesion" type="submit">Registrarse</button>
-            <button class="btn_atras" type="button">Atrás</button>
-          </div>
-        </div>
-      </form>
-    </section>
-  </main>
-  <script src="js/estilos_regis.js"></script>
+                <div id="datos_deportivos" class="sub_form desac">
+                    <div class="cont_inputs">
+                        <label for="tipo_deporte">Tipo de deporte</label>
+                        <select id="tipo_deporte" name="tipo_deporte" required>
+                            <option value="Fuerza">Fuerza</option>
+                            <option value="Cardiovascular">Cardiovascular</option>
+                        </select>
+                    </div>
+                    <div class="cont_inputs">
+                        <label for="obj_deportivo">Objetivo deportivo</label>
+                        <select id="obj_deportivo" name="obj_deportivo" required>
+                            <option value="Mejorar la resistencia">Mejorar la resistencia</option>
+                            <option value="Mejorar la potencia">Mejorar la potencia</option>
+                        </select>
+                    </div>
+                    <div class="cont_inputs">
+                        <label for="frecuencia">Frecuencia (Días de entrenamiento/Semana)</label>
+                        <select id="frecuencia" name="frecuencia" required>
+                            <option value="3/7">3/7</option>
+                            <option value="4/7">4/7</option>
+                            <option value="5/7">5/7</option>
+                            <option value="6/7">6/7</option>
+                        </select>
+                    </div>
+                    <div class="cont_inputs">
+                        <label for="intensidad">Intensidad</label>
+                        <select id="intensidad" name="intensidad" required>
+                            <option value="Ligera">Ligera</option>
+                            <option value="Moderada">Moderada</option>
+                            <option value="Alta">Alta</option>
+                        </select>
+                    </div>
+                    <div class="cont_btn">
+                        <button id="btn_registrar_sesion" type="submit">Registrarse</button>
+                        <button class="btn_atras" type="button">Atrás</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="js/estilos_regis.js"></script>
 </body>
 
 </html>
