@@ -472,23 +472,36 @@ app.post('/editar_datos_deporte', (req, res) => {
 //<---------------------------------------------------------------------------------------->
 app.get('/ejercio', (req, res) => {
 
-    var user_name = req.session.user_name
-    var user_genero = req.session.user_genero
-    var user_peso = req.session.user_peso
-    var user_altura = req.session.user_altura
-    var user_dieta = req.session.user_dieta
-    var user_obj_nut = req.session.user_obj_nut
-    var user_deporte = req.session.user_deporte
-    var user_obj_dep = req.session.user_obj_dep
-    var user_frecuencia = req.session.user_frecuencia
-    var user_intensidad = req.session.user_intensidad
-    console.log(user_deporte)
-    if (user_deporte == null) {
-        res.redirect('/login_nut_deporte');
-    }
-    res.render('ejercio', { user_name, user_genero, user_peso, user_altura, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+    var user_name = req.session.user_name;
+    var user_genero = req.session.user_genero;
+    var user_peso = req.session.user_peso;
+    var user_altura = req.session.user_altura;
+    var user_dieta = req.session.user_dieta;
+    var user_obj_nut = req.session.user_obj_nut;
+    var user_deporte = req.session.user_deporte;
+    var user_obj_dep = req.session.user_obj_dep;
+    var user_frecuencia = req.session.user_frecuencia;
+    var user_intensidad = req.session.user_intensidad;
 
-})
+    if (user_deporte == null) {
+        console.log("ss");
+        return res.redirect('/login_nut_deporte'); // Agregar return aquí para detener la ejecución
+    } else {
+        res.render('ejercio', {
+            user_name,
+            user_genero,
+            user_peso,
+            user_altura,
+            user_dieta,
+            user_obj_nut,
+            user_deporte,
+            user_obj_dep,
+            user_frecuencia,
+            user_intensidad
+        });
+    }
+});
+
 app.get('/lista_ejercios', (req, res) => {
 
     var user_name = req.session.user_name
@@ -732,7 +745,7 @@ app.get('/login_nut_deporte', (req, res) => {
 app.post('/enviar_2', (req, res) => {
     try {
         var dni = req.session.user_dni;
-
+        console.log(dni)
         let {
             dieta, objetivo_nutricional,
             tipo_deporte, obj_deportivo, frecuencia, intensidad, intolerancia
@@ -807,7 +820,6 @@ app.get('/iniciar', (req, res) => {
 
         if (results.length > 0) {
             const dni = results[0].DNI;
-
             var user_nombre_regis = req.session.user_nombre_regis
             var user_apellido_regis = req.session.user_apellido_regis
             // Variables de sesión del usuario
@@ -835,7 +847,9 @@ app.get('/iniciar', (req, res) => {
                     req.session.user_dieta = results[0].TipoAlimentacion;
                     req.session.user_obj_nut = results[0].ObjetivoNutricion;
                     req.session.user_intolerancia = results[0].intolerancia;
+
                 }
+
             });
 
             const query_deport = `
@@ -851,7 +865,9 @@ app.get('/iniciar', (req, res) => {
                     req.session.user_obj_dep = results[0].ObjetivosDeportivo;
                     req.session.user_frecuencia = results[0].Frecuencia;
                     req.session.user_intensidad = results[0].Intensidad;
+
                 }
+
             });
 
             // Verificar y actualizar racha
@@ -895,7 +911,7 @@ app.get('/iniciar', (req, res) => {
                             });
                         }
                         // Redirigir a la página de inicio
-                        return res.redirect('/index');
+
                     });
                 }
             });
@@ -904,6 +920,7 @@ app.get('/iniciar', (req, res) => {
                 error: 'Usuario o contraseña incorrectos'
             });
         }
+        return res.redirect('/index');
     });
 });
 

@@ -155,12 +155,12 @@ body {
                     gap: 5px;
 
                     fieldset {
-                        
+
                         overflow-y: scroll;
                         display: flex;
                         justify-content: flex-start;
                         align-self: center;
-                        gap: 10px   ;
+                        gap: 10px;
                         flex-direction: column;
                         border: none;
                         width: 60%;
@@ -173,13 +173,13 @@ body {
                             color: white;
                             padding: 10px;
                             border-radius: 10px;
-                            flex-direction:row;
+                            flex-direction: row;
                             height: 40px;
                             gap: 50px;
                             width: 100%;
 
                             input {
-                               
+
                                 height: 20px;
                                 width: 20px;
                                 accent-color: rgba(100, 231, 135, 0.7882352941);
@@ -258,6 +258,12 @@ body {
                 &#cont_registrar {
                     height: auto;
                     padding-bottom: 20px;
+
+                    h1 {
+                        text-align: center;
+                        color: white;
+                        font-size: 1.6em;
+                    }
 
                     #texto_regs {
                         width: 100%;

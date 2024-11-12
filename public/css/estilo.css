@@ -223,6 +223,11 @@ body main #registro form#cont_registrar {
   height: auto;
   padding-bottom: 20px;
 }
+body main #registro form#cont_registrar h1 {
+  text-align: center;
+  color: white;
+  font-size: 1.6em;
+}
 body main #registro form#cont_registrar #texto_regs {
   width: 100%;
   text-align: center;

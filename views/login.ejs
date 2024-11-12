@@ -42,7 +42,7 @@
           <% } %>
       </form>
 
-      <form method="post" action="/enviar" id="cont_registrar" class="desac" enctype="multipart/form-data">
+      <form method="post" action="/enviar" id="cont_registrar" class="desac" enctype="multipart/form-data" data-opc="enviar_1">
         <span id="texto_regs"></span>
 
         <div id="datos_personales" class="sub_form">
@@ -62,7 +62,8 @@
           </div>
           <div class="cont_inputs">
             <label for="nacimiento">Nacimiento</label>
-            <input id="nacimiento" name="nacimiento" type="date" placeholder="Escriba su fecha de nacimiento" required class="input">
+            <input id="nacimiento" name="nacimiento" type="date" placeholder="Escriba su fecha de nacimiento" required
+              class="input">
           </div>
           <div class="cont_inputs">
             <label for="opciones_genero">Género</label>
@@ -116,11 +117,37 @@
           </div>
         </div>
 
-   
+
       </form>
     </section>
   </main>
   <script src="js/estilos_regis.js"></script>
+  <script>
+    // parte de los addlisterner de el form
+    const btn_iniciar = document.getElementById("btn_iniciar");
+    const btn_registrar = document.getElementById("btn_registrar");
+    const cont_registrar = document.getElementById("cont_registrar");
+    const cont_iniciar = document.getElementById("cont_iniciar");
+    //uso de las depencias para hashear contras
+
+
+    //  registro
+    btn_registrar.addEventListener("click", () => {
+      btn_registrar.classList.toggle("activo");
+      btn_iniciar.classList.toggle("activo");
+      cont_registrar.classList.toggle("desac");
+      cont_iniciar.classList.toggle("desac");
+    });
+
+
+
+    btn_iniciar.addEventListener("click", () => {
+      btn_registrar.classList.toggle("activo");
+      btn_iniciar.classList.toggle("activo");
+      cont_registrar.classList.toggle("desac");
+      cont_iniciar.classList.toggle("desac");
+    })
+  </script>
 </body>
 
 </html>
