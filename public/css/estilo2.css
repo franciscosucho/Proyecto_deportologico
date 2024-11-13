@@ -331,6 +331,10 @@ body {
   gap: 20px ;
   width: 50%;
   height: 90%;
+  
+}
+#item_list  #cont_list li{
+  color: rgb(196, 196, 196);
 
 }
 #item_list  h3{
