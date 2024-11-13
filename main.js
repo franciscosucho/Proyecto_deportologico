@@ -1,9 +1,7 @@
 // comando para instalar en el cole " npm install --save-dev electron "
 // 
-const mysql = require('mysql2');
-const { app, nativeTheme, BrowserWindow, ipcMain } = require('electron');
-const path = require('path');
-const bcrypt = require('bcrypt');
+
+const { app, BrowserWindow } = require('electron');
 
 let mainWindow;
 
