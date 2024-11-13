@@ -8,7 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="shortcut icon" href="../public/resources/mental-strong.ico" type="image/x-icon">
-    
 </head>
 
 <body>
@@ -24,25 +23,26 @@
                 <div id="cont_info_prin">
                     <% if(user_foto_perfil){%>
                         <img src="<%-user_foto_perfil%>">
-                        <%} else {%>
-                            <img src="./resources/img_us/sin-foto.png">
-                            <%}%>
-                                <h3 class="nombre_us"><%-user_name%></h3>
+                    <%} else {%>
+                        <img src="./resources/img_us/sin-foto.png">
+                    <%}%>
+                    <h3 class="nombre_us"><%-user_name%></h3>
                 </div>
+
                 <section class="cont_rec" id="cont_us">
                     
                     <div id="cont_main">
+                        <!-- Detalles de usuario -->
                         <div class="cont_datos">
                             <div class="cont_link">
                                 <h4>Detalles de usuario</h4>
-                                <a href="/editar_datos_us" id="editar_perfil">Editar perfil</a>
+                                <a href="/editar_datos_us" class="editar_perfil">Editar perfil</a>
                             </div>
-
                             <div class="datos_user">
                                 <h3>Dirección de correo</h3>
                                 <p><%-user_email%></p>
                             </div>
-                            <div class="datos_user ">
+                            <div class="datos_user">
                                 <h3>Nombre</h3>
                                 <p><%-user_nombre_regis%></p>
                             </div>
@@ -55,13 +55,12 @@
                                 <p><%-user_dni%></p>
                             </div>
                             <div class="datos_user">
-                                <h3>Genero</h3>
-
+                                <h3>Género</h3>
                                 <% if(user_genero=="M" ){%>
                                     <p>Masculino</p>
-                                    <%} else {%>
-                                        <p>Femenino</p>
-                                        <%}%>
+                                <%} else {%>
+                                    <p>Femenino</p>
+                                <%}%>
                             </div>
                             <div class="datos_user">
                                 <h3>Altura</h3>
@@ -73,16 +72,19 @@
                             </div>
                         </div>
 
+                        <!-- Detalles de nutrición -->
                         <div class="cont_datos">
-                            <h4>Detalles de nutricion</h4>
+                            <div class="cont_link">
+                                <h4>Detalles de nutrición</h4>
+                                <a href="/editar_datos_nutricion" class="editar_perfil">Editar perfil</a>
+                            </div>
                             <div class="datos_user">
                                 <h3>Tipo de dieta</h3>
                                 <% if(user_dieta==" " ){%>
                                     <p>Omnívora</p>
-                                    <%} else {%>
-                                        <p><%-user_dieta%></p>
-                                        <%}%>
-
+                                <%} else {%>
+                                    <p><%-user_dieta%></p>
+                                <%}%>
                             </div>
                             <div class="datos_user">
                                 <h3>Objetivo nutricional</h3>
@@ -91,12 +93,15 @@
                             <div class="datos_user">
                                 <h3>Intolerancias</h3>
                                 <p><%-user_intolerancia%></p>
-
                             </div>
                         </div>
 
+                        <!-- Detalles de deporte -->
                         <div class="cont_datos">
-                            <h4>Detalles de deporte</h4>
+                            <div class="cont_link">
+                                <h4>Detalles de deporte</h4>
+                                <a href="/editar_datos_deporte" class="editar_perfil">Editar perfil</a>
+                            </div>
                             <div class="datos_user">
                                 <h3>Tipo de deporte</h3>
                                 <p><%-user_deporte%></p>
@@ -107,7 +112,7 @@
                             </div>
                             <div class="datos_user">
                                 <h3>Frecuencia de la actividad</h3>
-                                <p><%-user_frecuencia%> ( Frecuencia / Dias de la semana )</p>
+                                <p><%-user_frecuencia%> ( Frecuencia / Días de la semana )</p>
                             </div>
                             <div class="datos_user">
                                 <h3>Intensidad de la actividad</h3>
@@ -116,26 +121,26 @@
                         </div>
                     </div>
 
+                    <!-- Actividades -->
                     <div id="cont_sec_datos">
                         <div class="cont_datos">
                             <h4>Actividades</h4>
-                            <% let i=0; %>
-                                <% results.forEach(actividad=> { %>
-                                    <a class="link" href="/progreso_focus/<%- actividad.ID %>">
-                                        <div class="datos_user" id="datos_us<%= i %>">
-                                            <h3><%- actividad.Nombre %></h3>
-                                            <p><%- actividad.TipoRegistro %></p>
-                                        </div>
-                                    </a>
-                                    <% i +=1; %>
-                                        <% }) %>
+                            <% let i = 0; %>
+                            <% results.forEach(actividad => { %>
+                                <a class="link" href="/progreso_focus/<%- actividad.ID %>">
+                                    <div class="datos_user" id="datos_us<%= i %>">
+                                        <h3><%- actividad.Nombre %></h3>
+                                        <p><%- actividad.TipoRegistro %></p>
+                                    </div>
+                                </a>
+                                <% i += 1; %>
+                            <% }) %>
                         </div>
                     </div>
-
                 </section>
             </section>
+        </section>
     </main>
-    
     
 </body>
 
