@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="shortcut icon" href="../public/resources/mental-strong.ico" type="image/x-icon">
-    
+
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                                 <h3 class="nombre_us"><%-user_name%></h3>
                 </div>
                 <section class="cont_rec" id="cont_us">
-                    
+
                     <div id="cont_main">
                         <div class="cont_datos">
                             <div class="cont_link">
@@ -124,7 +124,15 @@
                                     <a class="link" href="/progreso_focus/<%- actividad.ID %>">
                                         <div class="datos_user" id="datos_us<%= i %>">
                                             <h3><%- actividad.Nombre %></h3>
-                                            <p><%- actividad.TipoRegistro %></p>
+                                            <% if (actividad.TipoRegistro == "Distancia_m") { %>
+                                                <p>Metros</p>
+                                            <% } else if (actividad.TipoRegistro == "Distancia_Km") { %>
+                                                <p>Kilómetros</p>
+                                            <% } else { %>
+                                                <p><%- actividad.TipoRegistro %></p>
+                                            <% } %>
+                                                  
+
                                         </div>
                                     </a>
                                     <% i +=1; %>
@@ -135,8 +143,8 @@
                 </section>
             </section>
     </main>
-    
-    
+
+
 </body>
 
 </html>

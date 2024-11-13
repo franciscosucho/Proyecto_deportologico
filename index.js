@@ -285,7 +285,6 @@ app.post('/progreso_actualizar', (req, res) => {
         id_actividad,
         valor_act
     } = req.body;
-    console.log(id_actividad)
     var user_dni = req.session.user_dni
     let insert_act_act = "INSERT INTO `progreso_focus`( `id_actividad`,`DNI_prog`, `Fecha`, `Valor`) VALUES (?,?,?,?)"
     var fecha = obtenerFechaActual()[0];
@@ -472,34 +471,46 @@ app.post('/editar_datos_deporte', (req, res) => {
 //<---------------------------------------------------------------------------------------->
 app.get('/ejercio', (req, res) => {
 
-    var user_name = req.session.user_name;
-    var user_genero = req.session.user_genero;
-    var user_peso = req.session.user_peso;
-    var user_altura = req.session.user_altura;
-    var user_dieta = req.session.user_dieta;
-    var user_obj_nut = req.session.user_obj_nut;
-    var user_deporte = req.session.user_deporte;
-    var user_obj_dep = req.session.user_obj_dep;
-    var user_frecuencia = req.session.user_frecuencia;
-    var user_intensidad = req.session.user_intensidad;
+    var user_dni = req.session.user_dni;
 
-    if (user_deporte == null) {
-        console.log("ss");
-        return res.redirect('/login_nut_deporte'); // Agregar return aquí para detener la ejecución
-    } else {
-        res.render('ejercio', {
-            user_name,
-            user_genero,
-            user_peso,
-            user_altura,
-            user_dieta,
-            user_obj_nut,
-            user_deporte,
-            user_obj_dep,
-            user_frecuencia,
-            user_intensidad
-        });
-    }
+    const query_nutri = `
+    SELECT * FROM nutricionalusuario WHERE DNI_nut = ?`;
+    connection.query(query_nutri, [user_dni], (err, results) => {
+        if (err) {
+            return res.render('login.ejs', {
+                error: 'Error al verificar los datos'
+            });
+        }
+        if (results.length > 0) {
+            var user_name = req.session.user_name
+            var user_genero = req.session.user_genero
+            var user_peso = req.session.user_peso
+            var user_altura = req.session.user_altura
+            var user_dieta = req.session.user_dieta
+            var user_obj_nut = req.session.user_obj_nut
+            var user_deporte = req.session.user_deporte
+            var user_obj_dep = req.session.user_obj_dep
+            var user_frecuencia = req.session.user_frecuencia
+            var user_intensidad = req.session.user_intensidad
+            res.render('ejercio', {
+                user_name,
+                user_genero,
+                user_peso,
+                user_altura,
+                user_dieta,
+                user_obj_nut,
+                user_deporte,
+                user_obj_dep,
+                user_frecuencia,
+                user_intensidad
+            });
+
+        } else {
+            return res.redirect('/login_nut_deporte');
+        }
+
+    });
+
 });
 
 app.get('/lista_ejercios', (req, res) => {
@@ -716,14 +727,14 @@ app.post('/enviar', (req, res) => {
                         req.session.user_peso = peso;
                         req.session.user_altura = altura;
                         req.session.user_email = email_regis;
-                        req.session.user_dieta = null;
-                        req.session.user_intolerancia = null;
-                        req.session.user_obj_nut = null;
-                        req.session.user_deporte = null;
-                        req.session.user_obj_dep = null;
-                        req.session.user_frecuencia = null;
-                        req.session.user_intensidad = null;
-                        req.session.user_fecha_comienzo = null;
+                        req.session.user_dieta = "";
+                        req.session.user_intolerancia = "";
+                        req.session.user_obj_nut = "";
+                        req.session.user_deporte = "";
+                        req.session.user_obj_dep = "";
+                        req.session.user_frecuencia = "";
+                        req.session.user_intensidad = "";
+                        req.session.user_fecha_comienzo = "";
 
                         return res.redirect('/index'); // Agregamos `return` aquí
                     });
@@ -745,7 +756,6 @@ app.get('/login_nut_deporte', (req, res) => {
 app.post('/enviar_2', (req, res) => {
     try {
         var dni = req.session.user_dni;
-        console.log(dni)
         let {
             dieta, objetivo_nutricional,
             tipo_deporte, obj_deportivo, frecuencia, intensidad, intolerancia
@@ -806,122 +816,88 @@ app.post('/enviar_2', (req, res) => {
     }
 });
 
+app.get('/iniciar', async (req, res) => {
+    try {
+        const { nombre_ini, password_ini } = req.query;
 
-app.get('/iniciar', (req, res) => {
-    const { nombre_ini, password_ini } = req.query;
+        // Consulta para verificar al usuario
+        const query_ini = 'SELECT * FROM usuario WHERE (Nombre_usuario = ? OR Email = ?) AND password = ?';
+        const [userResults] = await connection.promise().query(query_ini, [nombre_ini, nombre_ini, password_ini]);
 
-    const query_ini = 'SELECT * FROM usuario WHERE(Nombre_usuario = ? OR Email = ?) AND password = ? ';
-    connection.query(query_ini, [nombre_ini, nombre_ini, password_ini], (err, results) => {
-        if (err) {
-            return res.render('login.ejs', {
-                error: 'Error al verificar los datos'
-            });
+        if (userResults.length === 0) {
+            return res.render('login.ejs', { error: 'Usuario o contraseña incorrectos' });
         }
 
-        if (results.length > 0) {
-            const dni = results[0].DNI;
-            var user_nombre_regis = req.session.user_nombre_regis
-            var user_apellido_regis = req.session.user_apellido_regis
-            // Variables de sesión del usuario
-            req.session.user_nombre_regis = results[0].Nombre;
-            req.session.user_apellido_regis = results[0].Apellido;
-            req.session.user_name = results[0].Nombre_usuario;
-            req.session.user_rutaImagen = results[0].Foto_perfil;
-            req.session.user_dni = results[0].DNI;
-            req.session.user_pass = results[0].password;
-            req.session.user_nac = results[0].FechaNacimiento;
-            req.session.user_email = results[0].Email;
-            req.session.user_peso = results[0].Peso;
-            req.session.user_altura = results[0].Altura;
-            req.session.user_genero = results[0].Genero;
+        const user = userResults[0];
+        const dni = user.DNI;
 
-            const query_nutri = `
-            SELECT * FROM nutricionalusuario WHERE DNI_nut = ?`;
-            connection.query(query_nutri, [dni], (err, results) => {
-                if (err) {
-                    return res.render('login.ejs', {
-                        error: 'Error al verificar los datos'
-                    });
-                }
-                if (results.length > 0) {
-                    req.session.user_dieta = results[0].TipoAlimentacion;
-                    req.session.user_obj_nut = results[0].ObjetivoNutricion;
-                    req.session.user_intolerancia = results[0].intolerancia;
+        // Variables de sesión del usuario
+        req.session.user_nombre_regis = user.Nombre;
+        req.session.user_apellido_regis = user.Apellido;
+        req.session.user_name = user.Nombre_usuario;
+        req.session.user_rutaImagen = user.Foto_perfil;
+        req.session.user_dni = user.DNI;
+        req.session.user_pass = user.password;
+        req.session.user_nac = user.FechaNacimiento;
+        req.session.user_email = user.Email;
+        req.session.user_peso = user.Peso;
+        req.session.user_altura = user.Altura;
+        req.session.user_genero = user.Genero;
 
-                }
+        // Consulta para obtener datos nutricionales
+        const query_nutri = 'SELECT * FROM nutricionalusuario WHERE DNI_nut = ?';
+        const [nutriResults] = await connection.promise().query(query_nutri, [dni]);
 
-            });
-
-            const query_deport = `
-            SELECT * FROM deportivousuario WHERE DNI_depor = ?`;
-            connection.query(query_deport, [dni], (err, results) => {
-                if (err) {
-                    return res.render('login.ejs', {
-                        error: 'Error al verificar los datos'
-                    });
-                }
-                if (results.length > 0) {
-                    req.session.user_deporte = results[0].TipoDeporte;
-                    req.session.user_obj_dep = results[0].ObjetivosDeportivo;
-                    req.session.user_frecuencia = results[0].Frecuencia;
-                    req.session.user_intensidad = results[0].Intensidad;
-
-                }
-
-            });
-
-            // Verificar y actualizar racha
-            const query_racha = `
-            SELECT * FROM racha WHERE Dni_racha = ?`;
-            connection.query(query_racha, [dni], (err, results) => {
-                if (err) {
-                    return res.render('login.ejs', {
-                        error: 'Error al verificar la racha'
-                    });
-                }
-                if (results.length > 0) {
-                    let racha = results[0].dias;
-                    let fechaUltimoIngreso = results[0].Fecha_ultimo_Ingreso; // Asumiendo que esta es una fecha en formato ISO
-                    let fecha = new Date(fechaUltimoIngreso);
-
-                    let anio = fecha.getFullYear();
-                    let mes = ("0" + (fecha.getMonth() + 1)).slice(-2); // Sumamos 1 porque getMonth() devuelve un índice 0-11
-                    let dia = ("0" + fecha.getDate()).slice(-2);
-
-                    let fechaFormateada = `${anio}-${mes}-${dia}`;
-                    fechaUltimoIngreso = fechaFormateada;
-
-                    // Asegúrate de que fechaAyer y fechaActual estén también en formato YYYY-MM-DD
-                    if (fechaUltimoIngreso === fechaAyer) {
-                        // Incrementa la racha
-                        racha++;
-                    } else if (fechaUltimoIngreso < fechaAyer) {
-                        // Si el usuario no ingresó ayer, se reinicia la racha
-                        racha = 1;
-                    }
-
-                    req.session.user_racha = racha
-                    // Actualiza la fecha del último ingreso y la racha
-                    const query_actualizar_racha = `
-                    UPDATE racha SET Fecha_ultimo_Ingreso = ?, dias = ? WHERE Dni_racha = ?`;
-                    connection.query(query_actualizar_racha, [fechaActual, racha, dni], (err) => {
-                        if (err) {
-                            return res.render('login.ejs', {
-                                error: 'Error al actualizar la racha'
-                            });
-                        }
-                        // Redirigir a la página de inicio
-
-                    });
-                }
-            });
-        } else {
-            return res.render('login.ejs', {
-                error: 'Usuario o contraseña incorrectos'
-            });
+        if (nutriResults.length > 0) {
+            const nutriData = nutriResults[0];
+            req.session.user_dieta = nutriData.TipoAlimentacion;
+            req.session.user_obj_nut = nutriData.ObjetivoNutricion;
+            req.session.user_intolerancia = nutriData.intolerancia;
         }
+
+        // Consulta para obtener datos deportivos
+        const query_deport = 'SELECT * FROM deportivousuario WHERE DNI_depor = ?';
+        const [deportResults] = await connection.promise().query(query_deport, [dni]);
+
+        if (deportResults.length > 0) {
+            const deportData = deportResults[0];
+            req.session.user_deporte = deportData.TipoDeporte;
+            req.session.user_obj_dep = deportData.ObjetivosDeportivo;
+            req.session.user_frecuencia = deportData.Frecuencia;
+            req.session.user_intensidad = deportData.Intensidad;
+        }
+
+        // Verificar y actualizar racha
+        const query_racha = 'SELECT * FROM racha WHERE Dni_racha = ?';
+        const [rachaResults] = await connection.promise().query(query_racha, [dni]);
+
+        if (rachaResults.length > 0) {
+            let racha = rachaResults[0].dias;
+            let fechaUltimoIngreso = rachaResults[0].Fecha_ultimo_Ingreso;
+            fechaUltimoIngreso = new Date(fechaUltimoIngreso).toISOString().split('T')[0]; // Formato YYYY-MM-DD
+
+            let fechaActual = new Date().toISOString().split('T')[0];
+            let fechaAyer = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+
+            if (fechaUltimoIngreso === fechaAyer) {
+                racha++;
+            } else if (fechaUltimoIngreso < fechaAyer) {
+                racha = 1;
+            }
+
+            req.session.user_racha = racha;
+
+            const query_actualizar_racha = 'UPDATE racha SET Fecha_ultimo_Ingreso = ?, dias = ? WHERE Dni_racha = ?';
+            await connection.promise().query(query_actualizar_racha, [fechaActual, racha, dni]);
+        }
+
+        // Redirigir a la página de inicio
         return res.redirect('/index');
-    });
+
+    } catch (err) {
+        console.error(err);
+        return res.render('login.ejs', { error: 'Error al verificar los datos' });
+    }
 });
 
 

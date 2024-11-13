@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
+    "build": "electron-builder",
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "electron-packager . YourApp --platform=win32 --icon=assets/icons/app-icon.ico"
@@ -26,5 +27,17 @@
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.0"
+  },
+  "build": {
+    "appId": "com.franciscosucho.Mental-Strong",
+    "productName": "Mental-Strong",
+    "copyright": "Copyright © 2024 Mental Strong",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "main.js",
+      "package.json"
+    ]
   }
 }
