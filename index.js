@@ -757,20 +757,18 @@ app.post('/enviar_2', async (req, res) => {
             dieta, objetivo_nutricional,
             tipo_deporte, obj_deportivo, frecuencia, intensidad, intolerancia
         } = req.body;
-
         const intoleranciasString = Array.isArray(intolerancia) ? intolerancia.join(',') : intolerancia;
         intolerancia = intoleranciasString;
         const rutaImagen = req.file ? `/resources/img_us/${req.file.filename}` : null;
         nombre_regis = capitalizarPrimeraLetra(nombre_regis);
         apellido_regis = capitalizarPrimeraLetra(apellido_regis);
 
-        // Insert into usuario table
-        const query_acess = `
-            INSERT INTO usuario(Nombre, Apellido, FechaNacimiento, Peso, Altura, Genero, Foto_perfil) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        `;
+        
+        const update_acces=`
+        UPDATE usuario SET Nombre=?,Apellido=?,FechaNacimiento=?,Peso=?,Altura=?,Genero=?,Foto_perfil=? WHERE DNI=? `;
+
         await new Promise((resolve, reject) => {
-            connection.query(query_acess, [nombre_regis, apellido_regis, nacimiento, peso, altura, opciones_genero, rutaImagen], (err) => {
+            connection.query(update_acces, [nombre_regis, apellido_regis, nacimiento, peso, altura, opciones_genero, rutaImagen,dni], (err) => {
                 if (err) {
                     console.error('Error al insertar en usuario:', err);
                     return reject(res.render('login.ejs', { error: 'Error al registrar los datos del usuario' }));
