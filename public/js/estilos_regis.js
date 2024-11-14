@@ -19,6 +19,7 @@ var texto_span = [
 ];
 if (opc === "enviar_2") {
     texto_span = [
+        "Paso 2: Datos de acceso",
         "Paso 3: Datos nutricionales",
         "Paso 4: Datos deportivos"
     ];

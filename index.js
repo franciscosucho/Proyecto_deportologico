@@ -673,8 +673,7 @@ const fechaAyer = `${añoAyer}-${mesAyer}-${díaAyer}`;
 app.post('/enviar', (req, res) => {
     try {
         let {
-            nombre_regis, apellido_regis, dni, nacimiento, opciones_genero, peso, altura,
-            nombre_usuario_regis, email_regis, password_regis
+            dni, nombre_usuario_regis, email_regis, password_regis
         } = req.body;
 
         const query_ant = `
@@ -702,31 +701,28 @@ app.post('/enviar', (req, res) => {
                 // Inserción en la tabla `usuario`
                 try {
                     const query_usuario = `
-                        INSERT INTO usuario (DNI, Nombre_usuario, password, Nombre, Apellido, FechaNacimiento, Email, Peso, Altura, Genero, Foto_perfil)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        INSERT INTO usuario (DNI, Nombre_usuario, password,Email)
+                        VALUES (?, ?, ?, ?)
                     `;
-                    const rutaImagen = req.file ? `/resources/img_us/${req.file.filename}` : null;
-                    nombre_regis = capitalizarPrimeraLetra(nombre_regis);
-                    apellido_regis = capitalizarPrimeraLetra(apellido_regis);
 
-                    connection.query(query_usuario, [dni, nombre_usuario_regis, password_regis, nombre_regis, apellido_regis, nacimiento, email_regis, peso, altura, opciones_genero, rutaImagen], (err) => {
+                    connection.query(query_usuario, [dni, nombre_usuario_regis, password_regis, email_regis], (err) => {
                         if (err) {
                             console.error('Error al insertar en usuario:', err);
                             return res.render('login.ejs', { error: 'Error al registrar el usuario' });
                         }
 
                         // Variables de sesión
-                        req.session.user_nombre_regis = nombre_regis;
-                        req.session.user_apellido_regis = apellido_regis;
+                        req.session.user_pass = password_regis;
+                        req.session.user_email = email_regis;
                         req.session.user_name = nombre_usuario_regis;
                         req.session.user_dni = dni;
-                        req.session.user_rutaImagen = rutaImagen;
-                        req.session.user_pass = password_regis;
-                        req.session.user_nac = nacimiento;
-                        req.session.user_genero = opciones_genero;
-                        req.session.user_peso = peso;
-                        req.session.user_altura = altura;
-                        req.session.user_email = email_regis;
+                        req.session.user_nombre_regis = "";
+                        req.session.user_apellido_regis = "";
+                        req.session.user_rutaImagen = "";
+                        req.session.user_nac = "";
+                        req.session.user_genero = "";
+                        req.session.user_peso = "";
+                        req.session.user_altura = "";
                         req.session.user_dieta = "";
                         req.session.user_intolerancia = "";
                         req.session.user_obj_nut = "";
@@ -753,69 +749,105 @@ app.post('/enviar', (req, res) => {
 app.get('/login_nut_deporte', (req, res) => {
     res.render('login_nut_deporte', {})
 })
-app.post('/enviar_2', (req, res) => {
+app.post('/enviar_2', async (req, res) => {
     try {
         var dni = req.session.user_dni;
         let {
+            nombre_regis, apellido_regis, nacimiento, opciones_genero, peso, altura,
             dieta, objetivo_nutricional,
             tipo_deporte, obj_deportivo, frecuencia, intensidad, intolerancia
         } = req.body;
 
         const intoleranciasString = Array.isArray(intolerancia) ? intolerancia.join(',') : intolerancia;
         intolerancia = intoleranciasString;
+        const rutaImagen = req.file ? `/resources/img_us/${req.file.filename}` : null;
+        nombre_regis = capitalizarPrimeraLetra(nombre_regis);
+        apellido_regis = capitalizarPrimeraLetra(apellido_regis);
 
-        // Inserción en la tabla `nutricionalusuario`
+        // Insert into usuario table
+        const query_acess = `
+            INSERT INTO usuario(Nombre, Apellido, FechaNacimiento, Peso, Altura, Genero, Foto_perfil) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        `;
+        await new Promise((resolve, reject) => {
+            connection.query(query_acess, [nombre_regis, apellido_regis, nacimiento, peso, altura, opciones_genero, rutaImagen], (err) => {
+                if (err) {
+                    console.error('Error al insertar en usuario:', err);
+                    return reject(res.render('login.ejs', { error: 'Error al registrar los datos del usuario' }));
+                }
+                resolve();
+            });
+        });
+
+        // Insert into nutricionalusuario table
         const query_nutri = `
             INSERT INTO nutricionalusuario (DNI_nut, intolerancia, ObjetivoNutricion, TipoAlimentacion)
             VALUES (?, ?, ?, ?)
         `;
-        connection.query(query_nutri, [dni, intolerancia, objetivo_nutricional, dieta], (err) => {
-            if (err) {
-                console.error('Error al insertar en nutricionalusuario:', err);
-                return res.render('login.ejs', { error: 'Error al registrar los datos nutricionales' });
-            }
+        await new Promise((resolve, reject) => {
+            connection.query(query_nutri, [dni, intolerancia, objetivo_nutricional, dieta], (err) => {
+                if (err) {
+                    console.error('Error al insertar en nutricionalusuario:', err);
+                    return reject(res.render('login.ejs', { error: 'Error al registrar los datos nutricionales' }));
+                }
+                resolve();
+            });
+        });
 
-            // Inserción en la tabla `deportivousuario`
-            const query_deport = `
-                INSERT INTO deportivousuario (DNI_depor, ObjetivosDeportivo, TipoDeporte, Frecuencia, Intensidad)
-                VALUES (?, ?, ?, ?, ?)
-            `;
+        // Insert into deportivousuario table
+        const query_deport = `
+            INSERT INTO deportivousuario (DNI_depor, ObjetivosDeportivo, TipoDeporte, Frecuencia, Intensidad)
+            VALUES (?, ?, ?, ?, ?)
+        `;
+        await new Promise((resolve, reject) => {
             connection.query(query_deport, [dni, obj_deportivo, tipo_deporte, frecuencia, intensidad], (err) => {
                 if (err) {
                     console.error('Error al insertar en deportivousuario:', err);
-                    return res.render('login.ejs', { error: 'Error al registrar los datos deportivos' });
+                    return reject(res.render('login.ejs', { error: 'Error al registrar los datos deportivos' }));
                 }
-
-                // Inserción en la tabla `racha`
-                const fechaActual = obtenerFechaActual()[0];
-                const query_racha = `
-                    INSERT INTO racha (Dni_racha, dias, Fecha_ultimo_Ingreso) VALUES (?, ?, ?)
-                `;
-                connection.query(query_racha, [dni, 1, fechaActual], (err) => {
-                    if (err) {
-                        console.error('Error al insertar en racha:', err);
-                        return res.render('login.ejs', { error: 'Error al registrar la racha' });
-                    }
-
-                    req.session.user_dieta = dieta;
-                    req.session.user_intolerancia = intolerancia;
-                    req.session.user_obj_nut = objetivo_nutricional;
-                    req.session.user_deporte = tipo_deporte;
-                    req.session.user_obj_dep = obj_deportivo;
-                    req.session.user_frecuencia = frecuencia;
-                    req.session.user_intensidad = intensidad;
-                    req.session.user_fecha_comienzo = fechaActual;
-
-                    res.redirect('/index');
-                });
+                resolve();
             });
         });
+
+        // Insert into racha table
+        const fechaActual = obtenerFechaActual()[0];
+        const query_racha = `
+            INSERT INTO racha (Dni_racha, dias, Fecha_ultimo_Ingreso) VALUES (?, ?, ?)
+        `;
+        await new Promise((resolve, reject) => {
+            connection.query(query_racha, [dni, 1, fechaActual], (err) => {
+                if (err) {
+                    console.error('Error al insertar en racha:', err);
+                    return reject(res.render('login.ejs', { error: 'Error al registrar la racha' }));
+                }
+                resolve();
+            });
+        });
+
+        // Update session variables
+        req.session.user_nombre_regis = nombre_regis;
+        req.session.user_apellido_regis = apellido_regis;
+        req.session.user_rutaImagen = rutaImagen;
+        req.session.user_nac = nacimiento;
+        req.session.user_genero = opciones_genero;
+        req.session.user_peso = peso;
+        req.session.user_altura = altura;
+        req.session.user_dieta = dieta;
+        req.session.user_intolerancia = intolerancia;
+        req.session.user_obj_nut = objetivo_nutricional;
+        req.session.user_deporte = tipo_deporte;
+        req.session.user_obj_dep = obj_deportivo;
+        req.session.user_frecuencia = frecuencia;
+        req.session.user_intensidad = intensidad;
+        req.session.user_fecha_comienzo = fechaActual;
+
+        // Redirect to index
+        res.redirect('/index');
     } catch (error) {
         console.error('Error en el procesamiento:', error);
         res.render('login.ejs', { error: 'Error general en el procesamiento' });
     }
 });
-
 app.get('/iniciar', async (req, res) => {
     try {
         const { nombre_ini, password_ini } = req.query;

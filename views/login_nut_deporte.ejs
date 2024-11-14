@@ -14,9 +14,56 @@
     <main>
         <section id="registro">
 
-            <form method="post" action="/enviar_2" id="cont_registrar" enctype="multipart/form-data" data-opc="enviar_2">
+            <form method="post" action="/enviar_2" id="cont_registrar" enctype="multipart/form-data"
+                data-opc="enviar_2">
                 <h1>Para acceder a estas secciones necesita completar sus datos nutricionales y deportivos</h1>
                 <span id="texto_regs"></span>
+                <div id="datos_acceso" class="sub_form desac">
+                    <div class="cont_inputs">
+                        <label for="nombre_regis">Nombre</label>
+                        <input id="nombre_regis" name="nombre_regis" type="text" placeholder="Escriba su nombre"
+                            required maxlength="40" class="input">
+                    </div>
+                    <div class="cont_inputs">
+                        <label for="apellido_regis">Apellido</label>
+                        <input id="apellido_regis" name="apellido_regis" type="text" placeholder="Escriba su apellido"
+                            required maxlength="40" class="input">
+                    </div>
+                    <div class="cont_inputs">
+                        <label for="nacimiento">Nacimiento</label>
+                        <input id="nacimiento" name="nacimiento" type="date"
+                            placeholder="Escriba su fecha de nacimiento" required class="input">
+                    </div>
+                    <div class="cont_inputs">
+                        <label for="opciones_genero">Género</label>
+                        <select id="opciones_genero" name="opciones_genero" required>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="cont_inputs">
+                        <label for="peso">Peso (En Kgs)</label>
+                        <input id="peso" name="peso" type="number" placeholder="Escriba su peso en kgs" min="0" step="1"
+                            required maxlength="6" class="input">
+                    </div>
+                    <div class="cont_inputs">
+                        <label for="altura">Altura (En Cms)</label>
+                        <input id="altura" name="altura" type="number" placeholder="Escriba su altura en Cms" min="0"
+                            required maxlength="6" class="input">
+                    </div>
+                    <div class="cont_inputs">
+                        <label for="foto_perfil">Foto de perfil</label>
+                        <div id="cont_inp_foto">
+                            <input id="foto_perfil" name="foto_perfil" type="file" placeholder="Eliga un archvio">
+                        </div>
+
+                    </div>
+                    <div class="cont_btn">
+                        <button class="btn_enviar_sesion" type="button">Siguiente</button>
+                        <button class="btn_atras" type="button">Atrás</button>
+                    </div>
+                </div>
+
                 <div id="datos_nutricionales" class="sub_form desac">
                     <div class="cont_inputs">
                         <label for="dieta">Tipo de dieta</label>

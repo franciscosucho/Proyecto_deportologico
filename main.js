@@ -5,7 +5,7 @@ const { app, BrowserWindow } = require('electron');
 
 let mainWindow;
 
-// require('./index.js')
+require('./index.js')
 
 function createWindowMain() {
   mainWindow = new BrowserWindow({
