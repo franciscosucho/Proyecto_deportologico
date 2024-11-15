@@ -153,23 +153,40 @@ app.post('/nueva_actividad', (req, res) => {
 
 app.get('/nutricion', (req, res) => {
 
-    var user_name = req.session.user_name
-    var user_dni = req.session.user_dni
-    var user_pass = req.session.user_pass
-    var user_nac = req.session.user_nac
-    var user_genero = req.session.user_genero
-    var user_peso = req.session.user_peso
-    var user_altura = req.session.user_altura
-    var user_email = req.session.user_email
-    var user_dieta = req.session.user_dieta
-    var user_obj_nut = req.session.user_obj_nut
-    var user_deporte = req.session.user_deporte
-    var user_obj_dep = req.session.user_obj_dep
-    var user_frecuencia = req.session.user_frecuencia
-    var user_intolerancia = req.session.user_intolerancia
-    var user_intensidad = req.session.user_intensidad
+    var user_dni = req.session.user_dni;
+    const query_nutri = `
+    SELECT * FROM nutricionalusuario WHERE DNI_nut = ?`;
+    connection.query(query_nutri, [user_dni], (err, results) => {
+        if (err) {
+            return res.render('login.ejs', {
+                error: 'Error al verificar los datos'
+            });
+        }
+    
+        if (results.length > 0) {
+            var user_name = req.session.user_name
+            var user_dni = req.session.user_dni
+            var user_pass = req.session.user_pass
+            var user_nac = req.session.user_nac
+            var user_genero = req.session.user_genero
+            var user_peso = req.session.user_peso
+            var user_altura = req.session.user_altura
+            var user_email = req.session.user_email
+            var user_dieta = req.session.user_dieta
+            var user_obj_nut = req.session.user_obj_nut
+            var user_deporte = req.session.user_deporte
+            var user_obj_dep = req.session.user_obj_dep
+            var user_frecuencia = req.session.user_frecuencia
+            var user_intolerancia = req.session.user_intolerancia
+            var user_intensidad = req.session.user_intensidad
 
-    res.render('nutricion', { user_name, user_intolerancia, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+            res.render('nutricion', { user_name, user_intolerancia, user_dni, user_pass, user_nac, user_genero, user_peso, user_altura, user_email, user_dieta, user_obj_nut, user_deporte, user_obj_dep, user_frecuencia, user_intensidad })
+
+        } else {
+            return res.redirect('/login_nut_deporte');
+        }
+
+    });
 
 })
 
@@ -213,7 +230,24 @@ app.get('/index', isLogged, (req, res) => {
 //<---------------------------------------------------------------------------------------->
 app.get('/progreso', (req, res) => {
     var user_dni = req.session.user_dni
-    res.render('progreso', { user_dni })
+
+    const query_nutri = `
+    SELECT * FROM nutricionalusuario WHERE DNI_nut = ?`;
+    connection.query(query_nutri, [user_dni], (err, results) => {
+        if (err) {
+            return res.render('login.ejs', {
+                error: 'Error al verificar los datos'
+            });
+        }
+        if (results.length > 0) {
+
+            res.render('progreso', { user_dni })
+
+        } else {
+            return res.redirect('/login_nut_deporte');
+        }
+
+    });
 
 })
 
@@ -632,16 +666,36 @@ app.get('/receta_focus/:id_receta', (req, res) => {
 
 
 app.get('/asesoramiento', (req, res) => {
-    const query_ase = 'SELECT * FROM `profesional` WHERE 1';
 
-    connection.query(query_ase, [], (err, results) => {
+    var user_dni = req.session.user_dni
+    const query_nutri = `
+    SELECT * FROM nutricionalusuario WHERE DNI_nut = ?`;
+    connection.query(query_nutri, [user_dni], (err, results) => {
         if (err) {
-            console.error('Error al verificar los datos:', err);
-            return res.render('login.ejs', { error: 'Error al verificar los datos' });
+            return res.render('login.ejs', {
+                error: 'Error al verificar los datos'
+            });
+        }
+        if (results.length > 0) {
+
+            const query_ase = 'SELECT * FROM `profesional` WHERE 1';
+
+            connection.query(query_ase, [], (err, results) => {
+                if (err) {
+                    console.error('Error al verificar los datos:', err);
+                    return res.render('login.ejs', { error: 'Error al verificar los datos' });
+                }
+
+                res.render('asesoramiento', { results })
+            })
+
+        } else {
+            return res.redirect('/login_nut_deporte');
         }
 
-        res.render('asesoramiento', { results })
-    })
+    });
+
+
 })
 
 
@@ -763,12 +817,12 @@ app.post('/enviar_2', async (req, res) => {
         nombre_regis = capitalizarPrimeraLetra(nombre_regis);
         apellido_regis = capitalizarPrimeraLetra(apellido_regis);
 
-        
-        const update_acces=`
+
+        const update_acces = `
         UPDATE usuario SET Nombre=?,Apellido=?,FechaNacimiento=?,Peso=?,Altura=?,Genero=?,Foto_perfil=? WHERE DNI=? `;
 
         await new Promise((resolve, reject) => {
-            connection.query(update_acces, [nombre_regis, apellido_regis, nacimiento, peso, altura, opciones_genero, rutaImagen,dni], (err) => {
+            connection.query(update_acces, [nombre_regis, apellido_regis, nacimiento, peso, altura, opciones_genero, rutaImagen, dni], (err) => {
                 if (err) {
                     console.error('Error al insertar en usuario:', err);
                     return reject(res.render('login.ejs', { error: 'Error al registrar los datos del usuario' }));
