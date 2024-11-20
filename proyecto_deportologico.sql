@@ -264,17 +264,18 @@ INSERT INTO `racha` (`ID_racha`, `Dni_racha`, `dias`, `Fecha_ultimo_Ingreso`) VA
 --
 
 CREATE TABLE `usuario` (
-  `DNI` int(11) NOT NULL,
-  `Nombre_usuario` varchar(100) NOT NULL,
-  `password` varchar(300) NOT NULL,
-  `Nombre` varchar(40) NOT NULL,
-  `Apellido` varchar(40) NOT NULL,
-  `FechaNacimiento` date NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  `Peso` decimal(5,2) NOT NULL,
-  `Altura` decimal(6,2) NOT NULL,
-  `Genero` char(1) NOT NULL CHECK (`Genero` in ('M','F')),
+  `DNI` int(11)  NOT NULL,
+  `Nombre_usuario` varchar(100) NULL,
+  `password` varchar(300)  NULL,
+  `Nombre` varchar(40)  NULL,
+  `Apellido` varchar(40)  NULL,
+  `FechaNacimiento` date  NULL,
+  `Email` varchar(100)  NULL,
+  `Peso` decimal(5,2)  NULL,
+  `Altura` decimal(6,2)  NULL,
+  `Genero` char(1)  NULL CHECK (`Genero` in ('M','F')),
   `Foto_perfil` varchar(400) DEFAULT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
